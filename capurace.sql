@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2015 at 02:46 AM
+-- Generation Time: Jan 23, 2015 at 02:54 AM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.14
 
@@ -68,7 +68,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `mail` varchar(30) NOT NULL,
   `password` varchar(32) NOT NULL,
   `bill` int(11) NOT NULL DEFAULT '0',
-  `paid` tinyint(1) NOT NULL DEFAULT '0'
+  `paid` tinyint(1) NOT NULL DEFAULT '0',
+  `confirmed` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
