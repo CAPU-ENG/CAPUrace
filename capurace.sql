@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2015 at 08:21 AM
+-- Generation Time: Jan 23, 2015 at 02:46 AM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.14
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(32) NOT NULL,
   `bill` int(11) NOT NULL DEFAULT '0',
   `paid` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -91,7 +91,7 @@ ALTER TABLE `team`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `mail` (`mail`), ADD UNIQUE KEY `school` (`school`), ADD UNIQUE KEY `school_2` (`school`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -111,7 +111,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
