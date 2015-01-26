@@ -92,7 +92,7 @@ ALTER TABLE `team`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `mail` (`mail`), ADD UNIQUE KEY `school` (`school`), ADD UNIQUE KEY `school_2` (`school`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `mail` (`mail`), ADD UNIQUE KEY `school` (`school`);
 
 --
 -- AUTO_INCREMENT for dumped tables
