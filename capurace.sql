@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2015 at 02:54 AM
+-- Generation Time: Jan 28, 2015 at 01:04 PM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.14
 
@@ -19,6 +19,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `capurace`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group`
+--
+
+CREATE TABLE IF NOT EXISTS `group` (
+  `id` smallint(6) unsigned NOT NULL,
+  `group_name` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -69,12 +80,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(32) NOT NULL,
   `bill` int(11) NOT NULL DEFAULT '0',
   `paid` tinyint(1) NOT NULL DEFAULT '0',
-  `confirmed` tinyint(1) NOT NULL DEFAULT '0'
+  `confirmed` tinyint(1) NOT NULL DEFAULT '0',
+  `association_name` varchar(15) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `group_id` smallint(6) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `group`
+--
+ALTER TABLE `group`
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `unique_group_name` (`group_name`);
 
 --
 -- Indexes for table `people`
@@ -92,12 +112,17 @@ ALTER TABLE `team`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `mail` (`mail`), ADD UNIQUE KEY `school` (`school`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `mail` (`mail`), ADD UNIQUE KEY `school` (`school`), ADD KEY `group` (`group_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `group`
+--
+ALTER TABLE `group`
+  MODIFY `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `people`
 --
@@ -131,6 +156,12 @@ ALTER TABLE `team`
 ADD CONSTRAINT `first_relay` FOREIGN KEY (`first`) REFERENCES `people` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
 ADD CONSTRAINT `second_relay` FOREIGN KEY (`second`) REFERENCES `people` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
 ADD CONSTRAINT `third_relay` FOREIGN KEY (`third`) REFERENCES `people` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+ADD CONSTRAINT `group` FOREIGN KEY (`group_id`) REFERENCES `group` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
