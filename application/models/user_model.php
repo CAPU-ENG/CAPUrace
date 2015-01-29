@@ -157,8 +157,8 @@ class User_model extends CI_Model {
     public function add_to_group($id, $group_name) {
         $query = $this->db->where('group_name', $group_name)->get('group');
         $group_info = $query->row_array();
-        $group_id = $group_info['group_id'];
-        $group = array('group_id', $group_id);
+        $group_id = $group_info['id'];
+        $group = array('group_id' => $group_id);
         $this->db->where('id', $id)->update('users', $group);
     }
 

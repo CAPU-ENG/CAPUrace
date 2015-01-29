@@ -15,8 +15,8 @@ class Group_model extends CI_Model {
      *
      */
     public function new_group($group_name) {
-        $data = array('group_name', $group_name);
-        $this->db->insert('users', $data);
+        $data = array('group_name' => $group_name);
+        $this->db->insert('group', $data);
     }
 
     /*
@@ -28,7 +28,7 @@ class Group_model extends CI_Model {
      * =====return=====
      * $group_name, the name of the group.
      */
-    public function get_group($group_id) {
+    public function group_name($group_id) {
         $query = $this->db->where('id', $group_id)->get('group');
         $res = $query->row_array();
         return $res['group_name'];
