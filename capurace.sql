@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2015 at 01:04 PM
+-- Generation Time: Jan 30, 2015 at 02:57 PM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.14
 
@@ -29,7 +29,14 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `group` (
   `id` smallint(6) unsigned NOT NULL,
   `group_name` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `group`
+--
+
+INSERT INTO `group` (`id`, `group_name`) VALUES
+(0, '未分组');
 
 -- --------------------------------------------------------
 
@@ -46,9 +53,9 @@ CREATE TABLE IF NOT EXISTS `people` (
   `accommodation` tinyint(1) NOT NULL,
   `meal` tinyint(1) NOT NULL,
   `race` tinyint(4) NOT NULL,
-  `team_id` smallint(5) unsigned NOT NULL,
+  `team_id` smallint(5) unsigned DEFAULT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -84,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `association_name` varchar(15) NOT NULL,
   `province` varchar(10) NOT NULL,
   `group_id` smallint(6) unsigned NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -122,12 +129,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `group`
 --
 ALTER TABLE `group`
-  MODIFY `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `people`
 --
 ALTER TABLE `people`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `team`
 --
@@ -137,7 +144,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --
