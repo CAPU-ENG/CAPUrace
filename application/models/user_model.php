@@ -83,7 +83,7 @@ class User_model extends CI_Model {
      * Get school name.
      */
     public function get_school($id) {
-        $res = $this->db->where('id', $id)->get('users')->row_array();
+        $res = $this->db->select('school')->where('id', $id)->get('users')->row_array();
         return $res['school'];
     }
 
@@ -92,7 +92,7 @@ class User_model extends CI_Model {
      *
      * ====argument====
      * $id, the user's id.
-     * $newdata, the data to be updated.
+     * $new_data, the data to be updated.
      *
      * =====return=====
      * A boolean value indicating if the

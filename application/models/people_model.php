@@ -22,7 +22,7 @@ class People_model extends CI_Model {
      * Get a person's name.
      */
     public function get_name($id) {
-        $res = $this->db->where('id', $id)->get('people')->row_array();
+        $res = $this->db->select('name')->where('id', $id)->get('people')->row_array();
         return $res['name'];
     }
 
