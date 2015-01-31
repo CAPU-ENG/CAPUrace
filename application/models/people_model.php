@@ -11,7 +11,7 @@ class People_model extends CI_Model {
      * Get a person's information.
      */
     public function get_people($id) {
-        $res = $this->db->where('id', $id)->get('people');
+        $res = $this->db->where('deleted', false)->where('id', $id)->get('people');
         if ($res->num_rows() > 0)
             return $res->row_array();
         else
@@ -59,8 +59,21 @@ class People_model extends CI_Model {
      *
      */
     public function get_people_from_school($school_id) {
-        $query = $this->db->where('school_id', $school_id)->get('people');
+        $query = $this->db->where('school_id', $school_id)->where('deleted', false)->get('people');
         return $query->result_array();
+    }
+
+    /*
+     * Get information of all the people.
+     *
+     */
+    public function get_all_people() {
+        $query = $this->db->where('deleted', false)->get('people');
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            return NULL;
+        }
     }
 
 }
