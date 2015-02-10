@@ -167,8 +167,32 @@ class User_model extends CI_Model {
      *
      */
     public function get_unconfirmed() {
-        $query = $this->db->where('confirmed', false)->get('users');
+        $query = $this->db->where('confirmed', false)->where('activated', true)->get('users');
         return $query->result_array();
+    }
+
+    /*
+     * Set a token for a new user.
+     */
+    public function set_token($mail) {
+        $user_info = $this->get_user_by_email($mail);
+        date_default_timezone_set('PRC');
+        $token = md5($user_info['mail'] . $user_info['password'] . time());
+        $this->db->where('mail', $mail)->update('users', array('token' => $token));
+        return $token;
+    }
+
+    /*
+     * Activate a user.
+     */
+    public function activate($token) {
+        $query = $this->db->where('token', $token)->update('users', array('activated' => true));
+        if (!$query) {
+            return '链接已失效。';
+        } else {
+            $this->db->where('token', $token)->update('users', array('token' => '0'));
+            return '激活成功！';
+        }
     }
 }
 

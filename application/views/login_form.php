@@ -19,7 +19,7 @@
 echo form_open(site_url('user/login'));
 echo '用户名' . form_input('mail', set_value('mail')) . br();
 echo '密码' . form_password('password', '') . br();
-echo form_submit('mysubmit', '登录');
+echo form_submit('', '登录') . form_reset('', '重置');
 echo form_close();
 ?>
 

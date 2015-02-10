@@ -60,9 +60,9 @@ echo '所在地区（省级行政区）' . form_dropdown('province', $provinces,
 echo '领队姓名' . form_input('leader', set_value('leader')) . br();
 echo '联系电话' . form_input('tel', set_value('tel')) . br();
 echo '电子邮箱（登录名）' . form_input('mail', set_value('mail')) . br();
-echo '密码' . form_password('password', set_value('password')) . br();
-echo '再次输入密码' . form_password('passconf', set_value('passconf')) . br();
-echo form_submit('submit', '登录') . form_reset('reset', '重置');
+echo '密码' . form_password('password', '') . br();
+echo '再次输入密码' . form_password('passconf', '') . br();
+echo form_submit('', '注册') . form_reset('', '重置');
 echo form_close();
 
 ?>

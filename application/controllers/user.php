@@ -39,8 +39,9 @@ class User extends CI_Controller {
     }
 
     public function signup() {
+        date_default_timezone_set('PRC');
         $this->load->helper(array('form', 'url', 'html'));
-        $this->load->library('form_validation');
+        $this->load->library(array('form_validation', 'email'));
         $this->load->model('user_model', 'user');
 
         if ($this->form_validation->run('signup') == false) {
@@ -50,6 +51,26 @@ class User extends CI_Controller {
             $data = $this->input->post();
             unset($data['passconf']);
             $this->user->sign_up($data);
+            $token = $this->user->set_token($data['mail']);
+            $link = site_url('user/activate') . '/' . $token;
+            $this->email->from('beidachexie@126.com', '北京大学自行车协会');
+            $this->email->to($data['mail']);
+            $this->email->subject('第十三届全国高校山地车交流赛帐户确认');
+            $this->email->message('请点击以下链接激活帐户' . $link);
+            $this->email->send();
+        }
+    }
+
+    /*
+     * Activate the account.
+     */
+    public function activate() {
+        $this->load->model('user_model', 'user');
+        $token = $this->uri->segment(3);
+        if (!$token) {
+            echo '激活码不存在。';
+        } else {
+            echo $this->user->activate($token);
         }
     }
 }
