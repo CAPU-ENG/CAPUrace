@@ -25,6 +25,7 @@ class User extends CI_Controller {
             if ($login_info['password'] == $user_info['password']) {
                 if ($user_info['confirmed']) {
                     $this->session->set_userdata('logged_in', true);
+                    $this->session->set_userdata('school_id', $user_info['school_id']);
                     redirect(site_url('registration/index'));
                 } else {
                     echo '用户尚未通过审核';
