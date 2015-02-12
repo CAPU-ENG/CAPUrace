@@ -67,10 +67,6 @@ class User extends CI_Controller {
     public function activate() {
         $this->load->model('user_model', 'user');
         $token = $this->uri->segment(3);
-        if (!$token) {
-            echo '激活码不存在。';
-        } else {
-            echo $this->user->activate($token);
-        }
+        echo $this->user->activate($token);
     }
 }

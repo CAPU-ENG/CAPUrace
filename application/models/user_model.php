@@ -183,15 +183,25 @@ class User_model extends CI_Model {
     }
 
     /*
-     * Activate a user.
+     * Activate a user and clear the token after activating.
+     * ====argument====
+     * $token, the token in the link.
+     *
+     * =====return=====
+     * A string indicating the status of the activation.
      */
     public function activate($token) {
-        $query = $this->db->where('token', $token)->update('users', array('activated' => true));
-        if (!$query) {
-            return '链接已失效。';
+        if (!$token) {
+            return '激活码不存在。';
         } else {
-            $this->db->where('token', $token)->update('users', array('token' => '0'));
-            return '激活成功！';
+            $query = $this->db->where('token', $token)->get('users');
+            if ($query->num_rows() == 0) {
+                return '激活码无效或已失效。';
+            } else {
+                $this->db->where('token', $token)->update('users', array('activated' => true));
+                $this->db->where('token', $token)->update('users', array('token' => '0'));
+                return '激活成功！';
+            }
         }
     }
 }
