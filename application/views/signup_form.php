@@ -7,6 +7,7 @@
  */
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
     <title>新用户注册</title>
