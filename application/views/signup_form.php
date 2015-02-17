@@ -5,8 +5,6 @@
  * Date: 1/26/15
  * Time: 19:11
  */
-set_include_path('/');
-include_once('application/config/provinces.php')
 ?>
 
 <!DOCTYPE html>
