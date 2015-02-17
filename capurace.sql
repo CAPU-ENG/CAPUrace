@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `paid` tinyint(1) NOT NULL DEFAULT '0',
   `confirmed` tinyint(1) NOT NULL DEFAULT '0',
   `association_name` varchar(15) NOT NULL,
-  `province` varchar(10) NOT NULL,
+  `province` smallint(6) NOT NULL,
   `group_id` smallint(6) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 

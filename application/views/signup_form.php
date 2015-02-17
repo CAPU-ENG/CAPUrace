@@ -21,7 +21,7 @@
 echo form_open(site_url('user/signup'));
 echo '学校' . form_input('school', set_value('school')) . br();
 echo '车协名称' . form_input('association_name', set_value('association_name')) . br();
-echo '所在地区（省级行政区）' . form_dropdown('province', $PROVINCES, set_value('province')) . br();
+echo '所在地区（省级行政区）' . form_dropdown('province', $GLOBALS['PROVINCES'], set_value('province')) . br();
 echo '领队姓名' . form_input('leader', set_value('leader')) . br();
 echo '联系电话' . form_input('tel', set_value('tel')) . br();
 echo '电子邮箱（登录名）' . form_input('mail', set_value('mail')) . br();
