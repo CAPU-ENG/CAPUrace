@@ -36,16 +36,7 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
-/*
- * ------------------------------------------------------------------------
- * Province Settings
- * ------------------------------------------------------------------------
- *
- * This array is for the dropdown-menu in the sign up form.
- *
- */
-
-$PROVINCES = array(
+$GLOBALS['PROVINCES'] = array(
     '北京市',
     '天津市',
     '上海市',
@@ -80,6 +71,19 @@ $PROVINCES = array(
     '台湾省',
     '香港特别行政区',
     '澳门特别行政区'
+);
+
+$GLOBALS['GENDERS'] = array(
+    '女',
+    '男'
+);
+
+
+$GLOBALS['RACES'] = array(
+    '男子精英',
+    '男子大众',
+    '女子',
+    '不参赛'
 );
 
 /* End of file constants.php */

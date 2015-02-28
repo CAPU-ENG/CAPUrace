@@ -34,6 +34,10 @@ class Team_model extends CI_Model {
             return NULL;
     }
 
+    public function by_id($id) {
+        return $this->get_team($id);
+    }
+
     /*
      * Add a new team.
      *
@@ -46,6 +50,10 @@ class Team_model extends CI_Model {
         $this->db->insert('team', $data);
     }
 
+    public function insert($data) {
+        return $this->db->insert('team', $data);
+    }
+
     /*
      * Get all teams from the certain school by id, without
      * interpreting the ids into names.
@@ -56,6 +64,9 @@ class Team_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function update($id, $data) {
+        return $this->db->where('id', $id)->update('team', $data);
+    }
 }
 
 /* End of file team_model.php */
