@@ -19,6 +19,29 @@ class Group_model extends CI_Model {
         $this->db->insert('group', $data);
     }
 
+    public function insert($data) {
+        return $this->db->insert('group', $data);
+    }
+
+    /*
+     * Get a group by id.
+     *
+     * ====argument====
+     * $id, the id of the group.
+     *
+     * =====return=====
+     * $by_id, the group.
+     */
+    public function by_id($group_id) {
+        $query = $this->db->where('id', $group_id)->get('group');
+        if ($query->num_rows() > 0) {
+            return $query->row_array();
+        }
+        else {
+            return NULL;
+        }
+    }
+
     /*
      * Get the name of the group.
      *
@@ -32,6 +55,23 @@ class Group_model extends CI_Model {
         $query = $this->db->where('id', $group_id)->get('group');
         $res = $query->row_array();
         return $res['group_name'];
+    }
+
+
+    /*
+     * Get all groups
+     *
+     * ====argument====
+     *
+     * =====return=====
+     * $all, all groups
+     */
+    public function all() {
+        return $this->db->get('group')->result_array();
+    }
+
+    public function update($id, $data) {
+        return $this->db->where('id', $id)->update('group', $data);
     }
 }
 

@@ -9,3 +9,5 @@ application/config/email.php
 */cache/*
 */cache/!index.html
 */cache/!.htaccess
+*.sw?
+/captcha/
