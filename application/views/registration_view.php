@@ -20,9 +20,9 @@
             <label for="inputAccommodation" class="col-sm-1 control-label">住宿</label>
             <label for="inputMeal" class="col-sm-1 control-label">就餐</label>
             <br /><hr />
-            <div class="individual-form hidden" id="individual-info">
+            <div class="individual-form hidden">
                 <div class="col-sm-2">
-                    <input type="text" class="form-control" id="inputName">
+                    <input type="text" class="form-control">
                 </div>
                 <div class="col-sm-1">
                     <select class="form-control" name="gender">
@@ -31,7 +31,7 @@
                     </select>
                 </div>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" id="inputID" name="id_card">
+                    <input type="text" class="form-control" name="id_card">
                 </div>
                 <div class="col-sm-2">
                     <select class="form-control" name="race">
@@ -51,7 +51,7 @@
                     <button type="button" class="btn btn-success btn-sm">保存</button>
                 </div>
                 <div class="col-sm-1">
-                    <button type="button" class="btn btn-danger btn-sm">删除</button>
+                    <button type="button" class="btn btn-danger btn-sm individual-remove-btn" onclick="removeIndividual($(this))">删除</button>
                 </div>
                 <br/>
                 <br/>
