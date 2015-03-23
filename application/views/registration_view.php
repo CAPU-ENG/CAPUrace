@@ -8,29 +8,31 @@
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/race.js"></script>
 </head>
-<body>
+<body onload="addIndividual()">
     <div class="mycontainer">
         <p> <h3>请录入人员信息</h3></p>
         <hr/>
-        <div class="reg">
-            <div class="individual-form" id="individual-info">
-                <label for="inputName" class="col-sm-1 control-label">姓名</label>
+        <div class="form-group reg">
+            <label for="inputName" class="col-sm-2 control-label">姓名</label>
+            <label for="inputSex" class="col-sm-1 control-label">性别</label>
+            <label for="inputID" class="col-sm-3 control-label">身份证号</label>
+            <label for="inputRace" class="col-sm-2 control-label">个人赛类型</label>
+            <label for="inputAccommodation" class="col-sm-1 control-label">住宿</label>
+            <label for="inputMeal" class="col-sm-1 control-label">就餐</label>
+            <br /><hr />
+            <div class="individual-form hidden" id="individual-info">
                 <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputName">
                 </div>
-                <label for="inputSex" class="col-sm-1 control-label">性别</label>
-                <div class="col-sm-2">
+                <div class="col-sm-1">
                     <select class="form-control" name="gender">
                         <option value="1">男</option>
                         <option value="2">女</option>
                     </select>
                 </div>
-                <label for="inputID" class="col-sm-1 control-label">身份证号</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputID">
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="inputID" name="id_card">
                 </div>
-                <br><br><br>
-                <label for="inputRace" class="col-sm-1 control-label">个人赛类型</label>
                 <div class="col-sm-2">
                     <select class="form-control" name="race">
                         <option value="0">不参加个人赛</option>
@@ -39,30 +41,30 @@
                         <option value="3">女子组</option>
                     </select>
                 </div>
-                <label for="inputAccommodation" class="col-sm-1 control-label">住宿</label>
-                <div class="col-sm-2">
-                    <select class="form-control" name="accommodation">
-                        <option value="1">需要</option>
-                        <option value="0">不需要</option>
-                    </select>
+                <div class="col-sm-1">
+                    <input type="checkbox" name="accommodation" checked>
                 </div>
-                <label for="inputMeal" class="col-sm-1 control-label">吃饭</label>
-                <div class="col-sm-2">
-                    <select class="form-control" name="meal">
-                        <option value="1">需要</option>
-                        <option value="0">不需要</option>
-                    </select>
+                <div class="col-sm-1">
+                    <input type="checkbox" name="meal" checked>
                 </div>
-                <button type="button" class="btn btn-default btn-sm">删除</button>
-                <br><hr>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-success btn-sm">保存</button>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-danger btn-sm">删除</button>
+                </div>
+                <br/>
+                <br/>
             </div>
         </div>
+        <hr/>
         <div class="col-sm-6">
-            <button class="btn btn-primary" onclick="addIndividual()">添加</button>
+            <button class="btn btn-primary btn-block" onclick="addIndividual()">添加一个队员</button>
         </div>
         <div class="col-sm-6">
-            <button type="submit" class="btn btn-primary">保存</button>
+            <button type="submit" class="btn btn-success btn-block">提交，前往团体赛报名</button>
         </div>
+        <br/>
     </div>
 </body>
 </html>
