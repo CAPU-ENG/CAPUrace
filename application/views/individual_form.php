@@ -13,12 +13,12 @@
         <p> <h3>请录入人员信息</h3></p>
         <hr/>
         <div class="form-group reg">
-            <label for="inputName" class="col-sm-2 control-label">姓名</label>
-            <label for="inputSex" class="col-sm-1 control-label">性别</label>
-            <label for="inputID" class="col-sm-3 control-label">身份证号</label>
-            <label for="inputRace" class="col-sm-2 control-label">个人赛类型</label>
-            <label for="inputAccommodation" class="col-sm-1 control-label">住宿</label>
-            <label for="inputMeal" class="col-sm-1 control-label">就餐</label>
+            <label class="col-sm-2 control-label">姓名</label>
+            <label class="col-sm-1 control-label">性别</label>
+            <label class="col-sm-3 control-label">身份证号</label>
+            <label class="col-sm-2 control-label">个人赛类型</label>
+            <label class="col-sm-1 control-label">住宿</label>
+            <label class="col-sm-1 control-label">就餐</label>
             <br /><hr />
             <div class="individual-form hidden">
                 <div class="col-sm-2">
@@ -51,7 +51,7 @@
                     <button type="button" class="btn btn-success btn-sm">保存</button>
                 </div>
                 <div class="col-sm-1">
-                    <button type="button" class="btn btn-danger btn-sm individual-remove-btn" onclick="removeIndividual($(this))">删除</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="removeIndividual($(this))">删除</button>
                 </div>
                 <br/>
                 <br/>
