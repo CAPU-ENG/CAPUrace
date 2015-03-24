@@ -10,6 +10,6 @@ class Registration extends CI_Controller {
 
     public function index() {
         $this->load->library('session');
-        $this->load->view('registration_view');
+        $this->load->view('registration_individual');
     }
 }
