@@ -17,25 +17,32 @@ class User extends CI_Controller {
         $this->load->model('user_model', 'user');
         $this->load->library('form_validation');
         $this->load->library('session');
-        if ($this->form_validation->run('login') == false) {
-            $this->load->view('login_form');
-        } else {
+
+        $this->load->view('header');
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $login_info = $this->input->post();
-            $user_info = $this->user->get_user_by_email($login_info['mail']);
-            if ($login_info['password'] == $user_info['password']) {
-                if ($user_info['confirmed']) {
-                    $this->session->set_userdata('logged_in', true);
-                    $this->session->set_userdata('school_id', $user_info['school_id']);
-                    redirect(site_url('registration/index'));
-                } else {
-                    echo '用户尚未通过审核';
-                    $this->load->view('login_form');
-                }
-            } else {
-                echo '密码错误';
-                $this->load->view('login_form');
+
+            if ($this->form_validation->run('login') == false) {
+                redirect(site_url('user/login'));
             }
+
+            $user_info = $this->user->get_user_by_email($login_info['mail']);
+
+            if (!$user_info['confirmed']) {
+                redirect(site_url('user/login'));
+            }
+
+            if ($login_info['password'] != $user_info['password']) {
+                redirect(site_url('user/login'));
+            }
+            $this->session->set_userdata('logged_in', true);
+            $this->session->set_userdata('school_id', $user_info['school_id']);
+            redirect(site_url('registration/index'));
+        } else {
+            $this->load->view('login_form');
         }
+        $this->load->view('footer');
     }
 
     public function signup() {
@@ -44,11 +51,15 @@ class User extends CI_Controller {
         $this->load->library(array('form_validation', 'email'));
         $this->load->model('user_model', 'user');
 
-        if ($this->form_validation->run('signup') == false) {
-            $this->load->view('signup_form');
-        } else {
-            $this->load->view('signup_success');
+        $this->load->view('header');
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $data = $this->input->post();
+
+            if ($this->form_validation->run('signup') == false) {
+                redirect(site_url('user/signup'));
+            }
+
+            $this->load->view('signup_success');
             unset($data['passconf']);
             $this->user->sign_up($data);
             $token = $this->user->set_token($data['mail']);
@@ -58,7 +69,11 @@ class User extends CI_Controller {
             $this->email->subject('第十三届全国高校山地车交流赛帐户确认');
             $this->email->message('请点击以下链接激活帐户' . $link);
             $this->email->send();
+        } else {
+            $this->load->view('signup_form');
         }
+
+        $this->load->view('footer');
     }
 
     /*

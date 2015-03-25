@@ -27,23 +27,23 @@ body {
   //background-color: #f3f3f3;
 }
 
-.logincontainer {
+.signcontainer {
 //background-color: #c21a25;
 //background:url(/assets/images/test.jpg);
     height: auto;
-    margin-right:35%;
+    margin-right:30%;
     margin-top:90px;
-    margin-left:35%;
+    margin-left:30%;
     margin-bottom: 40px;
     padding-top: 30px;
     padding-left: 40px;
     padding-right: 40px;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
     border-style: solid;
     border-width: 1px;
     border-color: #CBCBCB;
 }
-.mycontainer {
+.regcontainer {
   //background-color: #c21a25;
   //background:url(/assets/images/test.jpg);
   height: auto;
@@ -54,7 +54,7 @@ body {
   padding-top: 70px;
   padding-left: 40px;
   padding-right: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
   border-style: solid;
   border-width: 1px;
   border-color: #CBCBCB;
