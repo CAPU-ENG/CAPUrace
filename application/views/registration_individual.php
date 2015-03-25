@@ -13,6 +13,7 @@
         <p> <h3>请录入人员信息</h3></p>
         <hr/>
         <div class="form-group reg">
+            <label class="col-sm-1 control-label">序号</label>
             <label class="col-sm-2 control-label">姓名</label>
             <label class="col-sm-1 control-label">性别</label>
             <label class="col-sm-3 control-label">身份证号</label>
@@ -21,6 +22,7 @@
             <label class="col-sm-1 control-label">就餐</label>
             <br /><hr />
             <div class="individual-form hidden">
+                <div class="col-sm-1"></div>
                 <div class="col-sm-2">
                     <input type="text" class="form-control">
                 </div>
@@ -48,9 +50,6 @@
                     <input type="checkbox" name="meal" checked>
                 </div>
                 <div class="col-sm-1">
-                    <button type="button" class="btn btn-success btn-sm">保存</button>
-                </div>
-                <div class="col-sm-1">
                     <button type="button" class="btn btn-danger btn-sm" onclick="removeIndividual($(this))">删除</button>
                 </div>
                 <br/>
@@ -58,10 +57,13 @@
             </div>
         </div>
         <hr/>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <button class="btn btn-primary btn-block" onclick="addIndividual()">添加一个队员</button>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
+            <button class="btn btn-warning btn-block">暂时保存</button>
+        </div>
+        <div class="col-sm-4">
             <button type="submit" class="btn btn-success btn-block">提交，前往团体赛报名</button>
         </div>
         <br/>
