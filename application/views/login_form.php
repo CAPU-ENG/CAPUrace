@@ -11,7 +11,8 @@
     <div class="col-sm-8">
         <input type="password" class="form-control" name="password">
     </div>
-    <?=br(2)?>
+    <br/>
+    <br/>
     <hr/>
     <div class="col-sm-6">
         <button class="btn btn-warning btn-block">注册</button>
