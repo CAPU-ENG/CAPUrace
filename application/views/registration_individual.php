@@ -11,7 +11,9 @@
         <label class="col-sm-1 control-label">就餐</label>
         <br /><hr />
         <div class="individual-form hidden">
-            <div class="col-sm-1"></div>
+            <div class="col-sm-1">
+                <p class="order"></p>
+            </div>
             <div class="col-sm-2">
                 <input type="text" class="form-control" name="name">
             </div>
@@ -57,3 +59,8 @@
     </div>
     <br/>
 </div>
+<script>
+    $(document).ready(function() {
+        addIndividual();
+    });
+</script>

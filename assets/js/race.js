@@ -1,8 +1,19 @@
 /*
+ * This function refresh the order value.
+ */
+function refreshOrder() {
+    $(".order").each(function(idx) {
+        $(this).text(idx);
+    });
+}
+
+/*
  * This function adds a new person form.
  */
 function addIndividual() {
-    $(".reg").append($(".individual-form:first").clone(true).removeClass("hidden"));
+    elem = $(".individual-form:first").clone(true).removeClass("hidden");
+    elem.find(".order").text($(".individual-form").length);
+    $(".reg").append(elem);
 }
 
 /*
@@ -10,13 +21,16 @@ function addIndividual() {
  */
 function removeIndividual(item) {
     item.closest(".individual-form").remove();
+    refreshOrder();
 }
 
 /*
  * This function add a new team form.
  */
 function addTeam() {
-    $(".reg").append($(".team-form:first").clone(true).removeClass("hidden"));
+    elem = $(".team-form:first").clone(true).removeClass("hidden");
+    elem.find(".order").text($(".team-form").length);
+    $(".reg").append(elem);
 }
 
 /*
@@ -24,6 +38,7 @@ function addTeam() {
  */
 function removeTeam(item) {
     item.closest(".team-form").remove();
+    refreshOrder();
 }
 /* End of file race.js */
 /* Location: ./assets/js/race.js */
