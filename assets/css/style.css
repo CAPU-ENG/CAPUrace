@@ -29,9 +29,10 @@
 }
 
 .container {
-  height: 20cm;
-  width:100%;
-  margin-top:0px; 
+  height: auto;
+    margin-left: 39%;
+  margin-top:90px;
+    margin-right: 39%;
   margin-bottom:0px;
   padding-top: 70px;
   padding-left: 40px;
