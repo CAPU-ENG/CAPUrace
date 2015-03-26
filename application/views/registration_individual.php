@@ -1,4 +1,4 @@
-<div class="mycontainer">
+<div class="regcontainer">
     <p> <h3>请录入人员信息</h3></p>
     <hr/>
     <div class="form-group reg">

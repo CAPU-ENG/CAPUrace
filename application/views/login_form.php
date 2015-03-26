@@ -1,29 +1,23 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Jeldor
- * Date: 1/27/15
- * Time: 08:05
- */
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>登录</title>
-</head>
-
-<body>
-<?php echo validation_errors(); ?>
-
-<?php
-echo form_open(site_url('user/login'));
-echo '用户名' . form_input('mail', set_value('mail')) . br();
-echo '密码' . form_password('password', '') . br();
-echo form_submit('', '登录') . form_reset('', '重置');
-echo form_close();
-?>
-
-</body>
-
-</html>
+<div class="signcontainer">
+    <h3>高校用户登录</h3>
+    <hr/>
+    <div class="col-sm-4">用户名</div>
+    <div class="col-sm-8">
+        <input type="text" class="form-control" name="mail">
+    </div>
+    <br/>
+    <br/>
+    <div class="col-sm-4">密码</div>
+    <div class="col-sm-8">
+        <input type="password" class="form-control" name="password">
+    </div>
+    <br/>
+    <br/>
+    <hr/>
+    <div class="col-sm-6">
+        <button class="btn btn-warning btn-block">注册</button>
+    </div>
+    <div class="col-sm-6">
+        <button class="btn btn-success btn-block">登录</button>
+    </div>
+</div>
