@@ -27,14 +27,3 @@
   border-width: 1px;
   border-color: #CBCBCB;
 }
-
-.container {
-  height: 20cm;
-  width:100%;
-  margin-top:0px; 
-  margin-bottom:0px;
-  padding-top: 70px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 40px;
-}
