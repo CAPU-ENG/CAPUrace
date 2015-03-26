@@ -23,13 +23,9 @@
 }
 
 body {
-	//background:url(/assets/images/beige_paper.png) left top repeat;
-  //background-color: #f3f3f3;
 }
 
 .signcontainer {
-//background-color: #c21a25;
-//background:url(/assets/images/test.jpg);
     height: auto;
     margin-right:30%;
     margin-top:90px;
@@ -43,9 +39,8 @@ body {
     border-width: 1px;
     border-color: #CBCBCB;
 }
+
 .regcontainer {
-  //background-color: #c21a25;
-  //background:url(/assets/images/test.jpg);
   height: auto;
   margin-right:10%;
   margin-top:90px;
