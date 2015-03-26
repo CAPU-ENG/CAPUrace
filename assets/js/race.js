@@ -13,6 +13,7 @@ function removeIndividual(item) {
 }
 
 /*
+<<<<<<< HEAD
  * This function add a new team form.
  */
 function addTeam() {
@@ -25,5 +26,30 @@ function addTeam() {
 function removeTeam(item) {
     item.closest(".team-form").remove();
 }
+/*
+ * This function post the login information from
+ * the web to the controller.
+ */
+function postLogin() {
+    var mail = $("#mail").val();
+    var password = $("#password").val();
+    if (mail == "") {
+        alert('用户名不能为空！');
+        $("#mail").focus();
+        return;
+    }
+    if (password == "") {
+        alert('密码不能为空！');
+        $("#password").focus();
+        return;
+    }
+    //var pass = hex_md5(password);
+    var data = {
+        mail: mail,
+        password: password
+    };
+    $.post(controller, data);
+}
+
 /* End of file race.js */
 /* Location: ./assets/js/race.js */
