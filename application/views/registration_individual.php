@@ -13,7 +13,7 @@
         <div class="individual-form hidden">
             <div class="col-sm-1"></div>
             <div class="col-sm-2">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="name">
             </div>
             <div class="col-sm-1">
                 <select class="form-control" name="gender">
