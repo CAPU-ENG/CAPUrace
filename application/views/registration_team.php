@@ -8,7 +8,9 @@
         <label class="col-sm-3">第三棒</label>
         <br/><br/>
         <div class="team-form hidden">
-            <div class="col-sm-1"></div>
+            <div class="col-sm-1">
+                <p class="order"></p>
+            </div>
             <div class="col-sm-3">
                 <select class="form-control" name="first">
 
@@ -42,3 +44,8 @@
         <button class="btn btn-success btn-block">提交</button>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        addTeam();
+    });
+</script>

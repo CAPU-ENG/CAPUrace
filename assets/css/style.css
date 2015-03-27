@@ -27,3 +27,16 @@
   border-width: 1px;
   border-color: #CBCBCB;
 }
+
+.form-group label {
+  text-align: center;
+}
+
+.form-group .order {
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-group .col-sm-1 {
+  text-align: center;
+}
