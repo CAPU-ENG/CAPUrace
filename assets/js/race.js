@@ -21,6 +21,9 @@ function addIndividual() {
  */
 function removeIndividual(item) {
     item.closest(".individual-form").remove();
+    if ($(".individual-form").length == 1) {
+        addIndividual();
+    }
     refreshOrder();
 }
 
@@ -38,6 +41,9 @@ function addTeam() {
  */
 function removeTeam(item) {
     item.closest(".team-form").remove();
+    if ($(".team-form").length == 1) {
+        addTeam();
+    }
     refreshOrder();
 }
 /* End of file race.js */
