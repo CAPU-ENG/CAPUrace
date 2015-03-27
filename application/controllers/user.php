@@ -18,31 +18,38 @@ class User extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('session');
 
-        $this->load->view('header');
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header');
+            $this->load->view('login_form');
+            $this->load->view('footer');
+        }
 
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $login_info = $this->input->post();
+            header('Content-Type: application/json');
 
             if ($this->form_validation->run('login') == false) {
-                redirect(site_url('user/login'));
+                $err_code = '400';
+                echo json_encode($err_code);
+                exit;
             }
 
             $user_info = $this->user->get_user_by_email($login_info['mail']);
+            $err_code = '200';
 
             if (!$user_info['confirmed']) {
-                redirect(site_url('user/login'));
+                $err_code = '202';
+            }
+            if ($login_info['password'] != $user_info['password']) {
+                $err_code = '401';
+            }
+            if ($user_info == NULL) {
+                $err_code = '204';
             }
 
-            if ($login_info['password'] != $user_info['password']) {
-                redirect(site_url('user/login'));
-            }
-            $this->session->set_userdata('logged_in', true);
-            $this->session->set_userdata('school_id', $user_info['school_id']);
-            redirect(site_url('registration/index'));
-        } else {
-            $this->load->view('login_form');
+            echo json_encode($err_code);
+            echo json_encode($GLOBALS['ERR_MSG'][$err_code]);
         }
-        $this->load->view('footer');
     }
 
     public function signup() {
