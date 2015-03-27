@@ -28,7 +28,6 @@ function removeIndividual(item) {
 }
 
 /*
-<<<<<<< HEAD
  * This function add a new team form.
  */
 function addTeam() {
