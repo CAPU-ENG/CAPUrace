@@ -30,7 +30,11 @@ class User extends CI_Controller {
 
             if ($this->form_validation->run('login') == false) {
                 $err_code = '400';
-                echo json_encode($err_code);
+                $data = array(
+                    'code' => $err_code,
+                    'msg' => $GLOBALS['ERR_MSG'][$err_code]
+                );
+                echo json_encode($data);
                 exit;
             }
 
@@ -47,8 +51,11 @@ class User extends CI_Controller {
                 $err_code = '204';
             }
 
-            echo json_encode($err_code);
-            echo json_encode($GLOBALS['ERR_MSG'][$err_code]);
+            $data = array(
+                'code' => $err_code,
+                'msg' => $GLOBALS['ERR_MSG'][$err_code]
+            );
+            echo json_encode($data);
         }
     }
 

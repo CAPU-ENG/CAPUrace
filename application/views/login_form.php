@@ -1,5 +1,6 @@
 <script type="text/javascript">
     var controller = "<?=site_url('user/login')?>";
+    var registration = "<?=site_url('registration')?>"
 </script>
 
 <div class="signcontainer">
