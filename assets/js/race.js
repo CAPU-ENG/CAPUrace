@@ -64,10 +64,10 @@ function postLogin() {
         $("#password").focus();
         return;
     }
-    //var pass = hex_md5(password);
+    var pass = $.md5(password);
     var data = {
         mail: mail,
-        password: password
+        password: pass
     };
     $.post(controller, data);
 }
