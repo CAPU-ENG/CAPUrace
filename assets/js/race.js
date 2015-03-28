@@ -147,7 +147,7 @@ function postSignup() {
     };
     $.post(controller, data, function(data) {
         if (data.code == "200") {
-            alert("注册成功！管理员将会在12小时内审核，通过后即可登录报名！")
+            alert("注册成功！请登录你的邮箱查看激活邮件！")
             window.location.assign(directto);
         } else {
             alert(data.msg);
