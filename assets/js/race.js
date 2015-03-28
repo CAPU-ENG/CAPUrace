@@ -90,6 +90,51 @@ function postSignup() {
     var mail = $("#mail").val();
     var password = $.md5($("#password").val());
     var passconf = $.md5($("#passconf").val());
+
+    //The following part of code is for front-end validation.
+
+    if (school == "") {
+        alert("学校名不能为空！")
+        $("#school").focus();
+        return;
+    }
+    if (assoc == "") {
+        alert("协会名不能为空！")
+        $("#assoc").focus();
+        return;
+    }
+    if (leader == "") {
+        alert("领队名不能为空！")
+        $("#leader").focus();
+        return;
+    }
+    if (tel == "") {
+        alert("领队电话不能为空！")
+        $("#tel").focus();
+        return;
+    }
+    if (mail == "") {
+        alert("邮箱不能为空！")
+        $("#mail").focus();
+        return;
+    }
+    if (password == "") {
+        alert("密码不能为空！")
+        $("#password").focus();
+        return;
+    }
+    if (passconf == "") {
+        alert("请确认您的密码！")
+        $("#passconf").focus();
+        return;
+    }
+    if (passconf != password) {
+        alert("两次输入的密码不同，请重新确认！")
+        $("#passconf").focus();
+        return;
+    }
+
+    //Organize the data and post to the controller.
     var data = {
         school: school,
         association_name: assoc,
@@ -106,7 +151,7 @@ function postSignup() {
             window.location.assign(directto);
         } else {
             alert(data.msg);
-            window.location.reload();
+            //window.location.reload();
         }
     })
 

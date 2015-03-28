@@ -44,6 +44,6 @@
         <button class="btn btn-warning btn-block">返回</button>
     </div>
     <div class="col-sm-6">
-        <button class="btn btn-success btn-block">注册</button>
+        <button class="btn btn-success btn-block" onclick="postSignup()">注册</button>
     </div>
 </div>
