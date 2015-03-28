@@ -151,7 +151,7 @@ function postSignup() {
             window.location.assign(directto);
         } else {
             alert(data.msg);
-            //window.location.reload();
+            window.location.reload();
         }
     })
 
