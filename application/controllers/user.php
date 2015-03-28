@@ -93,13 +93,13 @@ class User extends CI_Controller {
 
             unset($data['passconf']);
             $this->user->sign_up($data);
-/*            $token = $this->user->set_token($data['mail']);
+            $token = $this->user->set_token($data['mail']);
             $link = site_url('user/activate') . '/' . $token;
             $this->email->from('beidachexie@126.com', '北京大学自行车协会');
             $this->email->to($data['mail']);
             $this->email->subject('第十三届全国高校山地车交流赛帐户确认');
             $this->email->message('请点击以下链接激活帐户' . $link);
-            $this->email->send();*/
+            $this->email->send();
         }
     }
 
