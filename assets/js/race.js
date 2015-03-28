@@ -77,5 +77,40 @@ function postLogin() {
     });
 }
 
+/*
+ * This function posts the signup information to
+ * the signup controller.
+ */
+function postSignup() {
+    var school = $("#school").val();
+    var assoc = $("#assoc").val();
+    var province = $("#province").val();
+    var leader = $("#leader").val();
+    var tel = $("#tel").val();
+    var mail = $("#mail").val();
+    var password = $.md5($("#password").val());
+    var passconf = $.md5($("#passconf").val());
+    var data = {
+        school: school,
+        association_name: assoc,
+        province: province,
+        leader: leader,
+        tel: tel,
+        mail: mail,
+        password: password,
+        passconf: passconf
+    };
+    $.post(controller, data, function(data) {
+        if (data.code == "200") {
+            alert("注册成功！管理员将会在12小时内审核，通过后即可登录报名！")
+            window.location.assign(directto);
+        } else {
+            alert(data.msg);
+            window.location.reload();
+        }
+    })
+
+}
+
 /* End of file race.js */
 /* Location: ./assets/js/race.js */
