@@ -69,7 +69,7 @@ function postLogin() {
         password: pass
     };
     $.post(controller, data, function(data) {
-        if (data.code != "200") {
+        if (data.code == "200") {
             window.location.assign(registration);
         } else {
             alert(data.msg);
