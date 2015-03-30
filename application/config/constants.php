@@ -89,11 +89,11 @@ $PROVINCES = array(
  *
  */
 $ERR_MSG = array(
-    '200' => 'OK',
+    '200' => 'OK.',
     '202' => 'User not confirmed.',
     '204' => 'User not existed.',
     '400' => 'Illegal input.',
-    '401' => 'Wrong password'
+    '401' => 'Wrong password.'
 );
 
 /* End of file constants.php */
