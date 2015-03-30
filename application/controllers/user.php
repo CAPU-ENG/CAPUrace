@@ -78,12 +78,6 @@ class User extends CI_Controller {
 
             if ($this->form_validation->run('signup') == false) {
                 $err_code = '400';
-                $response = array(
-                    'code' => $err_code,
-                    'msg' => $GLOBALS['ERR_MSG'][$err_code]
-                );
-                echo json_encode($response);
-                exit;
             }
             $response = array(
                 'code' => $err_code,
