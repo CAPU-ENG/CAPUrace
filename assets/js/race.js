@@ -46,6 +46,7 @@ function removeTeam(item) {
     }
     refreshOrder();
 }
+
 /*
  * This function post the login information from
  * the web to the controller.
