@@ -30,24 +30,24 @@ class User extends CI_Controller {
 
             if ($this->form_validation->run('login') == false) {
                 $err_code = '400';
-                echo err_msg($err_code);
-                exit;
+                exit(err_msg($err_code));
             }
 
             $user_info = $this->user->get_user_by_email($login_info['mail']);
-            $err_code = '200';
 
-            if (!$user_info['confirmed']) {
-                $err_code = '202';
-            }
-            if ($login_info['password'] != $user_info['password']) {
-                $err_code = '401';
-            }
             if ($user_info == NULL) {
                 $err_code = '204';
+            } elseif ($login_info['password'] != $user_info['password']) {
+                $err_code = '401';
+            } elseif (!$user_info['confirmed']) {
+                $err_code = '202';
+            } else {
+                $err_code = '200';
+                $this->session->set_userdata('logged_in', true);
+                $this->session->set_userdata('school_id', $user_info['id']);
             }
 
-            echo err_msg($err_code);
+            exit(err_msg($err_code));
         }
     }
 
@@ -62,26 +62,27 @@ class User extends CI_Controller {
             $this->load->view('signup_form');
             $this->load->view('footer');
         }
+
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $data = $this->input->post();
             header('Content-Type: application/json');
-            $err_code = '200';
-
 
             if ($this->form_validation->run('signup') == false) {
                 $err_code = '400';
+            } else {
+                $err_code = '200';
+                unset($data['passconf']);
+                $this->user->sign_up($data);
+                $token = $this->user->set_token($data['mail']);
+                $link = site_url('user/activate') . '/' . $token;
+                $this->email->from('beidachexie@126.com', '北京大学自行车协会');
+                $this->email->to($data['mail']);
+                $this->email->subject('第十三届全国高校山地车交流赛帐户确认');
+                $this->email->message('请点击以下链接激活帐户' . $link);
+                $this->email->send();
             }
-            echo err_msg($err_code);
 
-            unset($data['passconf']);
-            $this->user->sign_up($data);
-            $token = $this->user->set_token($data['mail']);
-            $link = site_url('user/activate') . '/' . $token;
-            $this->email->from('beidachexie@126.com', '北京大学自行车协会');
-            $this->email->to($data['mail']);
-            $this->email->subject('第十三届全国高校山地车交流赛帐户确认');
-            $this->email->message('请点击以下链接激活帐户' . $link);
-            $this->email->send();
+            exit(err_msg($err_code));
         }
     }
 
