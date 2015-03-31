@@ -52,7 +52,7 @@ $config = array(
         array(
             'field' => 'mail',
             'label' => '电子邮箱',
-            'rules' => 'required|xss_clean'
+            'rules' => 'required|valid_email|xss_clean'
         ),
         array(
             'field' => 'password',

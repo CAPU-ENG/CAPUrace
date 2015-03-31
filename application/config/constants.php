@@ -82,5 +82,19 @@ $PROVINCES = array(
     '澳门特别行政区'
 );
 
+/*
+ * Error message settings;
+ * =======================
+ * These messages are error messages returned to user input.
+ *
+ */
+$ERR_MSG = array(
+    '200' => 'OK.',
+    '202' => 'User not confirmed.',
+    '204' => 'User not existed.',
+    '400' => 'Illegal input.',
+    '401' => 'Wrong password.'
+);
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
