@@ -13,7 +13,7 @@ class User extends CI_Controller {
      */
     public function login() {
 
-        $this->load->helper(array('form', 'url', 'html'));
+        $this->load->helper(array('form', 'url', 'html', 'lib'));
         $this->load->model('user_model', 'user');
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -30,11 +30,7 @@ class User extends CI_Controller {
 
             if ($this->form_validation->run('login') == false) {
                 $err_code = '400';
-                $data = array(
-                    'code' => $err_code,
-                    'msg' => $GLOBALS['ERR_MSG'][$err_code]
-                );
-                echo json_encode($data);
+                echo err_msg($err_code);
                 exit;
             }
 
@@ -51,17 +47,13 @@ class User extends CI_Controller {
                 $err_code = '204';
             }
 
-            $data = array(
-                'code' => $err_code,
-                'msg' => $GLOBALS['ERR_MSG'][$err_code]
-            );
-            echo json_encode($data);
+            echo err_msg($err_code);
         }
     }
 
     public function signup() {
         date_default_timezone_set('PRC');
-        $this->load->helper(array('form', 'url', 'html'));
+        $this->load->helper(array('form', 'url', 'html', 'lib'));
         $this->load->library(array('form_validation', 'email'));
         $this->load->model('user_model', 'user');
 
@@ -79,11 +71,7 @@ class User extends CI_Controller {
             if ($this->form_validation->run('signup') == false) {
                 $err_code = '400';
             }
-            $response = array(
-                'code' => $err_code,
-                'msg' => $GLOBALS['ERR_MSG'][$err_code]
-            );
-            echo json_encode($response);
+            echo err_msg($err_code);
 
             unset($data['passconf']);
             $this->user->sign_up($data);
