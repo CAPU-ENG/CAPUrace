@@ -86,6 +86,8 @@ function postSignup() {
     var school = $("#school").val();
     var assoc = $("#assoc").val();
     var province = $("#province").val();
+    var address = $("#add").val();
+    var zipcode = $("#zip").val();
     var leader = $("#leader").val();
     var tel = $("#tel").val();
     var mail = $("#mail").val();
@@ -103,6 +105,14 @@ function postSignup() {
         alert("协会名不能为空！")
         $("#assoc").focus();
         return;
+    }
+    if (address == "") {
+        alert("邮寄地址不能为空！")
+        $("#add").focus();
+    }
+    if (zipcode == "") {
+        alert("邮政编码不能为空！")
+        $("#zip").focus();
     }
     if (leader == "") {
         alert("领队名不能为空！")
