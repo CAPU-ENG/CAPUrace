@@ -14,9 +14,9 @@ class User extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('user_model', 'user');
         $this->load->helper(array('form', 'url', 'html', 'lib'));
-        $this->load->library(array('form_validation'));
+        $this->load->library(array('email', 'form_validation', 'session'));
+        $this->load->model('user_model', 'user');
     }
 
     /*
@@ -59,7 +59,6 @@ class User extends CI_Controller {
 
     public function signup() {
         date_default_timezone_set('PRC');
-        $this->load->library(array('email'));
 
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $this->load->view('header');
