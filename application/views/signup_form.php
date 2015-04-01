@@ -17,6 +17,14 @@
     <div class="col-sm-8">
         <?=form_dropdown('province', $GLOBALS['PROVINCES'], set_value('province'), 'class="form-control" id="province"')?>
     </div><br/><br/>
+    <label class="col-sm-4">邮寄地址</label>
+    <div class="col-sm-8">
+        <input type="text" name="address" class="form-control" id="add">
+    </div><br/><br/>
+    <label class="col-sm-4">邮政编码</label>
+    <div class="col-sm-8">
+        <input type="text" name="zipcode" class="form-control" id="zip">
+    </div><br/><br/>
     <hr/>
     <label class="col-sm-4">领队姓名</label>
     <div class="col-sm-8">

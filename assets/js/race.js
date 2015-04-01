@@ -86,6 +86,8 @@ function postSignup() {
     var school = $("#school").val();
     var assoc = $("#assoc").val();
     var province = $("#province").val();
+    var address = $("#add").val();
+    var zipcode = $("#zip").val();
     var leader = $("#leader").val();
     var tel = $("#tel").val();
     var mail = $("#mail").val();
@@ -95,42 +97,50 @@ function postSignup() {
     //The following part of code is for front-end validation.
 
     if (school == "") {
-        alert("学校名不能为空！")
+        alert("学校名不能为空！");
         $("#school").focus();
         return;
     }
     if (assoc == "") {
-        alert("协会名不能为空！")
+        alert("协会名不能为空！");
         $("#assoc").focus();
         return;
     }
+    if (address == "") {
+        alert("邮寄地址不能为空！")
+        $("#add").focus();
+    }
+    if (zipcode == "") {
+        alert("邮政编码不能为空！")
+        $("#zip").focus();
+    }
     if (leader == "") {
-        alert("领队名不能为空！")
+        alert("领队名不能为空！");
         $("#leader").focus();
         return;
     }
     if (tel == "") {
-        alert("领队电话不能为空！")
+        alert("领队电话不能为空！");
         $("#tel").focus();
         return;
     }
     if (mail == "") {
-        alert("邮箱不能为空！")
+        alert("邮箱不能为空！");
         $("#mail").focus();
         return;
     }
     if (password == "") {
-        alert("密码不能为空！")
+        alert("密码不能为空！");
         $("#password").focus();
         return;
     }
     if (passconf == "") {
-        alert("请确认您的密码！")
+        alert("请确认您的密码！");
         $("#passconf").focus();
         return;
     }
     if (passconf != password) {
-        alert("两次输入的密码不同，请重新确认！")
+        alert("两次输入的密码不同，请重新确认！");
         $("#passconf").focus();
         return;
     }
@@ -148,7 +158,7 @@ function postSignup() {
     };
     $.post(controller, data, function(data) {
         if (data.code == "200") {
-            alert("注册成功！请登录您的邮箱查看激活邮件！")
+            alert("注册成功！请登录您的邮箱查看激活邮件！");
             window.location.assign(directto);
         } else {
             alert(data.msg);
