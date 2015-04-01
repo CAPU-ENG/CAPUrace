@@ -52,6 +52,6 @@ class MY_Email extends CI_Email
         $token = $this->ci->user->set_token($mail);
         $link = site_url('user/activate') . '/' . $token;
         $message = '请点击以下链接激活帐户' . $link;
-        $this->send_mail($mail, $subject, $message, $options);
+        $this->send_mail($mail, $subject, $message);
     }
 }
