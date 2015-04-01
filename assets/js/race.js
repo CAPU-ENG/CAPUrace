@@ -168,5 +168,33 @@ function postSignup() {
 
 }
 
+/*
+ * This function is called when clicking 'save'.
+ * It will store the individual information into cookie.
+ */
+function cacheIndividual() {
+    var data =[];
+    $(".individual-form[class!=hidden]").each(function() {
+        var name = $("input[name='name']").val();
+        var gender = $("select[name='gender']").val();
+        var id_card = $("input[name='id_card']").val();
+        var race = $("select[name='race']").val();
+        var accommodation = $("input[name='accommodation']").val();
+        var meal = $("input[name='meal']").val();
+        //var tel = $("input[name='tel']").val();
+        data[data.length()] = {
+            name: name,
+            gender: gender,
+            id_card: id_card,
+            race: race,
+            //tel: tel,
+            accommodation: accommodation,
+            meal: meal
+        };
+    });
+    $.cookie('individual', data, {path: '/'});
+    alert("保存成功！");
+}
+
 /* End of file race.js */
 /* Location: ./assets/js/race.js */
