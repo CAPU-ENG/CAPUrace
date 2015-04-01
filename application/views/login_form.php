@@ -1,6 +1,6 @@
 <script type="text/javascript">
     var controller = "<?=site_url('user/login')?>";
-    var registration = "<?=site_url('registration')?>"
+    var directto = "<?=base_url()?>";
 </script>
 
 <div class="signcontainer">
