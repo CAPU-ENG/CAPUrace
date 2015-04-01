@@ -9,14 +9,20 @@
 class User extends CI_Controller {
 
     /*
+     * Contrunction for User Controller.
+     */
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('user_model', 'user');
+        $this->load->helper(array('form', 'url', 'html', 'lib'));
+        $this->load->library(array('form_validation'));
+    }
+
+    /*
      * The login page for users.
      */
     public function login() {
-
-        $this->load->helper(array('form', 'url', 'html', 'lib'));
-        $this->load->model('user_model', 'user');
-        $this->load->library('form_validation');
-        $this->load->library('session');
 
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $this->load->view('header');
@@ -53,9 +59,7 @@ class User extends CI_Controller {
 
     public function signup() {
         date_default_timezone_set('PRC');
-        $this->load->helper(array('form', 'url', 'html', 'lib'));
-        $this->load->library(array('form_validation', 'email'));
-        $this->load->model('user_model', 'user');
+        $this->load->library(array('email'));
 
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $this->load->view('header');
