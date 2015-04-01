@@ -25,6 +25,10 @@ class User extends CI_Controller {
     public function login() {
 
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            if ($this->session->userdata('logged_in')) {
+                redirect(base_url(), 'refresh');
+            }
+
             $this->load->view('header');
             $this->load->view('login_form');
             $this->load->view('footer');
@@ -55,6 +59,15 @@ class User extends CI_Controller {
 
             exit(err_msg($err_code));
         }
+    }
+
+    /*
+     * Account logout.
+     */
+    public function logout() {
+        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('school_id');
+        redirect(base_url(), 'refresh');
     }
 
     public function signup() {
