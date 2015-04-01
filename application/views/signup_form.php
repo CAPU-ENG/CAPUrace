@@ -1,6 +1,6 @@
 <script type="text/javascript">
     var controller = "<?=site_url('user/signup')?>";
-    var directto = "<?=site_url('user/login')?>";
+    var directto = "<?=base_url()?>";
 </script>
 <div class="signcontainer">
     <h3>请输入注册信息</h3>
