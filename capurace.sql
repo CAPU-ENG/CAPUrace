@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2015 at 02:10 AM
+-- Generation Time: Apr 01, 2015 at 03:14 AM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.14
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Indexes for table `people`
 --
 ALTER TABLE `people`
-  ADD PRIMARY KEY (`id`), ADD KEY `school_id` (`school_id`), ADD KEY `team_id` (`team_id`);
+  ADD PRIMARY KEY (`id`), ADD KEY `school_id` (`school_id`), ADD KEY `team_id` (`team_id`), ADD KEY `name` (`name`), ADD KEY `id_card` (`id_card`);
 
 --
 -- Indexes for table `team`
@@ -99,7 +99,7 @@ ALTER TABLE `team`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `mail` (`mail`), ADD UNIQUE KEY `school` (`school`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `mail` (`mail`);
 
 --
 -- AUTO_INCREMENT for dumped tables
