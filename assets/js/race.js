@@ -174,7 +174,7 @@ function postSignup() {
  */
 function cacheIndividual() {
     var data =[];
-    $(".individual-form[class!=hidden]").each(function() {
+    $(".individual-form[class!='individual-form hidden']").each(function() {
         var name = $("input[name='name']").val();
         var gender = $("select[name='gender']").val();
         var id_card = $("input[name='id_card']").val();
