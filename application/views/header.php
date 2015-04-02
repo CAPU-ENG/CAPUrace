@@ -6,6 +6,7 @@
 <link href="/assets/css/style.css" rel="stylesheet">
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/jquery.md5.js"></script>
+<script src="/assets/js/jquery.cookie.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/race.js"></script>
 </head>

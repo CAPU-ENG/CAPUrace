@@ -52,7 +52,7 @@
         <button class="btn btn-primary btn-block" onclick="addIndividual()">添加一个队员</button>
     </div>
     <div class="col-sm-4">
-        <button class="btn btn-warning btn-block">暂时保存</button>
+        <button class="btn btn-warning btn-block" onclick="cacheIndividual()">暂时保存</button>
     </div>
     <div class="col-sm-4">
         <button type="submit" class="btn btn-success btn-block">提交，前往团体赛报名</button>

@@ -38,7 +38,7 @@
         <button class="btn btn-primary btn-block" onclick="addTeam()">添加一个团队</button>
     </div>
     <div class="col-sm-4">
-        <button class="btn btn-warning btn-block">暂时保存</button>
+        <button class="btn btn-warning btn-block" onclick="cacheTeam()">暂时保存</button>
     </div>
     <div class="col-sm-4">
         <button class="btn btn-success btn-block">提交</button>

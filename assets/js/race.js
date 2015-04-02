@@ -170,5 +170,55 @@ function postSignup() {
 
 }
 
+/*
+ * This function is called when clicking 'save'.
+ * It will store the individual information into cookie.
+ */
+function cacheIndividual() {
+    var data =[];
+    $(".individual-form[class!='individual-form hidden']").each(function() {
+        var name = $("input[name='name']", this).val();
+        var gender = $("select[name='gender']", this).val();
+        var id_card = $("input[name='id_card']", this).val();
+        var race = $("select[name='race']", this).val();
+        var accommodation = $("input[name='accommodation']", this).val();
+        var meal = $("input[name='meal']", this).val();
+        var tel = $("input[name='tel']", this).val();
+        data[data.length] = {
+            name: name,
+            gender: gender,
+            id_card: id_card,
+            race: race,
+            tel: tel,
+            accommodation: accommodation,
+            meal: meal
+        };
+    });
+    $.cookie.json = true;
+    $.cookie('individual', data, {path: '/'});
+    alert("保存成功！");
+}
+
+/*
+ * This function is called when clicking 'save' in team form.
+ * It restores the team info into cookie.
+ */
+function cacheTeam() {
+    var data = [];
+    $(".team-form[class!='team-form hidden']").each(function() {
+        var first = $("select[name='first']", this).val();
+        var second = $("select[name='second']", this).val();
+        var third = $("select[name='third']", this).val();
+        data[data.length] = {
+            first: first,
+            second: second,
+            third: third
+        };
+        $.cookie.json = true;
+        $.cookie('team', data, {path: '/'});
+        alert("保存成功！");
+    });
+}
+
 /* End of file race.js */
 /* Location: ./assets/js/race.js */
