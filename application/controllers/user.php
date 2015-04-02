@@ -54,7 +54,8 @@ class User extends CI_Controller {
             } else {
                 $err_code = '200';
                 $this->session->set_userdata('logged_in', true);
-                $this->session->set_userdata('school_id', $user_info['id']);
+                $this->session->set_userdata('id', $user_info['id']);
+                $this->session->set_userdata('school', $user_info['school']);
             }
 
             exit(err_msg($err_code));

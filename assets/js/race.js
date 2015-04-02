@@ -71,7 +71,7 @@ function postLogin() {
     };
     $.post(controller, data, function(data) {
         if (data.code == "200") {
-            window.location.assign(registration);
+            window.location.assign(directto);
         } else {
             alert(data.msg);
         }
