@@ -150,6 +150,8 @@ function postSignup() {
         school: school,
         association_name: assoc,
         province: province,
+        address: address,
+        zipcode: zipcode,
         leader: leader,
         tel: tel,
         mail: mail,
