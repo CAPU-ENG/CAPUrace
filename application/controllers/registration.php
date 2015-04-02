@@ -45,4 +45,13 @@ class Registration extends CI_Controller {
         $this->load->view('registration_team');
         $this->load->view('footer');
     }
+
+    /*
+     * Show registration result for the user.
+     */
+    public function result() {
+        $this->load->view('header');
+        $this->load->view('registration_result');
+        $this->load->view('footer');
+    }
 }

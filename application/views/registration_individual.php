@@ -55,12 +55,18 @@
         <button class="btn btn-warning btn-block" onclick="cacheIndividual()">暂时保存</button>
     </div>
     <div class="col-sm-4">
-        <button type="submit" class="btn btn-success btn-block">提交，前往团体赛报名</button>
+        <button type="submit" class="btn btn-success btn-block" id="btn-reg-ind-submit">提交，前往团体赛报名</button>
     </div>
     <br/>
 </div>
 <script>
     $(document).ready(function() {
         addIndividual();
+    });
+    $("#btn-reg-ind-submit").click(function() {
+        window.location.href = "<?=site_url('registration/team')?>";
+    });
+    $(window).on('beforeunload', function() {
+        cacheIndividual();
     });
 </script>

@@ -30,4 +30,7 @@
     $("#checkbox-reg-agree").change(function() {
         $('#btn-reg-agree').prop('disabled', !this.checked);
     });
+    $("#btn-reg-agree").click(function() {
+        window.location.href = "<?=site_url('registration/individual')?>";
+    });
 </script>
