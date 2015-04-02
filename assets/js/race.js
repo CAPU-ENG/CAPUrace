@@ -181,13 +181,13 @@ function cacheIndividual() {
         var race = $("select[name='race']", this).val();
         var accommodation = $("input[name='accommodation']", this).val() == "on" ? "1" : "0";
         var meal = $("input[name='meal']", this).val() == "on" ? "1" : "0";
-        //var tel = $("input[name='tel']", this).val();
+        var tel = $("input[name='tel']", this).val();
         data[data.length] = {
             name: name,
             gender: gender,
             id_card: id_card,
             race: race,
-            //tel: tel,
+            tel: tel,
             accommodation: accommodation,
             meal: meal
         };
