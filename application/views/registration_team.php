@@ -34,13 +34,16 @@
         </div>
     </div>
     <hr/>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
+        <button class="btn btn-info btn-block" id="return">返回修改人员信息</button>
+    </div>
+    <div class="col-sm-3">
         <button class="btn btn-primary btn-block" onclick="addTeam()">添加一个团队</button>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <button class="btn btn-warning btn-block" onclick="cacheTeam()">暂时保存</button>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <button class="btn btn-success btn-block" id="btn-reg-team-submit">提交</button>
     </div>
 </div>
@@ -53,5 +56,8 @@
     });
     $(window).on('beforeunload', function() {
         cacheTeam();
+    });
+    $("#return").click(function() {
+        window.location.href = "<?=site_url('registration/individual')?>";
     });
 </script>

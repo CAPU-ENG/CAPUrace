@@ -48,13 +48,16 @@
         </div>
     </div>
     <hr/>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
+        <button class="btn btn-info btn-block">返回帮助页面</button>
+    </div>
+    <div class="col-sm-3">
         <button class="btn btn-primary btn-block" onclick="addIndividual()">添加一个队员</button>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <button class="btn btn-warning btn-block" onclick="cacheIndividual()">暂时保存</button>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <button type="submit" class="btn btn-success btn-block" id="btn-reg-ind-submit">提交，前往团体赛报名</button>
     </div>
     <br/>
