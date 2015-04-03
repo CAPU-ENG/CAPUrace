@@ -90,10 +90,10 @@ $PROVINCES = array(
  */
 $ERR_MSG = array(
     '200' => 'OK.',
-    '202' => 'User not confirmed.',
-    '204' => 'User not existed.',
-    '400' => 'Illegal input.',
-    '401' => 'Wrong password.'
+    '202' => '用户尚未通过审核，请您稍后登录！',
+    '204' => '用户不存在，请注册！',
+    '400' => '存在不合法输入，请检查手机号、邮箱等信息是否正确填写！',
+    '401' => '密码错误，请重新输入！'
 );
 
 /* End of file constants.php */
