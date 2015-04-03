@@ -114,6 +114,11 @@ function postSignup() {
         alert("邮政编码不能为空！")
         $("#zip").focus();
     }
+    if (zipcode.length != 6) {
+        alert("邮政编码位数不正确！")
+        $("#zip").focus();
+        return;
+    }
     if (leader == "") {
         alert("领队名不能为空！");
         $("#leader").focus();
@@ -121,6 +126,11 @@ function postSignup() {
     }
     if (tel == "") {
         alert("领队电话不能为空！");
+        $("#tel").focus();
+        return;
+    }
+    if (tel.length != 11) {
+        alert("领队电话输入有误，请检查后重新输入！")
         $("#tel").focus();
         return;
     }
