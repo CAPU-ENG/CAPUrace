@@ -46,6 +46,46 @@
             <br/>
             <br/>
         </div>
+
+        <!--------------------------------------------------->
+        <?php foreach ($individual as $item): ?>
+        <div class="individual-form">
+            <div class="col-sm-1">
+                <p class="order"></p>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="name" value="<?=$item['name']?>">
+            </div>
+            <div class="col-sm-1">
+                <select class="form-control" name="gender" value="<?=$item['gender']?>">
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="id_card" value="<?=$item['id_card']?>">
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" name="race" value="<?=$item['race']?>">
+                    <option value="0">不参加个人赛</option>
+                    <option value="1">男子大众组</option>
+                    <option value="2">男子精英组</option>
+                    <option value="3">女子组</option>
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <input type="checkbox" name="accommodation" checked="<?=$item['accommodation']?>">
+            </div>
+            <div class="col-sm-1">
+                <input type="checkbox" name="meal" checked="<?=$item['meal']?>">
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeIndividual($(this))">删除</button>
+            </div>
+            <br/>
+            <br/>
+        </div>
+        <?php endforeach; ?>
     </div>
     <hr/>
     <div class="col-sm-3">

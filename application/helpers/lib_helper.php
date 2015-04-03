@@ -24,8 +24,9 @@ if (! function_exists('errmsg')) {
  */
 if (! function_exists('load_cookie_individual')) {
     function load_cookie_individual() {
-        $data = $this->input->cookie('individual');
-        return $data;
+        $CI = get_instance();
+        $data = $CI->input->cookie('individual');
+        return json_decode($data);
     }
 }
 
@@ -34,9 +35,10 @@ if (! function_exists('load_cookie_individual')) {
  */
 if (! function_exists('load_db_individual')) {
     function load_db_individual() {
-        $this->load->model('people_model', 'people');
-        $school_id = $this->session->userdata('id');
-        $data = $this->user->get_people_from_school($school_id);
+        $CI = get_instance();
+        $CI->load->model('people_model', 'people');
+        $school_id = $CI->session->userdata('id');
+        $data = $CI->people->get_people_from_school($school_id);
         return $data;
     }
 }
@@ -60,8 +62,9 @@ if (! function_exists('load_cached_individual')) {
  */
 if (! function_exists('load_cookie_team')) {
     function load_cookie_team() {
-        $data = $this->input->cookie('team');
-        return $data;
+        $CI = get_instance();
+        $data = $CI->input->cookie('team');
+        return json_decode($data);
     }
 }
 
@@ -70,9 +73,10 @@ if (! function_exists('load_cookie_team')) {
  */
 if (! function_exists('load_db_team')) {
     function load_db_team() {
-        $this->load->model('team_model', 'team');
-        $school_id = $this->session->userdata('id');
-        $data = $this->team->get_team_by_chool($school_id);
+        $CI = get_instance();
+        $CI->load->model('team_model', 'team');
+        $school_id = $CI->session->userdata('id');
+        $data = $CI->team->get_team_by_chool($school_id);
         return $data;
     }
 }

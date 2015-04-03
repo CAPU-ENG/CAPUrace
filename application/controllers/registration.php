@@ -15,7 +15,7 @@ class Registration extends CI_Controller {
     {
         parent::__construct();
 
-        $this->load->helper(array('url'));
+        $this->load->helper(array('url', 'lib'));
 
         if (! $this->session->userdata('logged_in')) {
             redirect(site_url('user/login'), 'refresh');
@@ -32,8 +32,9 @@ class Registration extends CI_Controller {
      * This method let the users register individuals.
      */
     public function individual() {
+        $data['individual'] = load_cached_individual();
         $this->load->view('header');
-        $this->load->view('registration_individual');
+        $this->load->view('registration_individual', $data);
         $this->load->view('footer');
     }
 
