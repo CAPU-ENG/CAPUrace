@@ -41,11 +41,17 @@
         <button class="btn btn-warning btn-block" onclick="cacheTeam()">暂时保存</button>
     </div>
     <div class="col-sm-4">
-        <button class="btn btn-success btn-block">提交</button>
+        <button class="btn btn-success btn-block" id="btn-reg-team-submit">提交</button>
     </div>
 </div>
 <script>
     $(document).ready(function() {
         addTeam();
+    });
+    $("#btn-reg-team-submit").click(function() {
+        window.location.href = "<?=site_url('registration/result')?>";
+    });
+    $(window).on('beforeunload', function() {
+        cacheTeam();
     });
 </script>

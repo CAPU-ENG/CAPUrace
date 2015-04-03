@@ -24,7 +24,7 @@ class Registration extends CI_Controller {
 
     public function index() {
         $this->load->view('header');
-        $this->load->view('registration_entrance');
+        $this->load->view('registration_index');
         $this->load->view('footer');
     }
 
@@ -43,6 +43,15 @@ class Registration extends CI_Controller {
     public function team() {
         $this->load->view('header');
         $this->load->view('registration_team');
+        $this->load->view('footer');
+    }
+
+    /*
+     * Show registration result for the user.
+     */
+    public function result() {
+        $this->load->view('header');
+        $this->load->view('registration_result');
         $this->load->view('footer');
     }
 }
