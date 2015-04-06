@@ -35,7 +35,7 @@
     </div>
     <hr/>
     <div class="col-sm-3">
-        <button class="btn btn-info btn-block" id="return">返回修改人员信息</button>
+        <button class="btn btn-info btn-block" id="return-to-ind">返回修改人员信息</button>
     </div>
     <div class="col-sm-3">
         <button class="btn btn-primary btn-block" onclick="addTeam()">添加一个团队</button>
@@ -57,7 +57,8 @@
     $(window).on('beforeunload', function() {
         cacheTeam();
     });
-    $("#return").click(function() {
+    $("#return-to-ind").click(function() {
+        cacheTeam();
         window.location.href = "<?=site_url('registration/individual')?>";
     });
 </script>
