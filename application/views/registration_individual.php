@@ -47,7 +47,6 @@
             <br/>
         </div>
 
-        <!--------------------------------------------------->
         <?php foreach ($individual as $item): ?>
         <div class="individual-form">
             <div class="col-sm-1">
