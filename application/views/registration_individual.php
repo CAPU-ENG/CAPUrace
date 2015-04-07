@@ -104,8 +104,11 @@
 </div>
 <script>
     $(document).ready(function() {
-        addIndividual();
-        refreshOrder();
+        if ($(".order:last").text() == "0") {
+            addIndividual();
+        } else {
+            refreshOrder();
+        }
     });
     $("#btn-reg-ind-submit").click(function() {
         window.location.href = "<?=site_url('registration/team')?>";
