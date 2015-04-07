@@ -105,6 +105,7 @@
 <script>
     $(document).ready(function() {
         addIndividual();
+        refreshOrder();
     });
     $("#btn-reg-ind-submit").click(function() {
         window.location.href = "<?=site_url('registration/team')?>";
