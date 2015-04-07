@@ -35,10 +35,10 @@
                 </select>
             </div>
             <div class="col-sm-1">
-                <input type="checkbox" name="accommodation" checked>
+                <input type="checkbox" name="accommodation" checked="checked">
             </div>
             <div class="col-sm-1">
-                <input type="checkbox" name="meal" checked>
+                <input type="checkbox" name="meal" checked="checked">
             </div>
             <div class="col-sm-1">
                 <button type="button" class="btn btn-danger btn-sm" onclick="removeIndividual($(this))">删除</button>
@@ -46,6 +46,45 @@
             <br/>
             <br/>
         </div>
+
+        <?php foreach ($individual as $item): ?>
+        <div class="individual-form">
+            <div class="col-sm-1">
+                <p class="order"></p>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="name" value="<?=$item['name']?>">
+            </div>
+            <div class="col-sm-1">
+                <select class="form-control" name="gender">
+                    <option value="1" <?php if ($item['gender'] == 1) echo 'selected';?>>男</option>
+                    <option value="2" <?php if ($item['gender'] == 2) echo 'selected';?>>女</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="id_card" value="<?=$item['id_card']?>">
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" name="race">
+                    <option value="0" <?php if ($item['race'] == 0) echo 'selected';?>>不参加个人赛</option>
+                    <option value="1" <?php if ($item['race'] == 1) echo 'selected';?>>男子大众组</option>
+                    <option value="2" <?php if ($item['race'] == 2) echo 'selected';?>>男子精英组</option>
+                    <option value="3" <?php if ($item['race'] == 3) echo 'selected';?>>女子组</option>
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <input type="checkbox" name="accommodation" <?php if ($item['accommodation']) echo 'checked';?>>
+            </div>
+            <div class="col-sm-1">
+                <input type="checkbox" name="meal" <?php if ($item['meal']) echo 'checked';?>>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeIndividual($(this))">删除</button>
+            </div>
+            <br/>
+            <br/>
+        </div>
+        <?php endforeach; ?>
     </div>
     <hr/>
     <div class="col-sm-3">
@@ -64,7 +103,11 @@
 </div>
 <script>
     $(document).ready(function() {
-        addIndividual();
+        if ($(".order:last").text() == "0") {
+            addIndividual();
+        } else {
+            refreshOrder();
+        }
     });
     $("#btn-reg-ind-submit").click(function() {
         window.location.href = "<?=site_url('registration/team')?>";
