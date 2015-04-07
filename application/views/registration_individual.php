@@ -49,7 +49,7 @@
     </div>
     <hr/>
     <div class="col-sm-3">
-        <button class="btn btn-info btn-block">返回帮助页面</button>
+        <button class="btn btn-info btn-block" id="return-to-index">返回帮助页面</button>
     </div>
     <div class="col-sm-3">
         <button class="btn btn-primary btn-block" onclick="addIndividual()">添加一个队员</button>
@@ -68,6 +68,10 @@
     });
     $("#btn-reg-ind-submit").click(function() {
         window.location.href = "<?=site_url('registration/team')?>";
+    });
+    $("#return-to-index").click(function() {
+        cacheIndividual();
+        window.location.href = "<?=site_url('registration')?>";
     });
     $(window).on('beforeunload', function() {
         cacheIndividual();
