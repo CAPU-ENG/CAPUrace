@@ -8,8 +8,8 @@
 
 $config['protocol'] = 'smtp';
 $config['mailpath'] = '/usr/sbin/sendmail';
-$config['smtp_host'] = 'smtp.126.com';
-$config['smtp_user'] = 'beidachexie@126.com';
+$config['smtp_host'] = 'mail.pku.edu.cn';
+$config['smtp_user'] = 'capurace@pku.edu.cn';
 $config['smtp_pass'] = '';
 
 /* End of file email.php */
