@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2015 at 03:14 AM
+-- Generation Time: Apr 09, 2015 at 12:10 AM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.14
 
@@ -27,16 +27,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `people` (
-  `id` smallint(5) unsigned NOT NULL,
+  `id` int(5) unsigned NOT NULL,
+  `key` text NOT NULL,
   `name` varchar(10) NOT NULL,
   `gender` tinyint(4) NOT NULL,
   `id_card` varchar(18) NOT NULL,
   `school_id` smallint(5) unsigned NOT NULL,
   `accommodation` tinyint(1) NOT NULL,
-  `meal` tinyint(1) NOT NULL,
-  `race` tinyint(4) NOT NULL,
+  `meal16` tinyint(1) NOT NULL,
+  `meal17` tinyint(4) NOT NULL,
+  `race` tinyint(4) NOT NULL DEFAULT '0',
+  `shimano16` smallint(6) NOT NULL DEFAULT '0',
+  `shimano17` smallint(6) NOT NULL DEFAULT '0',
   `team_id` smallint(5) unsigned DEFAULT NULL,
   `tel` varchar(11) NOT NULL,
+  `islam` tinyint(1) NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -48,9 +53,11 @@ CREATE TABLE IF NOT EXISTS `people` (
 
 CREATE TABLE IF NOT EXISTS `team` (
   `id` smallint(5) unsigned NOT NULL,
+  `order` int(11) NOT NULL,
   `first` text NOT NULL,
   `second` text NOT NULL,
   `third` text NOT NULL,
+  `fourth` text NOT NULL,
   `school_id` smallint(5) unsigned NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -77,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `zipcode` varchar(6) NOT NULL,
   `activated` tinyint(1) NOT NULL DEFAULT '0',
   `token` varchar(32) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -93,7 +100,7 @@ ALTER TABLE `people`
 -- Indexes for table `team`
 --
 ALTER TABLE `team`
-  ADD PRIMARY KEY (`id`), ADD KEY `school_id` (`school_id`);
+  ADD PRIMARY KEY (`id`), ADD KEY `school_id` (`school_id`), ADD KEY `order` (`order`,`school_id`);
 
 --
 -- Indexes for table `users`
@@ -109,7 +116,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `people`
 --
 ALTER TABLE `people`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `team`
 --
@@ -119,7 +126,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- Constraints for dumped tables
 --
