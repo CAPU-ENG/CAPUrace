@@ -93,11 +93,13 @@
         </div>
     </div>
     <hr/>
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-        <button class="btn btn-warning btn-block" id="cache">保存</button>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <button class="btn btn-warning btn-block" id="cache">保存</button>
+        </div>
+        <div class="col-sm-4"></div>
     </div>
-    <div class="col-sm-4"></div>
 </div>
 <!-- The code above creates the individual form -->
 
@@ -123,27 +125,31 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Here should be some PHP foreach statements to display the athletes.
+        <!-- Here should be some PHP foreach statements to display the athletes.-->
         <tr>
             <td>
-                <div class="btn-group-xs btn-group">
-                    <button class="btn btn-primary">修改</button>
-                    <button class="btn btn-danger">删除</button>
+                <div class="row">
+                    <div class="btn-group-xs btn-group">
+                        <button class="btn btn-primary">修改</button>
+                        <button class="btn btn-danger">删除</button>
+                    </div>
                 </div>
             </td>
-        </tr>-->
+        </tr>
         </tbody>
     </table>
     <hr/>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-3">
-        <button class="btn btn-primary btn-block" id="return-to-index">返回</button>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-3">
+            <button class="btn btn-primary btn-block" id="return-to-index">返回</button>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-3">
+            <button class="btn btn-success btn-block" id="btn-reg-ind-submit">提交，前往团体赛报名</button>
+        </div>
+        <div class="col-sm-2"></div>
     </div>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-3">
-        <button class="btn btn-success btn-block" id="btn-reg-ind-submit">提交，前往团体赛报名</button>
-    </div>
-    <div class="col-sm-2"></div>
 </div>
 <script>
     $(document).ready(function() {
