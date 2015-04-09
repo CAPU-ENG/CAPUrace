@@ -185,25 +185,39 @@ function postSignup() {
  * It will store the individual information into cookie.
  */
 function cacheIndividual() {
-    var data =[];
-    $(".individual-form[class!='individual-form hidden']").each(function() {
-        var name = $("input[name='name']", this).val();
-        var gender = $("select[name='gender']", this).val();
-        var id_card = $("input[name='id_card']", this).val();
-        var race = $("select[name='race']", this).val();
-        var accommodation = $("input[name='accommodation']", this).prop('checked');
-        var meal = $("input[name='meal']", this).prop('checked');
-        var tel = $("input[name='tel']", this).val();
-        data[data.length] = {
-            name: name,
-            gender: gender,
-            id_card: id_card,
-            race: race,
-            tel: tel,
-            accommodation: accommodation,
-            meal: meal
-        };
-    });
+    var data = $.cookie('individual');
+    if (data == undefined) {
+        data = [];
+    };
+    var name = $("input[name='name']").val();
+    var gender = $("input[name='gender']").val();
+    var tel = $("input[name='tel']").val();
+    var ifrace = $("input[name='ifrace']").val();
+    var islam = $("input[name='islam']").val();
+    var id_card = $("input[name='id_card']").val();
+    var accommodation = $("input[name='accommodation']").val();
+    var meal16 = $("input[name='meal16']").prop('checked');
+    var meal17 = $("input[name='meal17']").prop('checked');
+    var race = $("input[name='race']").val();
+    var ifteam = $("input[name='ifteam']").prop('checked');
+    var shimano16 = $("input[name='shimano16']").val();
+    var shimano17 = $("input[name='shimano17']").val();
+    data[data.length] = {
+        name: name,
+        gender: gender,
+        id_card: id_card,
+        accommodation: accommodation,
+        meal16: meal16,
+        meal17: meal17,
+        tel: tel,
+        ifrace: ifrace,
+        ifteam: ifteam,
+        race: race,
+        islam: islam,
+        shimano16: shimano16,
+        shimano17: shimano17
+    };
+
     $.cookie.json = true;
     $.cookie('individual', data, {path: '/'});
     alert("保存成功！");
