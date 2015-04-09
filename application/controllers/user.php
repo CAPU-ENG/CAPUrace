@@ -89,6 +89,8 @@ class User extends CI_Controller {
             } else {
                 $err_code = '200';
                 unset($data['passconf']);
+                $token = $this->user->generate_token($data['mail']);
+                $data = array_merge($data, array('token' => $token));
                 $this->user->sign_up($data);
                 $this->email->send_account_confirm_mail($data['mail']);
             }

@@ -29,6 +29,7 @@ class MY_Email extends CI_Email
         $message,
         $customOptions = array()
     ) {
+        date_default_timezone_set('PRC');
         $defaultOptions = array(
             'from_mail' => $this->from_mail,
             'from_name' => '北京大学自行车协会'
@@ -50,7 +51,7 @@ class MY_Email extends CI_Email
      */
     public function send_account_confirm_mail($mail) {
         $subject = '第十三届全国高校山地车交流赛帐户确认';
-        $token = $this->ci->user->set_token($mail);
+        $token = $this->ci->user->get_token($mail);
         $link = site_url('user/activate') . '/' . $token;
         $message = '请点击以下链接激活帐户' . $link;
         $this->send_mail($mail, $subject, $message);
