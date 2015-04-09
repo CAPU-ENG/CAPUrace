@@ -172,14 +172,27 @@ class User_model extends CI_Model {
     }
 
     /*
+     * Generate a token for the user.
+     */
+    public function generate_token($mail) {
+        $user_info = $this->get_user_by_email($mail);
+        $token = md5($user_info['mail'] . $user_info['password'] . time());
+        return $token;
+    }
+
+    /*
+     * Get the token of the user.
+     */
+    public function get_token($mail) {
+        $query = $this->get_user_by_email($mail);
+        return $query['token'];
+    }
+    /*
      * Set a token for a new user.
      */
     public function set_token($mail) {
-        $user_info = $this->get_user_by_email($mail);
-        date_default_timezone_set('PRC');
-        $token = md5($user_info['mail'] . $user_info['password'] . time());
+        $token = $this->generate_token($mail);
         $this->db->where('mail', $mail)->update('users', array('token' => $token));
-        return $token;
     }
 
     /*
