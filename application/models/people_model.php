@@ -64,6 +64,36 @@ class People_model extends CI_Model {
     }
 
     /*
+     * Get all the male athlete from a certain school.
+     *
+     * ====argument====
+     * $school_id, the id of the school.
+     *
+     * =====return=====
+     * $res, an 2d array containing all the male athlete that are not deleted.
+     *
+     */
+    public function get_male_athlete_from_school($school_id) {
+        $query = $this->db->where('school_id', $school_id)->where('gender', 1)->where('race', 1)->where('deleted', false)->get('people');
+        return $query->result_array();
+    }
+
+    /*
+     * Get all the female athlete from a certain school.
+     *
+     * ====argument====
+     * $school_id, the id of the school.
+     *
+     * =====return=====
+     * $res, an 2d array containing all the female athlete that are not deleted.
+     *
+     */
+    public function get_female_athlete_from_school($school_id) {
+        $query = $this->db->where('school_id', $school_id)->where('gender', 2)->where('race', 1)->where('deleted', false)->get('people');
+        return $query->result_array();
+    }
+
+    /*
      * Get information of all the people.
      *
      */
