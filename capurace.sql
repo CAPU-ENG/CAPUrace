@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2015 at 01:34 PM
+-- Generation Time: Apr 09, 2015 at 12:10 AM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.14
 
@@ -85,14 +85,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `activated` tinyint(1) NOT NULL DEFAULT '0',
   `token` varchar(32) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `school`, `leader`, `tel`, `mail`, `password`, `bill`, `paid`, `confirmed`, `association_name`, `province`, `address`, `zipcode`, `activated`, `token`) VALUES
-(25, 'PKU', '李晨雄', '12345678900', 'jack.jiang.capu@gmail.com', '65fb0b73c25bc7433f4e1a4f7fc4aa97', 0, 0, 1, 'CAPU', 0, '北京市海淀区颐和园路5号', '100871', 1, '0'),
-(26, 'THU', 'SB', '12345678900', 'jack_jiang_cool@163.com', '26148d621ef74844918af182d63976b6', 0, 0, 1, 'TAPU', 0, '清华大学', '100000', 1, '0');
 
 --
 -- Indexes for dumped tables
