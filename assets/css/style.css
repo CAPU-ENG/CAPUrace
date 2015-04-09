@@ -23,13 +23,8 @@ body {
   margin-top:20px;
   margin-left:5%;
   margin-bottom: 40px;
-  padding-top: 70px;
-  padding-left: 40px;
   padding-right: 40px;
   padding-bottom: 60px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #CBCBCB;
 }
 
 .regcontainer {
@@ -58,4 +53,8 @@ body {
 
 .form-group .col-sm-1 {
   text-align: center;
+}
+
+.row {
+    padding-top: 10px;
 }
