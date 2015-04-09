@@ -43,10 +43,9 @@ class Registration extends CI_Controller {
      * This method let the users register teams.
      */
     public function team() {
-        $data['male'] = $this->people->get_male_athlete_from_school(
-            $this->session->userdata('id'));
-        $data['female'] = $this->people->get_female_athlete_from_school(
-            $this->session->userdata('id'));
+        $school_id = $this->session->userdata('id');
+        $data['male'] = $this->people->get_male_athlete_from_school($school_id);
+        $data['female'] = $this->people->get_female_athlete_from_school($school_id);
         $this->load->view('header');
         $this->load->view('registration_team', $data);
         $this->load->view('footer');
