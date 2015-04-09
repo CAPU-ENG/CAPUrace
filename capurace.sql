@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2015 at 12:10 AM
+-- Generation Time: Apr 09, 2015 at 11:24 AM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.14
 
@@ -40,6 +40,8 @@ CREATE TABLE IF NOT EXISTS `people` (
   `shimano16` smallint(6) NOT NULL DEFAULT '0',
   `shimano17` smallint(6) NOT NULL DEFAULT '0',
   `team_id` smallint(5) unsigned DEFAULT NULL,
+  `ifrace` tinyint(1) NOT NULL,
+  `ifteam` tinyint(1) NOT NULL,
   `tel` varchar(11) NOT NULL,
   `islam` tinyint(1) NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0'
@@ -84,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `zipcode` varchar(6) NOT NULL,
   `activated` tinyint(1) NOT NULL DEFAULT '0',
   `token` varchar(32) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -126,7 +128,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- Constraints for dumped tables
 --

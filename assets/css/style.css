@@ -17,6 +17,16 @@ body {
     border-color: #CBCBCB;
 }
 
+.indcontainer {
+  height: auto;
+  margin-right:5%;
+  margin-top:20px;
+  margin-left:5%;
+  margin-bottom: 40px;
+  padding-right: 40px;
+  padding-bottom: 60px;
+}
+
 .regcontainer {
   height: auto;
   margin-right:10%;
@@ -43,4 +53,8 @@ body {
 
 .form-group .col-sm-1 {
   text-align: center;
+}
+
+.row {
+    padding-top: 10px;
 }
