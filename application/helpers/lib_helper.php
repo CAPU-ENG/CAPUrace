@@ -94,3 +94,26 @@ if (! function_exists('load_cached_team')) {
         return $data;
     }
 }
+
+/*
+ * This function encode an individual's information into a key for match.
+ */
+if (! function_exists('individual_encode')) {
+    function individual_encode($ind) {
+        return base64_encode(implode('&', array(
+            'name=' . $ind['name'],
+            'gender=' . $ind['gender'],
+            'id_card=' . $ind['id_card'],
+        )));
+    }
+}
+
+/*
+ * This function decode an individual's key to original information.
+ */
+if (! function_exists('individual_decode')) {
+    function individual_decode($key) {
+        parse_str(base64_decode($key), $arr);
+        return $arr;
+    }
+}
