@@ -1,5 +1,5 @@
 <div class="indcontainer">
-    <p> <h3>请录入人员信息</h3></p>
+    <p><h3>请录入人员信息（每输入一个人员信息之后点击保存进入下一个）</h3></p>
     <hr/>
     <div class="form-group reg">
         <label class="col-sm-1">姓名</label>
@@ -93,19 +93,58 @@
         </div>
     </div>
     <hr/>
-    <div class="col-sm-6">
-        <button class="btn btn-primary btn-block" id="return-to-index">返回</button>
-    </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
         <button class="btn btn-warning btn-block" id="cache">保存</button>
     </div>
-    <br/>
+    <div class="col-sm-4"></div>
 </div>
-<div class="col-sm-4"></div>
-<div class="col-sm-4">
-    <button class="btn btn-success btn-block" id="btn-reg-ind-submit">提交，前往团体赛报名</button>
+<!-- The code above creates the individual form -->
+
+<div class="indcontainer ind-list">
+    <p><h3>已保存人员列表</h3></p>
+    <hr/>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>手机号</th>
+            <th>身份证号</th>
+            <th>北大赛</th>
+            <th>公路日</th>
+            <th>山地日</th>
+            <th>住宿</th>
+            <th>16日晚餐</th>
+            <th>17日午餐</th>
+            <th>清真</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Here should be some PHP foreach statements to display the athletes.
+        <tr>
+            <td>
+                <div class="btn-group-xs btn-group">
+                    <button class="btn btn-primary">修改</button>
+                    <button class="btn btn-danger">删除</button>
+                </div>
+            </td>
+        </tr>-->
+        </tbody>
+    </table>
+    <hr/>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
+        <button class="btn btn-primary btn-block" id="return-to-index">返回</button>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
+        <button class="btn btn-success btn-block" id="btn-reg-ind-submit">提交，前往团体赛报名</button>
+    </div>
+    <div class="col-sm-2"></div>
 </div>
-<div class="col-sm-4"></div>
 <script>
     $(document).ready(function() {
         if ($(".order:last").text() == "0") {
