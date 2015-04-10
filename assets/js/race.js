@@ -220,7 +220,6 @@ function cacheIndividual() {
     $.cookie.json = true;
     data.push(item);
     $.cookie('individual', data, {path: '/'});
-    alert("保存成功！");
     var row = $("tbody");
     row.append('<tr>');
     row.append('<td></td>');
