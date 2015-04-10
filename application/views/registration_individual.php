@@ -169,4 +169,7 @@
     $(window).on('beforeunload', function() {
         cacheIndividual();
     });
+    $("#cache").click(function() {
+        cacheIndividual();
+    })
 </script>

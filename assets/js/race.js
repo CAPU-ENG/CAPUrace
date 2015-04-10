@@ -189,19 +189,19 @@ function cacheIndividual() {
     if (data == undefined) {
         data = [];
     };
-    var name = $("input[name='name']").val();
-    var gender = $("input[name='gender']").val();
-    var tel = $("input[name='tel']").val();
-    var ifrace = $("input[name='ifrace']").val();
-    var islam = $("input[name='islam']").val();
-    var id_card = $("input[name='id_card']").val();
-    var accommodation = $("input[name='accommodation']").val();
-    var meal16 = $("input[name='meal16']").prop('checked');
-    var meal17 = $("input[name='meal17']").prop('checked');
-    var race = $("input[name='race']").val();
-    var ifteam = $("input[name='ifteam']").prop('checked');
-    var shimano16 = $("input[name='shimano16']").val();
-    var shimano17 = $("input[name='shimano17']").val();
+    var name = $("[name='name']").val();
+    var gender = $("[name='gender']").val();
+    var tel = $("[name='tel']").val();
+    var ifrace = $("[name='ifrace']").val();
+    var islam = $("[name='islam']").val();
+    var id_card = $("[name='id_card']").val();
+    var accommodation = $("[name='accommodation']").val();
+    var meal16 = $("[name='meal16']").prop('checked');
+    var meal17 = $("[name='meal17']").prop('checked');
+    var race = $("[name='race']").val();
+    var ifteam = $("[name='ifteam']").prop('checked');
+    var shimano16 = $("[name='shimano16']").val();
+    var shimano17 = $("[name='shimano17']").val();
     data[data.length] = {
         name: name,
         gender: gender,
