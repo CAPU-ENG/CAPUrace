@@ -188,7 +188,7 @@ function cacheIndividual() {
     var data = $.cookie('individual');
     if (data == undefined) {
         data = [];
-    };
+    }
     var name = $("[name='name']").val();
     var gender = $("[name='gender']").val();
     var tel = $("[name='tel']").val();
@@ -202,7 +202,7 @@ function cacheIndividual() {
     var ifteam = $("[name='ifteam']").prop('checked');
     var shimano16 = $("[name='shimano16']").val();
     var shimano17 = $("[name='shimano17']").val();
-    data[data.length] = {
+    var item = {
         name: name,
         gender: gender,
         id_card: id_card,
@@ -217,10 +217,27 @@ function cacheIndividual() {
         shimano16: shimano16,
         shimano17: shimano17
     };
-
     $.cookie.json = true;
+    data.push(item);
     $.cookie('individual', data, {path: '/'});
     alert("保存成功！");
+    var row = $("tbody");
+    row.append('<tr>');
+    row.append('<td></td>');
+    row.append('<td>' + item.name + '</td>');
+    row.append('<td>' + GENDER[item.gender] + '</td>');
+    row.append('<td>' + item.tel + '</td>');
+    row.append('<td>' + item.id_card + '</td>');
+    row.append('<td>' + CAPURACE[item.race] + '</td>');
+    row.append('<td>' + SHIMANO_RDB[item.shimano16] + '</td>');
+    row.append('<td>' + SHIMANO_MTB[item.shimano17] + '</td>');
+    row.append('<td>' + ACCOMMODATION[item.accommodation] + '</td>');
+    row.append('<td>' + item.meal16 + '</td>');
+    row.append('<td>' + item.meal17 + '</td>');
+    row.append('<td>' + JUDGE[item.islam] + '</td>');
+    row.append(' <td> <div class="row"> <div class="btn-group-xs btn-group"> <button class="btn btn-primary">修改</button> <button class="btn btn-danger">删除</button> </div> </div> </td>');
+    row.append('</tr>');
+    window.location.reload();
 }
 
 /*
@@ -240,7 +257,6 @@ function cacheTeam() {
         };
         $.cookie.json = true;
         $.cookie('team', data, {path: '/'});
-        alert("保存成功！");
     });
 }
 

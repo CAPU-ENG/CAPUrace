@@ -126,7 +126,20 @@
         </thead>
         <tbody>
         <!-- Here should be some PHP foreach statements to display the athletes.-->
+        <?php foreach($individual as $item): ?>
         <tr>
+            <td></td>
+            <td><?=$item['name']?></td>
+            <td><?=$GLOBALS['GENDER'][$item['gender']]?></td>
+            <td><?=$item['tel']?></td>
+            <td><?=$item['id_card']?></td>
+            <td><?=$GLOBALS['CAPURACE'][$item['race']]?></td>
+            <td><?=$GLOBALS['SHIMANO_RDB'][$item['shimano16']]?></td>
+            <td><?=$GLOBALS['SHIMANO_MTB'][$item['shimano17']]?></td>
+            <td><?=$GLOBALS['ACCOMMODATION'][$item['accommodation']]?></td>
+            <td><?=$GLOBALS['JUDGE'][$item['meal16']]?></td>
+            <td><?=$GLOBALS['JUDGE'][$item['meal17']]?></td>
+            <td><?=$GLOBALS['JUDGE'][$item['islam']]?></td>
             <td>
                 <div class="row">
                     <div class="btn-group-xs btn-group">
@@ -136,6 +149,7 @@
                 </div>
             </td>
         </tr>
+        <?php endforeach; ?>
         </tbody>
     </table>
     <hr/>
@@ -163,13 +177,15 @@
         window.location.href = "<?=site_url('registration/team')?>";
     });
     $("#return-to-index").click(function() {
-        cacheIndividual();
         window.location.href = "<?=site_url('registration')?>";
-    });
-    $(window).on('beforeunload', function() {
-        cacheIndividual();
     });
     $("#cache").click(function() {
         cacheIndividual();
     })
+    var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
+    var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
+    var SHIMANO_RDB = <?=json_encode($GLOBALS['SHIMANO_RDB'])?>;
+    var SHIMANO_MTB = <?=json_encode($GLOBALS['SHIMANO_MTB'])?>;
+    var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
+    var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
 </script>
