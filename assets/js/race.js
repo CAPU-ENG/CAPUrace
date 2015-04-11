@@ -184,7 +184,11 @@ function postSignup() {
  * This function is called when clicking 'save'.
  * It will store the individual information into cookie.
  */
-function cacheIndividual() {
+function cacheIndividual(order) {
+    var order = $("[name='order']").val();
+    if (order == "") {
+        order = data.length;
+    }
     var name = $("[name='name']").val();
     var gender = $("[name='gender']").val();
     var tel = $("[name='tel']").val();
@@ -199,6 +203,7 @@ function cacheIndividual() {
     var shimano16 = $("[name='shimano16']").val();
     var shimano17 = $("[name='shimano17']").val();
     var item = {
+        order: order,
         name: name,
         gender: gender,
         id_card: id_card,
@@ -213,8 +218,9 @@ function cacheIndividual() {
         shimano16: shimano16,
         shimano17: shimano17
     };
-    data.push(item);
+    data[order - 1] = item;
     $.cookie('individual', JSON.stringify(data));
+    //$(".ind-item[class!=hidden]").remove();
     fillIndividual(item);
     refreshOrder();
 }
@@ -245,6 +251,33 @@ function reloadIndividual() {
     $.each(data, function(order, item) {
         fillIndividual(item);
     })
+}
+
+/*
+ * This function fetches a certain row of .ind-list and fill it into the form.
+ */
+function fetchIndividual(order) {
+    var item = data[order];
+    var form = $(".reg");
+    form.find("[name='order']").val(item.order);
+    form.find("[name='name']").val(item.name);
+    form.find("[name='tel']").val(item.tel);
+    form.find("[name='id_card']").val(item.id_card);
+    form.find("[name='accommodation']").val(item.accommodation);
+    form.find("[name='gender']").val(item.gender);
+    form.find("[name='race']").val(item.race);
+    form.find("[name='shimano16']").val(item.shimano16);
+    form.find("[name='shimano17']").val(item.shimano17);
+    form.find("[name='ifrace']").val(item.ifrace);
+    form.find("[name='islam']").val(item.islam);
+    form.find("[name='ifteam']").prop('checked', item.ifteam);
+    form.find("[name='meal16']").prop('checked', item.meal16);
+    form.find("[name='meal17']").prop('checked', item.meal17);
+}
+
+function editIndividual(item) {
+    order = item.closest(".ind-item").find(".order").text() - 1;
+    fetchIndividual(order);
 }
 
 /*

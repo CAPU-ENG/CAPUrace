@@ -3,6 +3,7 @@
     <hr/>
     <div class="form-group reg">
         <div class="row">
+            <input name="order" class="hidden">
             <label class="col-sm-1">姓名</label>
             <div class="col-sm-2">
                 <input class="form-control" name="name" type="text">
@@ -96,7 +97,7 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <button class="btn btn-warning btn-block" id="btn-reg-cache-ind">保存</button>
+            <button class="btn btn-warning btn-block" id="btn-reg-ind-cache">保存</button>
         </div>
         <div class="col-sm-4"></div>
     </div>
@@ -140,7 +141,7 @@
             <td class="islam"></td>
             <td>
                 <div class="btn-group-xs btn-group">
-                    <button class="btn btn-primary">修改</button>
+                    <button class="btn btn-primary btn-reg-ind-update">修改</button>
                     <button class="btn btn-danger">删除</button>
                 </div>
             </td>
@@ -167,8 +168,11 @@
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
     });
-    $("#btn-reg-cache-ind").click(function() {
+    $("#btn-reg-ind-cache").click(function() {
         cacheIndividual();
+    });
+    $(".btn-reg-ind-update").click(function() {
+        editIndividual($(this));
     });
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
@@ -176,7 +180,8 @@
     var SHIMANO_MTB = <?=json_encode($GLOBALS['SHIMANO_MTB'])?>;
     var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
-    var TF =<?=json_encode($GLOBALS['TF'])?>;
+    var TF = <?=json_encode($GLOBALS['TF'])?>;
+    var IFRACE = <?=json_encode($GLOBALS['IFRACE'])?>;
     var data = [];
     if ($.cookie('individual')) {
         data = $.parseJSON($.cookie('individual'));
