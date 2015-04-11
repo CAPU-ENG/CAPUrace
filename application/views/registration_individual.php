@@ -126,7 +126,7 @@
         </thead>
         <tbody class="ind-list">
         <tr class="hidden ind-item">
-            <td></td>
+            <td class="order"></td>
             <td class="name"></td>
             <td class="gender"></td>
             <td class="tel"></td>

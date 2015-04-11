@@ -216,6 +216,7 @@ function cacheIndividual() {
     data.push(item);
     $.cookie('individual', JSON.stringify(data));
     fillIndividual(item);
+    refreshOrder();
 }
 
 /*
