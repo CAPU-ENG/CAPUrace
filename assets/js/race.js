@@ -185,7 +185,6 @@ function postSignup() {
  * It will store the individual information into cookie.
  */
 function cacheIndividual(order) {
-    var order = $("[name='order']").val();
     if (order == "") {
         order = data.length;
     }
@@ -202,7 +201,7 @@ function cacheIndividual(order) {
     var ifteam = $("[name='ifteam']").prop('checked');
     var shimano16 = $("[name='shimano16']").val();
     var shimano17 = $("[name='shimano17']").val();
-    var item = {
+    data[order - 1] = {
         order: order,
         name: name,
         gender: gender,
@@ -218,10 +217,9 @@ function cacheIndividual(order) {
         shimano16: shimano16,
         shimano17: shimano17
     };
-    data[order - 1] = item;
     $.cookie('individual', JSON.stringify(data));
-    //$(".ind-item[class!=hidden]").remove();
-    fillIndividual(item);
+    $(".ind-item:not(:hidden)").remove();
+    reloadIndividual();
     refreshOrder();
 }
 
