@@ -101,6 +101,16 @@ $ERR_MSG = array(
  * ========================
  * These associative arrays are for the selectors in the forms.
  */
+$JUDGE = array(
+    '0' => '否',
+    '1' => '是'
+);
+
+$TF = array(
+    'true' => '是',
+    'false' => '否'
+);
+
 $GENDER = array(
     '1' => '男',
     '2' => '女'

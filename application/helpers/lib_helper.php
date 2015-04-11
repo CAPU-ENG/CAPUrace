@@ -49,10 +49,7 @@ if (! function_exists('load_db_individual')) {
  */
 if (! function_exists('load_cached_individual')) {
     function load_cached_individual() {
-        $data = load_cookie_individual();
-        if (! $data) {
-            $data = load_db_individual();
-        }
+        $data = load_db_individual();
         return $data;
     }
 }

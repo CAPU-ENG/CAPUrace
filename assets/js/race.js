@@ -185,28 +185,66 @@ function postSignup() {
  * It will store the individual information into cookie.
  */
 function cacheIndividual() {
-    var data =[];
-    $(".individual-form[class!='individual-form hidden']").each(function() {
-        var name = $("input[name='name']", this).val();
-        var gender = $("select[name='gender']", this).val();
-        var id_card = $("input[name='id_card']", this).val();
-        var race = $("select[name='race']", this).val();
-        var accommodation = $("input[name='accommodation']", this).prop('checked');
-        var meal = $("input[name='meal']", this).prop('checked');
-        var tel = $("input[name='tel']", this).val();
-        data[data.length] = {
-            name: name,
-            gender: gender,
-            id_card: id_card,
-            race: race,
-            tel: tel,
-            accommodation: accommodation,
-            meal: meal
-        };
-    });
-    $.cookie.json = true;
-    $.cookie('individual', data, {path: '/'});
-    alert("保存成功！");
+    var name = $("[name='name']").val();
+    var gender = $("[name='gender']").val();
+    var tel = $("[name='tel']").val();
+    var ifrace = $("[name='ifrace']").val();
+    var islam = $("[name='islam']").val();
+    var id_card = $("[name='id_card']").val();
+    var accommodation = $("[name='accommodation']").val();
+    var meal16 = $("[name='meal16']").prop('checked');
+    var meal17 = $("[name='meal17']").prop('checked');
+    var race = $("[name='race']").val();
+    var ifteam = $("[name='ifteam']").prop('checked');
+    var shimano16 = $("[name='shimano16']").val();
+    var shimano17 = $("[name='shimano17']").val();
+    var item = {
+        name: name,
+        gender: gender,
+        id_card: id_card,
+        accommodation: accommodation,
+        meal16: meal16,
+        meal17: meal17,
+        tel: tel,
+        ifrace: ifrace,
+        ifteam: ifteam,
+        race: race,
+        islam: islam,
+        shimano16: shimano16,
+        shimano17: shimano17
+    };
+    data.push(item);
+    $.cookie('individual', JSON.stringify(data));
+    fillIndividual(item);
+    refreshOrder();
+}
+
+/*
+ * This function fills a single row of ind-list.
+ */
+function fillIndividual(item) {
+    elem = $(".ind-item:first").clone(true).removeClass("hidden");
+    elem.find(".name").text(item.name);
+    elem.find(".gender").text(GENDER[item.gender]);
+    elem.find(".id_card").text(item.id_card);
+    elem.find(".accommodation").text(ACCOMMODATION[item.accommodation]);
+    elem.find(".meal16").text(TF[item.meal16]);
+    elem.find(".meal17").text(TF[item.meal17]);
+    elem.find(".tel").text(item.tel);
+    elem.find(".race").text(CAPURACE[item.race]);
+    elem.find(".islam").text(JUDGE[item.islam]);
+    elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
+    elem.find(".shimano17").text(SHIMANO_MTB[item.shimano17]);
+    $(".ind-list").append(elem);
+}
+
+/*
+ * This function reloads the data in the cookie.
+ */
+function reloadIndividual() {
+    $.each(data, function(order, item) {
+        fillIndividual(item);
+    })
 }
 
 /*
@@ -226,7 +264,6 @@ function cacheTeam() {
         };
         $.cookie.json = true;
         $.cookie('team', data, {path: '/'});
-        alert("保存成功！");
     });
 }
 

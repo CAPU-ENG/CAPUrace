@@ -96,14 +96,14 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <button class="btn btn-warning btn-block" id="cache">保存</button>
+            <button class="btn btn-warning btn-block" id="btn-reg-cache-ind">保存</button>
         </div>
         <div class="col-sm-4"></div>
     </div>
 </div>
 <!-- The code above creates the individual form -->
 
-<div class="indcontainer ind-list">
+<div class="indcontainer">
     <p><h3>已保存人员列表</h3></p>
     <hr/>
     <table class="table table-hover">
@@ -124,15 +124,24 @@
             <th>操作</th>
         </tr>
         </thead>
-        <tbody>
-        <!-- Here should be some PHP foreach statements to display the athletes.-->
-        <tr>
+        <tbody class="ind-list">
+        <tr class="hidden ind-item">
+            <td class="order"></td>
+            <td class="name"></td>
+            <td class="gender"></td>
+            <td class="tel"></td>
+            <td class="id_card"></td>
+            <td class="race"></td>
+            <td class="shimano16"></td>
+            <td class="shimano17"></td>
+            <td class="accommodation"></td>
+            <td class="meal16"></td>
+            <td class="meal17"></td>
+            <td class="islam"></td>
             <td>
-                <div class="row">
-                    <div class="btn-group-xs btn-group">
-                        <button class="btn btn-primary">修改</button>
-                        <button class="btn btn-danger">删除</button>
-                    </div>
+                <div class="btn-group-xs btn-group">
+                    <button class="btn btn-primary">修改</button>
+                    <button class="btn btn-danger">删除</button>
                 </div>
             </td>
         </tr>
@@ -152,21 +161,31 @@
     </div>
 </div>
 <script>
-    $(document).ready(function() {
-        if ($(".order:last").text() == "0") {
-            addIndividual();
-        } else {
-            refreshOrder();
-        }
-    });
     $("#btn-reg-ind-submit").click(function() {
         window.location.href = "<?=site_url('registration/team')?>";
     });
     $("#return-to-index").click(function() {
-        cacheIndividual();
         window.location.href = "<?=site_url('registration')?>";
     });
-    $(window).on('beforeunload', function() {
+    $("#btn-reg-cache-ind").click(function() {
         cacheIndividual();
+    });
+    var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
+    var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
+    var SHIMANO_RDB = <?=json_encode($GLOBALS['SHIMANO_RDB'])?>;
+    var SHIMANO_MTB = <?=json_encode($GLOBALS['SHIMANO_MTB'])?>;
+    var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
+    var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
+    var TF =<?=json_encode($GLOBALS['TF'])?>;
+    var data = [];
+    if ($.cookie('individual')) {
+        data = $.parseJSON($.cookie('individual'));
+    } else if (<?=count($individual)?>){
+        data = <?=json_encode($individual)?>;
+        alert('test');
+    }
+    $(document).ready(function() {
+        reloadIndividual();
+        refreshOrder();
     });
 </script>
