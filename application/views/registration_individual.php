@@ -96,7 +96,7 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <button class="btn btn-warning btn-block" id="cache">保存</button>
+            <button class="btn btn-warning btn-block" id="btn-reg-cache-ind">保存</button>
         </div>
         <div class="col-sm-4"></div>
     </div>
@@ -174,7 +174,7 @@
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
     });
-    $("#cache").click(function() {
+    $("#btn-reg-cache-ind").click(function() {
         cacheIndividual();
     });
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
