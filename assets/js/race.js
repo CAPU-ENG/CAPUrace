@@ -186,7 +186,7 @@ function postSignup() {
  */
 function cacheIndividual(order) {
     if (order == "") {
-        order = data.length;
+        order = data.length + 1;
     }
     var name = $("[name='name']").val();
     var gender = $("[name='gender']").val();
@@ -221,6 +221,7 @@ function cacheIndividual(order) {
     $(".ind-item:not(:hidden)").remove();
     reloadIndividual();
     refreshOrder();
+    resetIndividual();
 }
 
 /*
@@ -273,9 +274,34 @@ function fetchIndividual(order) {
     form.find("[name='meal17']").prop('checked', item.meal17);
 }
 
+/*
+ * This function is called when 'edit' button is clicked.
+ * It fills the form with existing data for editing.
+ */
 function editIndividual(item) {
     order = item.closest(".ind-item").find(".order").text() - 1;
     fetchIndividual(order);
+}
+
+/*
+ * This function resets the individual form.
+ */
+function resetIndividual() {
+    var form = $(".reg");
+    form.find("[name='order']").val("");
+    form.find("[name='name']").val("");
+    form.find("[name='tel']").val("");
+    form.find("[name='id_card']").val("");
+    form.find("[name='accommodation']").val("0");
+    form.find("[name='gender']").val("1");
+    form.find("[name='race']").val("0");
+    form.find("[name='shimano16']").val("0");
+    form.find("[name='shimano17']").val("0");
+    form.find("[name='ifrace']").val("0");
+    form.find("[name='islam']").val("0");
+    form.find("[name='ifteam']").prop('checked', false);
+    form.find("[name='meal16']").prop('checked', false);
+    form.find("[name='meal17']").prop('checked', false);
 }
 
 /*
