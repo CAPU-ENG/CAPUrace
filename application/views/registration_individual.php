@@ -142,7 +142,7 @@
             <td>
                 <div class="btn-group-xs btn-group">
                     <button class="btn btn-primary btn-reg-ind-update">修改</button>
-                    <button class="btn btn-danger">删除</button>
+                    <button class="btn btn-danger btn-reg-ind-delete">删除</button>
                 </div>
             </td>
         </tr>
@@ -174,6 +174,9 @@
     $(".btn-reg-ind-update").click(function() {
         editIndividual($(this));
     });
+    $(".btn-reg-ind-delete").click(function() {
+        removeIndividual($(this));
+    });
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
     var SHIMANO_RDB = <?=json_encode($GLOBALS['SHIMANO_RDB'])?>;
@@ -187,7 +190,6 @@
         data = $.parseJSON($.cookie('individual'));
     } else if (<?=count($individual)?>){
         data = <?=json_encode($individual)?>;
-        alert('test');
     }
     $(document).ready(function() {
         reloadIndividual();

@@ -20,11 +20,18 @@ function addIndividual() {
  * This function removes an existing person item.
  */
 function removeIndividual(item) {
-    item.closest(".individual-form").remove();
-    if ($(".individual-form").length == 1) {
-        addIndividual();
-    }
+    var order = getOrder(item);
+    data.splice(order, 1);
+    $.cookie('individual', JSON.stringify(data));
+    reloadIndividual();
     refreshOrder();
+}
+
+/*
+ * This function gets the order of an individual.
+ */
+function getOrder(item) {
+    return item.closest(".ind-item").find(".order").text() - 1;
 }
 
 /*
@@ -218,7 +225,6 @@ function cacheIndividual(order) {
         shimano17: shimano17
     };
     $.cookie('individual', JSON.stringify(data));
-    $(".ind-item:not(:hidden)").remove();
     reloadIndividual();
     refreshOrder();
     resetIndividual();
@@ -247,6 +253,7 @@ function fillIndividual(item) {
  * This function reloads the data in the cookie.
  */
 function reloadIndividual() {
+    $(".ind-item:not(:hidden)").remove();
     $.each(data, function(order, item) {
         fillIndividual(item);
     })
@@ -279,7 +286,7 @@ function fetchIndividual(order) {
  * It fills the form with existing data for editing.
  */
 function editIndividual(item) {
-    order = item.closest(".ind-item").find(".order").text() - 1;
+    order = getOrder(item);
     fetchIndividual(order);
 }
 
