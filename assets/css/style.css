@@ -1,5 +1,5 @@
 body {
-  padding-top: 70px;
+  padding: 20px 200px 20px;
 }
 
 .signcontainer {
@@ -37,10 +37,10 @@ body {
   padding-left: 40px;
   padding-right: 40px;
   padding-bottom: 60px;
-  border-style: solid;
+/*  border-style: solid;
   border-width: 1px;
   border-color: #CBCBCB;
-}
+*/}
 
 .form-group label {
   text-align: center;
@@ -57,4 +57,81 @@ body {
 
 .row {
     padding-top: 10px;
+}
+
+.topr {
+  width: 450px;
+  margin-left: 550px;
+  height: 254px;
+  float: right;
+  position: absolute;
+  background: url(/assets/images/rbg.png) no-repeat right;
+}
+
+.logo {
+  width: 550px;
+  height: 254px;
+  float: left;
+  position: absolute;
+  background: url(/assets/images/logo.png) no-repeat right;
+
+}
+
+.pgleft {
+  width: 270px;
+  float: left;
+}
+
+.navi {
+  width: 220px;
+  height: 50px;
+  margin-left: 25px;
+  margin-bottom: 0px;
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 15px 0px 10px;
+/*  border-style: solid;
+  border-width: 1px;
+  border-color: #CBCBCB;
+*/
+}
+
+.navi:hover {
+  background-color: yellow;
+}
+
+.navi-top {
+  background: url(/assets/images/navi.png) no-repeat left;
+}
+
+.navi-top h4 {
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  color: yellow;
+  margin:0px;
+}
+
+.pgright {
+  width: 670px;
+  margin: 10px 35px;
+  float: left;
+  height: auto;
+  overflow: hidden;
+}
+
+.content {
+  margin-top: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #CBCBCB; 
+}
+
+.artcontent {
+  padding: 10px 20px;
+}
+
+.center-video {
+  padding-left: 85px;
 }
