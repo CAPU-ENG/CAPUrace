@@ -26,7 +26,7 @@ if (! function_exists('load_cookie_individual')) {
     function load_cookie_individual() {
         $CI = get_instance();
         $data = $CI->input->cookie('individual');
-        return json_decode(stripslashes($data), true);
+        return json_decode($data, true);
     }
 }
 
@@ -61,7 +61,7 @@ if (! function_exists('load_cookie_team')) {
     function load_cookie_team() {
         $CI = get_instance();
         $data = $CI->input->cookie('team');
-        return json_decode(stripslashes($data), true);
+        return json_decode($data, true);
     }
 }
 
