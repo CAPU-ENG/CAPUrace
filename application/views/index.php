@@ -28,6 +28,6 @@ body {
 
     <br><br><br>
     <div>
-        <embed src="http://player.youku.com/player.php/sid/XODg4NTEyNjQw/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+       <iframe height=480 width=480 src="http://player.youku.com/embed/XODg4NTEyNjQw" frameborder=0 allowfullscreen></iframe>
     </div>
 </div>
