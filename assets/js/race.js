@@ -312,6 +312,20 @@ function resetIndividual() {
 }
 
 /*
+ * This function post the individual data to the controller.
+ */
+function postIndividual() {
+    $.post(controller, data, function(data) {
+        if (data.code == '200') {
+            window.location.assign(directto);
+        } else {
+            alert(data.msg);
+            window.location.reload();
+        }
+    })
+}
+
+/*
  * This function is called when clicking 'save' in team form.
  * It restores the team info into cookie.
  */

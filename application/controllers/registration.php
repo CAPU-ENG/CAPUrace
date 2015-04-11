@@ -34,10 +34,19 @@ class Registration extends CI_Controller {
      * This method let the users register individuals.
      */
     public function individual() {
-        $data['individual'] = load_cached_individual();
-        $this->load->view('header');
-        $this->load->view('registration_individual', $data);
-        $this->load->view('footer');
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $data['individual'] = load_cached_individual();
+            $this->load->view('header');
+            $this->load->view('registration_individual', $data);
+            $this->load->view('footer');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            //This is only an example
+            exit(json_encode(array(
+                'code' => '200',
+                'msg' => 'OK'
+            )));
+        }
     }
 
     /*

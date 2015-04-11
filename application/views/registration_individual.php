@@ -177,6 +177,8 @@
     $(".btn-reg-ind-delete").click(function() {
         removeIndividual($(this));
     });
+    var controller = "<?=site_url('registration/individual')?>";
+    var directto = "<?=site_url('registration/team')?>";
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
     var SHIMANO_RDB = <?=json_encode($GLOBALS['SHIMANO_RDB'])?>;
