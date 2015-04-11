@@ -103,7 +103,7 @@
 </div>
 <!-- The code above creates the individual form -->
 
-<div class="indcontainer ind-list">
+<div class="indcontainer">
     <p><h3>已保存人员列表</h3></p>
     <hr/>
     <table class="table table-hover">
@@ -124,32 +124,27 @@
             <th>操作</th>
         </tr>
         </thead>
-        <tbody>
-        <!-- Here should be some PHP foreach statements to display the athletes.-->
-        <?php foreach($individual as $item): ?>
-        <tr>
+        <tbody class="ind-list">
+        <tr class="hidden ind-item">
             <td></td>
-            <td><?=$item['name']?></td>
-            <td><?=$GLOBALS['GENDER'][$item['gender']]?></td>
-            <td><?=$item['tel']?></td>
-            <td><?=$item['id_card']?></td>
-            <td><?=$GLOBALS['CAPURACE'][$item['race']]?></td>
-            <td><?=$GLOBALS['SHIMANO_RDB'][$item['shimano16']]?></td>
-            <td><?=$GLOBALS['SHIMANO_MTB'][$item['shimano17']]?></td>
-            <td><?=$GLOBALS['ACCOMMODATION'][$item['accommodation']]?></td>
-            <td><?=$GLOBALS['JUDGE'][$item['meal16']]?></td>
-            <td><?=$GLOBALS['JUDGE'][$item['meal17']]?></td>
-            <td><?=$GLOBALS['JUDGE'][$item['islam']]?></td>
+            <td class="name"></td>
+            <td class="gender"></td>
+            <td class="tel"></td>
+            <td class="id_card"></td>
+            <td class="race"></td>
+            <td class="shimano16"></td>
+            <td class="shimano17"></td>
+            <td class="accommodation"></td>
+            <td class="meal16"></td>
+            <td class="meal17"></td>
+            <td class="islam"></td>
             <td>
-                <div class="row">
-                    <div class="btn-group-xs btn-group">
-                        <button class="btn btn-primary">修改</button>
-                        <button class="btn btn-danger">删除</button>
-                    </div>
+                <div class="btn-group-xs btn-group">
+                    <button class="btn btn-primary">修改</button>
+                    <button class="btn btn-danger">删除</button>
                 </div>
             </td>
         </tr>
-        <?php endforeach; ?>
         </tbody>
     </table>
     <hr/>
@@ -181,11 +176,19 @@
     });
     $("#cache").click(function() {
         cacheIndividual();
-    })
+    });
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
     var SHIMANO_RDB = <?=json_encode($GLOBALS['SHIMANO_RDB'])?>;
     var SHIMANO_MTB = <?=json_encode($GLOBALS['SHIMANO_MTB'])?>;
     var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
+    var TF =<?=json_encode($GLOBALS['TF'])?>;
+    var data = [];
+    if ($.cookie('individual')) {
+        data = $.parseJSON($.cookie('individual'));
+    } else if (<?=count($individual)?>){
+        data = <?=json_encode($individual)?>;
+        alert('test');
+    }
 </script>

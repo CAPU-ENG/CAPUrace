@@ -106,6 +106,11 @@ $JUDGE = array(
     '1' => '否'
 );
 
+$TF = array(
+    'true' => '是',
+    'false' => '否'
+);
+
 $GENDER = array(
     '1' => '男',
     '2' => '女'

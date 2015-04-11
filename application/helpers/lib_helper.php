@@ -26,7 +26,7 @@ if (! function_exists('load_cookie_individual')) {
     function load_cookie_individual() {
         $CI = get_instance();
         $data = $CI->input->cookie('individual');
-        return json_decode($data, true);
+        return json_decode(stripslashes($data), true);
     }
 }
 
@@ -49,10 +49,7 @@ if (! function_exists('load_db_individual')) {
  */
 if (! function_exists('load_cached_individual')) {
     function load_cached_individual() {
-        $data = load_cookie_individual();
-        if (! $data) {
-            $data = load_db_individual();
-        }
+        $data = load_db_individual();
         return $data;
     }
 }
@@ -64,7 +61,7 @@ if (! function_exists('load_cookie_team')) {
     function load_cookie_team() {
         $CI = get_instance();
         $data = $CI->input->cookie('team');
-        return json_decode($data, true);
+        return json_decode(stripslashes($data), true);
     }
 }
 
