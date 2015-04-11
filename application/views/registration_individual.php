@@ -161,13 +161,6 @@
     </div>
 </div>
 <script>
-    $(document).ready(function() {
-        if ($(".order:last").text() == "0") {
-            addIndividual();
-        } else {
-            refreshOrder();
-        }
-    });
     $("#btn-reg-ind-submit").click(function() {
         window.location.href = "<?=site_url('registration/team')?>";
     });
@@ -191,4 +184,8 @@
         data = <?=json_encode($individual)?>;
         alert('test');
     }
+    $(document).ready(function() {
+        reloadIndividual();
+        refreshOrder();
+    });
 </script>

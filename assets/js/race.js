@@ -185,10 +185,6 @@ function postSignup() {
  * It will store the individual information into cookie.
  */
 function cacheIndividual() {
-/*    var data = JSON.parse($.cookie('individual'));
-    if (data == undefined) {
-        data = [];
-    }*/
     var name = $("[name='name']").val();
     var gender = $("[name='gender']").val();
     var tel = $("[name='tel']").val();
@@ -219,6 +215,13 @@ function cacheIndividual() {
     };
     data.push(item);
     $.cookie('individual', JSON.stringify(data));
+    fillIndividual(item);
+}
+
+/*
+ * This function fills a single row of ind-list.
+ */
+function fillIndividual(item) {
     elem = $(".ind-item:first").clone(true).removeClass("hidden");
     elem.find(".name").text(item.name);
     elem.find(".gender").text(GENDER[item.gender]);
@@ -232,6 +235,15 @@ function cacheIndividual() {
     elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
     elem.find(".shimano17").text(SHIMANO_MTB[item.shimano17]);
     $(".ind-list").append(elem);
+}
+
+/*
+ * This function reloads the data in the cookie.
+ */
+function reloadIndividual() {
+    $.each(data, function(order, item) {
+        fillIndividual(item);
+    })
 }
 
 /*
