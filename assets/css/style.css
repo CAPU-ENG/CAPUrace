@@ -154,5 +154,13 @@
 }
 
 .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td {
-  text-align: center;
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
 }
