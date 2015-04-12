@@ -192,6 +192,12 @@
         data = $.parseJSON($.cookie('individual'));
     } else if (<?=count($individual)?>){
         data = <?=json_encode($individual)?>;
+        $.each(data, function(order, item) {
+            item.meal16 = (item.meal16 == 1);
+            item.meal17 = (item.meal17 == 1);
+            item.ifteam = (item.ifteam == 1);
+        });
+        $.cookie('individual', JSON.stringify(data));
     }
     $(document).ready(function() {
         reloadIndividual();

@@ -65,6 +65,18 @@ class People_model extends CI_Model {
     }
 
     /*
+     * Update an individual's information.
+     *
+     * ====argument====
+     * $id, the id of the person.
+     * $data, the new information.
+     *
+     */
+    public function update_individual($id, $data) {
+        $this->db->where('id', $id)->update('people', $data);
+    }
+
+    /*
      * Get all the male athlete from a certain school.
      *
      * ====argument====

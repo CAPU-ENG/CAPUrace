@@ -193,7 +193,7 @@ function postSignup() {
  */
 function cacheIndividual(order) {
     if (order == "") {
-        order = data.length + 1;
+        order = data.length;
     }
     var name = $("[name='name']").val();
     var gender = $("[name='gender']").val();
@@ -211,8 +211,7 @@ function cacheIndividual(order) {
     if (ifteam && (race == '0')) {
         race = 3;
     }
-    data[order - 1] = {
-        order: order,
+    data[order] = {
         name: name,
         gender: gender,
         id_card: id_card,
@@ -242,8 +241,8 @@ function fillIndividual(item) {
     elem.find(".gender").text(GENDER[item.gender]);
     elem.find(".id_card").text(item.id_card);
     elem.find(".accommodation").text(ACCOMMODATION[item.accommodation]);
-    elem.find(".meal16").text(TF[item.meal16]);
-    elem.find(".meal17").text(TF[item.meal17]);
+    elem.find(".meal16").text(JUDGE[+item.meal16]);
+    elem.find(".meal17").text(JUDGE[+item.meal17]);
     elem.find(".tel").text(item.tel);
     elem.find(".race").text(CAPURACE[item.race]);
     if (item.ifteam) {
@@ -271,7 +270,7 @@ function reloadIndividual() {
 function fetchIndividual(order) {
     var item = data[order];
     var form = $(".reg");
-    form.find("[name='order']").val(item.order);
+    form.find("[name='order']").val(order);
     form.find("[name='name']").val(item.name);
     form.find("[name='tel']").val(item.tel);
     form.find("[name='id_card']").val(item.id_card);
@@ -322,7 +321,6 @@ function resetIndividual() {
  * This function post the individual data to the controller.
  */
 function postIndividual() {
-    //$.each(data, function(order, item) {
     var item = {
         data: data
     };
@@ -337,7 +335,6 @@ function postIndividual() {
             return;
         }
     });
-    //});
     window.location.assign(directto);
 }
 
