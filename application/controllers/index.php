@@ -19,11 +19,27 @@ class Index extends CI_Controller {
         $this->load->view('footer');
     }
 
-    public function race_info_doc() {
+    public function race_info() {
         $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav3');
         $this->load->view('race_info_navi');
-        $this->load->view('race_info_doc');
+        $this->load->view('race_info');
+        $this->load->view('footer');
+    }
+
+    public function race_info_process() {
+        $this->load->view('header_homepage');
+        $this->load->view('add_hilight_nav3');
+        $this->load->view('race_info_navi');
+        $this->load->view('race_info_process');
+        $this->load->view('footer');
+    }
+
+    public function race_info_rule() {
+        $this->load->view('header_homepage');
+        $this->load->view('add_hilight_nav3');
+        $this->load->view('race_info_navi');
+        $this->load->view('race_info_rule');
         $this->load->view('footer');
     }
 
@@ -35,11 +51,11 @@ class Index extends CI_Controller {
         $this->load->view('footer');
     }
 
-    public function race_info_racemap() {
+    public function race_info_award() {
         $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav3');
         $this->load->view('race_info_navi');
-        $this->load->view('race_info_racemap');
+        $this->load->view('race_info_award');
         $this->load->view('footer');
     }
 

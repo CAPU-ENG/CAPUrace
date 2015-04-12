@@ -36,7 +36,7 @@
         <ul class="nav navbar-nav">
           <li class="active" id="nav1"><a href="<?=base_url()?>">首页</a></li>
           <li id="nav2"><a href="<?=site_url('registration')?>">报名</a></li>
-          <li id="nav3"><a href="<?=site_url('index/race_info_doc')?>">赛事专题</a></li>
+          <li id="nav3"><a href="<?=site_url('index/race_info')?>">赛事专题</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if ($this->session->userdata('logged_in')): ?>
