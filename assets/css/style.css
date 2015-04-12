@@ -1,5 +1,5 @@
 .index-container {
-  padding: 20px 5% 20px;
+  padding: 20px 15% 20px;
 }
 
 .signcontainer {
@@ -116,7 +116,6 @@
 .pgright {
   width: 670px;
   margin: 10px 35px;
-  float: left;
   height: auto;
   overflow: hidden;
 }

@@ -14,13 +14,13 @@ class Index extends CI_Controller {
      * Index page for Index Controller.
      */
     public function index() {
-        $this->load->view('header');
+        $this->load->view('header_homepage');
         $this->load->view('index');
         $this->load->view('footer');
     }
 
     public function race_info_doc() {
-        $this->load->view('header');
+        $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav3');
         $this->load->view('race_info_navi');
         $this->load->view('race_info_doc');
@@ -28,7 +28,7 @@ class Index extends CI_Controller {
     }
 
     public function race_info_map() {
-        $this->load->view('header');
+        $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav3');
         $this->load->view('race_info_navi');
         $this->load->view('race_info_map');
@@ -36,7 +36,7 @@ class Index extends CI_Controller {
     }
 
     public function race_info_racemap() {
-        $this->load->view('header');
+        $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav3');
         $this->load->view('race_info_navi');
         $this->load->view('race_info_racemap');
@@ -44,7 +44,7 @@ class Index extends CI_Controller {
     }
 
     public function race_info_racevideo() {
-        $this->load->view('header');
+        $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav3');
         $this->load->view('race_info_navi');
         $this->load->view('race_info_racevideo');
