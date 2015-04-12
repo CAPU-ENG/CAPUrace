@@ -30,7 +30,8 @@ class People_model extends CI_Model {
      * Add a new person.
      */
     public function add_people($data, $school_id) {
-        $data = array_merge($data, array('school_id', $school_id));
+        $this->load->helper(array('lib'));
+        $data = array_merge($data, array('school_id' => $school_id, 'key' => individual_encode($data)));
         $this->db->insert('people', $data);
     }
 
@@ -61,6 +62,18 @@ class People_model extends CI_Model {
     public function get_people_from_school($school_id) {
         $query = $this->db->where('school_id', $school_id)->where('deleted', false)->get('people');
         return $query->result_array();
+    }
+
+    /*
+     * Update an individual's information.
+     *
+     * ====argument====
+     * $id, the id of the person.
+     * $data, the new information.
+     *
+     */
+    public function update_individual($id, $data) {
+        $this->db->where('id', $id)->update('people', $data);
     }
 
     /*

@@ -67,9 +67,12 @@ class User extends CI_Controller {
      * Account logout.
      */
     public function logout() {
+        $this->load->helper(array('cookie'));
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('school');
+        delete_cookie('individual');
+        delete_cookie('team');
         redirect(base_url(), 'refresh');
     }
 

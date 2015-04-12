@@ -34,10 +34,46 @@ class Registration extends CI_Controller {
      * This method let the users register individuals.
      */
     public function individual() {
-        $data['individual'] = load_cached_individual();
-        $this->load->view('header');
-        $this->load->view('registration_individual', $data);
-        $this->load->view('footer');
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $data['individual'] = load_cached_individual();
+            $this->load->view('header');
+            $this->load->view('registration_individual', $data);
+            $this->load->view('footer');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $school_id = $this->session->userdata('id');
+            $data = $this->input->post();
+            $ind_post = $data['data'];
+            $ind_db = $this->people->get_people_from_school($school_id);
+            //There should be some validations here.
+            header('Content-Type: application/json');
+            foreach ($ind_db as $item_db) {
+                $flag = false;
+                $i = 0;
+                foreach ($ind_post as $item_post) {
+                    $item_post['key'] = individual_encode($item_post);
+                    if (strcmp($item_db['key'], $item_post['key']) == 0) {
+                        $flag = true;
+                        unset($item_post['team_id']);
+                        $this->people->update_individual($item_db['id'], $item_post);
+                        break;
+                    }
+                    $i++;
+                }
+                if (!$flag) {
+                    $this->people->delete_people($item_db['id']);
+                } else {
+                    array_splice($ind_post, $i, 1);
+                }
+            }
+            foreach ($ind_post as $item_post) {
+                $item_post['key'] = individual_encode($item_post);
+                unset($item_post['order']);
+                $this->people->add_people($item_post, $school_id);
+            }
+            $err_code = '200';
+            exit(err_msg($err_code));
+        }
     }
 
     /*

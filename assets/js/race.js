@@ -193,7 +193,7 @@ function postSignup() {
  */
 function cacheIndividual(order) {
     if (order == "") {
-        order = data.length + 1;
+        order = data.length;
     }
     var name = $("[name='name']").val();
     var gender = $("[name='gender']").val();
@@ -208,8 +208,10 @@ function cacheIndividual(order) {
     var ifteam = $("[name='ifteam']").prop('checked');
     var shimano16 = $("[name='shimano16']").val();
     var shimano17 = $("[name='shimano17']").val();
-    data[order - 1] = {
-        order: order,
+    if (ifteam && (race == '0')) {
+        race = 3;
+    }
+    data[order] = {
         name: name,
         gender: gender,
         id_card: id_card,
@@ -239,10 +241,13 @@ function fillIndividual(item) {
     elem.find(".gender").text(GENDER[item.gender]);
     elem.find(".id_card").text(item.id_card);
     elem.find(".accommodation").text(ACCOMMODATION[item.accommodation]);
-    elem.find(".meal16").text(TF[item.meal16]);
-    elem.find(".meal17").text(TF[item.meal17]);
+    elem.find(".meal16").text(JUDGE[+item.meal16]);
+    elem.find(".meal17").text(JUDGE[+item.meal17]);
     elem.find(".tel").text(item.tel);
     elem.find(".race").text(CAPURACE[item.race]);
+    if (item.ifteam) {
+        elem.find(".race").append(' 团体赛');
+    }
     elem.find(".islam").text(JUDGE[item.islam]);
     elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
     elem.find(".shimano17").text(SHIMANO_MTB[item.shimano17]);
@@ -265,7 +270,7 @@ function reloadIndividual() {
 function fetchIndividual(order) {
     var item = data[order];
     var form = $(".reg");
-    form.find("[name='order']").val(item.order);
+    form.find("[name='order']").val(order);
     form.find("[name='name']").val(item.name);
     form.find("[name='tel']").val(item.tel);
     form.find("[name='id_card']").val(item.id_card);
@@ -288,6 +293,7 @@ function fetchIndividual(order) {
 function editIndividual(item) {
     order = getOrder(item);
     fetchIndividual(order);
+    $(".reg").find("[name='name']").focus();
 }
 
 /*
@@ -309,6 +315,27 @@ function resetIndividual() {
     form.find("[name='ifteam']").prop('checked', false);
     form.find("[name='meal16']").prop('checked', false);
     form.find("[name='meal17']").prop('checked', false);
+}
+
+/*
+ * This function post the individual data to the controller.
+ */
+function postIndividual() {
+    var item = {
+        data: data
+    };
+    $.each(item.data, function(order, ind) {
+        ind.ifteam = +ind.ifteam;
+        ind.meal16 = +ind.meal16;
+        ind.meal17 = +ind.meal17;
+    });
+    $.post(controller, item, function(response) {
+        if (response.code != "200") {
+            alert(response.msg);
+            return;
+        }
+    });
+    window.location.assign(directto);
 }
 
 /*

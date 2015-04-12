@@ -163,7 +163,7 @@
 </div>
 <script>
     $("#btn-reg-ind-submit").click(function() {
-        window.location.href = "<?=site_url('registration/team')?>";
+        postIndividual();
     });
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
@@ -177,6 +177,8 @@
     $(".btn-reg-ind-delete").click(function() {
         removeIndividual($(this));
     });
+    var controller = "<?=site_url('registration/individual')?>";
+    var directto = "<?=site_url('registration/team')?>";
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
     var SHIMANO_RDB = <?=json_encode($GLOBALS['SHIMANO_RDB'])?>;
@@ -190,6 +192,12 @@
         data = $.parseJSON($.cookie('individual'));
     } else if (<?=count($individual)?>){
         data = <?=json_encode($individual)?>;
+        $.each(data, function(order, item) {
+            item.meal16 = (item.meal16 == 1);
+            item.meal17 = (item.meal17 == 1);
+            item.ifteam = (item.ifteam == 1);
+        });
+        $.cookie('individual', JSON.stringify(data));
     }
     $(document).ready(function() {
         reloadIndividual();
