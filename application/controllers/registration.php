@@ -41,11 +41,14 @@ class Registration extends CI_Controller {
             $this->load->view('footer');
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $school_id = $this->session->userdata('id');
+            $ind = $this->input->post();
+            unset($ind['order']);
+            header('Content-Type: application/json');
+            $this->people->add_people($ind, $school_id);
+            $err_code = '200';
             //This is only an example
-            exit(json_encode(array(
-                'code' => '200',
-                'msg' => 'OK'
-            )));
+            exit(err_msg($err_code));
         }
     }
 

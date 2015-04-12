@@ -163,7 +163,7 @@
 </div>
 <script>
     $("#btn-reg-ind-submit").click(function() {
-        window.location.href = "<?=site_url('registration/team')?>";
+        postIndividual();
     });
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";

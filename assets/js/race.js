@@ -322,14 +322,15 @@ function resetIndividual() {
  * This function post the individual data to the controller.
  */
 function postIndividual() {
-    $.post(controller, data, function(data) {
-        if (data.code == '200') {
-            window.location.assign(directto);
-        } else {
-            alert(data.msg);
-            window.location.reload();
-        }
-    })
+    $.each(data, function(order, item) {
+        $.post(controller, item, function(response) {
+            if (response.code != "200") {
+                alert(response.msg);
+                return;
+            }
+        });
+    });
+    window.location.assign(directto);
 }
 
 /*
