@@ -30,6 +30,7 @@ class User extends CI_Controller {
             }
 
             $this->load->view('header');
+            $this->load->view('add_hilight_nav4');
             $this->load->view('login_form');
             $this->load->view('footer');
         }
@@ -73,10 +74,12 @@ class User extends CI_Controller {
     }
 
     public function signup() {
+
         date_default_timezone_set('PRC');
 
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $this->load->view('header');
+            $this->load->view('add_hilight_nav5'); 
             $this->load->view('signup_form');
             $this->load->view('footer');
         }

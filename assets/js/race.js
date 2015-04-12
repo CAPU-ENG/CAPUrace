@@ -331,5 +331,18 @@ function cacheTeam() {
     });
 }
 
+/*
+ * This function is called when a navigation button is clicked.
+ * It will highlight current tab.
+ */
+
+function addActive(curTab) {
+    $('#nav1').removeClass("active");
+    $('#nav2').removeClass("active");
+    $('#nav3').removeClass("active");
+    curTab.addClass("active");
+}
+
+
 /* End of file race.js */
 /* Location: ./assets/js/race.js */

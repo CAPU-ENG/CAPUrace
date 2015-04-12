@@ -25,6 +25,7 @@ class Registration extends CI_Controller {
 
     public function index() {
         $this->load->view('header');
+        $this->load->view('add_hilight_nav2');
         $this->load->view('registration_index');
         $this->load->view('footer');
     }

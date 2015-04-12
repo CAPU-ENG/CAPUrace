@@ -29,9 +29,18 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="<?=base_url()?>">首页</a></li>
-        <?php if ($this->session->userdata('logged_in')): ?>
         <li><a href="<?=site_url('registration')?>">报名</a></li>
-        <?php endif; ?>
+        <li class="dropdown" id="nav3">
+          <a href="<?=site_url('index/race_info')?>">赛事专题</a>
+          <ul class="dropdown-menu" role="menu">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info')?>">比赛基本信息</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info_process')?>">比赛流程</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info_rule')?>">比赛规则</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info_map')?>">赛场与赛道</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info_award')?>">比赛奖品</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info_racevideo')?>">赛场视频</a></li>
+          </ul>
+        </li>      
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <?php if ($this->session->userdata('logged_in')): ?>
@@ -52,3 +61,21 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+  <script type="text/javascript">
+  $('#nav3').hover(function() {
+    $('#nav3').addClass("open");
+  });
+
+  $('#nav3').hover(
+  　　function () {
+  　　    $('#nav3').addClass("open");
+  　　},
+  　　function () {
+         $('#nav3').removeClass("open");  　　
+     }
+  );
+
+
+  </script>
+

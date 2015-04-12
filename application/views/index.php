@@ -1,1 +1,3 @@
-<h1>欢迎参加北大车协全国高校山地车交流赛</h1>
+<a href="<?=site_url('registration')?>">
+	<img src="/assets/images/content.jpg"></img>
+</a>
