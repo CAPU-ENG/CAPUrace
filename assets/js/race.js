@@ -208,6 +208,9 @@ function cacheIndividual(order) {
     var ifteam = $("[name='ifteam']").prop('checked');
     var shimano16 = $("[name='shimano16']").val();
     var shimano17 = $("[name='shimano17']").val();
+    if (ifteam && (race == '0')) {
+        race = 3;
+    }
     data[order - 1] = {
         order: order,
         name: name,
@@ -243,6 +246,9 @@ function fillIndividual(item) {
     elem.find(".meal17").text(TF[item.meal17]);
     elem.find(".tel").text(item.tel);
     elem.find(".race").text(CAPURACE[item.race]);
+    if (item.ifteam) {
+        elem.find(".race").append(' 团体赛');
+    }
     elem.find(".islam").text(JUDGE[item.islam]);
     elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
     elem.find(".shimano17").text(SHIMANO_MTB[item.shimano17]);
