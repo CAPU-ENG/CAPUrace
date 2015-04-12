@@ -42,10 +42,12 @@ class Registration extends CI_Controller {
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $school_id = $this->session->userdata('id');
-            $ind = $this->input->post();
-            unset($ind['order']);
+            $data = $this->input->post();
             header('Content-Type: application/json');
-            $this->people->add_people($ind, $school_id);
+            foreach ($data['data'] as $item) {
+                unset($item['order']);
+                $this->people->add_people($item, $school_id);
+            }
             $err_code = '200';
             //This is only an example
             exit(err_msg($err_code));
