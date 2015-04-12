@@ -47,7 +47,6 @@ class Registration extends CI_Controller {
             $ind_db = $this->people->get_people_from_school($school_id);
             //There should be some validations here.
             header('Content-Type: application/json');
-            var_dump($ind_post);
             foreach ($ind_db as $item_db) {
                 $flag = false;
                 $i = 0;
@@ -67,7 +66,6 @@ class Registration extends CI_Controller {
                     array_splice($ind_post, $i, 1);
                 }
             }
-            var_dump($ind_post);
             foreach ($ind_post as $item_post) {
                 $item_post['key'] = individual_encode($item_post);
                 unset($item_post['order']);
