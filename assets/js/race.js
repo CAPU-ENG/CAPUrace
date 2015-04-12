@@ -335,7 +335,6 @@ function postIndividual() {
             return;
         }
     });
-    window.location.assign(directto);
 }
 
 /*

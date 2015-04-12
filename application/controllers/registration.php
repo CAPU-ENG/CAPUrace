@@ -72,6 +72,7 @@ class Registration extends CI_Controller {
                 $this->people->add_people($item_post, $school_id);
             }
             $err_code = '200';
+            redirect(site_url('registration/team'));
             exit(err_msg($err_code));
         }
     }
