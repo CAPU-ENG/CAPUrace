@@ -7,7 +7,7 @@
 		<a href="<?=site_url('index/race_info_map')?>">会场图</a>			
 	</div>
 	<div class="navi">
-		<a href="<?=site_url('index/race_info_racemap')?>">赛场图</a>			
+		<a href="<?=site_url('index/race_info_racemap')?>">赛道图</a>			
 	</div>
 	<div class="navi">
 		<a href="<?=site_url('index/race_info_racevideo')?>">赛场视频</a>			
