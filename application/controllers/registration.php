@@ -52,17 +52,18 @@ class Registration extends CI_Controller {
                 $i = 0;
                 foreach ($ind_post as $item_post) {
                     $item_post['key'] = individual_encode($item_post);
+                    $i++;
                     if (strcmp($item_db['key'], $item_post['key']) == 0) {
                         $flag = true;
+                        unset($item_post['team_id']);
                         $this->people->update_individual($item_db['id'], $item_post);
                         break;
                     }
-                    $i++;
                 }
                 if (!$flag) {
                     $this->people->delete_people($item_db['id']);
                 } else {
-                    array_splice($ind_post, $i, 1);
+                    array_splice($ind_post, $i - 1, 1);
                 }
             }
             foreach ($ind_post as $item_post) {
