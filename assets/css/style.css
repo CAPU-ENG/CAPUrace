@@ -1,5 +1,8 @@
 .index-container {
-  padding: 20px 15% 20px;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 8px 0 0 0;
+ //padding: 20px 15% 20px;
 }
 
 .signcontainer {

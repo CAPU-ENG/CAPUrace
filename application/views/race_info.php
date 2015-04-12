@@ -15,7 +15,7 @@
 	七、     比赛组别及时间安排：<br></strong>
 
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本届比赛设置如下组别：大学男子组、大学女子组、大学生接力组，<span class="red">均为山地车比赛项目</span>，具体时间安排如下：
-
+    <div class="text-center">北大赛项目</div>
 	<table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -58,10 +58,10 @@
         </tr>
       </tbody>
     </table>
-    <div class="text-center">北大赛项目</div><br>
 
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此外，SHIMANO车迷节为高校车协选手提供比赛优惠：凡报名北大车协全国高校山地车交流赛的选手（即必须报名以上三项），可免费参与5月16日当天的公路日的任一组满足参赛人员资格的比赛和5月17日当天山地日的任一组满足参赛人员资格的非大学生比赛。<span class=“red”>相关组别均可在北大车协交流赛官方报名网站上报名。</span>（即：每名选手缴纳50元/人的报名费，可以参与一项公路日比赛，一项山地日比赛，以及两项北大赛比赛）
 	<br><br>
+    <div class="text-center">公路日赠送组别 非北大赛项目(5月16日)可任选其一</div>
 	<table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -124,14 +124,14 @@
         </tr>
       </tbody>
     </table>
-    <div class="text-center">公路日赠送组别 非北大赛项目(5月16日)可任选其一</div><br>
 
     <br><br>
+    <div class="text-center">山地日赠送组别 非北大赛项目（5月17日）可任选其一</div>
 	<table class="table table-striped table-bordered">
       <thead>
         <tr>
           <th>组别</th>
-          <th>检录时间<br>5月16日</th>
+          <th>检录时间<br>5月17日</th>
           <th>比赛时间</th>
           <th>单圈里程</th>
           <th>圈数</th>
@@ -141,58 +141,55 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">公路男子初级组</th>
-          <td>09:00-09:35</td>
-          <td>09:35-10:10</td>
-          <td>2.5km</td>
-          <td>8</td>
-          <td>20km</td>
+          <th scope="row">山地大众体验组（男女不限）</th>
+          <td>08:30-09:00</td>
+          <td>09:00-09:50</td>
+          <td>3.5km</td>
+          <td>2</td>
+          <td>7km</td>
           <td>前30名</td>
         </tr>
         <tr>
-          <th scope="row">公路男子中级组</th>
-          <td>09:00-09:35</td>
-          <td>10:15-11:00</td>
-          <td>2.5km</td>
-          <td>8</td>
-          <td>20km</td>
+          <th scope="row">山地男子初级组</th>
+          <td>09:00-09:55</td>
+          <td>09:55-10:55</td>
+          <td>3.5km</td>
+          <td>4</td>
+          <td>14km</td>
           <td>前30名</td>
         </tr>
         <tr>
-          <th scope="row">公路男子精英组</th>
-          <td>资格赛10:15-11:05<br>
-			  正赛12:30-13:05</td>
-          <td>资格赛11:05-12:00<br>
-			  正赛13:05-14:00</td>
-          <td>2.5km</td>
-          <td>资格赛1圈, 正赛16圈</td>
-          <td>40km</td>
+          <th scope="row">山地男子中级组</th>
+          <td>09:55-11:00</td>
+          <td>11:00-12:00</td>
+          <td>3.5km</td>
+          <td>4</td>
+          <td>14km</td>
+          <td>前30名</td>
+        </tr>
+        <tr>
+          <th scope="row">山地男子精英组<br><span class="red">（与大学男子组冲突，请慎重报名。）</span></th>
+          <td>12:30-13:35</td>
+          <td>13:35-14:35</td>
+          <td>3.5km</td>
+          <td>4</td>
+          <td>14km</td>
           <td>前15名</td>
         </tr>
         <tr>
-          <th scope="row">小轮组</th>
-          <td>12:00-12:30</td>
-          <td>12:30-13:00</td>
-          <td>2.5km</td>
-          <td>6</td>
-          <td>15km</td>
-          <td>前15名</td>
-        </tr>
-        <tr>
-          <th scope="row">公路女子组</th>
-          <td>13:05-14:05</td>
-          <td>14:05-14:35</td>
-          <td>2.5km</td>
-          <td>6</td>
-          <td>15km</td>
+          <th scope="row">山地女子组<br><span class="red">（与大学女子组冲突，请慎重报名。）</span></th>
+          <td>13:35-14:35</td>
+          <td>14:40-15:10</td>
+          <td>3.5km</td>
+          <td>2</td>
+          <td>7km</td>
           <td>前30名</td>          
         </tr>
       </tbody>
     </table>
 
-    <div class="text-center">山地日赠送组别 非北大赛项目（5月17日）可任选其一</div><br>
 
-    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">注意：</span>请各高校车协选手在选择赠送项目时，注意规划好个人的参赛时间。报名截止后将不能改动组别选择。
 
 
 </div>
