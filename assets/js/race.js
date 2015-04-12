@@ -294,6 +294,7 @@ function fetchIndividual(order) {
 function editIndividual(item) {
     order = getOrder(item);
     fetchIndividual(order);
+    $(".reg").find("[name='name']").focus();
 }
 
 /*
