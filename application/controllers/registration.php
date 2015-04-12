@@ -43,10 +43,31 @@ class Registration extends CI_Controller {
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $school_id = $this->session->userdata('id');
             $data = $this->input->post();
+            $ind_post = $data['data'];
+            unset($ind_post['order']);
+            $ind_db = $this->people->get_people_from_school($school_id);
             header('Content-Type: application/json');
-            foreach ($data['data'] as $item) {
-                unset($item['order']);
-                $this->people->add_people($item, $school_id);
+            foreach ($ind_db as $item_db) {
+                $flag = false;
+                $i = 0;
+                foreach ($ind_post as $item_post) {
+                    if ($item_db['key'] == $item_post['key']) {
+                        $flag = true;
+                        //update
+                        break;
+                    }
+                    $i++;
+                }
+                if (!$flag) {
+                    $this->people->delete_people($item_db['id']);
+                } else {
+                    array_splice($ind_post, $i - 1, 1);
+                }
+                //unset($item['order']);
+                //$this->people->add_people($item, $school_id);
+            }
+            foreach ($ind_post as $item_post) {
+                $this->people->add_people($item_post, $school_id);
             }
             $err_code = '200';
             //This is only an example
