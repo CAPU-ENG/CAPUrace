@@ -2,6 +2,7 @@
     <p><h3>请录入人员信息（每输入一个人员信息之后点击保存进入下一个）</h3></p>
     <hr/>
     <div class="form-group reg">
+        <input name="order" class="hidden">
         <div class="row">
             <label class="col-sm-1">姓名</label>
             <div class="col-sm-2">
@@ -91,14 +92,14 @@
                 </div>
             </div>
         </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-            <button class="btn btn-warning btn-block" id="btn-reg-cache-ind">保存</button>
+        <hr/>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <button class="btn btn-warning btn-block" id="btn-reg-ind-cache">保存</button>
+            </div>
+            <div class="col-sm-4"></div>
         </div>
-        <div class="col-sm-4"></div>
     </div>
 </div>
 <!-- The code above creates the individual form -->
@@ -140,8 +141,8 @@
             <td class="islam"></td>
             <td>
                 <div class="btn-group-xs btn-group">
-                    <button class="btn btn-primary">修改</button>
-                    <button class="btn btn-danger">删除</button>
+                    <button class="btn btn-primary btn-reg-ind-update">修改</button>
+                    <button class="btn btn-danger btn-reg-ind-delete">删除</button>
                 </div>
             </td>
         </tr>
@@ -167,8 +168,14 @@
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
     });
-    $("#btn-reg-cache-ind").click(function() {
-        cacheIndividual();
+    $("#btn-reg-ind-cache").click(function() {
+        cacheIndividual($(".reg").find("[name='order']").val());
+    });
+    $(".btn-reg-ind-update").click(function() {
+        editIndividual($(this));
+    });
+    $(".btn-reg-ind-delete").click(function() {
+        removeIndividual($(this));
     });
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
@@ -176,13 +183,13 @@
     var SHIMANO_MTB = <?=json_encode($GLOBALS['SHIMANO_MTB'])?>;
     var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
-    var TF =<?=json_encode($GLOBALS['TF'])?>;
+    var TF = <?=json_encode($GLOBALS['TF'])?>;
+    var IFRACE = <?=json_encode($GLOBALS['IFRACE'])?>;
     var data = [];
     if ($.cookie('individual')) {
         data = $.parseJSON($.cookie('individual'));
     } else if (<?=count($individual)?>){
         data = <?=json_encode($individual)?>;
-        alert('test');
     }
     $(document).ready(function() {
         reloadIndividual();

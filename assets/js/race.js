@@ -20,11 +20,18 @@ function addIndividual() {
  * This function removes an existing person item.
  */
 function removeIndividual(item) {
-    item.closest(".individual-form").remove();
-    if ($(".individual-form").length == 1) {
-        addIndividual();
-    }
+    var order = getOrder(item);
+    data.splice(order, 1);
+    $.cookie('individual', JSON.stringify(data));
+    reloadIndividual();
     refreshOrder();
+}
+
+/*
+ * This function gets the order of an individual.
+ */
+function getOrder(item) {
+    return item.closest(".ind-item").find(".order").text() - 1;
 }
 
 /*
@@ -184,7 +191,10 @@ function postSignup() {
  * This function is called when clicking 'save'.
  * It will store the individual information into cookie.
  */
-function cacheIndividual() {
+function cacheIndividual(order) {
+    if (order == "") {
+        order = data.length + 1;
+    }
     var name = $("[name='name']").val();
     var gender = $("[name='gender']").val();
     var tel = $("[name='tel']").val();
@@ -198,7 +208,8 @@ function cacheIndividual() {
     var ifteam = $("[name='ifteam']").prop('checked');
     var shimano16 = $("[name='shimano16']").val();
     var shimano17 = $("[name='shimano17']").val();
-    var item = {
+    data[order - 1] = {
+        order: order,
         name: name,
         gender: gender,
         id_card: id_card,
@@ -213,10 +224,10 @@ function cacheIndividual() {
         shimano16: shimano16,
         shimano17: shimano17
     };
-    data.push(item);
     $.cookie('individual', JSON.stringify(data));
-    fillIndividual(item);
+    reloadIndividual();
     refreshOrder();
+    resetIndividual();
 }
 
 /*
@@ -242,9 +253,62 @@ function fillIndividual(item) {
  * This function reloads the data in the cookie.
  */
 function reloadIndividual() {
+    $(".ind-item:not(:hidden)").remove();
     $.each(data, function(order, item) {
         fillIndividual(item);
     })
+}
+
+/*
+ * This function fetches a certain row of .ind-list and fill it into the form.
+ */
+function fetchIndividual(order) {
+    var item = data[order];
+    var form = $(".reg");
+    form.find("[name='order']").val(item.order);
+    form.find("[name='name']").val(item.name);
+    form.find("[name='tel']").val(item.tel);
+    form.find("[name='id_card']").val(item.id_card);
+    form.find("[name='accommodation']").val(item.accommodation);
+    form.find("[name='gender']").val(item.gender);
+    form.find("[name='race']").val(item.race);
+    form.find("[name='shimano16']").val(item.shimano16);
+    form.find("[name='shimano17']").val(item.shimano17);
+    form.find("[name='ifrace']").val(item.ifrace);
+    form.find("[name='islam']").val(item.islam);
+    form.find("[name='ifteam']").prop('checked', item.ifteam);
+    form.find("[name='meal16']").prop('checked', item.meal16);
+    form.find("[name='meal17']").prop('checked', item.meal17);
+}
+
+/*
+ * This function is called when 'edit' button is clicked.
+ * It fills the form with existing data for editing.
+ */
+function editIndividual(item) {
+    order = getOrder(item);
+    fetchIndividual(order);
+}
+
+/*
+ * This function resets the individual form.
+ */
+function resetIndividual() {
+    var form = $(".reg");
+    form.find("[name='order']").val("");
+    form.find("[name='name']").val("");
+    form.find("[name='tel']").val("");
+    form.find("[name='id_card']").val("");
+    form.find("[name='accommodation']").val("0");
+    form.find("[name='gender']").val("1");
+    form.find("[name='race']").val("0");
+    form.find("[name='shimano16']").val("0");
+    form.find("[name='shimano17']").val("0");
+    form.find("[name='ifrace']").val("0");
+    form.find("[name='islam']").val("0");
+    form.find("[name='ifteam']").prop('checked', false);
+    form.find("[name='meal16']").prop('checked', false);
+    form.find("[name='meal17']").prop('checked', false);
 }
 
 /*
