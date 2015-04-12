@@ -77,6 +77,15 @@
 
 }
 
+.pagebody {
+  width: 1000px;
+  height: auto;
+  min-height: 500px;
+  margin: 0 auto;
+  padding: 8px 0 0 0;
+  background: #fff;
+}
+
 .pgleft {
   width: 270px;
   float: left;

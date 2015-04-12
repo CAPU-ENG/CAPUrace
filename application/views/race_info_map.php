@@ -7,3 +7,4 @@
 	<img src="/assets/images/map.jpg" class="center-block"></img>
 </div>
 </div>
+</div>

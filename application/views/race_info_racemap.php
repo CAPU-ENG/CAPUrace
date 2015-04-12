@@ -7,3 +7,4 @@
 	<img src="/assets/images/racemap.jpg" class="center-block" width="660px"></img>
 </div>
 </div>
+</div>

@@ -8,3 +8,4 @@
 	<img src="/assets/images/racemap.jpg" class="center-block"></img>
 </div>
 </div>
+</div>

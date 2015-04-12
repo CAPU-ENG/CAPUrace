@@ -1,3 +1,4 @@
+<div class="pagebody">
 <div class="pgleft">
 	<div class="navi-top"><h4>赛事专题</h4></div>
 	<div class="navi">
