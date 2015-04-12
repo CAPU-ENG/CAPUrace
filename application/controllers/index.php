@@ -67,5 +67,11 @@ class Index extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function signup_info() {
+        $this->load->view('header');
+        $this->load->view('signup_info');
+        $this->load->view('footer');
+    }
+
 
 }
