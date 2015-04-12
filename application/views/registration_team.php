@@ -2,28 +2,42 @@
     <h3>请录入团队信息</h3>
     <hr/>
     <div class="form-group reg">
-        <label class="col-sm-1">序号</label>
-        <label class="col-sm-3">第一棒</label>
-        <label class="col-sm-3">第二棒</label>
-        <label class="col-sm-3">第三棒</label>
+        <label class="col-sm-2">序号</label>
+        <label class="col-sm-2">第一棒</label>
+        <label class="col-sm-2">第二棒</label>
+        <label class="col-sm-2">第三棒</label>
+        <label class="col-sm-2">第四棒</label>
         <br/><br/>
         <div class="team-form hidden">
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <p class="order"></p>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <select class="form-control" name="first">
-
+                    <?php foreach ($male as $item_male): ?>
+                    <option value="<?=$item_male['key']?>"><?=$item_male['name']?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <select class="form-control" name="second">
-
+                    <?php foreach ($male as $item_male): ?>
+                        <option value="<?=$item_male['key']?>"><?=$item_male['name']?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <select class="form-control" name="third">
-
+                    <?php foreach ($female as $item_female): ?>
+                        <option value="<?=$item_female['key']?>"><?=$item_female['name']?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control" name="fourth">
+                    <?php foreach ($male as $item_male): ?>
+                        <option value="<?=$item_male['key']?>"><?=$item_male['name']?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="col-sm-2">
