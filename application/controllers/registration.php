@@ -54,6 +54,7 @@ class Registration extends CI_Controller {
                     $item_post['key'] = individual_encode($item_post);
                     if (strcmp($item_db['key'], $item_post['key']) == 0) {
                         $flag = true;
+                        unset($item_post['team_id']);
                         $this->people->update_individual($item_db['id'], $item_post);
                         break;
                     }
