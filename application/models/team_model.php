@@ -52,8 +52,15 @@ class Team_model extends CI_Model {
      *
      */
     public function get_team_from_school($school_id) {
+        $this->load->model('people_model', 'people');
         $query = $this->db->where('school_id', $school_id)->where('deleted', false)->get('team');
-        return $query->result_array();
+        $teams = $query->result_array();
+        foreach ($teams as $key => $item) {
+            if (!$this->people->is_exist($item['key'])) {
+                $teams[$key]['key'] = '0';
+            }
+        }
+        return $teams;
     }
 
 }
