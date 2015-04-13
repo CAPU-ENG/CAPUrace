@@ -248,7 +248,7 @@ function fillIndividual(item) {
     elem.find(".tel").text(item.tel);
     elem.find(".race").text(CAPURACE[item.race]);
     if (item.ifteam) {
-        elem.find(".race").append(' 团体赛');
+        elem.find(".race").append(' 团体赛 ');
     }
     elem.find(".islam").text(JUDGE[item.islam]);
     elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
