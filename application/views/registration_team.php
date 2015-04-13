@@ -3,10 +3,10 @@
     <hr/>
     <div class="form-group reg">
         <label class="col-sm-2">序号</label>
-        <label class="col-sm-2">第一棒</label>
-        <label class="col-sm-2">第二棒</label>
-        <label class="col-sm-2">第三棒</label>
-        <label class="col-sm-2">第四棒</label>
+        <label class="col-sm-2">第一棒（男生）</label>
+        <label class="col-sm-2">第二棒（男生）</label>
+        <label class="col-sm-2">第三棒（女生）</label>
+        <label class="col-sm-2">第四棒（男生）</label>
         <br/><br/>
         <div class="team-form hidden">
             <div class="row team-item">
