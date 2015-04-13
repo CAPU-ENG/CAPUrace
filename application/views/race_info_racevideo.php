@@ -4,8 +4,8 @@
 <div class="content">
 	<h3 class="text-center">赛场视频</h3>
 	<hr>
-    <div class="center-video">
-        <embed src="http://player.youku.com/player.php/sid/XODg4NTEyNjQw/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+    <div>
+    	<iframe height="498" width="645" src="http://player.youku.com/embed/XOTI5ODkyMTU2" frameborder=0 allowfullscreen></iframe>
     </div>
 </div>
 </div>
