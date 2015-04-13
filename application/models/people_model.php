@@ -87,7 +87,7 @@ class People_model extends CI_Model {
      *
      */
     public function get_male_athlete_from_school($school_id) {
-        $query = $this->db->where('school_id', $school_id)->where('gender', 1)->where('race', 1)->where('deleted', false)->get('people');
+        $query = $this->db->where('school_id', $school_id)->where('gender', 1)->where('ifteam', 1)->where('deleted', false)->get('people');
         return $query->result_array();
     }
 
@@ -102,8 +102,16 @@ class People_model extends CI_Model {
      *
      */
     public function get_female_athlete_from_school($school_id) {
-        $query = $this->db->where('school_id', $school_id)->where('gender', 2)->where('race', 1)->where('deleted', false)->get('people');
+        $query = $this->db->where('school_id', $school_id)->where('gender', 2)->where('ifteam', 1)->where('deleted', false)->get('people');
         return $query->result_array();
+    }
+
+    /*
+     * Check the person with a certain key is deleted or not.
+     */
+    public function is_exist($key) {
+        $query = $this->db->where('key', $key)->where('ifteam', true)->where('deleted', false)->get('people');
+        return ($query->num_rows() > 0);
     }
 
     /*

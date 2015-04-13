@@ -42,8 +42,23 @@ class Team_model extends CI_Model {
      * $school_id, the id of the school from which the team is.
      */
     public function add_team($data, $school_id) {
-        $data = array_merge($data, array('school_id', $school_id));
+        $data = array_merge($data, array('school_id' => $school_id));
         $this->db->insert('team', $data);
+    }
+
+    /*
+     * Update an existing team.
+     */
+    public function update_team($data, $school_id) {
+        $data = array_merge($data, array('school_id' => $school_id));
+        $this->db->where('school_id', $school_id)->where('order', $data['order'])->update('team', $data);
+    }
+
+    /*
+     * Delete a team.
+     */
+    public function delete_team($id) {
+        $this->db->where('id', $id)->update('team', array('deleted' => true));
     }
 
     /*
@@ -51,9 +66,25 @@ class Team_model extends CI_Model {
      * interpreting the ids into names.
      *
      */
-    public function get_team_by_school($school_id) {
-        $query = $this->db->where('school_id', $school_id)->get('team');
-        return $query->result_array();
+    public function get_team_from_school($school_id) {
+        $this->load->model('people_model', 'people');
+        $query = $this->db->where('school_id', $school_id)->where('deleted', false)->get('team');
+        $teams = $query->result_array();
+        foreach ($teams as $key => $item) {
+            if (!$this->people->is_exist($item['first'])) {
+                $teams[$key]['first'] = '0';
+            }
+            if (!$this->people->is_exist($item['second'])) {
+                $teams[$key]['second'] = '0';
+            }
+            if (!$this->people->is_exist($item['third'])) {
+                $teams[$key]['third'] = '0';
+            }
+            if (!$this->people->is_exist($item['fourth'])) {
+                $teams[$key]['fourth'] = '0';
+            }
+        }
+        return $teams;
     }
 
 }
