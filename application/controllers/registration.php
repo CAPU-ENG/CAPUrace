@@ -101,14 +101,14 @@ class Registration extends CI_Controller {
                 for ($i = 0; $i < $n_db; $i++) {
                     $this->team->update_team($team_post[$i], $school_id);
                 }
-                for (; $i < $n_post; $i++) {
+                for ($i = $n_db; $i < $n_post; $i++) {
                     $this->team->add_team($team_post[$i], $school_id);
                 }
             } else {
                 for ($i = 0; $i < $n_post; $i++) {
                     $this->team->update_team($team_post[$i], $school_id);
                 }
-                for (; $i < $n_db; $i++) {
+                for ($i = $n_post; $i < $n_db; $i++) {
                     $this->team->delete_team($team_db[$i]['id'], $school_id);
                 }
             }
