@@ -81,9 +81,9 @@
     $("#btn-reg-team-submit").click(function() {
         window.location.href = "<?=site_url('registration/result')?>";
     });
-    $(window).on('beforeunload', function() {
+/*    $(window).on('beforeunload', function() {
         cacheTeam();
-    });
+    });*/
     $("#return-to-ind").click(function() {
         cacheTeam();
         window.location.href = "<?=site_url('registration/individual')?>";

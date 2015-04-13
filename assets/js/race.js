@@ -39,7 +39,7 @@ function getOrder(item) {
  */
 function addTeam() {
     elem = $(".team-form:first").clone(true).removeClass("hidden");
-    elem.find(".order").text($(".team-form").length);
+    elem.find(".order").text($(".team-form").find(".team-item").length);
     $(".reg").append(elem);
 }
 
@@ -47,10 +47,12 @@ function addTeam() {
  * This function removes an existing team item.
  */
 function removeTeam(item) {
-    item.closest(".team-form").remove();
+    item.closest(".team-item").remove();
+/*    var order = elem.find(".order").text() - 1;
+    data.splice(order, 1);
     if ($(".team-form").length == 1) {
         addTeam();
-    }
+    }*/
     refreshOrder();
 }
 
@@ -332,7 +334,6 @@ function postIndividual() {
     $.post(controller, item, function(response) {
         if (response.code != "200") {
             alert(response.msg);
-            return;
         } else {
             window.location.assign(directto);
         }
@@ -347,15 +348,17 @@ function reloadTeam() {
         addTeam();
         return;
     }
+    $(".team-form:not(:hidden)").remove();
     $.each(data, function(order, item) {
         addTeam();
         elem = $(".team-item:last");
-        elem.find("[name='order']").text(item.order);
+        elem.find(".order").text(item.order);
         elem.find("[name='first']").val(item.first);
         elem.find("[name='second']").val(item.second);
         elem.find("[name='third']").val(item.third);
         elem.find("[name='fourth']").val(item.fourth);
     });
+    refreshOrder();
 }
 
 /*
@@ -363,20 +366,22 @@ function reloadTeam() {
  * It restores the team info into cookie.
  */
 function cacheTeam() {
-    $(".team-form:not(:hidden)").each(function() {
-        var order = $(".order", this).val();
+    data = [];
+    $(".team-form:not(:hidden)").find(".team-item").each(function() {
+        var order = $(".order", this).text();
         var first = $("select[name='first']", this).val();
         var second = $("select[name='second']", this).val();
         var third = $("select[name='third']", this).val();
         var fourth = $("select[name='fourth']", this).val();
-        data[data.length] = {
+        data[order - 1] = {
             order: order,
             first: first,
             second: second,
-            third: third
+            third: third,
+            fourth: fourth
         };
-        $.cookie('team', JSON.stringify(data));
     });
+    $.cookie('team', JSON.stringify(data));
 }
 
 /*
