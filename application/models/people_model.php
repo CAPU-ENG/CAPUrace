@@ -110,7 +110,7 @@ class People_model extends CI_Model {
      * Check the person with a certain key is deleted or not.
      */
     public function is_exist($key) {
-        $query = $this->db->where('key', $key)->where('ifteam', true)->where('delete', false)->get('people');
+        $query = $this->db->where('key', $key)->where('ifteam', true)->where('deleted', false)->get('people');
         return ($query->num_rows() > 0);
     }
 

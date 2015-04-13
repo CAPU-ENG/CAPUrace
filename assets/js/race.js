@@ -389,6 +389,7 @@ function cacheTeam() {
  * It post the data to the controller.
  */
 function postTeam() {
+    cacheTeam();
     var item = {
         data: data
     };

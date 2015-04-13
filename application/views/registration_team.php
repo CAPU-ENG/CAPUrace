@@ -79,7 +79,7 @@
         reloadTeam();
     });
     $("#btn-reg-team-submit").click(function() {
-        window.location.href = "<?=site_url('registration/result')?>";
+        postTeam();
     });
 /*    $(window).on('beforeunload', function() {
         cacheTeam();
