@@ -1,10 +1,6 @@
 <div class="regcontainer">
-  <h3>报名须知</h3>
-  <p class="text-justify">
-    balabala
-    <br/>
-    balabala
-  </p>
+  <iframe src="/assets/images/signup.pdf" class="center-block" width="800px" height="3900px" style="margin-top:-110px"></iframe>
+  
   <div class="row">
     <div class="col-sm-4">
     </div>
