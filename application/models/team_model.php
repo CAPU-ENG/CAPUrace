@@ -51,8 +51,8 @@ class Team_model extends CI_Model {
      * interpreting the ids into names.
      *
      */
-    public function get_team_by_school($school_id) {
-        $query = $this->db->where('school_id', $school_id)->get('team');
+    public function get_team_from_school($school_id) {
+        $query = $this->db->where('school_id', $school_id)->where('deleted', false)->get('team');
         return $query->result_array();
     }
 

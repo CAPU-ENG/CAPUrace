@@ -9,42 +9,46 @@
         <label class="col-sm-2">第四棒</label>
         <br/><br/>
         <div class="team-form hidden">
-            <div class="col-sm-2">
-                <p class="order"></p>
+            <div class="row team-item">
+                <div class="col-sm-2">
+                    <p class="order"></p>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" name="first">
+                        <option value="">--请选择--</option>
+                        <?php foreach ($male as $item): ?>
+                        <option value="<?=$item['key']?>"><?=$item['name']?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" name="second">
+                        <option value="">--请选择--</option>
+                        <?php foreach ($male as $item): ?>
+                            <option value="<?=$item['key']?>"><?=$item['name']?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" name="third">
+                        <option value="">--请选择--</option>
+                        <?php foreach ($female as $item): ?>
+                            <option value="<?=$item['key']?>"><?=$item['name']?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" name="fourth">
+                        <option value="">--请选择--</option>
+                        <?php foreach ($male as $item): ?>
+                            <option value="<?=$item['key']?>"><?=$item['name']?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-danger btn-block" onclick="removeTeam($(this))">删除</button>
+                </div>
             </div>
-            <div class="col-sm-2">
-                <select class="form-control" name="first">
-                    <?php foreach ($male as $item_male): ?>
-                    <option value="<?=$item_male['key']?>"><?=$item_male['name']?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="col-sm-2">
-                <select class="form-control" name="second">
-                    <?php foreach ($male as $item_male): ?>
-                        <option value="<?=$item_male['key']?>"><?=$item_male['name']?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="col-sm-2">
-                <select class="form-control" name="third">
-                    <?php foreach ($female as $item_female): ?>
-                        <option value="<?=$item_female['key']?>"><?=$item_female['name']?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="col-sm-2">
-                <select class="form-control" name="fourth">
-                    <?php foreach ($male as $item_male): ?>
-                        <option value="<?=$item_male['key']?>"><?=$item_male['name']?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-danger btn-block" onclick="removeTeam($(this))">删除</button>
-            </div>
-            <br/>
-            <br/>
         </div>
     </div>
     <hr/>
@@ -62,8 +66,17 @@
     </div>
 </div>
 <script>
+    var controller = "<?=site_url('registration/team')?>";
+    var directto = "<?=site_url('registration/result')?>";
+    var data = [];
+    if ($.cookie('team')) {
+        data = $.parseJSON($.cookie('team'));
+    } else if (<?=count($team)?>){
+        data = <?=json_encode($team)?>;
+        $.cookie('team', JSON.stringify(data));
+    }
     $(document).ready(function() {
-        addTeam();
+        reloadTeam();
     });
     $("#btn-reg-team-submit").click(function() {
         window.location.href = "<?=site_url('registration/result')?>";

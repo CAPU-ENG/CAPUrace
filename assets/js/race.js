@@ -333,9 +333,29 @@ function postIndividual() {
         if (response.code != "200") {
             alert(response.msg);
             return;
+        } else {
+            window.location.assign(directto);
         }
     });
-    window.location.assign(directto);
+}
+
+/*
+ * This function fills the team form using the data from the database.
+ */
+function reloadTeam() {
+    if (data == []) {
+        addTeam();
+        return;
+    }
+    $.each(data, function(order, item) {
+        addTeam();
+        elem = $(".team-item:last");
+        elem.find("[name='order']").text(item.order);
+        elem.find("[name='first']").val(item.first);
+        elem.find("[name='second']").val(item.second);
+        elem.find("[name='third']").val(item.third);
+        elem.find("[name='fourth']").val(item.fourth);
+    });
 }
 
 /*
@@ -343,19 +363,37 @@ function postIndividual() {
  * It restores the team info into cookie.
  */
 function cacheTeam() {
-    var data = [];
-    $(".team-form[class!='team-form hidden']").each(function() {
+    $(".team-form:not(:hidden)").each(function() {
+        var order = $(".order", this).val();
         var first = $("select[name='first']", this).val();
         var second = $("select[name='second']", this).val();
         var third = $("select[name='third']", this).val();
+        var fourth = $("select[name='fourth']", this).val();
         data[data.length] = {
+            order: order,
             first: first,
             second: second,
             third: third
         };
-        $.cookie.json = true;
-        $.cookie('team', data, {path: '/'});
+        $.cookie('team', JSON.stringify(data));
     });
+}
+
+/*
+ * This function is called when clicking 'submit' in the form.
+ * It post the data to the controller.
+ */
+function postTeam() {
+    var item = {
+        data: data
+    };
+    $.post(controller, item, function(response) {
+        if (response.code != "200") {
+            alert(response.msg);
+        } else {
+            window.location.assign(directto);
+        }
+    })
 }
 
 /*
