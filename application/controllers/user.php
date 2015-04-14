@@ -114,8 +114,14 @@ class User extends CI_Controller {
     public function result() {
         $school_id = $this->session->userdata('id');
         $data['individual'] = $this->people->get_people_from_school($school_id);
-        $data['team'] = $this->team->get_team_from_school($school_id);
-        var_dump($GLOBALS['JUDGE']);
+        $team = $this->team->get_team_from_school($school_id);
+        foreach ($team as $key => $item) {
+            $team[$key]['first'] = $this->people->get_name($item['first']);
+            $team[$key]['second'] = $this->people->get_name($item['second']);
+            $team[$key]['third'] = $this->people->get_name($item['third']);
+            $team[$key]['fourth'] = $this->people->get_name($item['fourth']);
+        }
+        $data['team'] = $team;
         $this->load->view('header');
         $this->load->view('user_result', $data);
         $this->load->view('footer');

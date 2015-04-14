@@ -65,6 +65,11 @@
         <?php $i = 1; ?>
         <?php foreach ($team as $item): ?>
             <tr class="team-item">
+                <td><?=$i?></td>
+                <td><?=$item['first']?></td>
+                <td><?=$item['second']?></td>
+                <td><?=$item['third']?></td>
+                <td><?=$item['fourth']?></td>
             </tr>
         <?php
             $i++;
