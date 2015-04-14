@@ -98,6 +98,21 @@ class Team_model extends CI_Model {
     public function update($id, $data) {
         return $this->db->where('id', $id)->update('team', $data);
     }
+
+    public function get_where($where) {
+        $where['team.deleted'] = false;
+        $query = $this->db->select('team.*, first.name, second.name, third.name, users.school')->from('team')->where($where)->join('people as first', 'first.id = team.first')->join('people as second', 'second.id = team.second')->join('people as third', 'third.id = team.third')->join('users', 'users.id = team.school_id')->get();
+        if ($query) {
+            return $query->result_array();
+        }
+        else {
+            return null;
+        }
+    }
+
+    public function all() {
+        return $this->get_where(array());
+    }
 }
 
 /* End of file team_model.php */
