@@ -80,7 +80,7 @@
     <hr/>
     <div class="col-sm-2"></div>
     <div class="col-sm-3">
-        <button id="btn-go-to-pay" class="btn btn-block btn-success">前往支付</button>
+        <button id="btn-go-to-pay" class="btn btn-block btn-success disabled">前往支付（暂未开放）</button>
     </div>
     <div class="col-sm-2"></div>
     <div class="col-sm-3">
