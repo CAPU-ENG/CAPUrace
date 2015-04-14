@@ -1,3 +1,3 @@
 <a href="<?=site_url('registration')?>">
-	<img src="/assets/images/content.jpg"></img>
+	<img src="<?=base_url()?>/assets/images/content.jpg"></img>
 </a>
