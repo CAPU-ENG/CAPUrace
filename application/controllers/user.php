@@ -17,6 +17,8 @@ class User extends CI_Controller {
         $this->load->helper(array('form', 'url', 'html', 'lib'));
         $this->load->library(array('email', 'form_validation', 'session'));
         $this->load->model('user_model', 'user');
+        $this->load->model('people_model', 'people');
+        $this->load->model('team_model', 'team');
     }
 
     /*
@@ -110,8 +112,12 @@ class User extends CI_Controller {
      * Show registration result for the user.
      */
     public function result() {
+        $school_id = $this->session->userdata('id');
+        $data['individual'] = $this->people->get_people_from_school($school_id);
+        $data['team'] = $this->team->get_team_from_school($school_id);
+        var_dump($GLOBALS['JUDGE']);
         $this->load->view('header');
-        $this->load->view('user_result');
+        $this->load->view('user_result', $data);
         $this->load->view('footer');
     }
 
