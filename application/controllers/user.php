@@ -107,6 +107,15 @@ class User extends CI_Controller {
     }
 
     /*
+     * Show registration result for the user.
+     */
+    public function result() {
+        $this->load->view('header');
+        $this->load->view('user_result');
+        $this->load->view('footer');
+    }
+
+    /*
      * Activate the account.
      */
     public function activate() {

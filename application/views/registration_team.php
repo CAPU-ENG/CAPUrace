@@ -67,7 +67,7 @@
 </div>
 <script>
     var controller = "<?=site_url('registration/team')?>";
-    var directto = "<?=site_url('registration/result')?>";
+    var directto = "<?=site_url('user/result')?>";
     var data = [];
     if ($.cookie('team')) {
         data = $.parseJSON($.cookie('team'));
