@@ -116,13 +116,4 @@ class Registration extends CI_Controller {
             exit(err_msg($err_code));
         }
     }
-
-    /*
-     * Show registration result for the user.
-     */
-    public function result() {
-        $this->load->view('header');
-        $this->load->view('registration_result');
-        $this->load->view('footer');
-    }
 }

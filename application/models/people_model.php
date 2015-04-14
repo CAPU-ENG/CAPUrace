@@ -21,8 +21,8 @@ class People_model extends CI_Model {
     /*
      * Get a person's name.
      */
-    public function get_name($id) {
-        $res = $this->db->select('name')->where('id', $id)->get('people')->row_array();
+    public function get_name($key) {
+        $res = $this->db->select('name')->where('key', $key)->get('people')->row_array();
         return $res['name'];
     }
 
