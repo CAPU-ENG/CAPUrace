@@ -54,29 +54,33 @@ class Admin extends CI_Controller {
                 )//,
                 //'team_id' => array(
                     //'type' => 'foreignkey',
-                    //'references' => 'team'
+                    //'references' => 'team',
+                    //'nullable' => true
                 //)
             ),
             /*'team' => array(
                 'first' => array(
                     'type' => 'foreignkey',
                     'references' => 'people',
+                    'join_alias' => 'first',
                     'display_column' => 'name'
                 ),
                 'second' => array(
                     'type' => 'foreignkey',
                     'references' => 'people',
+                    'join_alias' => 'second',
                     'display_column' => 'name'
                 ),
                 'third' => array(
                     'type' => 'foreignkey',
                     'references' => 'people',
+                    'join_alias' => 'third',
                     'display_column' => 'name'
                 ),
                 'school_id' => array(
                     'type' => 'foreignkey',
-                    'references' => 'users',
-                    'display_column' => 'name'
+                    'references' => 'user',
+                    'display_column' => 'school'
                 )
             ),
              */
@@ -252,11 +256,25 @@ class Admin extends CI_Controller {
     }
 
     public function modify($what, $wid) {
+        function parse_null($arr, $thiss, $what) {
+            foreach($arr as $entry => $value) {
+                if (isset($thiss->tables[$what][$entry])) {
+                    if ($thiss->tables[$what][$entry]['type'] === 'foreignkey' && $value === 'NULL') {
+                        $arr[$entry] = NULL;
+                    }
+                }
+                else {
+                    unset($arr[$entry]);
+                }
+            }
+            return $arr;
+        }
         $this->check_permission();
         $model = $this->get_model($what);
         if ($model === NULL) {
             show_404('');
         }
+        $post = parse_null(array($this->input->post()), $this, $what);
         $foreign_keys = array();
         foreach ($this->tables[$what] as $entry => $description) {
             if ($description['type'] !== 'foreignkey') {
@@ -266,7 +284,8 @@ class Admin extends CI_Controller {
                 continue;
             }
             $foreign_model = $this->get_model($description['references']);
-            $foreign_keys[$entry] = $foreign_model->all();
+            $foreign_keys[$entry] = array('records' => $foreign_model->all(),
+                'format' => $description);
         }
         $request_method = $this->input->server('REQUEST_METHOD');
         if ($wid === 'new') {
@@ -282,10 +301,10 @@ class Admin extends CI_Controller {
                 return;
             }
             else if ($request_method == 'POST') {
-                if (!$model->insert($this->input->post())) {
+                if (!$model->insert($post)) {
                     $error_no = $this->db->_error_number();
                     $info = $this->db->_error_message();
-                    $row = $this->input->post();
+                    $row = $post;
                 }
                 else {
                     $error_no = 0;
@@ -311,7 +330,7 @@ class Admin extends CI_Controller {
                 show_404('');
             }
             if ($this->input->server('REQUEST_METHOD') === 'POST') {
-                if (!$model->update($wid, $this->input->post())) {
+                if (!$model->update($wid, $post)) {
                     $error_no = $this->db->_error_number();
                     $info = $this->db->_error_message();
                 }

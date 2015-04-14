@@ -46,7 +46,7 @@ if (!function_exists('render_input')) {
             $result .= '" name="';
             $result .= $entry;
             $result .= '">';
-            foreach ($foreign_keys[$entry] as $foreign_row) {
+            foreach ($foreign_keys[$entry]['records'] as $foreign_row) {
                 $result .= '<option value="';
                 $result .= (string)$foreign_row['id'];
                 if ($selected === $foreign_row['id']) {
@@ -60,6 +60,9 @@ if (!function_exists('render_input')) {
                     $result .= (string)$foreign_row['id'];
                 }
                 $result .= '</option>';
+            }
+            if (isset($foreign_keys[$entry]['format']['nullable']) and $foreign_keys[$entry]['format']['nullable']) {
+                $result .= '<option value="NULL">没有</option>';
             }
             $result .= '</select>';
             return $result;
