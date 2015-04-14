@@ -91,6 +91,6 @@
 </div>
 <script>
     $("#btn-return-to-index").click(function() {
-        window.location.assign(<?=site_url('index')?>);
+        window.location.assign("<?=site_url('index')?>");
     })
 </script>

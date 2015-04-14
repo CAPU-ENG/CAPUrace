@@ -56,6 +56,7 @@
               欢迎你，<?=$this->session->userdata('school')?><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#">修改资料</a></li>
+              <li><a href="<?=site_url('user/result')?>">查看报名结果</a></li>
               <li class="divider"></li>
               <li><a href="<?=site_url('user/logout')?>">注销</a></li>
             </ul>
