@@ -77,15 +77,20 @@
         ?>
         </tbody>
     </table>
+    <hr/>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
+        <button id="btn-go-to-pay" class="btn btn-block btn-success">前往支付</button>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
+        <button id="btn-return-to-index" class="btn btn-block btn-primary">返回主页</button>
+    </div>
+    <div class="col-sm-2"></div>
 
 </div>
 <script>
-/*    var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
-    var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
-    var SHIMANO_RDB = <?=json_encode($GLOBALS['SHIMANO_RDB'])?>;
-    var SHIMANO_MTB = <?=json_encode($GLOBALS['SHIMANO_MTB'])?>;
-    var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
-    var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
-    var TF = <?=json_encode($GLOBALS['TF'])?>;
-    var IFRACE = <?=json_encode($GLOBALS['IFRACE'])?>;*/
+    $("#btn-return-to-index").click(function() {
+        window.location.assign(<?=site_url('index')?>);
+    })
 </script>
