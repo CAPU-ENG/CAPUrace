@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-<link href="/assets/css/style.css" rel="stylesheet">
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/jquery.md5.js"></script>
-<script src="/assets/js/jquery.cookie.js"></script>
-<script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/race.js"></script>
+<link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?=base_url()?>/assets/css/style.css" rel="stylesheet">
+<script src="<?=base_url()?>/assets/js/jquery.min.js"></script>
+<script src="<?=base_url()?>/assets/js/jquery.md5.js"></script>
+<script src="<?=base_url()?>/assets/js/jquery.cookie.js"></script>
+<script src="<?=base_url()?>/assets/js/bootstrap.min.js"></script>
+<script src="<?=base_url()?>/assets/js/race.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
