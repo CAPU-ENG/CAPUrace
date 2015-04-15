@@ -202,5 +202,12 @@ $ACCOMMODATION = array(
     '3' => '露营（租用帐篷）'
 );
 
+$ACCO_FEE = array(
+    '0' => 0,
+    '1' => 50,
+    '2' => 30,
+    '3' => 30
+);
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

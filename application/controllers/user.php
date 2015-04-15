@@ -113,6 +113,9 @@ class User extends CI_Controller {
      */
     public function result() {
         $school_id = $this->session->userdata('id');
+        if ($school_id == "") {
+            redirect(site_url('user/login'));
+        }
         $data['individual'] = $this->people->get_people_from_school($school_id);
         $team = $this->team->get_team_from_school($school_id);
         foreach ($team as $key => $item) {
