@@ -18,6 +18,7 @@ class Registration extends CI_Controller {
         $this->load->helper(array('url', 'lib'));
         $this->load->model('people_model', 'people');
         $this->load->model('team_model', 'team');
+        $this->load->model('user_model', 'user');
 
         if (! $this->session->userdata('logged_in')) {
             redirect(site_url('user/login'), 'refresh');
@@ -48,6 +49,7 @@ class Registration extends CI_Controller {
             $ind_db = $this->people->get_people_from_school($school_id);
             //There should be some validations here.
             header('Content-Type: application/json');
+            $bill = 0;
             foreach ($ind_db as $item_db) {
                 $flag = false;
                 $i = 0;
@@ -56,7 +58,10 @@ class Registration extends CI_Controller {
                     if (strcmp($item_db['key'], $item_post['key']) == 0) {
                         $flag = true;
                         unset($item_post['team_id']);
+                        $fee = get_bill($item_post);
+                        $item_post['fee'] = $fee;
                         $this->people->update_individual($item_db['id'], $item_post);
+                        $bill += $fee;
                         break;
                     }
                     $i++;
@@ -70,8 +75,12 @@ class Registration extends CI_Controller {
             foreach ($ind_post as $item_post) {
                 $item_post['key'] = individual_encode($item_post);
                 unset($item_post['order']);
+                $fee = get_bill($item_post);
+                $item_post['fee'] = $fee;
+                $bill += $fee;
                 $this->people->add_people($item_post, $school_id);
             }
+            $this->user->set_bill($school_id, $bill);
             $err_code = '200';
             exit(err_msg($err_code));
         }

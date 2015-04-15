@@ -12,6 +12,7 @@
             <th>手机号</th>
             <th>邮寄地址</th>
             <th>邮政编码</th>
+            <th>费用合计</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
             <td><?=$userinfo['tel']?></td>
             <td><?=$userinfo['address']?></td>
             <td><?=$userinfo['zipcode']?></td>
+            <td><?=$userinfo['bill']?></td>
         </tr>
         </tbody>
     </table>
@@ -42,6 +44,7 @@
             <th>5.16晚餐</th>
             <th>5.17午餐</th>
             <th>清真</th>
+            <th>费用</th>
         </tr>
         </thead>
         <tbody class="ind-list">
@@ -66,6 +69,7 @@
             <td class="meal16"><?=$GLOBALS['JUDGE'][$item['meal16']]?></td>
             <td class="meal17"><?=$GLOBALS['JUDGE'][$item['meal17']]?></td>
             <td class="islam"><?=$GLOBALS['JUDGE'][$item['islam']]?></td>
+            <td class="fee"><?=$item['fee']?></td>
         </tr>
         <?php
             $i++;
@@ -117,5 +121,5 @@
 <script>
     $("#btn-return-to-index").click(function() {
         window.location.assign("<?=site_url('index')?>");
-    })
+    });
 </script>

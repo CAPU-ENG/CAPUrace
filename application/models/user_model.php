@@ -148,6 +148,13 @@ class User_model extends CI_Model {
     }
 
     /*
+     * Set the bill to the user.
+     */
+    public function set_bill($id, $bill) {
+        $this->db->where('id', $id)->update('users', array('bill' => $bill));
+    }
+
+    /*
      * Add the user to a group.
      *
      * ====argument====
