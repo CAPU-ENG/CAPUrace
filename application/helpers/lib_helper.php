@@ -152,3 +152,36 @@ if (! function_exists('get_bill')) {
         return $fee;
     }
 }
+
+/*
+ * Validation for name.
+ */
+if (! function_exists('validate_name')) {
+    function validate_name($name) {
+        if (strlen($name) < 6) return false; // The length of two Chinese characters is 6.
+        // NOTE(huxuan): We may add more validation here in the future.
+        return true;
+    }
+}
+
+/*
+ * Validation for mobile number.
+ */
+if (! function_exists('validate_mobile')) {
+    function validate_mobile($tel) {
+        if (strlen($tel) != 11) return false;
+        // NOTE(huxuan): We may add more validation here in the future.
+        return true;
+    }
+}
+
+/*
+ * Validation for id card.
+ */
+if (! function_exists('validate_id_card')) {
+    function validate_id_card($id_card) {
+        if (!in_array(strlen($id_card), array(15, 18))) return false;
+        // NOTE(huxuan): We may add more validation here in the future.
+        return true;
+    }
+}
