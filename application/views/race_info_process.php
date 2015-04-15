@@ -1,5 +1,4 @@
 <div class="pgright">
-<img src="<?=base_url()?>/assets/images/go.png"></img>
 
 <div class="content">
 <div id="articlebox">
