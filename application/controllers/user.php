@@ -122,6 +122,7 @@ class User extends CI_Controller {
             $team[$key]['fourth'] = $this->people->get_name($item['fourth']);
         }
         $data['team'] = $team;
+        $data['userinfo'] = $this->user->get_user_by_id($school_id);
         $this->load->view('header');
         $this->load->view('user_result', $data);
         $this->load->view('footer');
