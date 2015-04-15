@@ -2,6 +2,31 @@
     <h3>请确认报名信息</h3>
     <hr/>
 
+    <table class="table">
+        <thead>
+        <tr>
+            <th>学校名称</th>
+            <th>车协名称</th>
+            <th>领队姓名</th>
+            <th>电子邮箱</th>
+            <th>手机号</th>
+            <th>邮寄地址</th>
+            <th>邮政编码</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><?=$userinfo['school']?></td>
+            <td><?=$userinfo['association_name']?></td>
+            <td><?=$userinfo['leader']?></td>
+            <td><?=$userinfo['mail']?></td>
+            <td><?=$userinfo['tel']?></td>
+            <td><?=$userinfo['address']?></td>
+            <td><?=$userinfo['zipcode']?></td>
+        </tr>
+        </tbody>
+    </table>
+
     <table class="table table-hover">
         <thead>
         <tr>
