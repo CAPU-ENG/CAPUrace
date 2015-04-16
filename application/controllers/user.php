@@ -138,6 +138,6 @@ class User extends CI_Controller {
     public function activate() {
         $this->load->model('user_model', 'user');
         $token = $this->uri->segment(3);
-        echo $this->user->activate($token);
+        $this->load->view('activate', array('msg' => $this->user->activate($token)));
     }
 }
