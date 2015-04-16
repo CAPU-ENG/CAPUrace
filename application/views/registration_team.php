@@ -89,7 +89,9 @@
         addTeam();
     });
     $("#btn-reg-team-delete").click(function() {
-        removeTeam($(this));
+        if (confirm("确认删除？") == true) {
+            removeTeam($(this));
+        }
     });
 /*    $(window).on('beforeunload', function() {
         cacheTeam();
