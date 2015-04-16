@@ -347,7 +347,7 @@ function postIndividual() {
  * This function fills the team form using the data from the database.
  */
 function reloadTeam() {
-    if (data == []) {
+    if (data.length == 0) {
         addTeam();
         return;
     }
