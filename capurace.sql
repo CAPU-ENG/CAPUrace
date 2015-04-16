@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.7
+-- version 4.3.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 15, 2015 at 06:50 AM
--- Server version: 5.6.22
+-- Generation Time: Apr 16, 2015 at 12:05 AM
+-- Server version: 5.6.23
 -- PHP Version: 5.5.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `capurace`
 --
+CREATE DATABASE IF NOT EXISTS `capurace` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `capurace`;
 
 -- --------------------------------------------------------
 
@@ -26,8 +28,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `people`
 --
 
+DROP TABLE IF EXISTS `people`;
 CREATE TABLE IF NOT EXISTS `people` (
   `id` int(5) unsigned NOT NULL,
+  `order` int(11) NOT NULL,
   `key` text NOT NULL,
   `name` varchar(10) NOT NULL,
   `gender` tinyint(4) NOT NULL,
@@ -53,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `people` (
 -- Table structure for table `team`
 --
 
+DROP TABLE IF EXISTS `team`;
 CREATE TABLE IF NOT EXISTS `team` (
   `id` smallint(5) unsigned NOT NULL,
   `order` int(11) NOT NULL,
@@ -70,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `team` (
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` smallint(5) unsigned NOT NULL,
   `school` varchar(30) NOT NULL,
