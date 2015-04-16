@@ -59,6 +59,8 @@ class User extends CI_Controller {
                 $this->session->set_userdata('logged_in', true);
                 $this->session->set_userdata('id', $user_info['id']);
                 $this->session->set_userdata('school', $user_info['school']);
+                delete_cookie('individual');
+                delete_cookie('team');
             }
 
             exit(err_msg($err_code));
