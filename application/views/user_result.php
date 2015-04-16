@@ -110,19 +110,27 @@
         </tbody>
     </table>
     <hr/>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-3">
-        <button id="btn-go-to-pay" class="btn btn-block btn-success disabled">前往支付（暂未开放）</button>
+
+    <div style="margin:0 auto;">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-2">
+            <button id="btn-go-to-pay" class="btn btn-block btn-success disabled">前往支付（暂未开放）</button>
+        </div>
+        <div class="col-sm-2">
+            <button id="btn-return-to-signup" class="btn btn-block btn-warning">修改报名信息</button>
+        </div>
+        <div class="col-sm-2">
+            <button id="btn-return-to-index" class="btn btn-block btn-primary">返回主页</button>
+        </div>
+        <div class="col-sm-3"></div>
     </div>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-3">
-        <button id="btn-return-to-index" class="btn btn-block btn-primary">返回主页</button>
-    </div>
-    <div class="col-sm-2"></div>
 
 </div>
 <script>
     $("#btn-return-to-index").click(function() {
         window.location.assign("<?=site_url('index')?>");
+    });
+    $("#btn-return-to-signup").click(function() {
+        window.location.assign("<?=site_url('registration')?>");
     });
 </script>
