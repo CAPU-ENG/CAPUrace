@@ -14,7 +14,7 @@
     <br/>
     <div class="col-sm-4">密码</div>
     <div class="col-sm-8">
-        <input type="password" class="form-control" name="password" id="password">
+        <input type="password" class="form-control" name="password" id="password" onkeydown="if(event.keyCode==13) {postLogin();return false;}">
     </div>
     <br/>
     <br/>
