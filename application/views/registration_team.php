@@ -46,7 +46,7 @@
                     </select>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-danger btn-block" onclick="removeTeam($(this))">删除</button>
+                    <button class="btn btn-danger btn-block" id="btn-reg-team-delete">删除</button>
                 </div>
             </div>
         </div>
@@ -56,10 +56,10 @@
         <button class="btn btn-info btn-block" id="return-to-ind">返回修改人员信息</button>
     </div>
     <div class="col-sm-3">
-        <button class="btn btn-primary btn-block" onclick="addTeam()">添加一个团队</button>
+        <button class="btn btn-primary btn-block" id="btn-reg-team-add">添加一个团队</button>
     </div>
     <div class="col-sm-3">
-        <button class="btn btn-warning btn-block" onclick="cacheTeam()">暂时保存</button>
+        <button class="btn btn-warning btn-block" id="save-currently">暂时保存</button>
     </div>
     <div class="col-sm-3">
         <button class="btn btn-success btn-block" id="btn-reg-team-submit">提交</button>
@@ -67,7 +67,7 @@
 </div>
 <script>
     var controller = "<?=site_url('registration/team')?>";
-    var directto = "<?=site_url('registration/result')?>";
+    var directto = "<?=site_url('user/result')?>";
     var data = [];
     if ($.cookie('team')) {
         data = $.parseJSON($.cookie('team'));
@@ -79,11 +79,27 @@
         reloadTeam();
     });
     $("#btn-reg-team-submit").click(function() {
+        this.disabled=true;
+        $(this).text("提交中...");
         postTeam();
+        this.disabled=false;
+        $(this).text("提交");
+    });
+    $("#btn-reg-team-add").click(function() {
+        addTeam();
+    });
+    $("#btn-reg-team-delete").click(function() {
+        removeTeam($(this));
     });
 /*    $(window).on('beforeunload', function() {
         cacheTeam();
     });*/
+
+    $("#save-currently").click(function() {
+        cacheTeam();
+        alert("您已保存成功！可以返回个人信息页面继续修改，或点击“提交”完成报名。");
+    });
+
     $("#return-to-ind").click(function() {
         cacheTeam();
         window.location.href = "<?=site_url('registration/individual')?>";

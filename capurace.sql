@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.7
+-- version 4.3.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2015 at 11:24 AM
--- Server version: 5.6.22
--- PHP Version: 5.5.14
+-- Generation Time: Apr 16, 2015 at 12:05 AM
+-- Server version: 5.6.23
+-- PHP Version: 5.5.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `capurace`
 --
+CREATE DATABASE IF NOT EXISTS `capurace` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `capurace`;
 
 -- --------------------------------------------------------
 
@@ -26,8 +28,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `people`
 --
 
+DROP TABLE IF EXISTS `people`;
 CREATE TABLE IF NOT EXISTS `people` (
   `id` int(5) unsigned NOT NULL,
+  `order` int(11) NOT NULL,
   `key` text NOT NULL,
   `name` varchar(10) NOT NULL,
   `gender` tinyint(4) NOT NULL,
@@ -39,13 +43,13 @@ CREATE TABLE IF NOT EXISTS `people` (
   `race` tinyint(4) NOT NULL DEFAULT '0',
   `shimano16` smallint(6) NOT NULL DEFAULT '0',
   `shimano17` smallint(6) NOT NULL DEFAULT '0',
-  `team_id` smallint(5) unsigned DEFAULT NULL,
   `ifrace` tinyint(1) NOT NULL,
   `ifteam` tinyint(1) NOT NULL,
   `tel` varchar(11) NOT NULL,
   `islam` tinyint(1) NOT NULL,
+  `fee` int(11) NOT NULL DEFAULT '0',
   `deleted` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `people` (
 -- Table structure for table `team`
 --
 
+DROP TABLE IF EXISTS `team`;
 CREATE TABLE IF NOT EXISTS `team` (
   `id` smallint(5) unsigned NOT NULL,
   `order` int(11) NOT NULL,
@@ -62,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `team` (
   `fourth` text NOT NULL,
   `school_id` smallint(5) unsigned NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -70,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `team` (
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` smallint(5) unsigned NOT NULL,
   `school` varchar(30) NOT NULL,
@@ -85,8 +91,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `address` varchar(50) NOT NULL,
   `zipcode` varchar(6) NOT NULL,
   `activated` tinyint(1) NOT NULL DEFAULT '0',
-  `token` varchar(32) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+  `token` varchar(32) NOT NULL,
+  `editable` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -96,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Indexes for table `people`
 --
 ALTER TABLE `people`
-  ADD PRIMARY KEY (`id`), ADD KEY `school_id` (`school_id`), ADD KEY `team_id` (`team_id`), ADD KEY `name` (`name`), ADD KEY `id_card` (`id_card`);
+  ADD PRIMARY KEY (`id`), ADD KEY `school_id` (`school_id`), ADD KEY `name` (`name`), ADD KEY `id_card` (`id_card`);
 
 --
 -- Indexes for table `team`
@@ -118,17 +125,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `people`
 --
 ALTER TABLE `people`
-  MODIFY `id` int(5) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- Constraints for dumped tables
 --
@@ -137,8 +144,7 @@ ALTER TABLE `users`
 -- Constraints for table `people`
 --
 ALTER TABLE `people`
-ADD CONSTRAINT `people_school` FOREIGN KEY (`school_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `people_team` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `people_school` FOREIGN KEY (`school_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

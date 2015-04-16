@@ -1,5 +1,4 @@
 <div class="pgright">
-<img src="/assets/images/go.png"></img>
 
 <div class="content">
 	<h3 class="text-center">比赛基本信息</h3>

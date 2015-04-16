@@ -49,9 +49,21 @@
     </div><br/><br/>
     <hr/>
     <div class="col-sm-6">
-        <button class="btn btn-warning btn-block">返回</button>
+        <button class="btn btn-warning btn-block" id="btn-back">返回</button>
     </div>
     <div class="col-sm-6">
-        <button class="btn btn-success btn-block" onclick="postSignup()">注册</button>
+        <button class="btn btn-success btn-block" id="btn-signup">注册</button>
     </div>
 </div>
+<script>
+    $("#btn-back").click(function() {
+        window.location.href = "<?=site_url('user/login')?>";
+    });
+    $("#btn-signup").click(function() {
+        this.disabled=true;
+        $(this).text("注册中...");
+        postSignup();
+        this.disabled=false;
+        $(this).text("注册");
+    });
+</script>

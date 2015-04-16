@@ -210,10 +210,11 @@ function cacheIndividual(order) {
     var ifteam = $("[name='ifteam']").prop('checked');
     var shimano16 = $("[name='shimano16']").val();
     var shimano17 = $("[name='shimano17']").val();
-    if (ifteam && (race == '0')) {
+/*    if (ifteam && (race == '0')) {
         race = 3;
-    }
+    }*/
     data[order] = {
+        order: order,
         name: name,
         gender: gender,
         id_card: id_card,
@@ -246,7 +247,9 @@ function fillIndividual(item) {
     elem.find(".meal16").text(JUDGE[+item.meal16]);
     elem.find(".meal17").text(JUDGE[+item.meal17]);
     elem.find(".tel").text(item.tel);
-    elem.find(".race").text(CAPURACE[item.race]);
+    if (item.race != 0) {
+        elem.find(".race").text(CAPURACE[item.race]);
+    }
     if (item.ifteam) {
         elem.find(".race").append(' 团体赛 ');
     }
@@ -344,10 +347,6 @@ function postIndividual() {
  * This function fills the team form using the data from the database.
  */
 function reloadTeam() {
-    if (data == []) {
-        addTeam();
-        return;
-    }
     $(".team-form:not(:hidden)").remove();
     $.each(data, function(order, item) {
         addTeam();

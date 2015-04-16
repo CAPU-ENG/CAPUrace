@@ -1,5 +1,5 @@
 <div class="regcontainer">
-  <iframe src="/assets/images/signup.pdf" class="center-block" width="800px" height="3350px" style="margin-top:-110px"></iframe>
+  <iframe src="<?=base_url()?>/assets/images/signup.pdf" class="center-block" width="800px" height="3350px" style="margin-top:0px"></iframe>
   
   <div class="row">
     <div class="col-sm-4">
