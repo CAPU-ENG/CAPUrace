@@ -14,7 +14,7 @@ class User extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->helper(array('form', 'url', 'html', 'lib'));
+        $this->load->helper(array('cookie', 'form', 'url', 'html', 'lib'));
         $this->load->library(array('email', 'form_validation', 'session'));
         $this->load->model('user_model', 'user');
         $this->load->model('people_model', 'people');
@@ -71,7 +71,6 @@ class User extends CI_Controller {
      * Account logout.
      */
     public function logout() {
-        $this->load->helper(array('cookie'));
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('school');
