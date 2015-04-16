@@ -23,6 +23,10 @@ class Registration extends CI_Controller {
         if (! $this->session->userdata('logged_in')) {
             redirect(site_url('user/login'), 'refresh');
         }
+
+        if (! $this->session->userdata('editable')) {
+            redirect(site_url('user/result'));
+        }
     }
 
     public function index() {
