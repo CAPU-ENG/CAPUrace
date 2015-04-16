@@ -18,20 +18,17 @@ class Admin extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('session');
         $this->tables = array(
-            'group' => array(
-                'group_name' => array(
-                    'type' => 'varchar',
-                    'len' => 10
-                )
-            ),
             'people' => array(
+                'key' => array(
+                    'type' => 'text'
+                ),
                 'name' => array(
                     'type' => 'varchar',
                     'len' => 10
                 ),
                 'gender' => array(
                     'type' => 'enum',
-                    'enum' => $GLOBALS['GENDERS']
+                    'enum' => $GLOBALS['GENDER']
                 ),
                 'id_card' => array(
                     'type' => 'varchar',
@@ -43,15 +40,41 @@ class Admin extends CI_Controller {
                     'display_column' => 'school'
                 ),
                 'accommodation' => array(
+                    'type' => 'enum',
+                    'enum' => $GLOBALS['ACCOMMODATION']
+                ),
+                'meal16' => array(
                     'type' => 'boolean'
                 ),
-                'meal' => array(
-                    'type' => 'boolean'
+                'meal17' => array(
+                    'type' => 'boolean',
                 ),
                 'race' => array(
                     'type' => 'enum',
-                    'enum' => $GLOBALS['RACES']
-                )//,
+                    'enum' => $GLOBALS['RACE']
+                ),
+                'shimano16' => array(
+                    'type' => 'enum',
+                    'enum' => $GLOBALS['SHIMANO_MTB']
+                ),
+                'shimano17' => array(
+                    'type' => 'enum',
+                    'enum' => $GLOBALS['SHIMANO_RDB']
+                ),
+                'ifrace' => array(
+                    'type' => 'boolean'
+                ),
+                'ifteam' => array(
+                    'type' => 'boolean'
+                ),
+                'tel' => array(
+                    'type' => 'varchar',
+                    'len' => 11
+                ),
+                'islam' => array(
+                    'type' => 'boolean'
+                )
+                //,
                 //'team_id' => array(
                     //'type' => 'foreignkey',
                     //'references' => 'team',
@@ -59,6 +82,9 @@ class Admin extends CI_Controller {
                 //)
             ),
             /*'team' => array(
+                'order' => array(
+                    'type' => 'int'
+                ),
                 'first' => array(
                     'type' => 'foreignkey',
                     'references' => 'people',
@@ -72,6 +98,12 @@ class Admin extends CI_Controller {
                     'display_column' => 'name'
                 ),
                 'third' => array(
+                    'type' => 'foreignkey',
+                    'references' => 'people',
+                    'join_alias' => 'third',
+                    'display_column' => 'name'
+                ),
+                'fourth' => array(
                     'type' => 'foreignkey',
                     'references' => 'people',
                     'join_alias' => 'third',
@@ -122,10 +154,20 @@ class Admin extends CI_Controller {
                     'type' => 'enum',
                     'enum' => $GLOBALS['PROVINCES']
                 ),
-                'group_id' => array(
-                    'type' => 'foreignkey',
-                    'references' => 'group',
-                    'display_column' => 'group_name'
+                'address' => array(
+                    'type' => 'varchar',
+                    'len' => 50
+                ),
+                'zipcode' => array(
+                    'type' => 'varchar',
+                    'len' => 6
+                ),
+                'activated' => array(
+                    'type' => 'boolean'
+                ),
+                'token' => array(
+                    'type' => 'varchar',
+                    'len' => 32
                 )
             )
         );
@@ -274,7 +316,10 @@ class Admin extends CI_Controller {
         if ($model === NULL) {
             show_404('');
         }
-        $post = parse_null(array($this->input->post()), $this, $what);
+        $request_method = $this->input->server('REQUEST_METHOD');
+        if ($request_method == 'POST') {
+            $post = parse_null($this->input->post(), $this, $what);
+        }
         $foreign_keys = array();
         foreach ($this->tables[$what] as $entry => $description) {
             if ($description['type'] !== 'foreignkey') {
@@ -287,7 +332,6 @@ class Admin extends CI_Controller {
             $foreign_keys[$entry] = array('records' => $foreign_model->all(),
                 'format' => $description);
         }
-        $request_method = $this->input->server('REQUEST_METHOD');
         if ($wid === 'new') {
             if ($request_method === 'GET') {
                 $data = array(
@@ -311,6 +355,8 @@ class Admin extends CI_Controller {
                     $info = '插入成功~';
                     $wid = $this->db->insert_id();
                     $row = $model->by_id($wid);
+                    var_dump($wid);
+                    var_dump($row);
                 }
             }
             else {

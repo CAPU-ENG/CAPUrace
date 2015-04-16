@@ -56,7 +56,7 @@ class User_model extends CI_Model {
      *
      */
     public function get_users_where($where) {
-        $res = $this->db->select('users.*, group.group_name')->from('users')->where($where)->join('group', 'users.group_id = group.id')->get();
+        $res = $this->db->select('users.*')->from('users')->where($where)->get();
         if ($res->num_rows() === 0)
             return NULL;
         else
@@ -151,7 +151,7 @@ class User_model extends CI_Model {
     }
 
     public function all() {
-        return $this->db->select('users.*, group.group_name')->from('users')->join('group', 'users.group_id = group.id')->get()->result_array();
+        return $this->db->select('users.*')->from('users')->get()->result_array();
     }
 
     /*
