@@ -92,6 +92,17 @@ class People_model extends CI_Model {
     }
 
     /*
+     * Get keys for all the male athlete from a certain school.
+     */
+    public function get_male_athlete_keys_from_school($school_id) {
+        $res = array();
+        foreach ($this->get_male_athlete_from_school($school_id) as $item) {
+            $res[$item['key']] = true;
+        }
+        return $res;
+    }
+
+    /*
      * Get all the female athlete from a certain school.
      *
      * ====argument====
@@ -104,6 +115,17 @@ class People_model extends CI_Model {
     public function get_female_athlete_from_school($school_id) {
         $query = $this->db->where('school_id', $school_id)->where('gender', 2)->where('ifteam', 1)->where('deleted', false)->get('people');
         return $query->result_array();
+    }
+
+    /*
+     * Get keys for all the female athlete from a certain school.
+     */
+    public function get_female_athlete_keys_from_school($school_id) {
+        $res = array();
+        foreach ($this->get_female_athlete_from_school($school_id) as $item) {
+            $res[$item['key']] = true;
+        }
+        return $res;
     }
 
     /*
