@@ -23,7 +23,11 @@ class People_model extends CI_Model {
      */
     public function get_name($key) {
         $res = $this->db->select('name')->where('key', $key)->get('people')->row_array();
-        return $res['name'];
+        if ($res and array_key_exists('name', $res)) {
+            return $res['name'];
+        } else {
+            return null;
+        }
     }
 
     /*
