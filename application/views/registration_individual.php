@@ -160,7 +160,9 @@
 </div>
 <script>
     $("#btn-reg-ind-submit").click(function() {
+        this.disabled=true;
         postIndividual();
+        this.disabled=false;
     });
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";

@@ -60,6 +60,8 @@
         window.location.href = "<?=site_url('user/login')?>";
     });
     $("#btn-signup").click(function() {
+        this.disabled=true;
         postSignup();
+        this.disabled=false;
     });
 </script>

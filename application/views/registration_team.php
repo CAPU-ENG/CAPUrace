@@ -79,7 +79,9 @@
         reloadTeam();
     });
     $("#btn-reg-team-submit").click(function() {
+        this.disabled=true;
         postTeam();
+        this.disabled=false;
     });
 /*    $(window).on('beforeunload', function() {
         cacheTeam();
