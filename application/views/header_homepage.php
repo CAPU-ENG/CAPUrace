@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>北大赛报名网站</title>
 <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=base_url()?>/assets/css/style.css" rel="stylesheet">
 <script src="<?=base_url()?>/assets/js/jquery.min.js"></script>
