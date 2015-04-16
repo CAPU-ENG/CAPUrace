@@ -176,7 +176,9 @@
         editIndividual($(this));
     });
     $(".btn-reg-ind-delete").click(function() {
-        removeIndividual($(this));
+        if (confirm("确认删除？") == true) {
+            removeIndividual($(this));
+        }
     });
     var controller = "<?=site_url('registration/individual')?>";
     var directto = "<?=site_url('registration/team')?>";

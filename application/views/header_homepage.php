@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>北大赛报名网站</title>
+<link rel="shortcut icon" href="/assets/images/capu.jpg">
 <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=base_url()?>/assets/css/style.css" rel="stylesheet">
 <script src="<?=base_url()?>/assets/js/jquery.min.js"></script>
@@ -49,6 +50,7 @@
             </ul>
           </li>
           <li><a href="<?=site_url('index/activity')?>">活动通知</a></li>
+          <li id="grade"><a href="#">比赛成绩</a></li>
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -85,6 +87,12 @@
   　　function () {
          $('#nav3').removeClass("open");  　　
      }
+  );
+
+  $('#grade').click(
+    function() {
+      alert("比赛尚未开始！");
+    }
   );
 
 
