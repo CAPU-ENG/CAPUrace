@@ -1,5 +1,15 @@
 <div class="regcontainer">
-  <iframe src="<?=base_url()?>/assets/images/signup.pdf" class="center-block" width="800px" height="3350px" style="margin-top:0px"></iframe>
+
+  <img src="/assets/images/signup_1.jpg" width="800" class="center-block">
+  <hr>
+  <img src="/assets/images/signup_2.jpg" width="800" class="center-block">
+  <hr>
+  <img src="/assets/images/signup_3.jpg" width="800" class="center-block">
+
+  <div class="text-center red">
+    <b>注意：比赛当日前未满18岁的选手请&nbsp;<a href="/assets/images/statement.pdf"><u>下载免责声明</u></a></b>
+  </div>
+  
   
   <div class="row">
     <div class="col-sm-4">
