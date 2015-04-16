@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-    <?php foreach ($records as $row) { echo var_dump($row);?>
+    <?php foreach ($records as $row) { ?>
         <tr>
         <?php $current_table = $tables[$current]; ?>
         <?php foreach ($current_table as $name => $format) { ?>

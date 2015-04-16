@@ -375,8 +375,6 @@ class Admin extends CI_Controller {
                     $info = '插入成功~';
                     $wid = $this->db->insert_id();
                     $row = $model->by_id($wid);
-                    var_dump($wid);
-                    var_dump($row);
                 }
             }
             else {

@@ -14,7 +14,7 @@
 <?php echo form_open('admin/modify/' . (string)$current . '/'  . (string)$wid); ?>
 <?php foreach ($tables[$current] as $entry => $format) { ?>
     <label for="<?php echo $entry; ?>"><?php echo $entry; ?></label>
-    <?php echo render_input($entry, $row, $format, $foreign_keys); ?>
+    <?php echo render_input($entry, $row, $format, $foreign_keys); echo '<br>'; ?>
 <?php } ?>
 <input type='submit' value='提交'>
 <?php echo form_close(); ?>
