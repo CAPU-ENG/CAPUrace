@@ -275,6 +275,26 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function csv($what) {
+        $this->check_permission();
+        if ($this->input->server('REQUEST_METHOD') !== 'GET') {
+            show_404('');
+        }
+        $model = $this->get_model($what);
+        if ($model === NULL) {
+            show_404('');
+        }
+        $records = $model->all();
+        $data = array(
+            'tables' => $this->tables,
+            'current' => $what,
+            'records' => $records
+        );
+        $this->output->set_content_type('application/octet-stream');
+        $this->output->set_header('Content-Disposition:attachment; filename="' . $what . '.csv";');
+        $this->load->view('admin_csv', $data);
+    }
+
     public function ls($what = NULL) {
         $this->check_permission();
         if ($this->input->server('REQUEST_METHOD') !== 'GET') {
