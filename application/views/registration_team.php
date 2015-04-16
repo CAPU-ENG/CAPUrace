@@ -59,7 +59,7 @@
         <button class="btn btn-primary btn-block" onclick="addTeam()">添加一个团队</button>
     </div>
     <div class="col-sm-3">
-        <button class="btn btn-warning btn-block" id="save-currently()">暂时保存</button>
+        <button class="btn btn-warning btn-block" id="save-currently">暂时保存</button>
     </div>
     <div class="col-sm-3">
         <button class="btn btn-success btn-block" id="btn-reg-team-submit">提交</button>
