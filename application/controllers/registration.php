@@ -51,6 +51,7 @@ class Registration extends CI_Controller {
             $tel_set = array();
             $id_card_set = array();
             $key_set = array();
+            if (!$ind_post) exit(err_msg('999'));
             foreach ($ind_post as $item_post) {
                 // name
                 if (!validate_name($item_post['name'])) {
@@ -250,6 +251,7 @@ class Registration extends CI_Controller {
             $male_key_set = $this->people->get_male_athlete_keys_from_school($school_id);
             $female_key_set = $this->people->get_female_athlete_keys_from_school($school_id);
             $key_set = array();
+            if (!$team_post) $team_post = array();
             foreach ($team_post as $item_post) {
                 // first
                 if (!array_key_exists($item_post['first'], $male_key_set)) {
