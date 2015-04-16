@@ -218,7 +218,6 @@ class Registration extends CI_Controller {
             }
             foreach ($ind_post as $item_post) {
                 $item_post['key'] = individual_encode($item_post);
-                unset($item_post['order']);
                 $fee = get_bill($item_post);
                 $item_post['fee'] = $fee;
                 $bill += $fee;
