@@ -46,7 +46,6 @@ class Registration extends CI_Controller {
             $school_id = $this->session->userdata('id');
             $data = $this->input->post();
             $ind_post = $data['data'];
-            $ind_db = $this->people->get_people_from_school($school_id);
             header('Content-Type: application/json');
             // There should be some validations here.
             $tel_set = array();
@@ -189,6 +188,7 @@ class Registration extends CI_Controller {
                 }
             }
             $bill = 0;
+            $ind_db = $this->people->get_people_from_school($school_id);
             foreach ($ind_db as $item_db) {
                 $flag = false;
                 $i = 0;
