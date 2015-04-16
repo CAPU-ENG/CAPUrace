@@ -120,6 +120,9 @@ $ERR_MSG = array(
     '1120' => '第{order}个人的 5.17 山地选项不合法。',
     '1121' => '第{order}个人是男生，不可以参加 5.17 山地女子组。',
     '1122' => '第{order}个人是女生，不可以参加 5.17 山地男子组。',
+    // Team Registration Error.
+    '2000' => '第{order}组第{order_ind}个人不合法。',
+    '2001' => '第{order}组第{order_ind}个人与第{order1}组第{order1_ind}个人重复。',
 );
 
 /*

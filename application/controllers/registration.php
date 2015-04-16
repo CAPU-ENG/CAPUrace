@@ -246,6 +246,88 @@ class Registration extends CI_Controller {
             $data = $this->input->post();
             header('Content-Type: application/json');
             $team_post = $data['data'];
+            // Team Validation.
+            $male_key_set = $this->people->get_male_athlete_keys_from_school($school_id);
+            $female_key_set = $this->people->get_female_athlete_keys_from_school($school_id);
+            $key_set = array();
+            foreach ($team_post as $item_post) {
+                // first
+                if (!array_key_exists($item_post['first'], $male_key_set)) {
+                    exit(err_custom_msg('2000', array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 1,
+                    )));
+                } else if (array_key_exists($item_post['first'], $key_set)) {
+                    exit(err_custom_msg('2001', array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 1,
+                        'order1' => $key_set[$item_post['first']]['order'],
+                        'order1_ind' => $key_set[$item_post['first']]['order_ind'],
+                    )));
+                } else {
+                    $key_set[$item_post['first']] = array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 1,
+                    );
+                }
+                // second
+                if (!array_key_exists($item_post['second'], $male_key_set)) {
+                    exit(err_custom_msg('2000', array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 2,
+                    )));
+                } else if (array_key_exists($item_post['second'], $key_set)) {
+                    exit(err_custom_msg('2001', array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 2,
+                        'order1' => $key_set[$item_post['second']]['order'],
+                        'order1_ind' => $key_set[$item_post['second']]['order_ind'],
+                    )));
+                } else {
+                    $key_set[$item_post['second']] = array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 2,
+                    );
+                }
+                // third
+                if (!array_key_exists($item_post['third'], $female_key_set)) {
+                    exit(err_custom_msg('2000', array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 3,
+                    )));
+                } else if (array_key_exists($item_post['third'], $key_set)) {
+                    exit(err_custom_msg('2001', array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 3,
+                        'order1' => $key_set[$item_post['third']]['order'],
+                        'order1_ind' => $key_set[$item_post['third']]['order_ind'],
+                    )));
+                } else {
+                    $key_set[$item_post['third']] = array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 3,
+                    );
+                }
+                // fourth
+                if (!array_key_exists($item_post['fourth'], $male_key_set)) {
+                    exit(err_custom_msg('2000', array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 4,
+                    )));
+                } else if (array_key_exists($item_post['fourth'], $key_set)) {
+                    exit(err_custom_msg('2001', array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 4,
+                        'order1' => $key_set[$item_post['fourth']]['order'],
+                        'order1_ind' => $key_set[$item_post['fourth']]['order_ind'],
+                    )));
+                } else {
+                    $key_set[$item_post['fourth']] = array(
+                        'order' => $item_post['order'],
+                        'order_ind' => 4,
+                    );
+                }
+            }
             $team_db = $this->team->get_team_from_school($school_id);
             $n_post = count($team_post);
             $n_db = count($team_db);
