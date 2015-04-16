@@ -41,6 +41,8 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info_racevideo')?>">赛场视频</a></li>
           </ul>
         </li>      
+          <li><a href="<?=site_url('index/activity')?>">活动通知</a></li>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <?php if ($this->session->userdata('logged_in')): ?>
