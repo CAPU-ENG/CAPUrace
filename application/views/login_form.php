@@ -14,7 +14,7 @@
     <br/>
     <div class="col-sm-4">密码</div>
     <div class="col-sm-8">
-        <input type="password" class="form-control" name="password" id="password" onkeydown="if(event.keyCode==13) {postLogin();return false;}">
+        <input type="password" class="form-control" name="password" id="password">
     </div>
     <br/>
     <br/>
@@ -27,6 +27,11 @@
     </div>
 </div>
 <script>
+    $("#password").bind("keypress",function(event) {
+        if(event.keyCode == "13") {
+            postLogin();
+        }
+    });
     $("#btn-signup").click(function() {
         window.location.href = "<?=site_url('user/signup')?>";
     });
