@@ -65,7 +65,7 @@
         }
         
         //标注点数组
-        var markerArr = [{title:"比赛场地&nbsp;晚会场地&nbsp;露营场地",content:"晚会场地&nbsp;露营场地",point:"116.313924|39.48283",isOpen:0,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
+        var markerArr = [{title:"比赛场地",content:"晚会场地&nbsp;露营场地",point:"116.313924|39.48283",isOpen:0,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
         ,{title:"大广高速固安出口",content:"无",point:"116.286939|39.47041",isOpen:0,icon:{w:21,h:21,l:46,t:0,x:6,lb:5}}
         ,{title:"106国道北京方向",content:"无",point:"116.331351|39.504379",isOpen:0,icon:{w:21,h:21,l:46,t:0,x:6,lb:5}}
         ,{title:"廊涿高速固安出口",content:"无",point:"116.32244|39.397626",isOpen:0,icon:{w:21,h:21,l:46,t:0,x:6,lb:5}}
