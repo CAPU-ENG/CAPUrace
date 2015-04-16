@@ -20,9 +20,17 @@
     <br/>
     <hr/>
     <div class="col-sm-6">
-        <button class="btn btn-warning btn-block">注册</button>
+        <button class="btn btn-warning btn-block" id="btn-signup">注册</button>
     </div>
     <div class="col-sm-6">
-        <button class="btn btn-success btn-block" onclick="postLogin()">登录</button>
+        <button class="btn btn-success btn-block" id="btn-login">登录</button>
     </div>
 </div>
+<script>
+    $("#btn-signup").click(function() {
+        window.location.href = "<?=site_url('user/signup')?>";
+    });
+    $("#btn-login").click(function() {
+        postLogin();
+    });
+</script>
