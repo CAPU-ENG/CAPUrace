@@ -11,7 +11,7 @@ class People_model extends CI_Model {
      * Get a person's information.
      */
     public function get_people_where($where) {
-        $res = $this->db->select('people.*, users.school, team.id')->from('people')->where('people.deleted', false)->where($where)->join('users', 'people.school_id = users.id')->join('team', 'people.team_id = team.id', 'left')->get();
+        $res = $this->db->select('people.*, users.school, team.id as team_id')->from('people')->where('people.deleted', false)->where($where)->join('users', 'people.school_id = users.id')->join('team', 'people.team_id = team.id', 'left')->get();
         return $res;
     }
 
