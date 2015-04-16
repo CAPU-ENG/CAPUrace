@@ -169,10 +169,6 @@ class Registration extends CI_Controller {
                     exit(err_custom_msg('1112', array(
                         'order' => $item_post['order'] + 1,
                     )));
-                } else if ($item_post['shimano16'] == '1' and $item_post['race'] == '0') {
-                    exit(err_custom_msg('1113', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
                 }
                 // shimano17
                 if (!array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB'])) {
@@ -187,10 +183,6 @@ class Registration extends CI_Controller {
                 } else if ($item_post['gender'] == '2' and
                     !array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB_F'])) {
                     exit(err_custom_msg('1122', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['shimano17'] == '1' and $item_post['race'] == '0') {
-                    exit(err_custom_msg('1123', array(
                         'order' => $item_post['order'] + 1,
                     )));
                 }
