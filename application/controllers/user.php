@@ -59,6 +59,7 @@ class User extends CI_Controller {
                 $this->session->set_userdata('logged_in', true);
                 $this->session->set_userdata('id', $user_info['id']);
                 $this->session->set_userdata('school', $user_info['school']);
+                $this->session->set_userdata('editable', $user_info['editable']);
                 delete_cookie('individual');
                 delete_cookie('team');
             }
@@ -129,6 +130,19 @@ class User extends CI_Controller {
         $data['userinfo'] = $this->user->get_user_by_id($school_id);
         $this->load->view('header');
         $this->load->view('user_result', $data);
+        $this->load->view('footer');
+    }
+
+    public function payment() {
+/*        if ($this->session->userdata('editable') == 0) {
+            redirect(site_url('index'));
+        }*/
+        $school_id = $this->session->userdata('id');
+        $userinfo = $this->user->get_user_by_id($school_id);
+        $data['bill'] = $userinfo['bill'];
+        $data['association_name'] = $userinfo['association_name'];
+        $this->load->view('header');
+        $this->load->view('user_payment', $data);
         $this->load->view('footer');
     }
 
