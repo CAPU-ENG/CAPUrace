@@ -347,10 +347,6 @@ function postIndividual() {
  * This function fills the team form using the data from the database.
  */
 function reloadTeam() {
-    if (data.length == 0) {
-        addTeam();
-        return;
-    }
     $(".team-form:not(:hidden)").remove();
     $.each(data, function(order, item) {
         addTeam();
