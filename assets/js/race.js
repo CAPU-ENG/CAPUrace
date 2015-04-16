@@ -214,6 +214,7 @@ function cacheIndividual(order) {
         race = 3;
     }
     data[order] = {
+        order: order,
         name: name,
         gender: gender,
         id_card: id_card,

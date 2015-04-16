@@ -46,10 +46,153 @@ class Registration extends CI_Controller {
             $school_id = $this->session->userdata('id');
             $data = $this->input->post();
             $ind_post = $data['data'];
-            $ind_db = $this->people->get_people_from_school($school_id);
-            //There should be some validations here.
             header('Content-Type: application/json');
+            // There should be some validations here.
+            $tel_set = array();
+            $id_card_set = array();
+            $key_set = array();
+            foreach ($ind_post as $item_post) {
+                // name
+                if (!validate_name($item_post['name'])) {
+                    exit(err_custom_msg('1000', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // gender
+                if (!array_key_exists($item_post['gender'], $GLOBALS['GENDER'])) {
+                    exit(err_custom_msg('1010', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // tel
+                if (!validate_mobile($item_post['tel'])) {
+                    exit(err_custom_msg('1020', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if (array_key_exists($item_post['tel'], $tel_set)) {
+                    exit(err_custom_msg('1021', array(
+                        'order' => $item_post['order'] + 1,
+                        'order1' => $tel_set[$item_post['tel']],
+                    )));
+                } else {
+                    $tel_set[$item_post['tel']] = $item_post['order'] + 1;
+                }
+                // ifrace
+                if (!array_key_exists($item_post['ifrace'], $GLOBALS['IFRACE'])) {
+                    exit(err_custom_msg('1030', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // islam
+                if (!array_key_exists($item_post['islam'], $GLOBALS['JUDGE'])) {
+                    exit(err_custom_msg('1040', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // id_card
+                if (!validate_id_card($item_post['id_card'])) {
+                    exit(err_custom_msg('1050', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if (array_key_exists($item_post['id_card'], $id_card_set)) {
+                    exit(err_custom_msg('1051', array(
+                        'order' => $item_post['order'] + 1,
+                        'order1' => $id_card_set[$item_post['id_card']],
+                    )));
+                } else {
+                    $id_card_set[$item_post['id_card']] = $item_post['order'] + 1;
+                }
+                // accommodation
+                if (!array_key_exists($item_post['accommodation'], $GLOBALS['ACCOMMODATION'])) {
+                    exit(err_custom_msg('1060', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // meal16
+                if (!array_key_exists($item_post['meal16'], $GLOBALS['JUDGE'])) {
+                    exit(err_custom_msg('1070', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // meal17
+                if (!array_key_exists($item_post['meal17'], $GLOBALS['JUDGE'])) {
+                    exit(err_custom_msg('1080', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['ifrace'] == '1' and $item_post['meal17'] == '0') {
+                    exit(err_custom_msg('1081', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // race
+                if (!array_key_exists($item_post['race'], $GLOBALS['CAPURACE'])) {
+                    exit(err_custom_msg('1090', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['ifrace'] == '0' and $item_post['race'] != '0') {
+                    exit(err_custom_msg('1091', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['ifrace'] != '0' and $item_post['race'] == '0') {
+                    exit(err_custom_msg('1092', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['gender'] == '1' and
+                    !array_key_exists($item_post['race'], $GLOBALS['CAPURACE_M'])) {
+                    exit(err_custom_msg('1093', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['gender'] == '2' and
+                    !array_key_exists($item_post['race'], $GLOBALS['CAPURACE_F'])) {
+                    exit(err_custom_msg('1094', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // ifteam
+                if (!array_key_exists($item_post['ifteam'], $GLOBALS['JUDGE'])) {
+                    exit(err_custom_msg('1100', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['ifrace'] == '0' and $item_post['ifteam'] == '1') {
+                    exit(err_custom_msg('1101', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // shimano16
+                if (!array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB'])) {
+                    exit(err_custom_msg('1110', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['gender'] == '1' and
+                    !array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB_M'])) {
+                    exit(err_custom_msg('1111', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['gender'] == '2' and
+                    !array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB_F'])) {
+                    exit(err_custom_msg('1112', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                // shimano17
+                if (!array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB'])) {
+                    exit(err_custom_msg('1120', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['gender'] == '1' and
+                    !array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB_M'])) {
+                    exit(err_custom_msg('1121', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } else if ($item_post['gender'] == '2' and
+                    !array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB_F'])) {
+                    exit(err_custom_msg('1122', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+            }
             $bill = 0;
+            $ind_db = $this->people->get_people_from_school($school_id);
             foreach ($ind_db as $item_db) {
                 $flag = false;
                 $i = 0;
