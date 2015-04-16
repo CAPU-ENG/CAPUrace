@@ -27,6 +27,11 @@
     </div>
 </div>
 <script>
+    $("#password").bind("keypress",function(event) {
+        if(event.keyCode == "13") {
+            postLogin();
+        }
+    });
     $("#btn-signup").click(function() {
         window.location.href = "<?=site_url('user/signup')?>";
     });
