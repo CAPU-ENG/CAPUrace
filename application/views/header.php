@@ -43,6 +43,7 @@
           </ul>
         </li>      
           <li><a href="<?=site_url('index/activity')?>">活动通知</a></li>
+          <li id="grade"><a href="#">比赛成绩</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -79,6 +80,14 @@
          $('#nav3').removeClass("open");  　　
      }
   );
+
+  $('#grade').click(
+    function() {
+      alert("比赛尚未开始！");
+    }
+  );
+
+
 
 
   </script>
