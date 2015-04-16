@@ -1,5 +1,5 @@
 <div class="indcontainer">
-    <p><h3>请录入人员信息（每输入一个人员信息之后点击保存进入下一个）</h3></p>
+    <h3>请录入人员信息（每输入一个人员信息之后点击保存进入下一个）</h3>
     <hr/>
     <div class="form-group reg">
         <input name="order" class="hidden">
@@ -101,11 +101,8 @@
             <div class="col-sm-4"></div>
         </div>
     </div>
-</div>
-<!-- The code above creates the individual form -->
-
-<div class="indcontainer">
-    <p><h3>已保存人员列表</h3></p>
+    <!-- The code above creates the individual form -->
+    <h3>已保存人员列表</h3>
     <hr/>
     <table class="table table-hover">
         <thead>
