@@ -88,7 +88,7 @@ $GLOBALS['PROVINCES'] = array(
  * These messages are error messages returned to user input.
  *
  */
-$ERR_MSG = array(
+$GLOBALS['ERR_MSG'] = array(
     '200' => 'OK.',
     '202' => '用户尚未通过审核，请您稍后登录！',
     '204' => '用户不存在，请注册！',
@@ -101,48 +101,48 @@ $ERR_MSG = array(
  * ========================
  * These associative arrays are for the selectors in the forms.
  */
-$JUDGE = array(
+$GLOBALS['JUDGE'] = array(
     '0' => '否',
     '1' => '是'
 );
 
-$TF = array(
+$GLOBALS['TF'] = array(
     'true' => '是',
     'false' => '否'
 );
 
-$GENDER = array(
+$GLOBALS['GENDER'] = array(
     '1' => '男',
     '2' => '女'
 );
 
-$IFRACE = array(
+$GLOBALS['IFRACE'] = array(
     '1' => '参赛',
     '0' => '观赛'
 );
 
-$CAPURACE_M = array(
+$GLOBALS['CAPURACE_M'] = array(
     '0' => '不参加',
     '1' => '男子组',
 );
 
-$CAPURACE_F = array(
+$GLOBALS['CAPURACE_F'] = array(
     '0' => '不参加',
     '2' => '女子组',
 );
 
-$CAPURACE = array(
+$GLOBALS['CAPURACE'] = array(
     '0' => ' 不参加 ',
     '1' => ' 男子组 ',
     '2' => ' 女子组 ',
 );
 
-$RACE = array(
+$GLOBALS['RACE'] = array(
     '0' => '观赛',
     '1' => '参赛'
 );
 
-$SHIMANO_RDB_M = array(
+$GLOBALS['SHIMANO_RDB_M'] = array(
     '0' => '不参加',
     '1' => '男子初级组',
     '2' => '男子中级组',
@@ -150,13 +150,13 @@ $SHIMANO_RDB_M = array(
     '5' => '小轮组'
 );
 
-$SHIMANO_RDB_F = array(
+$GLOBALS['SHIMANO_RDB_F'] = array(
     '0' => '不参加',
     '4' => '女子组',
     '5' => '小轮组'
 );
 
-$SHIMANO_RDB = array(
+$GLOBALS['SHIMANO_RDB'] = array(
     '0' => '不参加',
     '1' => '男子初级组',
     '2' => '男子中级组',
@@ -165,7 +165,7 @@ $SHIMANO_RDB = array(
     '5' => '小轮组'
 );
 
-$SHIMANO_MTB_M = array(
+$GLOBALS['SHIMANO_MTB_M'] = array(
     '0' => '不参加',
     '1' => '男子初级组',
     '2' => '男子中级组',
@@ -173,13 +173,13 @@ $SHIMANO_MTB_M = array(
     '5' => '大众体验组'
 );
 
-$SHIMANO_MTB_F = array(
+$GLOBALS['SHIMANO_MTB_F'] = array(
     '0' => '不参加',
     '4' => '女子组',
     '5' => '大众体验组'
 );
 
-$SHIMANO_MTB = array(
+$GLOBALS['SHIMANO_MTB'] = array(
     '0' => '不参加',
     '1' => '男子初级组',
     '2' => '男子中级组',
@@ -188,7 +188,7 @@ $SHIMANO_MTB = array(
     '5' => '大众体验组'
 );
 
-$ACCOMMODATION = array(
+$GLOBALS['ACCOMMODATION'] = array(
     '0' => '不需要',
     '1' => '旅馆',
     '2' => '露营（自带帐篷）',
