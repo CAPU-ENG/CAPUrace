@@ -80,8 +80,10 @@
     });
     $("#btn-reg-team-submit").click(function() {
         this.disabled=true;
+        $(this).text("提交中...");
         postTeam();
         this.disabled=false;
+        $(this).text("提交");
     });
     $("#btn-reg-team-add").click(function() {
         addTeam();

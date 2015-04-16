@@ -61,7 +61,9 @@
     });
     $("#btn-signup").click(function() {
         this.disabled=true;
+        $(this).text("注册中...");
         postSignup();
         this.disabled=false;
+        $(this).text("注册");
     });
 </script>

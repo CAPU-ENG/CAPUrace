@@ -161,8 +161,10 @@
 <script>
     $("#btn-reg-ind-submit").click(function() {
         this.disabled=true;
+        $(this).text("提交中...");
         postIndividual();
         this.disabled=false;
+        $(this).text("提交，前往团体赛报名");
     });
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
