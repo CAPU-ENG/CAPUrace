@@ -46,7 +46,7 @@
                     </select>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-danger btn-block" onclick="removeTeam($(this))">删除</button>
+                    <button class="btn btn-danger btn-block" id="btn-reg-team-delete">删除</button>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
         <button class="btn btn-info btn-block" id="return-to-ind">返回修改人员信息</button>
     </div>
     <div class="col-sm-3">
-        <button class="btn btn-primary btn-block" onclick="addTeam()">添加一个团队</button>
+        <button class="btn btn-primary btn-block" id="btn-reg-team-add">添加一个团队</button>
     </div>
     <div class="col-sm-3">
         <button class="btn btn-warning btn-block" id="save-currently">暂时保存</button>
@@ -80,6 +80,12 @@
     });
     $("#btn-reg-team-submit").click(function() {
         postTeam();
+    });
+    $("#btn-reg-team-add").click(function() {
+        addTeam();
+    });
+    $("#btn-reg-team-delete").click(function() {
+        removeTeam($(this));
     });
 /*    $(window).on('beforeunload', function() {
         cacheTeam();
