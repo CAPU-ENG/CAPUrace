@@ -56,9 +56,12 @@
             <td class="gender"><?=$GLOBALS['GENDER'][$item['gender']]?></td>
             <td class="tel"><?=$item['tel']?></td>
             <td class="id_card"><?=$item['id_card']?></td>
-            <td class="race"><?=$GLOBALS['RACE_ALL'][$item['race']]?>
+            <td class="race">
                 <?php
-                if ((($item['race'] == '1') || ($item['race'] == '2')) && ($item['ifteam'] == 1)) {
+                if($item['race'] != 0) {
+                    echo  $GLOBALS['CAPURACE'][$item['race']];
+                }
+                if ($item['ifteam'] == 1) {
                     echo ' 团体赛 ';
                 }
                 ?>
