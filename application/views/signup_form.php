@@ -56,6 +56,15 @@
     </div>
 </div>
 <script>
+    $("#passconf").bind("keypress",function(event) {
+        if(event.keyCode == "13") {
+        $("#btn-signup").disabled=true;
+        $("#btn-signup").text("注册中...");
+        postSignup();
+        $("#btn-signup").disabled=false;
+        $("#btn-signup").text("注册");
+        }
+    });
     $("#btn-back").click(function() {
         window.location.href = "<?=site_url('user/login')?>";
     });

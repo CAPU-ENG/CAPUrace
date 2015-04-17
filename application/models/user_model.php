@@ -249,7 +249,7 @@ class User_model extends CI_Model {
             } else {
                 $this->db->where('token', $token)->update('users', array('activated' => true));
                 $this->db->where('token', $token)->update('users', array('token' => '0'));
-                return '激活成功！';
+                return '激活成功！请等待北大车协同学线下联系，我们将于 24 小时内完成您的注册审核，审核通过之后车协同学将通知您。谢谢！';
             }
         }
     }
