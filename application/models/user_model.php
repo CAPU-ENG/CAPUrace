@@ -76,7 +76,7 @@ class User_model extends CI_Model {
      *
      */
     public function get_user_by_email($email) {
-        $res = $this->get_users_where(array('email' => $email));
+        $res = $this->get_users_where(array('mail' => $email));
         if ($res === NULL)
             return NULL;
         else
