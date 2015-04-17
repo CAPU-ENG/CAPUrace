@@ -10,7 +10,7 @@ $config = array(
         array(
             'field' => 'school',
             'label' => '学校',
-            'rules' => 'required|xss_clean|is_unique[users.school]'
+            'rules' => 'required|xss_clean'
         ),
         array(
             'field' => 'password',
