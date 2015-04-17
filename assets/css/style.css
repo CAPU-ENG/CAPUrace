@@ -2,22 +2,21 @@
   width: 1000px;
   margin: 0 auto;
   padding: 8px 0 0 0;
- //padding: 20px 15% 20px;
 }
 
 .signcontainer {
-    height: auto;
-    margin-right:30%;
-    margin-top:90px;
-    margin-left:30%;
-    margin-bottom: 40px;
-    padding-top: 30px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 60px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #CBCBCB;
+  height: auto;
+  margin-right:30%;
+  margin-top:90px;
+  margin-left:30%;
+  margin-bottom: 40px;
+  padding-top: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 60px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #CBCBCB;
 }
 
 .indcontainer {
@@ -156,11 +155,8 @@ td {
   text-align: center;
 }
 
-
 .footer {
   color: #777;
+  padding: 20px 0;
   text-align: center;
-  padding: 30px 0;
-  margin-top: 100px;
-  border-top: 1px solid #e0e0e0;
 }
