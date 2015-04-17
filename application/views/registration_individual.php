@@ -205,5 +205,15 @@
     $(document).ready(function() {
         reloadIndividual();
         refreshOrder();
+        restrictIndividual();
+        $("select[name='ifrace']").change(function() {
+            restrictIndividual();
+        });
+        $("[name='race']").change(function () {
+            restrictIndividual();
+        });
+        $("[name='ifteam']").change(function () {
+            restrictIndividual();
+        })
     });
 </script>

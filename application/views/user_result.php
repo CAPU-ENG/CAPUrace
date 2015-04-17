@@ -1,5 +1,9 @@
 <div class="indcontainer">
-    <h3>请确认报名信息</h3>
+    <h3>报名结果</h3>
+
+    <?php if (!$editable): ?>
+    <h4 style="text-align: center; color: #ff0000">报名结果已经确认，无法修改，请尽快支付。如有疑问请联系北大车协外联人员！</h4>
+    <?php endif; ?>
     <hr/>
 
     <table class="table">
@@ -58,11 +62,13 @@
             <td class="id_card"><?=$item['id_card']?></td>
             <td class="race">
                 <?php
-                if($item['race'] != 0) {
+                if(!$item['race']) {
                     echo  $GLOBALS['CAPURACE'][$item['race']];
                 }
-                if ($item['ifteam'] == 1) {
+                if ($item['ifteam']) {
                     echo ' 团体赛 ';
+                } else if ($item['race']) {
+                    echo ' 不参加 ';
                 }
                 ?>
             </td>
@@ -114,10 +120,16 @@
     <div style="margin:0 auto;">
         <div class="col-sm-3"></div>
         <div class="col-sm-2">
-            <button id="btn-go-to-pay" class="btn btn-block btn-success disabled">前往支付（暂未开放）</button>
+            <?php if ($editable): ?>
+            <button id="btn-go-to-pay" class="btn btn-block btn-success">前往支付</button>
+            <?php else: ?>
+            <button id="btn-check-payment" class="btn btn-block btn-success">查看支付信息</button>
+            <?php endif; ?>
         </div>
         <div class="col-sm-2">
+            <?php if ($editable): ?>
             <button id="btn-return-to-signup" class="btn btn-block btn-warning">修改报名信息</button>
+            <?php endif; ?>
         </div>
         <div class="col-sm-2">
             <button id="btn-return-to-index" class="btn btn-block btn-primary">返回主页</button>
@@ -133,4 +145,13 @@
     $("#btn-return-to-signup").click(function() {
         window.location.assign("<?=site_url('registration')?>");
     });
+    $("#btn-go-to-pay").click(function() {
+        var msg = "前往支付之后将无法再次修改，确定继续？";
+        if (confirm(msg) == true) {
+            window.location.assign("<?=site_url('user/freeze')?>");
+        }
+    });
+    $("#btn-check-payment").click(function() {
+        window.location.assign("<?=site_url('user/payment')?>");
+    })
 </script>

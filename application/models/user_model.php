@@ -245,13 +245,20 @@ class User_model extends CI_Model {
         } else {
             $query = $this->db->where('token', $token)->get('users');
             if ($query->num_rows() == 0) {
-                return '激活码无效或已失效。';
+                return '激活码无效或您已成功激活。';
             } else {
                 $this->db->where('token', $token)->update('users', array('activated' => true));
                 $this->db->where('token', $token)->update('users', array('token' => '0'));
                 return '激活成功！请等待北大车协同学线下联系，我们将于 24 小时内完成您的注册审核，审核通过之后车协同学将通知您。谢谢！';
             }
         }
+    }
+
+    /*
+     * This function freezes a certain user.
+     */
+    public function freeze($id) {
+        $this->db->where('id', $id)->update('users', array('editable' => 0));
     }
 }
 

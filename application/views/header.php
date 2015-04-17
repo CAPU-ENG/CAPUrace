@@ -42,10 +42,9 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info_award')?>">比赛奖品</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info_racevideo')?>">赛场视频</a></li>
           </ul>
-        </li>      
-          <li><a href="<?=site_url('index/activity')?>">活动通知</a></li>
-          <li id="grade"><a href="#">比赛成绩</a></li>
-
+        </li>
+        <li><a href="<?=site_url('index/activity')?>">活动通知</a></li>
+        <li id="grade"><a href="#">比赛成绩</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <?php if ($this->session->userdata('logged_in')): ?>
@@ -68,28 +67,18 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-  <script type="text/javascript">
-  $('#nav3').hover(function() {
+<script type="text/javascript">
+$('#nav3').hover(function() {
     $('#nav3').addClass("open");
-  });
+});
 
-  $('#nav3').hover(
-  　　function () {
-  　　    $('#nav3').addClass("open");
-  　　},
-  　　function () {
-         $('#nav3').removeClass("open");  　　
-     }
-  );
+$('#nav3').hover(function () {
+    $('#nav3').addClass("open");
+}, function () {
+    $('#nav3').removeClass("open");  　　
+});
 
-  $('#grade').click(
-    function() {
-      alert("比赛尚未开始！");
-    }
-  );
-
-
-
-
-  </script>
-
+$('#grade').click(function() {
+    alert("比赛尚未开始！");
+});
+</script>

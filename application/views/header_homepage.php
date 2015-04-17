@@ -74,27 +74,18 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-
-  <script type="text/javascript">
-  $('#nav3').hover(function() {
+<script type="text/javascript">
+$('#nav3').hover(function() {
     $('#nav3').addClass("open");
-  });
+});
 
-  $('#nav3').hover(
-  　　function () {
-  　　    $('#nav3').addClass("open");
-  　　},
-  　　function () {
-         $('#nav3').removeClass("open");  　　
-     }
-  );
+$('#nav3').hover(function () {
+    $('#nav3').addClass("open");
+}, function () {
+    $('#nav3').removeClass("open");  　　
+});
 
-  $('#grade').click(
-    function() {
-      alert("比赛尚未开始！");
-    }
-  );
-
-
-  </script>
-
+$('#grade').click(function() {
+    alert("比赛尚未开始！");
+});
+</script>
