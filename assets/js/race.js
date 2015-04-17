@@ -301,8 +301,11 @@ function restrictIndividual() {
     var shimano17 = $("[name='shimano17']");
 
     var ifrace = ($("[name='ifrace']").val() == '1');
-    var capurace = race.val();
 
+    /*
+     * If an individual attends the race, meal17 must be checked.
+     * Otherwise the race options are disabled.
+     */
     if (ifrace) {
         meal17.prop('checked', true);
         meal17.prop('disabled', true);
@@ -317,8 +320,13 @@ function restrictIndividual() {
     }
 
     var ifteam = team.prop('checked');
+    var indrace = (race.val() != '0');
 
-    if (!(ifrace || ifteam)) {
+    /*
+     * If an individual chooses neither ind-race nor team-race,
+     * the shimano options are not available.
+     */
+    if (!(indrace || ifteam)) {
         shimano16.val('0');
         shimano16.prop('disabled', true);
         shimano17.val('0');
