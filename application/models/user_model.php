@@ -216,7 +216,7 @@ class User_model extends CI_Model {
         } else {
             $query = $this->db->where('token', $token)->get('users');
             if ($query->num_rows() == 0) {
-                return '激活码无效或已失效。';
+                return '激活码无效或您已成功激活。';
             } else {
                 $this->db->where('token', $token)->update('users', array('activated' => true));
                 $this->db->where('token', $token)->update('users', array('token' => '0'));
