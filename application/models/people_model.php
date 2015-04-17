@@ -79,7 +79,7 @@ class People_model extends CI_Model {
      *
      */
     public function get_people_from_school($school_id) {
-        $query = $this->get_people_where(array('school_id', $school_id));
+        $query = $this->get_people_where(array('school_id' => $school_id));
         return $query->result_array();
     }
 
