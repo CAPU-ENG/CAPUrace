@@ -224,6 +224,13 @@ class User_model extends CI_Model {
             }
         }
     }
+
+    /*
+     * This function freezes a certain user.
+     */
+    public function freeze($id) {
+        $this->db->where('id', $id)->update('users', array('editable' => 0));
+    }
 }
 
 /* End of file user_model.php */

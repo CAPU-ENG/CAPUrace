@@ -59,6 +59,7 @@ class User extends CI_Controller {
                 $this->session->set_userdata('logged_in', true);
                 $this->session->set_userdata('id', $user_info['id']);
                 $this->session->set_userdata('school', $user_info['school']);
+                $this->session->set_userdata('editable', $user_info['editable']);
                 delete_cookie('individual');
                 delete_cookie('team');
             }
@@ -113,23 +114,48 @@ class User extends CI_Controller {
      * Show registration result for the user.
      */
     public function result() {
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $school_id = $this->session->userdata('id');
+            $data['editable'] = $this->session->userdata('editable');
+            if ($school_id == "") {
+                redirect(site_url('user/login'));
+            }
+            $data['individual'] = $this->people->get_people_from_school($school_id);
+            $team = $this->team->get_team_from_school($school_id);
+            foreach ($team as $key => $item) {
+                $team[$key]['first'] = $this->people->get_name($item['first']);
+                $team[$key]['second'] = $this->people->get_name($item['second']);
+                $team[$key]['third'] = $this->people->get_name($item['third']);
+                $team[$key]['fourth'] = $this->people->get_name($item['fourth']);
+            }
+            $data['team'] = $team;
+            $data['userinfo'] = $this->user->get_user_by_id($school_id);
+            $this->load->view('header');
+            $this->load->view('user_result', $data);
+            $this->load->view('footer');
+        }
+    }
+
+    public function freeze() {
         $school_id = $this->session->userdata('id');
-        if ($school_id == "") {
-            redirect(site_url('user/login'));
+        $this->user->freeze($school_id);
+        $this->session->set_userdata('editable', 0);
+        redirect(site_url('user/payment'));
+    }
+
+    public function payment() {
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            if ($this->session->userdata('editable')) {
+                redirect(site_url('index'));
+            }
+            $school_id = $this->session->userdata('id');
+            $userinfo = $this->user->get_user_by_id($school_id);
+            $data['bill'] = $userinfo['bill'];
+            $data['association_name'] = $userinfo['association_name'];
+            $this->load->view('header');
+            $this->load->view('user_payment', $data);
+            $this->load->view('footer');
         }
-        $data['individual'] = $this->people->get_people_from_school($school_id);
-        $team = $this->team->get_team_from_school($school_id);
-        foreach ($team as $key => $item) {
-            $team[$key]['first'] = $this->people->get_name($item['first']);
-            $team[$key]['second'] = $this->people->get_name($item['second']);
-            $team[$key]['third'] = $this->people->get_name($item['third']);
-            $team[$key]['fourth'] = $this->people->get_name($item['fourth']);
-        }
-        $data['team'] = $team;
-        $data['userinfo'] = $this->user->get_user_by_id($school_id);
-        $this->load->view('header');
-        $this->load->view('user_result', $data);
-        $this->load->view('footer');
     }
 
     /*
