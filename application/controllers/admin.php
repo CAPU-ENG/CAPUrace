@@ -194,7 +194,7 @@ class Admin extends CI_Controller {
     }
 
     private function is_logged_in() {
-        return $this->session->userdata('logged_in') === true;
+        return $this->session->userdata('admin_logged_in') === true;
     }
 
     private function check_permission() {
@@ -245,7 +245,7 @@ class Admin extends CI_Controller {
             }
 
             //都对了
-            $this->session->set_userdata('logged_in', true);
+            $this->session->set_userdata('admin_logged_in', true);
             redirect('/admin/ls/');
         }
 
