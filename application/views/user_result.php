@@ -62,11 +62,13 @@
             <td class="id_card"><?=$item['id_card']?></td>
             <td class="race">
                 <?php
-                if($item['race'] != 0) {
+                if(!$item['race']) {
                     echo  $GLOBALS['CAPURACE'][$item['race']];
                 }
-                if ($item['ifteam'] == 1) {
+                if ($item['ifteam']) {
                     echo ' 团体赛 ';
+                } else if ($item['race']) {
+                    echo ' 不参加 ';
                 }
                 ?>
             </td>

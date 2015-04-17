@@ -10,7 +10,7 @@ $config = array(
         array(
             'field' => 'school',
             'label' => '学校',
-            'rules' => 'required|xss_clean|is_unique[users.school]'
+            'rules' => 'required|xss_clean'
         ),
         array(
             'field' => 'password',
@@ -25,7 +25,7 @@ $config = array(
         array(
             'field' => 'mail',
             'label' => '电子邮箱',
-            'rules' => 'required|valid_email|is_unique[users.mail]|xss_clean'
+            'rules' => 'trim|required|valid_email|is_unique[users.mail]|xss_clean'
         ),
         array(
             'field' => 'leader',
@@ -40,7 +40,7 @@ $config = array(
         array(
             'field' => 'association_name',
             'label' => '车协名称',
-            'rules' => 'required|xss_clean'
+            'rules' => 'trim|required|xss_clean'
         ),
         array(
             'field' => 'province',
@@ -52,7 +52,7 @@ $config = array(
         array(
             'field' => 'mail',
             'label' => '电子邮箱',
-            'rules' => 'required|valid_email|xss_clean'
+            'rules' => 'trim|required|valid_email|xss_clean'
         ),
         array(
             'field' => 'password',
