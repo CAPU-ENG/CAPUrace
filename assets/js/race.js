@@ -252,6 +252,8 @@ function fillIndividual(item) {
     }
     if (item.ifteam) {
         elem.find(".race").append(' 团体赛 ');
+    } else if (item.race == 0) {
+        elem.find(".race").append(' 不参加 ');
     }
     elem.find(".islam").text(JUDGE[item.islam]);
     elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
@@ -289,6 +291,46 @@ function fetchIndividual(order) {
     form.find("[name='ifteam']").prop('checked', item.ifteam);
     form.find("[name='meal16']").prop('checked', item.meal16);
     form.find("[name='meal17']").prop('checked', item.meal17);
+    restrictIndividual();
+}
+
+/*
+ * Add restrictions to the individual form.
+ */
+function restrictIndividual() {
+    var meal17 = $("[name='meal17']");
+    var team = $("[name='ifteam']");
+    var race = $("[name='race']");
+    var shimano16 = $("[name='shimano16']");
+    var shimano17 = $("[name='shimano17']");
+
+    var ifrace = ($("[name='ifrace']").val() == '1');
+    var capurace = race.val();
+
+    if (ifrace) {
+        meal17.prop('checked', true);
+        meal17.prop('disabled', true);
+        race.prop('disabled', false);
+        team.prop('disabled', false);
+    } else {
+        meal17.prop('disabled', false);
+        race.val('0');
+        race.prop('disabled', true);
+        team.prop('checked', false);
+        team.prop('disabled', true);
+    }
+
+    var ifteam = team.prop('checked');
+
+    if (!(ifrace || ifteam)) {
+        shimano16.val('0');
+        shimano16.prop('disabled', true);
+        shimano17.val('0');
+        shimano17.prop('disabled', true);
+    } else {
+        shimano16.prop('disabled', false);
+        shimano17.prop('disabled', false);
+    }
 }
 
 /*
