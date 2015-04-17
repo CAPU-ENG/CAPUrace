@@ -183,7 +183,6 @@ function postSignup() {
             window.location.assign(directto);
         } else {
             alert(data.msg);
-            window.location.reload();
         }
     })
 
@@ -210,9 +209,6 @@ function cacheIndividual(order) {
     var ifteam = $("[name='ifteam']").prop('checked');
     var shimano16 = $("[name='shimano16']").val();
     var shimano17 = $("[name='shimano17']").val();
-/*    if (ifteam && (race == '0')) {
-        race = 3;
-    }*/
     data[order] = {
         order: order,
         name: name,
