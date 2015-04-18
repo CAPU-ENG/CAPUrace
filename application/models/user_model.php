@@ -30,10 +30,6 @@ class User_model extends CI_Model {
         $this->db->insert('users', $data);
     }
 
-    public function insert($data) {
-        $this->sign_up($data);
-    }
-
     /*
      * Check if an email address belongs to a valid user
      * in the database.
@@ -41,26 +37,6 @@ class User_model extends CI_Model {
     private function valid_user($email) {
         $res = $this->db->where('mail', $email)->get('users');
         return !($res->num_rows() == 0);
-    }
-
-    /*
-     * Get users' data by some conditions.
-     *
-     * ====argument====
-     * $where, the conditions.
-     *
-     * =====return=====
-     * An array containing the user's information if
-     * the $data is a valid user's information, or it
-     * will return NULL.
-     *
-     */
-    public function get_users_where($where) {
-        $res = $this->db->select('users.*')->from('users')->where($where)->get();
-        if ($res->num_rows() === 0)
-            return NULL;
-        else
-            return $res->result_array();
     }
 
     /*
@@ -76,11 +52,11 @@ class User_model extends CI_Model {
      *
      */
     public function get_user_by_email($email) {
-        $res = $this->get_users_where(array('mail' => $email));
-        if ($res === NULL)
+        $res = $this->db->where('mail', $email)->get('users');
+        if (!$this->valid_user($email))
             return NULL;
         else
-            return $res[0];
+            return $res->row_array();
     }
 
     /*
@@ -96,26 +72,19 @@ class User_model extends CI_Model {
      *
      */
     public function get_user_by_id($id) {
-        $res = $this->get_users_where(array('users.id' => $id));
-        if ($res === NULL)
+        $res = $this->db->where('id', $id)->get('users');
+        if ($res->num_rows() == 0)
             return NULL;
         else
-            return $res[0];
-    }
-
-    public function by_id($id) {
-        return $this->get_user_by_id($id);
+            return $res->row_array();
     }
 
     /*
      * Get school name.
      */
     public function get_school($id) {
-        $res = $this->db->select('school')->where('id', $id)->get('users');
-        if ($res->num_rows() === 0)
-            return NULL;
-        else
-            return $res->row_array()['school'];
+        $res = $this->db->select('school')->where('id', $id)->get('users')->row_array();
+        return $res['school'];
     }
 
     /*
@@ -131,7 +100,13 @@ class User_model extends CI_Model {
      *
      */
     public function update($id, $new_data) {
-        return $this->db->where('id', $id)->update('users', $new_data);
+        $user = $this->get_user_by_id($id);
+        if ($user == NULL)
+            return false;
+        else {
+            $this->db->where('id', $id)->update('users', $new_data);
+            return true;
+        }
     }
 
     /*
@@ -150,10 +125,6 @@ class User_model extends CI_Model {
         return $res->result_array();
     }
 
-    public function all() {
-        return $this->db->select('users.*')->from('users')->get()->result_array();
-    }
-
     /*
      * Confirm a new user.
      *
@@ -163,7 +134,7 @@ class User_model extends CI_Model {
      */
     public function confirm($id) {
         $confirm = array('confirmed' => TRUE);
-        $this->update($id, $confirm);
+        $this->db->where('id', $id)->update('users', $confirm);
     }
 
     /*
@@ -173,7 +144,7 @@ class User_model extends CI_Model {
      */
     public function set_paid($id) {
         $paid = array('paid' => TRUE);
-        $this->update($id, $paid);
+        $this->db->where('id', $id)->update('users', $paid);
     }
 
     /*
