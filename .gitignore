@@ -9,6 +9,7 @@ application/config/email.php
 */cache/*
 */cache/!index.html
 */cache/!.htaccess
+captcha/
 
 # Custom
-*.swp
+*.sw?
