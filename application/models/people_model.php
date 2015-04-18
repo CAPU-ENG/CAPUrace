@@ -10,24 +10,12 @@ class People_model extends CI_Model {
     /*
      * Get a person's information.
      */
-    public function get_people_where($where) {
-        $res = $this->db->select('people.*, users.school')->from('people')->where('people.deleted', false)->where($where)->join('users', 'people.school_id = users.id')->get();
-        return $res;
-    }
-
-    /*
-     * Get a person's information.
-     */
     public function get_people($id) {
-        $res = $this->get_people_where(array('people.id' => $id));
+        $res = $this->db->where('deleted', false)->where('id', $id)->get('people');
         if ($res->num_rows() > 0)
             return $res->row_array();
         else
             return NULL;
-    }
-
-    public function by_id($id) {
-        return $this->get_people($id);
     }
 
     /*
@@ -48,11 +36,7 @@ class People_model extends CI_Model {
     public function add_people($data, $school_id) {
         $this->load->helper(array('lib'));
         $data = array_merge($data, array('school_id' => $school_id, 'key' => individual_encode($data)));
-        return $this->db->insert('people', $data);
-    }
-
-    public function insert($data) {
-        return $this->add_people($data);
+        $this->db->insert('people', $data);
     }
 
     /*
@@ -80,7 +64,7 @@ class People_model extends CI_Model {
      *
      */
     public function get_people_from_school($school_id) {
-        $query = $this->get_people_where(array('school_id' => $school_id));
+        $query = $this->db->where('school_id', $school_id)->where('deleted', false)->get('people');
         return $query->result_array();
     }
 
@@ -161,21 +145,14 @@ class People_model extends CI_Model {
      *
      */
     public function get_all_people() {
-        $query = $this->get_people_where(array());
+        $query = $this->db->where('deleted', false)->get('people');
         if ($query->num_rows() > 0) {
             return $query->result_array();
         } else {
-            return array();
+            return NULL;
         }
     }
 
-    public function all() {
-        return $this->get_all_people();
-    }
-
-    public function update($id, $data) {
-        return $this->db->where('id', $id)->update('people', $data);
-    }
 }
 
 /* End of file people_model.php */
