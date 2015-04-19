@@ -62,7 +62,7 @@
             <td class="id_card"><?=$item['id_card']?></td>
             <td class="race">
                 <?php
-                if(!$item['race']) {
+                if($item['race']) {
                     echo  $GLOBALS['CAPURACE'][$item['race']];
                 }
                 if ($item['ifteam']) {
