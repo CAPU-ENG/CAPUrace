@@ -211,13 +211,13 @@ function cacheIndividual(order) {
     var shimano17 = $("[name='shimano17']").val();
     data[order] = {
         order: order,
-        name: name,
+        name: $.trim(name),
         gender: gender,
-        id_card: id_card,
+        id_card: $.trim(id_card),
         accommodation: accommodation,
         meal16: meal16,
         meal17: meal17,
-        tel: tel,
+        tel: $.trim(tel),
         ifrace: ifrace,
         ifteam: ifteam,
         race: race,
