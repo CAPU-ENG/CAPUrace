@@ -102,7 +102,7 @@
         </div>
     </div>
     <!-- The code above creates the individual form -->
-    <h3>已保存人员列表</h3>
+    <h3>已保存人员列表（修改数据后请提交，否则无法保存！）</h3>
     <hr/>
     <table class="table table-hover">
         <thead>

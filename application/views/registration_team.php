@@ -1,5 +1,5 @@
 <div class="regcontainer">
-    <h3>请录入团队信息</h3>
+    <h3>请录入团队信息（修改数据后请提交，否则无法保存！）</h3>
     <hr/>
     <div class="form-group reg">
         <label class="col-sm-2">序号</label>
