@@ -120,15 +120,17 @@
     <div style="margin:0 auto;">
         <div class="col-sm-3"></div>
         <div class="col-sm-2">
-            <?php if ($editable): ?>
+            <?php if ($editable) { ?>
             <button id="btn-go-to-pay" class="btn btn-block btn-success">前往支付</button>
-            <?php else: ?>
+            <?php } else { ?>
             <button id="btn-check-payment" class="btn btn-block btn-success">查看支付信息</button>
-            <?php endif; ?>
+            <?php }; ?>
         </div>
         <div class="col-sm-2">
             <?php if ($editable): ?>
             <button id="btn-return-to-signup" class="btn btn-block btn-warning">修改报名信息</button>
+            <?php else: ?>
+            <button id="btn-export-excel" class="btn btn-block btn-warning">导出Excel表格</button>
             <?php endif; ?>
         </div>
         <div class="col-sm-2">
