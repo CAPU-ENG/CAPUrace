@@ -140,11 +140,21 @@ class User_model extends CI_Model {
     /*
      * Set the user to be paid.
      * ====argument====
-     * $id, the id of the user to be confirmed.
+     * $id, the id of the user to be paid.
      */
     public function set_paid($id) {
         $paid = array('paid' => TRUE);
         $this->db->where('id', $id)->update('users', $paid);
+    }
+
+    /*
+     * Set the user to be confirmed.
+     * ====argument====
+     * $id, the id of the user to be confirmed.
+     */
+    public function set_confirmed($id) {
+        $paid = array('confirmed' => TRUE);
+        $this->db->where('id', $id)->update('users', $confirmed);
     }
 
     /*
