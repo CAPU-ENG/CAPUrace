@@ -243,7 +243,7 @@ class User_model extends CI_Model {
     }
 
     public function all() {
-        return $this->db->where('deleted', false)->get('users')->result_array();
+        return $this->db->get('users')->result_array();
     }
 }
 
