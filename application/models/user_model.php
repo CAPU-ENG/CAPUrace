@@ -231,6 +231,10 @@ class User_model extends CI_Model {
     public function freeze($id) {
         $this->db->where('id', $id)->update('users', array('editable' => 0));
     }
+
+    public function all() {
+        return $this->db->where('deleted', false)->get('users')->result_array();
+    }
 }
 
 /* End of file user_model.php */
