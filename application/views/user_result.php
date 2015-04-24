@@ -156,4 +156,7 @@
     $("#btn-check-payment").click(function() {
         window.location.assign("<?=site_url('user/payment')?>");
     })
+    $("#btn-export-excel").click(function() {
+        window.open("<?=site_url('user/export')?>");
+    })
 </script>
