@@ -1,6 +1,6 @@
 <?php
 
-class GuanLiYuanJieMian extends CI_Controller {
+class Admin extends CI_Controller {
 
     function __construct()
     {
