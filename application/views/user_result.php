@@ -67,7 +67,7 @@
                 }
                 if ($item['ifteam']) {
                     echo ' 团体赛 ';
-                } else if ($item['race']) {
+                } else if (!$item['race']) {
                     echo ' 不参加 ';
                 }
                 ?>
