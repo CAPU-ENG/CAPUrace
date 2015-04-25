@@ -153,7 +153,7 @@ class User_model extends CI_Model {
      * $id, the id of the user to be confirmed.
      */
     public function set_confirmed($id) {
-        $paid = array('confirmed' => TRUE);
+        $confirmed = array('confirmed' => TRUE);
         $this->db->where('id', $id)->update('users', $confirmed);
     }
 
