@@ -245,6 +245,11 @@ class User_model extends CI_Model {
     public function all() {
         return $this->db->get('users')->result_array();
     }
+
+    public function delete($id) {
+        $this->db->where('id', $id)->delete('users');
+        return $this->db->affected_rows();
+    }
 }
 
 /* End of file user_model.php */
