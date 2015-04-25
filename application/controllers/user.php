@@ -172,6 +172,12 @@ class User extends CI_Controller {
      */
     public function export() {
         date_default_timezone_set('PRC');
+        if (! $this->session->userdata('logged_in')) {
+            redirect(site_url('user/login'));
+        }
+        if ($this->session->userdata('editable')) {
+            redirect(site_url('user/result'));
+        }
         $school_id = $this->session->userdata('id');
 
         require_once(dirname('__FILE__') . '/Classes/PHPExcel.php');
