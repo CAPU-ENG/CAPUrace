@@ -53,7 +53,7 @@ class Admin extends CI_Controller {
         $shuZu = array();
         $jieGuo = $this->user->all();
         foreach ($jieGuo as $hang) {
-            $shuZu[] = sprintf('{"id":%d, "xueXiao":"%s", "lingDui":"%s", "dianHua":"%s", "huiMing":"%s", "youXiang":"%s", "diZhi":"%s", "youBian":"%s", "queRen":%d, "jiaoQian":%d}', $hang['id'], $hang['school'], $hang['leader'], $hang['tel'], $hang['association_name'], $hang['mail'], $hang['address'], $hang['zipcode'], $hang['confirmed'], $hang['paid']);
+            $shuZu[] = sprintf('{"id":%d, "xueXiao":"%s", "lingDui":"%s", "dianHua":"%s", "huiMing":"%s", "youXiang":"%s", "diZhi":"%s", "youBian":"%s", "jiHuo":%d, "shenHe":%d, "queRen":%d, "jiaoQian":%d}', $hang['id'], $hang['school'], $hang['leader'], $hang['tel'], $hang['association_name'], $hang['mail'], $hang['address'], $hang['zipcode'], $hang['activated'], $hang['confirmed'], $hang['editable'], $hang['paid']);
         }
         $this->output->set_content_type('application/json');
         $this->output->set_output('{"stat": "chengGongLe", "shuJü": [' . join(",\n", $shuZu) . ']}');
@@ -79,5 +79,25 @@ class Admin extends CI_Controller {
         $str = 'set_' . $what;
         $this->user->$str($id);
         $this->output->set_output('{"stat": "chengGongLe"}');
+    }
+
+    public function shanChu() {
+        if ($this->input->server('REQUEST_METHOD') != 'POST') {
+            $this->output->set_status_header('405');
+            $this->output->set_output('{"stat": "shiBaiLe", "msg": "daKaiFangShiBuDui"}');
+            return;
+        }
+        if (!$this->dengLuMeiYou()) {
+            show_error('{"stat": "shiBaiLe", "shiBaiYuanYin": "meiDengLu"}', 403);
+            return;
+        }
+        $id = $this->input->post('id');
+        if ($this->user->delete($id)) {
+            $this->output->set_output('{"stat": "chengGongLe"}');
+        }
+        else {
+            $this->output->set_status_header('500');
+            $this->output->set_output('{"stat": "shiBaiLe", "msg": "buZhiDao"}');
+        }
     }
 }
