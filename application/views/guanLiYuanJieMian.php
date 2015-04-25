@@ -3,88 +3,88 @@
 <head>
 <meta charset="utf-8">
 <script type="text/javascript">
-var zhengZaiShuaXin = false;
-var shuaXinJianGe = 60000;
-var cuoWuShiDeShuaXinJianGe = 2000;
-var shuaXinTimeout = null;
-var dangQianGuoLüQi = function () {return true;};
+var 正在刷新 = false;
+var 刷新间隔 = 60000;
+var 错误时的刷新间隔 = 2000;
+var 刷新Timeout = null;
+var 当前过滤器 = function () {return true;};
 
-function sheZhiShuaXin(jianGe) {
-    if (shuaXinTimeout == null) {
-        clearTimeout(shuaXinTimeout);
+function 设置刷新(间隔) {
+    if (刷新Timeout == null) {
+        clearTimeout(刷新Timeout);
     }
-    shuaXinTimeout = setTimeout(shuaXin, jianGe);
+    刷新Timeout = setTimeout(刷新, 间隔);
 }
 
-function shuaXin() {
+function 刷新() {
     var xhr = new XMLHttpRequest();
-    if (zhengZaiShuaXin) {
+    if (正在刷新) {
         return;
     }
-    zhengZaiShuaXin = true;
+    正在刷新 = true;
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
-            if (genJüFanHuiSheZhiYeMianNeiRong(JSON.parse(xhr.responseText))) {
-                sheZhiShuaXin(shuaXinJianGe);
+            if (根据返回设置页面内容(JSON.parse(xhr.responseText))) {
+                设置刷新(刷新间隔);
             }
             else {
-                sheZhiShuaXin(cuoWuShiDeShuaXinJianGe);
+                设置刷新(错误时的刷新间隔);
             }
-            zhengZaiShuaXin = false;
-            shuaXinTimeout = null;
+            正在刷新 = false;
+            刷新Timeout = null;
         }
     }
     xhr.open('GET', '/index.php/admin/suoYouShuJu/', true);
     xhr.send(null);
 }
 
-function genJüFanHuiSheZhiYeMianNeiRong(fanHui) {
-    if (fanHui.stat == 'chengGongLe') {
-        tianChongShuJü(fanHui.shuJü);
-        document.getElementById('dengLuRongQi').style.display = 'none';
+function 根据返回设置页面内容(返回) {
+    if (返回.状态 == '成功了') {
+        填充数据(返回.数据);
+        document.getElementById('登陆容器').style.display = 'none';
         return true;
     }
-    else if(fanHui.stat == 'shiBaiLe') {
-        if (fanHui.shiBaiYuanYin == 'meiDengLu') {
-            rangTaDengLu();
+    else if(返回.状态 == '失败了') {
+        if (返回.消息 == '没登陆') {
+            让它登陆();
             return true;
         }
         else {
-            chuCuoLe('刷新失败');
+            出错了('刷新失败');
             return false;
         }
     }
 }
 
-var cuoWuLan = null;
-function chuCuoLe(cuoWuXiaoXi) {
-    if (cuoWuLan == null) {
-        cuoWuLan = document.getElementById('cuoWuLan');
+var 错误栏 = null;
+function 出错了(错误消息) {
+    if (错误栏 == null) {
+        错误栏 = document.getElementById('错误栏');
     }
-    cuoWuLan.innerHTML = cuoWuXiaoXi;
-    cuoWuLan.style.display = 'absolute';
-    setTimeout(function () {cuoWuLan.style.display = 'none';}, 5000);
+    错误栏.innerHTML = 错误消息;
+    错误栏.style.display = 'absolute';
+    setTimeout(function () {错误栏.style.display = 'none';}, 5000);
 }
 
-function rangTaDengLu() {
-    document.getElementById('jiLuRongQi').style.display = 'none';
-    document.getElementById('dengLuRongQi').style.display = 'block';
-    document.getElementById('dengLuCuoWu').innerHTML = '';
-    document.forms.namedItem('dengLuBiaoDan').elements.namedItem('kouLing').value = '';
+function 让它登陆() {
+    document.getElementById('记录容器').style.display = 'none';
+    document.getElementById('登陆容器').style.display = 'block';
+    document.getElementById('登陆错误').innerHTML = '';
+    document.forms.namedItem('登陆表单').elements.namedItem('kouLing').value = '';
 }
 
-function dengLu() {
-    var fd = new FormData(document.forms.namedItem('dengLuBiaoDan'));
+function 登陆() {
+    var fd = new FormData(document.forms.namedItem('登陆表单'));
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             var f = JSON.parse(xhr.responseText);
-            if (f.stat == 'chengGongLe') {
-                document.getElementById('dengLuRongQi').style.display = 'none';
-                sheZhiShuaXin(0);
+            if (f.状态 == '成功了') {
+                document.getElementById('登陆容器').style.display = 'none';
+                设置刷新(0);
             }
             else {
-                document.getElementById('dengLuCuoWu').innerHTML = f.msg;
+                document.getElementById('登陆错误').innerHTML = f.消息;
             }
         }
     }
@@ -92,146 +92,146 @@ function dengLu() {
     xhr.send(fd);
 }
 
-var shuJüBiao = null;
-var beiYongJieDian = [];
-function tianChongShuJü(shuJü) {
-    document.getElementById('jiLuRongQi').style.display = 'block';
-    document.getElementById('dengLuRongQi').style.display = 'null';
-    if (shuJüBiao == null) {
-        shuJüBiao = document.getElementById('jiLuMen');
+var 数据表 = null;
+var 备用节点 = [];
+function 填充数据(数据) {
+    document.getElementById('记录容器').style.display = 'block';
+    document.getElementById('登陆容器').style.display = 'null';
+    if (数据表 == null) {
+        数据表 = document.getElementById('记录们');
     }
-    jiLuZhiZhen = shuJüBiao.firstElementChild;
-    for (var k in shuJü) {
-        id = shuJü[k].id;
-        while (jiLuZhiZhen.nodeName != 'THEAD' && id >= jiLuZhiZhen.id) {
-            gangCaiNaGe = jiLuZhiZhen;
-            jiLuZhiZhen = jiLuZhiZhen.nextElementSibling;
-            beiYongJieDian.push(shuJüBiao.removeChild(gangCaiNaGe));
+    记录指针 = 数据表.firstElementChild;
+    for (var k in 数据) {
+        id = 数据[k].id;
+        while (记录指针.nodeName != 'THEAD' && id >= 记录指针.id) {
+            刚才那个 = 记录指针;
+            记录指针 = 记录指针.nextElementSibling;
+            备用节点.push(数据表.removeChild(刚才那个));
         }
-        shuJüBiao.insertBefore(genJüShuJüChuangJianYiGeBiaoGeHang(shuJü[k], beiYongJieDian), jiLuZhiZhen);
+        数据表.insertBefore(根据数据创建一个表格行(数据[k], 备用节点), 记录指针);
     }
 }
 
-function genJuDangQianGuoLüQiGuoLüBiaoGe() {
-    if (shuJüBiao == null) {
-        shuJüBiao = document.getElementById('jiLuMen');
+function 根据当前过滤器过滤表格() {
+    if (数据表 == null) {
+        数据表 = document.getElementById('记录们');
     }
-    jiLuZhiZhen = shuJüBiao.firstElementChild;
-    while (jiLuZhiZhen.nodeName != 'THEAD') {
-        if (!dangQianGuoLüQi(jiLuZhiZhen)) {
-            jiLuZhiZhen.style.display = 'none';
+    记录指针 = 数据表.firstElementChild;
+    while (记录指针.nodeName != 'THEAD') {
+        if (!当前过滤器(记录指针)) {
+            记录指针.style.display = 'none';
         }
         else {
-            jiLuZhiZhen.style.display = 'table-row';
+            记录指针.style.display = 'table-row';
         }
-        jiLuZhiZhen = jiLuZhiZhen.nextElementSibling;
+        记录指针 = 记录指针.nextElementSibling;
     }
 }
 
-function genJüShuJüChuangJianYiGeBiaoGeHang(shuJüHang, beiYong) {
-    if (beiYong.length == 0) {
-        xinHang = chuangJianXinHang();
+function 根据数据创建一个表格行(数据行, 备用) {
+    if (备用.length == 0) {
+        新行 = 创建新行();
     }
     else {
-        xinHang = beiYong.pop();
+        新行 = 备用.pop();
     }
-    wangHangLiTianShuJü(xinHang, shuJüHang);
-    xinHang.id = shuJüHang.id;
-    if (!dangQianGuoLüQi(xinHang)) {
-        xinHang.style.display = 'none';
+    往里填数据(新行, 数据行);
+    新行.id = 数据行.id;
+    if (!当前过滤器(新行)) {
+        新行.style.display = 'none';
     }
     else {
-        xinHang.style.display = 'table-row';
+        新行.style.display = 'table-row';
     }
-    return xinHang;
+    return 新行;
 }
 
-function chuangJianXinHang() {
-    xinHang = document.createElement('TR');
-    xinHang.innerHTML = '<td class="xueXiao"></td><td class="lingDui"></td><td class="dianHua"></td><td class="huiMing"></td><td class="youXiang"></td><td class="diZhi"></td><td class="youBian"></td><td class="jiHuo"></td><td class="shenHe"></td><td class="queRen"></td><td class="jiaoQian"></td><td class="shanChu"></td>';
-    return xinHang;
+function 创建新行() {
+    新行 = document.createElement('TR');
+    新行.innerHTML = '<td class="学校"></td><td class="领队"></td><td class="电话"></td><td class="会名"></td><td class="邮箱"></td><td class="地址"></td><td class="邮编"></td><td class="激活"></td><td class="审核"></td><td class="确认"></td><td class="交钱"></td><td class="删除"></td>';
+    return 新行;
 }
 
-function wangHangLiTianShuJü(xinHang, shuJüHang) {
-    ge = xinHang.firstChild;
-    while (ge) {
-        if (ge.className == 'shenHe') {
-            if (!shuJüHang.shenHe) {
-                ge.innerHTML = '<a href="javascript:void(0);">设成已审核</a>';
-                ge.firstElementChild.onclick = (function (ge) {
-                    return function () {setConfirmed(ge);}
-                }(ge));
+function 往里填数据(新行, 数据行) {
+    格 = 新行.firstChild;
+    while (格) {
+        if (格.className == '审核') {
+            if (!数据行.审核) {
+                格.innerHTML = '<a href="javascript:void(0);">设成已审核</a>';
+                格.firstElementChild.onclick = (function (格) {
+                    return function () {setConfirmed(格);}
+                }(格));
             }
             else {
-                ge.innerHTML = '已审核';
+                格.innerHTML = '已审核';
             }
         }
-        else if (ge.className == 'jiaoQian') {
-            if (!shuJüHang.jiaoQian) {
-                ge.innerHTML = '<a href="javascript:void(0);">设成已交钱</a>';
-                ge.firstElementChild.onclick = (function (ge) {
-                    return function () {setPaid(ge);}
-                }(ge));
+        else if (格.className == '交钱') {
+            if (!数据行.交钱) {
+                格.innerHTML = '<a href="javascript:void(0);">设成已交钱</a>';
+                格.firstElementChild.onclick = (function (格) {
+                    return function () {setPaid(格);}
+                }(格));
             }
             else {
-                ge.innerHTML = '已交钱';
+                格.innerHTML = '已交钱';
             }
         }
-        else if (ge.className == 'jiHuo') {
-            if (!shuJüHang.jiHuo) {
-                ge.innerHTML = '还没有激活';
+        else if (格.className == '激活') {
+            if (!数据行.激活) {
+                格.innerHTML = '还没有激活';
             }
             else {
-                ge.innerHTML = '已激活';
+                格.innerHTML = '已激活';
             }
         }
-        else if (ge.className == 'queRen') {
-            if (!shuJüHang.queRen) {
-                ge.innerHTML = '还没有确认';
+        else if (格.className == '确认') {
+            if (!数据行.确认) {
+                格.innerHTML = '还没有确认';
             }
             else {
-                ge.innerHTML = '已确认';
+                格.innerHTML = '已确认';
             }
         }
-        else if (ge.className == 'shanChu') {
-            ge.innerHTML = '<a href="javascript:void(0);">删除</a>';
-            ge.onclick = (function (n, ge) {
+        else if (格.className == '删除') {
+            格.innerHTML = '<a href="javascript:void(0);">删除</a>';
+            格.onclick = (function (n, 格) {
                 return function () {
                     if ((n & 7) == 7) {
-                        shanChu(ge);
+                        删除(格);
                     }
                     else if ((n & 7) == 0) {
-                        ge.firstElementChild.innerHTML = '真的要' + ge.firstElementChild.innerHTML + '吗？';
+                        格.firstElementChild.innerHTML = '真的要' + 格.firstElementChild.innerHTML + '吗？';
                     }
                     else {
-                        ge.firstElementChild.innerHTML = '真的' + ge.firstElementChild.innerHTML;
+                        格.firstElementChild.innerHTML = '真的' + 格.firstElementChild.innerHTML;
                     }
                     n += 1;
                 };
-            })(0, ge);
+            })(0, 格);
         }
         else {
-            ge.innerHTML = shuJüHang[ge.className];
+            格.innerHTML = 数据行[格.className];
         }
-        ge = ge.nextElementSibling;
+        格 = 格.nextElementSibling;
     }
 }
 
-function shanChu(ge) {
-    id = ge.parentNode.id;
+function 删除(格) {
+    id = 格.parentNode.id;
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
-                // zhong jian ke neng shua xin guo
-                if (id == ge.parentNode.id) {
-                    hang = ge.parentNode.parentNode.removeChild(ge.parentNode);
-                    beiYongJieDian.push(hang);
+                //中间可能刷新过
+                if (id == 格.parentNode.id) {
+                    行 = 格.parentNode.parentNode.removeChild(格.parentNode);
+                    备用节点.push(行);
                 }
             }
             else {
-                ge.firstElementChild.innerHTML = '删除';
-                chuCuoLe('删除失败。。。');
+                格.firstElementChild.innerHTML = '删除';
+                出错了('删除失败。。。');
             }
         }
     }
@@ -240,92 +240,92 @@ function shanChu(ge) {
     xhr.send('id=' + id);
 }
 
-function setConfirmed(ge) {
-    setXxxed(ge, 'confirmed', '已审核');
+function setConfirmed(格) {
+    setXxxed(格, 'confirmed', '已审核');
 }
 
-function setPaid(ge) {
-    setXxxed(ge, 'paid', '已交钱');
+function setPaid(格) {
+    setXxxed(格, 'paid', '已交钱');
 }
 
-function setXxxed(ge, what, show) {
-    id = ge.parentNode.id;
+function setXxxed(格, 啥, 完成后填的文字) {
+    id = 格.parentNode.id;
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
-                // zhong jian ke neng shua xin guo
-                if (id == ge.parentNode.id) {
-                    ge.innerHTML = show;
+                //中间可能刷新过
+                if (id == 格.parentNode.id) {
+                    格.innerHTML = 完成后填的文字;
                 }
             }
             else {
-                chuCuoLe('更新失败。。。');
+                出错了('更新失败。。。');
             }
         }
     }
     xhr.open('POST', '/index.php/admin/setXxxed/', true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send('what=' + what + '&id=' + id);
+    xhr.send('what=' + 啥 + '&id=' + id);
 }
 
-function kaiShi() {
-    document.getElementById('wuGuoLüQi').onclick = function () {
-        dangQianGuoLüQi = function () {return true;};
-        genJuDangQianGuoLüQiGuoLüBiaoGe();
+function 开始() {
+    document.getElementById('无过滤器').onclick = function () {
+        当前过滤器 = function () {return true;};
+        根据当前过滤器过滤表格();
     }
-    document.getElementById('weiJiHuo').onclick = function () {
-        dangQianGuoLüQi = function (hang) {
-            return hang.getElementsByClassName('jiHuo')[0].innerHTML != '已激活';
+    document.getElementById('未激活').onclick = function () {
+        当前过滤器 = function (行) {
+            return 行.getElementsByClassName('激活')[0].innerHTML != '已激活';
         };
-        genJuDangQianGuoLüQiGuoLüBiaoGe();
+        根据当前过滤器过滤表格();
     }
-    document.getElementById('weiShenHe').onclick = function () {
-        dangQianGuoLüQi = function (hang) {
-            return hang.getElementsByClassName('shenHe')[0].innerHTML != '已审核';
+    document.getElementById('未审核').onclick = function () {
+        当前过滤器 = function (行) {
+            return 行.getElementsByClassName('审核')[0].innerHTML != '已审核';
         };
-        genJuDangQianGuoLüQiGuoLüBiaoGe();
+        根据当前过滤器过滤表格();
     }
-    document.getElementById('weiQueRen').onclick = function () {
-        dangQianGuoLüQi = function (hang) {
-            return hang.getElementsByClassName('queRen')[0].innerHTML != '已确认';
+    document.getElementById('未确认').onclick = function () {
+        当前过滤器 = function (行) {
+            return 行.getElementsByClassName('确认')[0].innerHTML != '已确认';
         };
-        genJuDangQianGuoLüQiGuoLüBiaoGe();
+        根据当前过滤器过滤表格();
     }
-    document.getElementById('weiJiaoQian').onclick = function () {
-        dangQianGuoLüQi = function (hang) {
-            return hang.getElementsByClassName('jiaoQian')[0].innerHTML != '已交钱';
+    document.getElementById('未交钱').onclick = function () {
+        当前过滤器 = function (行) {
+            return 行.getElementsByClassName('交钱')[0].innerHTML != '已交钱';
         };
-        genJuDangQianGuoLüQiGuoLüBiaoGe();
+        根据当前过滤器过滤表格();
     }
-    sheZhiShuaXin(0);
+    设置刷新(0);
 }
 
-window.onload = kaiShi;
+window.onload = 开始;
 </script>
 </head>
 <body>
-<div id="jinDuTiao">
+<div id="进度条">
 </div>
-<div id="cuoWuLan">
+<div id="错误栏">
 </div>
-<div id="dengLuRongQi">
-<form methad="post" name="dengLuBiaoDan">
-<p id="dengLuCuoWu"></p>
+<div id="登陆容器">
+<form methad="post" name="登陆表单">
+<p id="登陆错误"></p>
 <label>口令</label>
 <input type="text" name="kouLing">
-<input type="button" value="登陆" onclick="javascript:dengLu();">
+<input type="button" value="登陆" onclick="javascript:登陆();">
 </form>
 </div>
-<div id="jiLuRongQi">
-<ul id="guoLüQi">
-<li><a id="wuGuoLüQi" href="javascript:void(0);">显示全部</a></li>
-<li><a id="weiJiHuo" href="javascript:void(0);">未激活</a></li>
-<li><a id="weiShenHe" href="javascript:void(0);">未审核</a></li>
-<li><a id="weiQueRen" href="javascript:void(0);">未确认</a></li>
-<li><a id="weiJiaoQian" href="javascript:void(0);">未交钱</a></li>
+<div id="记录容器">
+<ul id="过滤器">
+<li><a id="无过滤器" href="javascript:void(0);">显示全部</a></li>
+<li><a id="未激活" href="javascript:void(0);">未激活</a></li>
+<li><a id="未审核" href="javascript:void(0);">未审核</a></li>
+<li><a id="未确认" href="javascript:void(0);">未确认</a></li>
+<li><a id="未交钱" href="javascript:void(0);">未交钱</a></li>
 </ul>
-<table id="jiLuMen">
+<table id="记录们">
 <thead>
 <tr>
 <th>学校</th>

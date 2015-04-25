@@ -18,86 +18,88 @@ class Admin extends CI_Controller {
         $this->output->set_content_type('application/json');
         if ($this->input->server('REQUEST_METHOD') != 'POST') {
             $this->output->set_status_header('405');
-            $this->output->set_output('{"stat": "shiBaiLe", "msg": "daKaiFangShiBuDui"}');
+            $this->output->set_output('{"状态": "失败了", "消息": "打开方式不对"}');
             return;
         }
-        if ($this->session->userdata('yiDengLu') == true) {
-            $this->output->set_output('{"stat": "chengGongLe"}');
+        if ($this->session->userdata('已登陆') == true) {
+            $this->output->set_output('{"状态": "成功了"}');
             return;
         }
         $kouLing = $this->input->post('kouLing');
         if ($kouLing != '19951025') {
             $this->output->set_status_header('403');
-            $this->output->set_output('{"stat": "shiBaiLe", "msg": "kouLingBuDui"}');
+            $this->output->set_output('{"状态": "失败了", "消息": "口令不对"}');
             return;
         }
-        $this->session->set_userdata('yiDengLu', true);
-        $this->output->set_output('{"stat": "chengGongLe"}');
+        $this->session->set_userdata('已登陆', true);
+        $this->output->set_output('{"状态": "成功了"}');
     }
 
     private function dengLuMeiYou() {
-        return $this->session->userdata('yiDengLu') == true;
+        return $this->session->userdata('已登陆') == true;
     }
 
     public function suoYouShuJu() {
         if ($this->input->server('REQUEST_METHOD') != 'GET') {
             $this->output->set_status_header('405');
-            $this->output->set_output('{"stat": "shiBaiLe", "msg": "daKaiFangShiBuDui"}');
+            $this->output->set_output('{"状态": "失败了", "消息": "打开方式不对"}');
             return;
         }
         if (!$this->dengLuMeiYou()) {
             $this->output->set_status_header('403');
-            $this->output->set_output('{"stat": "shiBaiLe", "shiBaiYuanYin": "meiDengLu"}');
+            $this->output->set_output('{"状态": "失败了", "消息": "没登陆"}');
             return;
         }
         $shuZu = array();
         $jieGuo = $this->user->all();
         foreach ($jieGuo as $hang) {
-            $shuZu[] = sprintf('{"id":%d, "xueXiao":"%s", "lingDui":"%s", "dianHua":"%s", "huiMing":"%s", "youXiang":"%s", "diZhi":"%s", "youBian":"%s", "jiHuo":%d, "shenHe":%d, "queRen":%d, "jiaoQian":%d}', $hang['id'], $hang['school'], $hang['leader'], $hang['tel'], $hang['association_name'], $hang['mail'], $hang['address'], $hang['zipcode'], $hang['activated'], $hang['confirmed'], $hang['editable'], $hang['paid']);
+            $shuZu[] = sprintf('{"id":%d, "学校":"%s", "领队":"%s", "电话":"%s", "会名":"%s", "邮箱":"%s", "地址":"%s", "邮编":"%s", "激活":%d, "审核":%d, "确认":%d, "交钱":%d}', $hang['id'], $hang['school'], $hang['leader'], $hang['tel'], $hang['association_name'], $hang['mail'], $hang['address'], $hang['zipcode'], $hang['activated'], $hang['confirmed'], $hang['editable'], $hang['paid']);
         }
         $this->output->set_content_type('application/json');
-        $this->output->set_output('{"stat": "chengGongLe", "shuJü": [' . join(",\n", $shuZu) . ']}');
+        $this->output->set_output('{"状态": "成功了", "数据": [' . join(",\n", $shuZu) . ']}');
     }
 
     public function setXxxed() {
         if ($this->input->server('REQUEST_METHOD') != 'POST') {
             $this->output->set_status_header('405');
-            $this->output->set_output('{"stat": "shiBaiLe", "msg": "daKaiFangShiBuDui"}');
+            $this->output->set_output('{"状态": "失败了", "消息": "打开方式不对"}');
             return;
         }
         if (!$this->dengLuMeiYou()) {
-            show_error('{"stat": "shiBaiLe", "shiBaiYuanYin": "meiDengLu"}', 403);
+            $this->output->set_status_header('403');
+            $this->output->set_output('{"状态": "失败了", "消息": "没登陆"}');
             return;
         }
         $id = $this->input->post('id');
         $what = $this->input->post('what');
         if ($what != 'confirmed' and $what != 'paid') {
             $this->output->set_status_header('404');
-            $this->output->set_output('{"stat": "shiBaiLe", "msg": "buNengSetZheGe"}');
+            $this->output->set_output('{"状态": "失败了", "消息": "不能设置这个"}');
             return;
         }
         $str = 'set_' . $what;
         $this->user->$str($id);
-        $this->output->set_output('{"stat": "chengGongLe"}');
+        $this->output->set_output('{"状态": "成功了"}');
     }
 
     public function shanChu() {
         if ($this->input->server('REQUEST_METHOD') != 'POST') {
             $this->output->set_status_header('405');
-            $this->output->set_output('{"stat": "shiBaiLe", "msg": "daKaiFangShiBuDui"}');
+            $this->output->set_output('{"状态": "失败了", "消息": "打开方式不对"}');
             return;
         }
         if (!$this->dengLuMeiYou()) {
-            show_error('{"stat": "shiBaiLe", "shiBaiYuanYin": "meiDengLu"}', 403);
+            $this->output->set_status_header('403');
+            $this->output->set_output('{"状态": "失败了", "消息": "没登陆"}');
             return;
         }
         $id = $this->input->post('id');
         if ($this->user->delete($id)) {
-            $this->output->set_output('{"stat": "chengGongLe"}');
+            $this->output->set_output('{"状态": "成功了"}');
         }
         else {
             $this->output->set_status_header('500');
-            $this->output->set_output('{"stat": "shiBaiLe", "msg": "buZhiDao"}');
+            $this->output->set_output('{"状态": "失败了", "消息": "不知道"}');
         }
     }
 }
