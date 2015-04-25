@@ -129,6 +129,8 @@
         <div class="col-sm-2">
             <?php if ($editable): ?>
             <button id="btn-return-to-signup" class="btn btn-block btn-warning">修改报名信息</button>
+            <?php else: ?>
+            <button id="btn-export-excel" class="btn btn-block btn-warning">导出Excel表格</button>
             <?php endif; ?>
         </div>
         <div class="col-sm-2">
@@ -153,5 +155,8 @@
     });
     $("#btn-check-payment").click(function() {
         window.location.assign("<?=site_url('user/payment')?>");
+    })
+    $("#btn-export-excel").click(function() {
+        window.open("<?=site_url('user/export')?>");
     })
 </script>

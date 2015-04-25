@@ -166,4 +166,120 @@ class User extends CI_Controller {
         $token = $this->uri->segment(3);
         $this->load->view('activate', array('msg' => $this->user->activate($token)));
     }
+
+    /*
+     * Export an Excel file containing all the information.
+     */
+    public function export() {
+        date_default_timezone_set('PRC');
+        $school_id = $this->session->userdata('id');
+
+        require_once(dirname('__FILE__') . '/Classes/PHPExcel.php');
+        $excel = new PHPExcel();
+        $excel->getProperties()->setCreator('北京大学自行车协会');
+        $excel->getDefaultStyle()
+            ->getNumberFormat()
+            ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
+
+        // There are 3 sheets in this file. Sheet 1 for school info, 2 for individuals, and 3 for team info.
+
+        // Here comes sheet 1;
+        $userinfo = $this->user->get_user_by_id($school_id);
+        $filename = $userinfo['school'] . '.xlsx';
+        $excel->setActiveSheetIndex(0)->setTitle('高校信息');
+        $excel->getActiveSheet()
+            ->setCellValue('A1', '学校名称')
+            ->setCellValue('B1', '车协名称')
+            ->setCellValue('C1', '领队姓名')
+            ->setCellValue('D1', '电子邮箱')
+            ->setCellValue('E1', '手机号')
+            ->setCellValue('F1', '邮寄地址')
+            ->setCellValue('G1', '邮政编码')
+            ->setCellValue('H1', '费用合计');
+        $excel->getActiveSheet()
+            ->setCellValue('A2', $userinfo['school'])
+            ->setCellValue('B2', $userinfo['association_name'])
+            ->setCellValue('C2', $userinfo['leader'])
+            ->setCellValue('D2', $userinfo['mail'])
+            ->setCellValue('E2', $userinfo['tel'])
+            ->setCellValue('F2', $userinfo['address'])
+            ->setCellValue('G2', $userinfo['zipcode'])
+            ->setCellValue('H2', $userinfo['bill']);
+
+        // Here comes sheet 2;
+        $excel->createSheet(1);
+        $excel->setActiveSheetIndex(1);
+        $excel->getActiveSheet()->setTitle('人员信息');
+        $individual_info = $this->people->get_people_from_school($school_id);
+        $excel->getActiveSheet()
+            ->setCellValue('A1', '序号')
+            ->setCellValue('B1', '姓名')
+            ->setCellValue('C1', '性别')
+            ->setCellValue('D1', '手机号')
+            ->setCellValue('E1', '身份证号')
+            ->setCellValue('F1', '个人赛')
+            ->setCellValue('G1', '团体赛')
+            ->setCellValue('H1', '公路日')
+            ->setCellValue('I1', '住宿')
+            ->setCellValue('J1', '5.16晚餐')
+            ->setCellValue('K1', '5.17午餐')
+            ->setCellValue('L1', '清真')
+            ->setCellValue('M1', '费用');
+
+        foreach ($individual_info as $key => $item) {
+            $i = $key + 2;
+            $excel->getActiveSheet()
+                ->setCellValue('A' . $i, $item['order'] + 1)
+                ->setCellValue('B' . $i, $item['name'])
+                ->setCellValue('C' . $i, $GLOBALS['GENDER'][$item['gender']])
+                ->setCellValue('D' . $i, $item['tel'])
+                ->setCellValue('E' . $i, $item['id_card'])
+                ->setCellValue('F' . $i, $GLOBALS['CAPURACE'][$item['race']])
+                ->setCellValue('G' . $i, $GLOBALS['JUDGE'][$item['ifteam']])
+                ->setCellValue('H' . $i, $GLOBALS['SHIMANO_RDB'][$item['shimano16']])
+                ->setCellValue('I' . $i, $GLOBALS['SHIMANO_MTB'][$item['shimano17']])
+                ->setCellValue('J' . $i, $GLOBALS['JUDGE'][$item['meal16']])
+                ->setCellValue('K' . $i, $GLOBALS['JUDGE'][$item['meal17']])
+                ->setCellValue('L' . $i, $GLOBALS['JUDGE'][$item['islam']])
+                ->setCellValue('M' . $i, $item['fee']);
+        }
+
+
+        // Here comes sheet 3;
+        $excel->createSheet(2);
+        $excel->setActiveSheetIndex(2);
+        $excel->getActiveSheet()->setTitle('团体赛信息');
+        $excel->getActiveSheet()
+            ->setCellValue('A1', '序号')
+            ->setCellValue('B1', '第一棒')
+            ->setCellValue('C1', '第二棒')
+            ->setCellValue('D1', '第三棒')
+            ->setCellValue('E1', '第四棒');
+
+        $team_info = $this->team->get_team_from_school($school_id);
+
+        foreach ($team_info as $key => $item) {
+            $i = $key + 2;
+            $excel->getActiveSheet()
+                ->setCellValue('A' . $i, $item['order'])
+                ->setCellValue('B' . $i, $this->people->get_name($item['first']))
+                ->setCellValue('C' . $i, $this->people->get_name($item['second']))
+                ->setCellValue('D' . $i, $this->people->get_name($item['third']))
+                ->setCellValue('E' . $i, $this->people->get_name($item['fourth']));
+        }
+
+
+        // Wrap up the file.
+
+        $excel->setActiveSheetIndex(0);
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename=' . $filename);
+        header('Cache-Control: max-age=0');
+        // If you're serving to IE 9, then the following may be needed
+        header('Cache-Control: max-age=1');
+
+        $objWriter = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+        $objWriter->save('php://output');
+        exit;
+    }
 }
