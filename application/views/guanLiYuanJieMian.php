@@ -197,10 +197,10 @@ function wangHangLiTianShuJü(xinHang, shuJüHang) {
             ge.innerHTML = '<a href="javascript:void(0);">删除</a>';
             ge.onclick = (function (n, ge) {
                 return function () {
-                    if (n == 6) {
+                    if ((n & 7) == 7) {
                         shanChu(ge);
                     }
-                    else if (n == 0) {
+                    else if ((n & 7) == 0) {
                         ge.firstElementChild.innerHTML = '真的要' + ge.firstElementChild.innerHTML + '吗？';
                     }
                     else {
