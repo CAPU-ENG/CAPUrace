@@ -67,7 +67,9 @@
           </li>
           <?php else: ?>
           <li id="nav4"><a href="<?=site_url('user/login')?>">登录</a></li>
+          <!--
           <li id="nav5"><a href="<?=site_url('user/signup')?>">注册</a></li>
+          -->
           <?php endif; ?>
         </ul>
       </div><!-- /.navbar-collapse -->
