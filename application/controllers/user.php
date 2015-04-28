@@ -80,35 +80,35 @@ class User extends CI_Controller {
         redirect(base_url(), 'refresh');
     }
 
-    public function signup() {
+    // public function signup() {
 
-        date_default_timezone_set('PRC');
+    //     date_default_timezone_set('PRC');
 
-        if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $this->load->view('header');
-            $this->load->view('add_hilight_nav5'); 
-            $this->load->view('signup_form');
-            $this->load->view('footer');
-        }
+    //     if ($this->input->server('REQUEST_METHOD') == 'GET') {
+    //         $this->load->view('header');
+    //         $this->load->view('add_hilight_nav5'); 
+    //         $this->load->view('signup_form');
+    //         $this->load->view('footer');
+    //     }
 
-        if ($this->input->server('REQUEST_METHOD') == 'POST') {
-            $data = $this->input->post();
-            header('Content-Type: application/json');
+    //     if ($this->input->server('REQUEST_METHOD') == 'POST') {
+    //         $data = $this->input->post();
+    //         header('Content-Type: application/json');
 
-            if ($this->form_validation->run('signup') == false) {
-                $err_code = '400';
-            } else {
-                $err_code = '200';
-                unset($data['passconf']);
-                $token = $this->user->generate_token($data['mail']);
-                $data = array_merge($data, array('token' => $token));
-                $this->user->sign_up($data);
-                $this->email->send_account_confirm_mail($data['mail']);
-            }
+    //         if ($this->form_validation->run('signup') == false) {
+    //             $err_code = '400';
+    //         } else {
+    //             $err_code = '200';
+    //             unset($data['passconf']);
+    //             $token = $this->user->generate_token($data['mail']);
+    //             $data = array_merge($data, array('token' => $token));
+    //             $this->user->sign_up($data);
+    //             $this->email->send_account_confirm_mail($data['mail']);
+    //         }
 
-            exit(err_msg($err_code));
-        }
-    }
+    //         exit(err_msg($err_code));
+    //     }
+    // }
 
     /*
      * Show registration result for the user.
