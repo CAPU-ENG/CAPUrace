@@ -140,11 +140,21 @@ class User_model extends CI_Model {
     /*
      * Set the user to be paid.
      * ====argument====
-     * $id, the id of the user to be confirmed.
+     * $id, the id of the user to be paid.
      */
     public function set_paid($id) {
         $paid = array('paid' => TRUE);
         $this->db->where('id', $id)->update('users', $paid);
+    }
+
+    /*
+     * Set the user to be confirmed.
+     * ====argument====
+     * $id, the id of the user to be confirmed.
+     */
+    public function set_confirmed($id) {
+        $confirmed = array('confirmed' => TRUE);
+        $this->db->where('id', $id)->update('users', $confirmed);
     }
 
     /*
@@ -230,6 +240,15 @@ class User_model extends CI_Model {
      */
     public function freeze($id) {
         $this->db->where('id', $id)->update('users', array('editable' => 0));
+    }
+
+    public function all() {
+        return $this->db->get('users')->result_array();
+    }
+
+    public function delete($id) {
+        $this->db->where('id', $id)->delete('users');
+        return $this->db->affected_rows();
     }
 }
 
