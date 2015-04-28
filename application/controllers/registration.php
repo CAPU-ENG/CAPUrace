@@ -40,14 +40,14 @@ class Registration extends CI_Controller {
      * This method let the users register individuals.
      */
     public function individual() {
-        $school_id = $this->session->userdata('id');
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $data['individual'] = $this->people->get_people_from_school($school_id);
+            $data['individual'] = load_cached_individual();
             $this->load->view('header');
             $this->load->view('registration_individual', $data);
             $this->load->view('footer');
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $school_id = $this->session->userdata('id');
             $data = $this->input->post();
             $ind_post = $data['data'];
             header('Content-Type: application/json');
