@@ -24,9 +24,9 @@
             <td class="bill"><?=$item['bill']?></td>
             <td class="paid">
                 <?php if ($item['paid']): ?>
-                <button class="btn-xs btn-primary lookup">查看信息</button>
+                <button class="btn-xs btn-primary btn-lookup">查看信息</button>
                 <?php else: ?>
-                <button class="btn-xs btn-success set-paid">确认缴费</button>
+                <button class="btn-xs btn-success btn-set-paid">确认缴费</button>
                 <?php endif; ?>
             </td>
         </tr>
@@ -34,3 +34,10 @@
         </tbody>
     </table>
 </div>
+<script>
+    $(".btn-lookup").click(function() {
+        var id = $(this).closest(".payitem").find(".id").text();
+        var link = "<?=site_url('admin/lookup')?>" + "/" + id;
+        window.location.assign(link);
+    });
+</script>

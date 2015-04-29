@@ -1,4 +1,6 @@
 <div class="signcontainer">
+    <h3>管理员登录</h3>
+    <hr/>
     <div class="row">
         <label class="col-sm-4">口令</label>
         <div class="col-sm-8">
@@ -29,6 +31,6 @@
             } else {
                 window.location.assign('<?=site_url('admin')?>');
             }
-        })
-    })
+        });
+    });
 </script>
