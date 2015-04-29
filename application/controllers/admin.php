@@ -49,4 +49,9 @@ class Admin extends CI_Controller {
         $this->load->view('admin_lookup', $data);
         $this->load->view('footer_admin');
     }
+
+    public function logout() {
+        $this->session->unset_userdata('admin_in');
+        redirect(site_url('user/admin'));
+    }
 }
