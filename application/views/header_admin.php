@@ -13,3 +13,5 @@
 <script src="<?=base_url()?>/assets/js/race.js"></script>
 </head>
 <body>
+<h3 style="text-align: center">北大赛管理员后台</h3>
+<hr/>

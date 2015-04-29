@@ -16,7 +16,6 @@ class Admin extends CI_Controller {
 
     public function index() {
         $this->load->view('header_admin');
-        $this->load->view('admin_index');
         $this->load->view('footer_admin');
     }
 
@@ -48,12 +47,6 @@ class Admin extends CI_Controller {
         $data['userinfo'] = $this->user->get_user_by_id($school_id);
         $this->load->view('header_admin');
         $this->load->view('admin_lookup', $data);
-        $this->load->view('footer_admin');
-    }
-
-    public function confirm() {
-        $this->load->view('header_admin');
-        $this->load->view('admin_confirm');
         $this->load->view('footer_admin');
     }
 }
