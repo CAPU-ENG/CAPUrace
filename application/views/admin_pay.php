@@ -41,11 +41,16 @@
         window.location.assign(link);
     });
     $(".btn-set-paid").click(function() {
-        var id = $(this).closest(".payitem").find(".id").text();
+        var item = $(this).closest(".payitem");
+        var id = item.find(".id").text();
+        var school = item.find(".school").text();
+        var bill = item.find(".bill").text();
         var data = {
             id: id
         };
-        $.post("<?=site_url('admin/pay')?>", data, function(response) {})
-        window.location.reload();
+        if (confirm('确认 ' + school + ' 已经支付 ' + bill + ' 元？')) {
+            $.post("<?=site_url('admin/pay')?>", data, function (response) {});
+            window.location.reload();
+        }
     });
 </script>
