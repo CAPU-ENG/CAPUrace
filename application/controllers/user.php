@@ -288,4 +288,22 @@ class User extends CI_Controller {
         $objWriter->save('php://output');
         exit;
     }
+
+    public function admin() {
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_admin');
+            $this->load->view('admin_auth');
+            $this->load->view('footer_admin');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            $pass = $data['pass'];
+            if ($pass == "81dc9bdb52d04dc20036dbd8313ed055") {
+                $this->session->set_userdata('admin_in', true);
+                echo 0;
+            } else {
+                echo 1;
+            }
+        }
+    }
 }
