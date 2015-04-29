@@ -4,7 +4,7 @@
     <div class="row">
         <label class="col-sm-4">口令</label>
         <div class="col-sm-8">
-            <input class="form-control" name="pass">
+            <input type="password" class="form-control" name="pass">
         </div>
     </div>
     <hr/>

@@ -236,7 +236,7 @@ class User_model extends CI_Model {
      * This function gets all verified users.
      */
     public function get_verified() {
-        $query = $this->db->where('editable', 0)->order_by('paid', 'asc')->get('users');
+        $query = $this->db->where('editable', 0)->order_by('id', 'asc')->get('users');
         return $query->result_array();
     }
 }

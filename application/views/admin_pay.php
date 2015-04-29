@@ -40,4 +40,12 @@
         var link = "<?=site_url('admin/lookup')?>" + "/" + id;
         window.location.assign(link);
     });
+    $(".btn-set-paid").click(function() {
+        var id = $(this).closest(".payitem").find(".id").text();
+        var data = {
+            id: id
+        };
+        $.post("<?=site_url('admin/pay')?>", data, function(response) {})
+        window.location.reload();
+    });
 </script>
