@@ -298,7 +298,7 @@ class User extends CI_Controller {
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $data = $this->input->post();
             $pass = $data['pass'];
-            if ($pass == "81dc9bdb52d04dc20036dbd8313ed055") {
+            if ($pass == "d87b8d7ca33cbf3c3effe6f84d1277da") {
                 $this->session->set_userdata('admin_in', true);
                 echo 0;
             } else {
