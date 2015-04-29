@@ -231,6 +231,14 @@ class User_model extends CI_Model {
     public function freeze($id) {
         $this->db->where('id', $id)->update('users', array('editable' => 0));
     }
+
+    /*
+     * This function gets all verified users.
+     */
+    public function get_verified() {
+        $query = $this->db->where('editable', 0)->order_by('paid', 'asc')->order_by('province', 'asc')->get('users');
+        return $query->result_array();
+    }
 }
 
 /* End of file user_model.php */
