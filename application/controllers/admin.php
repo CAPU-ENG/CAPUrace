@@ -20,4 +20,16 @@ class Admin extends CI_Controller {
         $this->load->view('footer_admin');
     }
 
+    public function pay() {
+        $data['payment'] = $this->user->get_verified();
+        $this->load->view('header_admin');
+        $this->load->view('admin_pay', $data);
+        $this->load->view('footer_admin');
+    }
+
+    public function confirm() {
+        $this->load->view('header_admin');
+        $this->load->view('admin_confirm');
+        $this->load->view('footer_admin');
+    }
 }
