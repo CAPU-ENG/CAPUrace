@@ -84,7 +84,7 @@
                     <label class="col-sm-1">5.17山地</label>
                     <div class="col-sm-2">
                         <select class="form-control" name="shimano17">
-                            <?php foreach ($GLOBALS['SHIMANO_MTB'] as $key => $value): ?>
+                            <?php foreach ($GLOBALS['SHIMANO_MTB_SELECT'] as $key => $value): ?>
                                 <option value="<?=$key?>"><?=$value?></option>
                             <?php endforeach; ?>
                         </select>
