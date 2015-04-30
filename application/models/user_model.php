@@ -233,6 +233,13 @@ class User_model extends CI_Model {
     }
 
     /*
+     * Shut down the registration system.
+     */
+    public function freeze_all() {
+        $this->db->update('users', array('editable' => 0));
+    }
+
+    /*
      * This function gets all verified users.
      */
     public function get_verified() {

@@ -335,4 +335,11 @@ class Admin extends CI_Controller {
             ->setCellValue('I' . $i, $school['zipcode'])
             ->setCellValue('J' . $i, $ind['tel']);
     }
+
+    public function shutdown() {
+        $this->user->freeze_all();
+        $this->load->view('header_admin');
+        $this->load->view('admin_shutdown');
+        $this->load->view('footer_admin');
+    }
 }
