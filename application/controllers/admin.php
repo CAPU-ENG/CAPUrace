@@ -183,7 +183,8 @@ class Admin extends CI_Controller {
         // Sheet 4 is the SHIMANO roadbike day.
         $excel->createSheet(3);
         $excel->setActiveSheetIndex(3)->setTitle('SHIMANO公路日');
-        $shimano_rdb = $this->db->where('shimano16 != 0')->where('deleted', 0)->get('people')->result_array();
+        $shimano_rdb = $this->db->where('shimano16 != 0')->where('deleted', 0)
+            ->order_by('shimano16', 'asc')->get('people')->result_array();
         $this->_fill_individual($excel, $shimano_rdb, 'SHIMANO_RDB');
 
 
@@ -191,7 +192,8 @@ class Admin extends CI_Controller {
         // Sheet 5 is the SHIMANO mountainbike day.
         $excel->createSheet(4);
         $excel->setActiveSheetIndex(4)->setTitle('SHIMANO山地日');
-        $shimano_mtb = $this->db->where('shimano17 != 0')->where('deleted', 0)->get('people')->result_array();
+        $shimano_mtb = $this->db->where('shimano17 != 0')->where('deleted', 0)
+            ->order_by('shimano17', 'asc')->get('people')->result_array();
         $this->_fill_individual($excel, $shimano_mtb, 'SHIMANO_MTB');
 
 
