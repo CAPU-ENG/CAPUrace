@@ -26,7 +26,7 @@
         window.location.assign("<?=site_url('admin/info')?>");
     });
     $("#btn-export-excel").click(function() {
-        window.open("<?=site_url('admin/export')?>");
+        window.location.assign("<?=site_url('admin/export')?>");
     });
     $("#btn-close-system").click(function() {
         if (confirm('本操作将关闭整个报名系统，且不可恢复。确定继续？')) {
