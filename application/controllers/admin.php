@@ -319,7 +319,7 @@ class Admin extends CI_Controller {
 
         $objWriter = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
         $objWriter->save('php://output');
-        exit;
+        redirect(site_url('admin'));
     }
 
     public function _fill_ind_in_team($excel, $key, $i, $school) {
