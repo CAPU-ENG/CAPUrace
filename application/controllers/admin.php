@@ -278,13 +278,32 @@ class Admin extends CI_Controller {
         // Sheet 9 is the team race sheet.
         $excel->createSheet(8);
         $excel->setActiveSheetIndex(8)->setTitle('团体赛表');
-
-
-
-
-
-
-
+        $teams = $this->db->where('deleted', 0)->get('team')->result_array();
+        $excel->getActiveSheet()
+            ->setCellValue('A1', '序号')
+            ->setCellValue('B1', '姓名')
+            ->setCellValue('C1', '性别')
+            ->setCellValue('D1', '身份证号')
+            ->setCellValue('E1', '组别')
+            ->setCellValue('F1', '协会名称')
+            ->setCellValue('G1', '学校')
+            ->setCellValue('H1', '省市')
+            ->setCellValue('I1', '邮政编码')
+            ->setCellValue('J1', '手机号');
+        $i = 2;
+        foreach ($teams as $key => $item) {
+            $school = $this->user->get_user_by_id($item['school_id']);
+            if (! $school['paid']) {
+                continue;
+            }
+            $excel->getActiveSheet()->mergeCells('A' . $i . ':A' . ($i + 3));
+            $excel->getActiveSheet()->setCellValue('A' . $i, $key + 1);
+            $this->_fill_ind_in_team($excel, $item['first'], $i, $school);
+            $this->_fill_ind_in_team($excel, $item['second'], $i + 1, $school);
+            $this->_fill_ind_in_team($excel, $item['third'], $i + 2, $school);
+            $this->_fill_ind_in_team($excel, $item['fourth'], $i + 3, $school);
+            $i += 4;
+        }
 
         // ============================================================
         // Wrap up the file.
@@ -301,4 +320,17 @@ class Admin extends CI_Controller {
         exit;
     }
 
+    public function _fill_ind_in_team($excel, $key, $i, $school) {
+        $ind = $this->db->where('key', $key)->where('deleted', 0)->get('people')->row_array();
+        $excel->getActiveSheet()
+            ->setCellValue('B' . $i, $ind['name'])
+            ->setCellValue('C' . $i, $GLOBALS['GENDER'][$ind['gender']])
+            ->setCellValue('D' . $i, "'" . $ind['id_card'])
+            ->setCellValue('E' . $i, '大学接力组')
+            ->setCellValue('F' . $i, $school['association_name'])
+            ->setCellValue('G' . $i, $school['school'])
+            ->setCellValue('H' . $i, $GLOBALS['PROVINCES'][$school['province']])
+            ->setCellValue('I' . $i, $school['zipcode'])
+            ->setCellValue('J' . $i, $ind['tel']);
+    }
 }
