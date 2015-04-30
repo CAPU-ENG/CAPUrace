@@ -236,7 +236,8 @@ class Admin extends CI_Controller {
             ->setCellValue('A1', '序号')
             ->setCellValue('B1', '姓名')
             ->setCellValue('C1', '学校')
-            ->setCellValue('D1', '手机号');
+            ->setCellValue('D1', '手机号')
+            ->setCellValue('E1', '清真');
         $i = 2;
         foreach ($meal16 as $key => $item) {
             $school = $this->user->get_user_by_id($item['school_id']);
@@ -247,7 +248,8 @@ class Admin extends CI_Controller {
                 ->setCellValue('A' . $i, $i - 1)
                 ->setCellValue('B' . $i, $item['name'])
                 ->setCellValue('C' . $i, $school['school'])
-                ->setCellValue('D' . $i, $item['tel']);
+                ->setCellValue('D' . $i, $item['tel'])
+                ->setCellValue('E' . $i, $GLOBALS['JUDGE'][$item['islam']]);
             $i++;
         }
 
@@ -261,7 +263,8 @@ class Admin extends CI_Controller {
             ->setCellValue('A1', '序号')
             ->setCellValue('B1', '姓名')
             ->setCellValue('C1', '学校')
-            ->setCellValue('D1', '手机号');
+            ->setCellValue('D1', '手机号')
+            ->setCellValue('E1', '清真');
         $i = 2;
         foreach ($meal17 as $key => $item) {
             $school = $this->user->get_user_by_id($item['school_id']);
@@ -272,7 +275,8 @@ class Admin extends CI_Controller {
                 ->setCellValue('A' . $i, $i - 1)
                 ->setCellValue('B' . $i, $item['name'])
                 ->setCellValue('C' . $i, $school['school'])
-                ->setCellValue('D' . $i, $item['tel']);
+                ->setCellValue('D' . $i, $item['tel'])
+                ->setCellValue('E' . $i, $GLOBALS['JUDGE'][$item['islam']]);
             $i++;
         }
 
