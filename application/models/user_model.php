@@ -212,15 +212,15 @@ class User_model extends CI_Model {
      */
     public function activate($token) {
         if (!$token) {
-            return '激活码不存在。';
+            return 2;
         } else {
             $query = $this->db->where('token', $token)->get('users');
             if ($query->num_rows() == 0) {
-                return '激活码无效或您已成功激活。';
+                return 1;
             } else {
                 $this->db->where('token', $token)->update('users', array('activated' => true));
                 $this->db->where('token', $token)->update('users', array('token' => '0'));
-                return '激活成功！请等待北大车协同学线下联系，我们将于 24 小时内完成您的注册审核，审核通过之后车协同学将通知您。谢谢！';
+                return 0;
             }
         }
     }
