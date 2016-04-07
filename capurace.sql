@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 06, 2016 at 03:01 AM
+-- Generation Time: Apr 07, 2016 at 04:54 AM
 -- Server version: 5.7.11
 -- PHP Version: 5.5.31
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `capurace`
 --
+CREATE DATABASE IF NOT EXISTS `capurace` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `capurace`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `people`
 --
 
+DROP TABLE IF EXISTS `people`;
 CREATE TABLE `people` (
   `id` int(5) UNSIGNED NOT NULL,
   `order` int(11) NOT NULL,
@@ -52,6 +55,7 @@ CREATE TABLE `people` (
 -- Table structure for table `team`
 --
 
+DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
   `id` smallint(5) UNSIGNED NOT NULL,
   `order` int(11) NOT NULL,
@@ -69,6 +73,7 @@ CREATE TABLE `team` (
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` smallint(5) UNSIGNED NOT NULL,
   `school` varchar(30) NOT NULL,
@@ -124,17 +129,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `people`
 --
 ALTER TABLE `people`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=843;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
