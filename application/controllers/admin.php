@@ -33,6 +33,20 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function confirm() {
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $data['unconfirmed'] = $this->user->get_unconfirmed();
+            $this->load->view('header_admin');
+            $this->load->view('admin_confirm', $data);
+            $this->load->view('footer_admin');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            $this->user->confirm($data['id']);
+            echo 0;
+        }
+    }
+
     public function lookup() {
         $school_id = $this->uri->segment(3);
         $data['individual'] = $this->people->get_people_from_school($school_id);
