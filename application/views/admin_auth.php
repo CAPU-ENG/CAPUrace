@@ -2,6 +2,12 @@
     <h3>管理员登录</h3>
     <hr/>
     <div class="row">
+        <label class="col-sm-4">ID</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="username">
+        </div>
+    </div>
+    <div class="row">
         <label class="col-sm-4">口令</label>
         <div class="col-sm-8">
             <input type="password" class="form-control" name="pass">
@@ -21,8 +27,10 @@
     });
     $("#go-to-admin").click(function() {
         var pass = $("[name='pass']").val();
+        var username = $("[name='username']").val();
         pass = $.md5(pass);
         var data = {
+            username: username,
             pass: pass
         };
         $.post("<?=site_url('user/admin')?>", data, function(response) {

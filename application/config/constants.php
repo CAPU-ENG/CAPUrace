@@ -160,5 +160,12 @@ $ACCO_FEE = array(
     '2' => 10,
 );
 
+/*
+ * Admin user list
+ */
+$ADMIN = array(
+    '老蒋' => 'bf7d6c2e83eaa18f185c127ce495ec7c'
+);
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
