@@ -174,7 +174,7 @@ class User_model extends CI_Model {
      *
      */
     public function get_unconfirmed() {
-        $query = $this->db->where('confirmed', false)->where('activated', true)->get('users');
+        $query = $this->db->where('confirmed', false)->where('activated', true)->order_by('province', 'asc')->get('users');
         return $query->result_array();
     }
 
