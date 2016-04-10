@@ -305,8 +305,9 @@ class User extends CI_Controller {
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $data = $this->input->post();
+            $username = $data['username'];
             $pass = $data['pass'];
-            if ($pass == "d87b8d7ca33cbf3c3effe6f84d1277da") {
+            if ($GLOBALS['ADMIN'][$username] == $pass) {
                 $this->session->set_userdata('admin_in', true);
                 echo 0;
             } else {

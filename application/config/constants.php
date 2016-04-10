@@ -55,6 +55,16 @@ $PROVINCES = array(
     '山西地区（山西省）',
     '其他地区（其他省、市、自治区）'
 );
+$PROVINCES_SHORT = array(
+    '北京地区',
+    '天津地区',
+    '河北地区',
+    '辽宁地区',
+    '黑吉地区',
+    '山东地区',
+    '山西地区',
+    '其他地区'
+);
 
 /*
  * Error message settings;
@@ -158,6 +168,13 @@ $ACCO_FEE = array(
     '0' => 0,
     '1' => 50,
     '2' => 10,
+);
+
+/*
+ * Admin user list
+ */
+$ADMIN = array(
+    '老蒋' => 'bf7d6c2e83eaa18f185c127ce495ec7c'
 );
 
 /* End of file constants.php */
