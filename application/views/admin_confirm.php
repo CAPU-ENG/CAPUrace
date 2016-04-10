@@ -17,11 +17,11 @@
     </thead>
     <tbody>
     <?php foreach ($unconfirmed as $user): ?>
-    <tr>
-        <td><?=$user['id']?></td>
-        <td><?=$user['school']?></td>
+    <tr class="school">
+        <td class="school_id"><?=$user['id']?></td>
+        <td class="school_name"><?=$user['school']?></td>
         <td><?=$user['association_name']?></td>
-        <td><?=$user['province']?></td>
+        <td><?=$GLOBALS['PROVINCES_SHORT'][$user['province']]?></td>
         <td><?=$user['leader']?></td>
         <td><?=$user['mail']?></td>
         <td><?=$user['tel']?></td>
@@ -34,4 +34,17 @@
     <?php endforeach; ?>
     </tbody>
     </table>
-</div> 
+</div>
+<script>
+    $(".btn-confirm").click(function() {
+        var id = $(this).closest(".school").find(".school_id").text();
+        var school = $(this).closest(".school").find(".school_name").text();
+        var data = {
+            id: parseInt(id)
+        };
+        if (confirm('确认' + school + '通过审核?')) {
+            $.post("<?=site_url('admin/confirm')?>", data, function (response) {});
+            window.location.reload();
+        }
+    });
+</script>
