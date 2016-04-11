@@ -28,8 +28,12 @@
             <td><?=$nlook?></td>
         </tr>
         <tr>
-            <td>男子组人数（含未确认）</td>
+            <td>男子大众组人数（含未确认）</td>
             <td><?=$nmale?></td>
+        </tr>
+        <tr>
+            <td>男子精英组人数（含未确认）</td>
+            <td><?=$nmale_expert?></td>
         </tr>
         <tr>
             <td>女子组人数（含未确认）</td>
@@ -45,19 +49,15 @@
         </tr>
         <tr>
             <td>自带帐篷露营人数</td>
-            <td><?=$tent_bring?></td>
+            <td><?=$tent?></td>
         </tr>
         <tr>
-            <td>租用帐篷露营人数</td>
-            <td><?=$tent_rent?></td>
+            <td>第一天晚餐人数</td>
+            <td><?=$dinner?></td>
         </tr>
         <tr>
-            <td>16日晚餐人数</td>
-            <td><?=$meal16?></td>
-        </tr>
-        <tr>
-            <td>17日午餐人数</td>
-            <td><?=$meal17?></td>
+            <td>第二天午餐人数</td>
+            <td><?=$lunch?></td>
         </tr>
         </tbody>
     </table>
