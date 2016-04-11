@@ -80,8 +80,16 @@ class Admin extends CI_Controller {
         $data['nfemale'] = $this->db->query('select count(*) as nfemale from people where deleted=0 and ifrace=1 and race=3;')->result_array()[0]['nfemale'];
         $data['nteams'] = $this->db->query('select count(*) as nteams from team where deleted=0;')->result_array()[0]['nteams'];
         $accommodation = $this->db->query('select count(*) as live from people where deleted=0 group by accommodation;')->result_array();
-        $data['hotel'] = $accommodation[1]['live'];
-        $data['tent'] = $accommodation[2]['live'];
+        if (empty($accommodation[1])) {
+            $data['hotel'] = 0;
+        } else {
+            $data['hotel'] = $accommodation[1]['live'];
+        }
+        if (empty($accommodation[2])) {
+            $data['tent'] = 0;
+        } else {
+            $data['tent'] = $accommodation[2]['live'];
+        }
         $data['dinner'] = $this->db->query('select count(*) as dinner from people where deleted=0 and dinner=1;')->result_array()[0]['dinner'];
         $data['lunch'] = $this->db->query('select count(*) as lunch from people where deleted=0 and lunch=1;')->result_array()[0]['lunch'];
 
