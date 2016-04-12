@@ -35,7 +35,7 @@ class People_model extends CI_Model {
      */
     public function add_people($data, $school_id) {
         $this->load->helper(array('lib'));
-        $data = array_merge($data, array('school_id' => $school_id, 'key' => individual_encode($data)));
+        $data = array_merge($data, array('school_id' => $school_id, 'team_key' => individual_encode($data)));
         $this->db->insert('people', $data);
     }
 

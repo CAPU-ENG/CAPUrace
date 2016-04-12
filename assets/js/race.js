@@ -203,8 +203,8 @@ function cacheIndividual(order) {
     var islam = $("[name='islam']").val();
     var id_card = $("[name='id_card']").val();
     var accommodation = $("[name='accommodation']").val();
-    var meal16 = $("[name='meal16']").prop('checked');
-    var meal17 = $("[name='meal17']").prop('checked');
+    var dinner = $("[name='dinner']").prop('checked');
+    var lunch = $("[name='lunch']").prop('checked');
     var race = $("[name='race']").val();
     var ifteam = $("[name='ifteam']").prop('checked');
     //var shimano16 = $("[name='shimano16']").val();
@@ -215,8 +215,8 @@ function cacheIndividual(order) {
         gender: gender,
         id_card: $.trim(id_card),
         accommodation: accommodation,
-        meal16: meal16,
-        meal17: meal17,
+        dinner: dinner,
+        lunch: lunch,
         tel: $.trim(tel),
         ifrace: ifrace,
         ifteam: ifteam,
@@ -240,8 +240,8 @@ function fillIndividual(item) {
     elem.find(".gender").text(GENDER[item.gender]);
     elem.find(".id_card").text(item.id_card);
     elem.find(".accommodation").text(ACCOMMODATION[item.accommodation]);
-    elem.find(".meal16").text(JUDGE[+item.meal16]);
-    elem.find(".meal17").text(JUDGE[+item.meal17]);
+    elem.find(".dinner").text(JUDGE[+item.dinner]);
+    elem.find(".lunch").text(JUDGE[+item.lunch]);
     elem.find(".tel").text(item.tel);
     if (item.race != 0) {
         elem.find(".race").text(CAPURACE[item.race]);
@@ -285,8 +285,8 @@ function fetchIndividual(order) {
     form.find("[name='ifrace']").val(item.ifrace);
     form.find("[name='islam']").val(item.islam);
     form.find("[name='ifteam']").prop('checked', item.ifteam);
-    form.find("[name='meal16']").prop('checked', item.meal16);
-    form.find("[name='meal17']").prop('checked', item.meal17);
+    form.find("[name='dinner']").prop('checked', item.dinner);
+    form.find("[name='lunch']").prop('checked', item.lunch);
     restrictIndividual();
 }
 
@@ -294,7 +294,7 @@ function fetchIndividual(order) {
  * Add restrictions to the individual form.
  */
 function restrictIndividual() {
-    var meal17 = $("[name='meal17']");
+    var lunch = $("[name='lunch']");
     var team = $("[name='ifteam']");
     var race = $("[name='race']");
     //var shimano16 = $("[name='shimano16']");
@@ -303,16 +303,16 @@ function restrictIndividual() {
     var ifrace = ($("[name='ifrace']").val() == '1');
 
     /*
-     * If an individual attends the race, meal17 must be checked.
+     * If an individual attends the race, lunch must be checked.
      * Otherwise the race options are disabled.
      */
     if (ifrace) {
-        meal17.prop('checked', true);
-        meal17.prop('disabled', true);
+        lunch.prop('checked', true);
+        lunch.prop('disabled', true);
         race.prop('disabled', false);
         team.prop('disabled', false);
     } else {
-        meal17.prop('disabled', false);
+        lunch.prop('disabled', false);
         race.val('0');
         race.prop('disabled', true);
         team.prop('checked', false);
@@ -364,8 +364,8 @@ function resetIndividual() {
     form.find("[name='ifrace']").val("0");
     form.find("[name='islam']").val("0");
     form.find("[name='ifteam']").prop('checked', false);
-    form.find("[name='meal16']").prop('checked', false);
-    form.find("[name='meal17']").prop('checked', false);
+    form.find("[name='dinner']").prop('checked', false);
+    form.find("[name='lunch']").prop('checked', false);
 }
 
 /*
@@ -377,16 +377,13 @@ function postIndividual() {
     };
     $.each(item.data, function(order, ind) {
         ind.ifteam = +ind.ifteam;
-        ind.meal16 = +ind.meal16;
-        ind.meal17 = +ind.meal17;
+        ind.dinner = +ind.dinner;
+        ind.lunch = +ind.lunch;
     });
-    //alert(JSON.stringify(item.data));
     $.post(controller, item, function(response) {
         if (response.code != "200") {
-            alert("fail");
             alert(response.msg);
         } else {
-            alert("success");
             window.location.assign(directto);
         }
     });

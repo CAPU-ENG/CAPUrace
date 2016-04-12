@@ -148,7 +148,7 @@ if (! function_exists('individual_decode')) {
  */
 if (! function_exists('get_bill')) {
     function get_bill($data) {
-        $fee = 35 * $data['ifrace'] + 20 * $data['meal16'] + 15 * $data['meal17'] + $GLOBALS['ACCO_FEE'][$data['accommodation']];
+        $fee = 35 * $data['ifrace'] + 20 * $data['dinner'] + 15 * $data['lunch'] + $GLOBALS['ACCO_FEE'][$data['accommodation']];
         return $fee;
     }
 }

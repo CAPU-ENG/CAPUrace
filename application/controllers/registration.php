@@ -113,18 +113,18 @@ class Registration extends CI_Controller {
                         'order' => $item_post['order'] + 1,
                     )));
                 }
-                // meal16
-                if (!array_key_exists($item_post['meal16'], $GLOBALS['JUDGE'])) {
+                // dinner
+                if (!array_key_exists($item_post['dinner'], $GLOBALS['JUDGE'])) {
                     exit(err_custom_msg('1070', array(
                         'order' => $item_post['order'] + 1,
                     )));
                 }
-                // meal17
-                if (!array_key_exists($item_post['meal17'], $GLOBALS['JUDGE'])) {
+                // lunch
+                if (!array_key_exists($item_post['lunch'], $GLOBALS['JUDGE'])) {
                     exit(err_custom_msg('1080', array(
                         'order' => $item_post['order'] + 1,
                     )));
-                } else if ($item_post['ifrace'] == '1' and $item_post['meal17'] == '0') {
+                } else if ($item_post['ifrace'] == '1' and $item_post['lunch'] == '0') {
                     exit(err_custom_msg('1081', array(
                         'order' => $item_post['order'] + 1,
                     )));
@@ -163,38 +163,38 @@ class Registration extends CI_Controller {
                         'order' => $item_post['order'] + 1,
                     )));
                 }
-                // shimano16
-                if (!array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB'])) {
-                    exit(err_custom_msg('1110', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '1' and
-                    !array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB_M'])) {
-                    exit(err_custom_msg('1111', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '2' and
-                    !array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB_F'])) {
-                    exit(err_custom_msg('1112', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                }
-                // shimano17
-                if (!array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB'])) {
-                    exit(err_custom_msg('1120', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '1' and
-                    !array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB_M'])) {
-                    exit(err_custom_msg('1121', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '2' and
-                    !array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB_F'])) {
-                    exit(err_custom_msg('1122', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                }
+//                // shimano16
+//                if (!array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB'])) {
+//                    exit(err_custom_msg('1110', array(
+//                        'order' => $item_post['order'] + 1,
+//                    )));
+//                } else if ($item_post['gender'] == '1' and
+//                    !array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB_M'])) {
+//                    exit(err_custom_msg('1111', array(
+//                        'order' => $item_post['order'] + 1,
+//                    )));
+//                } else if ($item_post['gender'] == '2' and
+//                    !array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB_F'])) {
+//                    exit(err_custom_msg('1112', array(
+//                        'order' => $item_post['order'] + 1,
+//                    )));
+//                }
+//                // shimano17
+//                if (!array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB'])) {
+//                    exit(err_custom_msg('1120', array(
+//                        'order' => $item_post['order'] + 1,
+//                    )));
+//                } else if ($item_post['gender'] == '1' and
+//                    !array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB_M'])) {
+//                    exit(err_custom_msg('1121', array(
+//                        'order' => $item_post['order'] + 1,
+//                    )));
+//                } else if ($item_post['gender'] == '2' and
+//                    !array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB_F'])) {
+//                    exit(err_custom_msg('1122', array(
+//                        'order' => $item_post['order'] + 1,
+//                    )));
+//                }
             }
             $bill = 0;
             $ind_db = $this->people->get_people_from_school($school_id);
@@ -202,8 +202,8 @@ class Registration extends CI_Controller {
                 $flag = false;
                 $i = 0;
                 foreach ($ind_post as $item_post) {
-                    $item_post['key'] = individual_encode($item_post);
-                    if (strcmp($item_db['key'], $item_post['key']) == 0) {
+                    $item_post['team_key'] = individual_encode($item_post);
+                    if (strcmp($item_db['team_key'], $item_post['team_key']) == 0) {
                         $flag = true;
                         unset($item_post['team_id']);
                         $fee = get_bill($item_post); // to do
@@ -221,7 +221,7 @@ class Registration extends CI_Controller {
                 }
             }
             foreach ($ind_post as $item_post) {
-                $item_post['key'] = individual_encode($item_post);
+                $item_post['team_key'] = individual_encode($item_post);
                 $fee = get_bill($item_post);
                 $item_post['fee'] = $fee;
                 $bill += $fee;

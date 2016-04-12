@@ -48,13 +48,13 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <label class="col-sm-1">5.16晚餐</label>
+            <label class="col-sm-1">5.14晚餐</label>
             <div class="col-sm-1">
-                <input type="checkbox" name="meal16">
+                <input type="checkbox" name="dinner">
             </div>
-            <label class="col-sm-1">5.17午餐</label>
+            <label class="col-sm-1">5.15午餐</label>
             <div class="col-sm-1">
-                <input type="checkbox" name="meal17">
+                <input type="checkbox" name="lunch">
             </div>
         </div>
         <div class="show-if-attend">
@@ -116,8 +116,8 @@
 <!--            <th>公路日</th>-->
 <!--            <th>山地日</th>-->
             <th>住宿</th>
-            <th>5.16晚餐</th>
-            <th>5.17午餐</th>
+            <th>5.14晚餐</th>
+            <th>5.15午餐</th>
             <th>清真</th>
             <th>操作</th>
         </tr>
@@ -133,8 +133,8 @@
 <!--            <td class="shimano16"></td>-->
 <!--            <td class="shimano17"></td>-->
             <td class="accommodation"></td>
-            <td class="meal16"></td>
-            <td class="meal17"></td>
+            <td class="dinner"></td>
+            <td class="lunch"></td>
             <td class="islam"></td>
             <td>
                 <div class="btn-group-xs btn-group">
@@ -160,13 +160,13 @@
 </div>
 <script>
     $("#btn-reg-ind-submit").click(function() {
-        alert("on submit");
+//        alert("on submit");
         this.disabled=true;
         $(this).text("提交中...");
         postIndividual();
         this.disabled=false;
         $(this).text("提交，前往团体赛报名");
-        alert("on post submit");
+//        alert("on post submit");
     });
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
@@ -198,15 +198,15 @@
     } else if (<?=count($individual)?>) {
         data = <?=json_encode($individual)?>;
         $.each(data, function(order, item) {
-            item.meal16 = (item.meal16 == 1);
-            item.meal17 = (item.meal17 == 1);
+            item.dinner = (item.dinner == 1);
+            item.lunch = (item.lunch == 1);
             item.ifteam = (item.ifteam == 1);
         });
         $.cookie('individual', JSON.stringify(data));
     }
     $(document).ready(function() {
 //        alert("on ready");
-        reloadIndividual(); // to do
+        reloadIndividual();
         refreshOrder();
         restrictIndividual();
         $("select[name='ifrace']").change(function() {
