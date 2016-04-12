@@ -175,10 +175,12 @@ $ACCO_FEE = array(
  */
 $ADMIN = array(
     '老蒋' => 'bf7d6c2e83eaa18f185c127ce495ec7c',
-    '喵喵' => 'f1466c1c2a641cd47a48e8076711e808'
+    '喵喵' => 'f1466c1c2a641cd47a48e8076711e808',
+    '毛毛熊' => '124fe97157e01351785faa69b5189c13'
 );
 
 $ACCOUNTANT_PASS = 'f1466c1c2a641cd47a48e8076711e808';
+$PRESIDENT_PASS = '124fe97157e01351785faa69b5189c13';
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

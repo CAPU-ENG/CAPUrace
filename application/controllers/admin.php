@@ -353,9 +353,22 @@ class Admin extends CI_Controller {
     }
 
     public function shutdown() {
-        $this->user->freeze_all();
-        $this->load->view('header_admin');
-        $this->load->view('admin_shutdown');
-        $this->load->view('footer_admin');
+        header('Content-Type: application/json');
+        if ($this->session->userdata('admin_pass') != $GLOBALS['PRESIDENT_PASS']) {
+            $response = array(
+                'code' => '1',
+                'msg' => '您没有操作权限!'
+            );
+        } else {
+            $this->user->freeze_all();
+//            $this->load->view('header_admin');
+//            $this->load->view('admin_shutdown');
+//            $this->load->view('footer_admin');
+            $response = array(
+                'code' => '0',
+                'msg' => '操作成功!'
+            );
+        }
+        exit(json_encode($response));
     }
 }
