@@ -361,12 +361,9 @@ class Admin extends CI_Controller {
             );
         } else {
             $this->user->freeze_all();
-//            $this->load->view('header_admin');
-//            $this->load->view('admin_shutdown');
-//            $this->load->view('footer_admin');
             $response = array(
                 'code' => '0',
-                'msg' => '操作成功!'
+                'msg' => '报名系统已经成功关闭！'
             );
         }
         exit(json_encode($response));
