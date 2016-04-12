@@ -27,9 +27,13 @@ class Admin extends CI_Controller {
             $this->load->view('footer_admin');
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
-            $data = $this->input->post();
-            $this->user->set_paid($data['id']);
-            echo 0;
+            if ($this->session->userdata('admin_pass') != $GLOBALS['ACCOUNTANT_PASS']) {
+                echo 1;
+            } else {
+                $data = $this->input->post();
+                $this->user->set_paid($data['id']);
+                echo 0;
+            }
         }
     }
 
@@ -66,6 +70,8 @@ class Admin extends CI_Controller {
 
     public function logout() {
         $this->session->unset_userdata('admin_in');
+        $this->session->unset_userdata('admin_id');
+        $this->session->unset_userdata('admin_pass');
         redirect(site_url('user/admin'));
     }
 

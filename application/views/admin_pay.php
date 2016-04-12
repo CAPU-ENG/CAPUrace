@@ -49,8 +49,13 @@
             id: id
         };
         if (confirm('确认 ' + school + ' 已经支付 ' + bill + ' 元？')) {
-            $.post("<?=site_url('admin/pay')?>", data, function (response) {});
-            window.location.reload();
+            $.post("<?=site_url('admin/pay')?>", data, function (response) {
+                if (response == "1") {
+                    alert('您没有操作权限!');
+                } else {
+                    window.location.reload();
+                }
+            });
         }
     });
 </script>

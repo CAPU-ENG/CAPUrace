@@ -309,6 +309,8 @@ class User extends CI_Controller {
             $pass = $data['pass'];
             if ($GLOBALS['ADMIN'][$username] == $pass) {
                 $this->session->set_userdata('admin_in', true);
+                $this->session->set_userdata('admin_pass', $pass);
+                $this->session->set_userdata('admin_id', $username);
                 echo 0;
             } else {
                 echo 1;

@@ -174,8 +174,11 @@ $ACCO_FEE = array(
  * Admin user list
  */
 $ADMIN = array(
-    '老蒋' => 'bf7d6c2e83eaa18f185c127ce495ec7c'
+    '老蒋' => 'bf7d6c2e83eaa18f185c127ce495ec7c',
+    '喵喵' => 'f1466c1c2a641cd47a48e8076711e808'
 );
+
+$ACCOUNTANT_PASS = 'f1466c1c2a641cd47a48e8076711e808';
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
