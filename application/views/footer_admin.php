@@ -34,7 +34,9 @@
     });
     $("#btn-close-system").click(function() {
         if (confirm('本操作将关闭整个报名系统，且不可恢复。确定继续？')) {
-            window.open("<?=site_url('admin/shutdown')?>")
+            $.post("<?=site_url('admin/shutdown')?>", {}, function (response) {
+                alert(response.msg);
+            });
         }
     })
 </script>
