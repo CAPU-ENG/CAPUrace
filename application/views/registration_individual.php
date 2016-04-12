@@ -71,25 +71,25 @@
                 <div class="col-sm-1">
                     <input type="checkbox" name="ifteam">
                 </div>
-                <div class="show-if-race">
-                    <label class="col-sm-1">赠送项目</label>
-                    <label class="col-sm-1">5.16公路</label>
-                    <div class="col-sm-2">
-                        <select class="form-control" name="shimano16">
-                            <?php foreach ($GLOBALS['SHIMANO_RDB'] as $key => $value): ?>
-                                <option value="<?=$key?>"><?=$value?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <label class="col-sm-1">5.17山地</label>
-                    <div class="col-sm-2">
-                        <select class="form-control" name="shimano17">
-                            <?php foreach ($GLOBALS['SHIMANO_MTB_SELECT'] as $key => $value): ?>
-                                <option value="<?=$key?>"><?=$value?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
+<!--                <div class="show-if-race">-->
+<!--                    <label class="col-sm-1">赠送项目</label>-->
+<!--                    <label class="col-sm-1">5.16公路</label>-->
+<!--                    <div class="col-sm-2">-->
+<!--                        <select class="form-control" name="shimano16">-->
+<!--                            --><?php //foreach ($GLOBALS['SHIMANO_RDB'] as $key => $value): ?>
+<!--                                <option value="--><?//=$key?><!--">--><?//=$value?><!--</option>-->
+<!--                            --><?php //endforeach; ?>
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                    <label class="col-sm-1">5.17山地</label>-->
+<!--                    <div class="col-sm-2">-->
+<!--                        <select class="form-control" name="shimano17">-->
+<!--                            --><?php //foreach ($GLOBALS['SHIMANO_MTB_SELECT'] as $key => $value): ?>
+<!--                                <option value="--><?//=$key?><!--">--><?//=$value?><!--</option>-->
+<!--                            --><?php //endforeach; ?>
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
         <hr/>
@@ -113,8 +113,8 @@
             <th>手机号</th>
             <th>身份证号</th>
             <th>北大赛</th>
-            <th>公路日</th>
-            <th>山地日</th>
+<!--            <th>公路日</th>-->
+<!--            <th>山地日</th>-->
             <th>住宿</th>
             <th>5.16晚餐</th>
             <th>5.17午餐</th>
@@ -130,8 +130,8 @@
             <td class="tel"></td>
             <td class="id_card"></td>
             <td class="race"></td>
-            <td class="shimano16"></td>
-            <td class="shimano17"></td>
+<!--            <td class="shimano16"></td>-->
+<!--            <td class="shimano17"></td>-->
             <td class="accommodation"></td>
             <td class="meal16"></td>
             <td class="meal17"></td>
@@ -160,11 +160,13 @@
 </div>
 <script>
     $("#btn-reg-ind-submit").click(function() {
+        alert("on submit");
         this.disabled=true;
         $(this).text("提交中...");
         postIndividual();
         this.disabled=false;
         $(this).text("提交，前往团体赛报名");
+        alert("on post submit");
     });
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
@@ -184,8 +186,8 @@
     var directto = "<?=site_url('registration/team')?>";
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
-    var SHIMANO_RDB = <?=json_encode($GLOBALS['SHIMANO_RDB'])?>;
-    var SHIMANO_MTB = <?=json_encode($GLOBALS['SHIMANO_MTB'])?>;
+//    var SHIMANO_RDB = <?//=json_encode($GLOBALS['SHIMANO_RDB'])?>//;
+//    var SHIMANO_MTB = <?//=json_encode($GLOBALS['SHIMANO_MTB'])?>//;
     var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
     var TF = <?=json_encode($GLOBALS['TF'])?>;
@@ -193,7 +195,7 @@
     var data = [];
     if ($.cookie('individual')) {
         data = $.parseJSON($.cookie('individual'));
-    } else if (<?=count($individual)?>){
+    } else if (<?=count($individual)?>) {
         data = <?=json_encode($individual)?>;
         $.each(data, function(order, item) {
             item.meal16 = (item.meal16 == 1);
@@ -203,7 +205,8 @@
         $.cookie('individual', JSON.stringify(data));
     }
     $(document).ready(function() {
-        reloadIndividual();
+//        alert("on ready");
+        reloadIndividual(); // to do
         refreshOrder();
         restrictIndividual();
         $("select[name='ifrace']").change(function() {
@@ -214,6 +217,7 @@
         });
         $("[name='ifteam']").change(function () {
             restrictIndividual();
-        })
+        });
+//        alert("on post ready");
     });
 </script>

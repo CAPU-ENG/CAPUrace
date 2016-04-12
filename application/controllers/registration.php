@@ -206,7 +206,7 @@ class Registration extends CI_Controller {
                     if (strcmp($item_db['key'], $item_post['key']) == 0) {
                         $flag = true;
                         unset($item_post['team_id']);
-                        $fee = get_bill($item_post);
+                        $fee = get_bill($item_post); // to do
                         $item_post['fee'] = $fee;
                         $this->people->update_individual($item_db['id'], $item_post);
                         $bill += $fee;

@@ -207,8 +207,8 @@ function cacheIndividual(order) {
     var meal17 = $("[name='meal17']").prop('checked');
     var race = $("[name='race']").val();
     var ifteam = $("[name='ifteam']").prop('checked');
-    var shimano16 = $("[name='shimano16']").val();
-    var shimano17 = $("[name='shimano17']").val();
+    //var shimano16 = $("[name='shimano16']").val();
+    //var shimano17 = $("[name='shimano17']").val();
     data[order] = {
         order: order,
         name: $.trim(name),
@@ -221,9 +221,9 @@ function cacheIndividual(order) {
         ifrace: ifrace,
         ifteam: ifteam,
         race: race,
-        islam: islam,
-        shimano16: shimano16,
-        shimano17: shimano17
+        islam: islam
+        //shimano16: shimano16,
+        //shimano17: shimano17
     };
     $.cookie('individual', JSON.stringify(data));
     reloadIndividual();
@@ -252,8 +252,8 @@ function fillIndividual(item) {
         elem.find(".race").append(' 不参加 ');
     }
     elem.find(".islam").text(JUDGE[item.islam]);
-    elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
-    elem.find(".shimano17").text(SHIMANO_MTB[item.shimano17]);
+    //elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
+    //elem.find(".shimano17").text(SHIMANO_MTB[item.shimano17]);
     $(".ind-list").append(elem);
 }
 
@@ -280,8 +280,8 @@ function fetchIndividual(order) {
     form.find("[name='accommodation']").val(item.accommodation);
     form.find("[name='gender']").val(item.gender);
     form.find("[name='race']").val(item.race);
-    form.find("[name='shimano16']").val(item.shimano16);
-    form.find("[name='shimano17']").val(item.shimano17);
+    //form.find("[name='shimano16']").val(item.shimano16);
+    //form.find("[name='shimano17']").val(item.shimano17);
     form.find("[name='ifrace']").val(item.ifrace);
     form.find("[name='islam']").val(item.islam);
     form.find("[name='ifteam']").prop('checked', item.ifteam);
@@ -297,8 +297,8 @@ function restrictIndividual() {
     var meal17 = $("[name='meal17']");
     var team = $("[name='ifteam']");
     var race = $("[name='race']");
-    var shimano16 = $("[name='shimano16']");
-    var shimano17 = $("[name='shimano17']");
+    //var shimano16 = $("[name='shimano16']");
+    //var shimano17 = $("[name='shimano17']");
 
     var ifrace = ($("[name='ifrace']").val() == '1');
 
@@ -326,15 +326,15 @@ function restrictIndividual() {
      * If an individual chooses neither ind-race nor team-race,
      * the shimano options are not available.
      */
-    if (!(indrace || ifteam)) {
-        shimano16.val('0');
-        shimano16.prop('disabled', true);
-        shimano17.val('0');
-        shimano17.prop('disabled', true);
-    } else {
-        shimano16.prop('disabled', false);
-        shimano17.prop('disabled', false);
-    }
+    //if (!(indrace || ifteam)) {
+    //    shimano16.val('0');
+    //    shimano16.prop('disabled', true);
+    //    shimano17.val('0');
+    //    shimano17.prop('disabled', true);
+    //} else {
+    //    shimano16.prop('disabled', false);
+    //    shimano17.prop('disabled', false);
+    //}
 }
 
 /*
@@ -359,8 +359,8 @@ function resetIndividual() {
     form.find("[name='accommodation']").val("0");
     form.find("[name='gender']").val("1");
     form.find("[name='race']").val("0");
-    form.find("[name='shimano16']").val("0");
-    form.find("[name='shimano17']").val("0");
+    //form.find("[name='shimano16']").val("0");
+    //form.find("[name='shimano17']").val("0");
     form.find("[name='ifrace']").val("0");
     form.find("[name='islam']").val("0");
     form.find("[name='ifteam']").prop('checked', false);
@@ -380,10 +380,13 @@ function postIndividual() {
         ind.meal16 = +ind.meal16;
         ind.meal17 = +ind.meal17;
     });
+    //alert(JSON.stringify(item.data));
     $.post(controller, item, function(response) {
         if (response.code != "200") {
+            alert("fail");
             alert(response.msg);
         } else {
+            alert("success");
             window.location.assign(directto);
         }
     });
