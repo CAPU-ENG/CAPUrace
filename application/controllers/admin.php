@@ -27,13 +27,21 @@ class Admin extends CI_Controller {
             $this->load->view('footer_admin');
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            header('Content-Type: application/json');
             if ($this->session->userdata('admin_pass') != $GLOBALS['ACCOUNTANT_PASS']) {
-                echo 1;
+                $response = array(
+                    'code' => '1',
+                    'msg' => '您没有操作权限!'
+                );
             } else {
                 $data = $this->input->post();
                 $this->user->set_paid($data['id']);
-                echo 0;
+                $response = array(
+                    'code' => '0',
+                    'msg' => '操作成功!'
+                );
             }
+            exit(json_encode($response));
         }
     }
 

@@ -50,9 +50,8 @@
         };
         if (confirm('确认 ' + school + ' 已经支付 ' + bill + ' 元？')) {
             $.post("<?=site_url('admin/pay')?>", data, function (response) {
-                if (response == "1") {
-                    alert('您没有操作权限!');
-                } else {
+                alert(response.msg);
+                if (response.code == 0) {
                     window.location.reload();
                 }
             });
