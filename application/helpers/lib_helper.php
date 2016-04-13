@@ -148,7 +148,14 @@ if (! function_exists('individual_decode')) {
  */
 if (! function_exists('get_bill')) {
     function get_bill($data) {
-        $fee = 35 * $data['ifrace'] + 20 * $data['dinner'] + 15 * $data['lunch'] + $GLOBALS['ACCO_FEE'][$data['accommodation']];
+        if ($data['race'] && $data['ifteam']) {
+            $race_fee = 55;
+        } else if (! $data['ifrace']) {
+            $race_fee = 0;
+        } else {
+            $race_fee = 35;
+        }
+        $fee = $race_fee + 20 * $data['dinner'] + 15 * $data['lunch'] + $GLOBALS['ACCO_FEE'][$data['accommodation']];
         return $fee;
     }
 }
