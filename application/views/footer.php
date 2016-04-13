@@ -1,5 +1,5 @@
-<footer class="footer">
-  <span>地址：北京市海淀区北京大学24号楼118室（100871）</span><br />
+﻿<footer class="footer">
+  <span>地址：北京市海淀区北京大学24号楼119室（100871）</span><br />
   <span>
     <a href="http://www.chexie.net">协会首页</a> |
     <a href="http://baike.baidu.com/view/1317218.htm" target="_blank">百度百科</a> |
