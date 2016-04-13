@@ -17,7 +17,7 @@
                     <select class="form-control" name="first">
                         <option value="">--请选择--</option>
                         <?php foreach ($male as $item): ?>
-                        <option value="<?=$item['key']?>"><?=$item['name']?></option>
+                        <option value="<?=$item['team_key']?>"><?=$item['name']?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -25,7 +25,7 @@
                     <select class="form-control" name="second">
                         <option value="">--请选择--</option>
                         <?php foreach ($male as $item): ?>
-                            <option value="<?=$item['key']?>"><?=$item['name']?></option>
+                            <option value="<?=$item['team_key']?>"><?=$item['name']?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -33,7 +33,7 @@
                     <select class="form-control" name="third">
                         <option value="">--请选择--</option>
                         <?php foreach ($female as $item): ?>
-                            <option value="<?=$item['key']?>"><?=$item['name']?></option>
+                            <option value="<?=$item['team_key']?>"><?=$item['name']?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -41,7 +41,7 @@
                     <select class="form-control" name="fourth">
                         <option value="">--请选择--</option>
                         <?php foreach ($male as $item): ?>
-                            <option value="<?=$item['key']?>"><?=$item['name']?></option>
+                            <option value="<?=$item['team_key']?>"><?=$item['name']?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

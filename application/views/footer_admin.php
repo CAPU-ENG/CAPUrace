@@ -4,6 +4,7 @@
         <div class="btn-group">
             <button class="btn btn-primary" id="btn-go-to-pay">缴费后台</button>
             <button class="btn btn-primary" id="btn-go-to-info">报名数据</button>
+            <button class="btn btn-primary" id="btn-go-to-confirm">高校审核</button>
         </div>
         <button class="btn btn-primary" id="btn-export-excel">导出总表</button>
         <button class="btn btn-warning" id="btn-logout">注销</button>
@@ -28,9 +29,14 @@
     $("#btn-export-excel").click(function() {
         window.location.assign("<?=site_url('admin/export')?>");
     });
+    $("#btn-go-to-confirm").click(function() {
+        window.location.assign("<?=site_url('admin/confirm')?>");
+    });
     $("#btn-close-system").click(function() {
         if (confirm('本操作将关闭整个报名系统，且不可恢复。确定继续？')) {
-            window.open("<?=site_url('admin/shutdown')?>")
+            $.post("<?=site_url('admin/shutdown')?>", {}, function (response) {
+                alert(response.msg);
+            });
         }
     })
 </script>

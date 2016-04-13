@@ -42,11 +42,11 @@
             <th>手机号</th>
             <th>身份证号</th>
             <th>北大赛</th>
-            <th>公路日</th>
-            <th>山地日</th>
+<!--            <th>公路日</th>-->
+<!--            <th>山地日</th>-->
             <th>住宿</th>
-            <th>5.16晚餐</th>
-            <th>5.17午餐</th>
+            <th>5.14晚餐</th>
+            <th>5.15午餐</th>
             <th>清真</th>
             <th>费用</th>
         </tr>
@@ -72,11 +72,11 @@
                 }
                 ?>
             </td>
-            <td class="shimano16"><?=$GLOBALS['SHIMANO_RDB'][$item['shimano16']]?></td>
-            <td class="shimano17"><?=$GLOBALS['SHIMANO_MTB'][$item['shimano17']]?></td>
+<!--            <td class="shimano16">--><?//=$GLOBALS['SHIMANO_RDB'][$item['shimano16']]?><!--</td>-->
+<!--            <td class="shimano17">--><?//=$GLOBALS['SHIMANO_MTB'][$item['shimano17']]?><!--</td>-->
             <td class="accommodation"><?=$GLOBALS['ACCOMMODATION'][$item['accommodation']]?></td>
-            <td class="meal16"><?=$GLOBALS['JUDGE'][$item['meal16']]?></td>
-            <td class="meal17"><?=$GLOBALS['JUDGE'][$item['meal17']]?></td>
+            <td class="dinner"><?=$GLOBALS['JUDGE'][$item['dinner']]?></td>
+            <td class="lunch"><?=$GLOBALS['JUDGE'][$item['lunch']]?></td>
             <td class="islam"><?=$GLOBALS['JUDGE'][$item['islam']]?></td>
             <td class="fee"><?=$item['fee']?></td>
         </tr>

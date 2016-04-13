@@ -6,6 +6,3 @@
 <link rel="shortcut icon" href="/assets/images/capu.jpg">
 </head>
 <body>
-<p><?php echo $msg; ?></p>
-</body>
-</html>
