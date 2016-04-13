@@ -203,27 +203,27 @@ function cacheIndividual(order) {
     var islam = $("[name='islam']").val();
     var id_card = $("[name='id_card']").val();
     var accommodation = $("[name='accommodation']").val();
-    var meal16 = $("[name='meal16']").prop('checked');
-    var meal17 = $("[name='meal17']").prop('checked');
+    var dinner = $("[name='dinner']").prop('checked');
+    var lunch = $("[name='lunch']").prop('checked');
     var race = $("[name='race']").val();
     var ifteam = $("[name='ifteam']").prop('checked');
-    var shimano16 = $("[name='shimano16']").val();
-    var shimano17 = $("[name='shimano17']").val();
+    //var shimano16 = $("[name='shimano16']").val();
+    //var shimano17 = $("[name='shimano17']").val();
     data[order] = {
         order: order,
         name: $.trim(name),
         gender: gender,
         id_card: $.trim(id_card),
         accommodation: accommodation,
-        meal16: meal16,
-        meal17: meal17,
+        dinner: dinner,
+        lunch: lunch,
         tel: $.trim(tel),
         ifrace: ifrace,
         ifteam: ifteam,
         race: race,
-        islam: islam,
-        shimano16: shimano16,
-        shimano17: shimano17
+        islam: islam
+        //shimano16: shimano16,
+        //shimano17: shimano17
     };
     $.cookie('individual', JSON.stringify(data));
     reloadIndividual();
@@ -240,8 +240,8 @@ function fillIndividual(item) {
     elem.find(".gender").text(GENDER[item.gender]);
     elem.find(".id_card").text(item.id_card);
     elem.find(".accommodation").text(ACCOMMODATION[item.accommodation]);
-    elem.find(".meal16").text(JUDGE[+item.meal16]);
-    elem.find(".meal17").text(JUDGE[+item.meal17]);
+    elem.find(".dinner").text(JUDGE[+item.dinner]);
+    elem.find(".lunch").text(JUDGE[+item.lunch]);
     elem.find(".tel").text(item.tel);
     if (item.race != 0) {
         elem.find(".race").text(CAPURACE[item.race]);
@@ -252,8 +252,8 @@ function fillIndividual(item) {
         elem.find(".race").append(' 不参加 ');
     }
     elem.find(".islam").text(JUDGE[item.islam]);
-    elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
-    elem.find(".shimano17").text(SHIMANO_MTB[item.shimano17]);
+    //elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
+    //elem.find(".shimano17").text(SHIMANO_MTB[item.shimano17]);
     $(".ind-list").append(elem);
 }
 
@@ -280,13 +280,13 @@ function fetchIndividual(order) {
     form.find("[name='accommodation']").val(item.accommodation);
     form.find("[name='gender']").val(item.gender);
     form.find("[name='race']").val(item.race);
-    form.find("[name='shimano16']").val(item.shimano16);
-    form.find("[name='shimano17']").val(item.shimano17);
+    //form.find("[name='shimano16']").val(item.shimano16);
+    //form.find("[name='shimano17']").val(item.shimano17);
     form.find("[name='ifrace']").val(item.ifrace);
     form.find("[name='islam']").val(item.islam);
     form.find("[name='ifteam']").prop('checked', item.ifteam);
-    form.find("[name='meal16']").prop('checked', item.meal16);
-    form.find("[name='meal17']").prop('checked', item.meal17);
+    form.find("[name='dinner']").prop('checked', item.dinner);
+    form.find("[name='lunch']").prop('checked', item.lunch);
     restrictIndividual();
 }
 
@@ -294,25 +294,25 @@ function fetchIndividual(order) {
  * Add restrictions to the individual form.
  */
 function restrictIndividual() {
-    var meal17 = $("[name='meal17']");
+    var lunch = $("[name='lunch']");
     var team = $("[name='ifteam']");
     var race = $("[name='race']");
-    var shimano16 = $("[name='shimano16']");
-    var shimano17 = $("[name='shimano17']");
+    //var shimano16 = $("[name='shimano16']");
+    //var shimano17 = $("[name='shimano17']");
 
     var ifrace = ($("[name='ifrace']").val() == '1');
 
     /*
-     * If an individual attends the race, meal17 must be checked.
+     * If an individual attends the race, lunch must be checked.
      * Otherwise the race options are disabled.
      */
     if (ifrace) {
-        meal17.prop('checked', true);
-        meal17.prop('disabled', true);
+        lunch.prop('checked', true);
+        lunch.prop('disabled', true);
         race.prop('disabled', false);
         team.prop('disabled', false);
     } else {
-        meal17.prop('disabled', false);
+        lunch.prop('disabled', false);
         race.val('0');
         race.prop('disabled', true);
         team.prop('checked', false);
@@ -326,15 +326,15 @@ function restrictIndividual() {
      * If an individual chooses neither ind-race nor team-race,
      * the shimano options are not available.
      */
-    if (!(indrace || ifteam)) {
-        shimano16.val('0');
-        shimano16.prop('disabled', true);
-        shimano17.val('0');
-        shimano17.prop('disabled', true);
-    } else {
-        shimano16.prop('disabled', false);
-        shimano17.prop('disabled', false);
-    }
+    //if (!(indrace || ifteam)) {
+    //    shimano16.val('0');
+    //    shimano16.prop('disabled', true);
+    //    shimano17.val('0');
+    //    shimano17.prop('disabled', true);
+    //} else {
+    //    shimano16.prop('disabled', false);
+    //    shimano17.prop('disabled', false);
+    //}
 }
 
 /*
@@ -359,13 +359,13 @@ function resetIndividual() {
     form.find("[name='accommodation']").val("0");
     form.find("[name='gender']").val("1");
     form.find("[name='race']").val("0");
-    form.find("[name='shimano16']").val("0");
-    form.find("[name='shimano17']").val("0");
+    //form.find("[name='shimano16']").val("0");
+    //form.find("[name='shimano17']").val("0");
     form.find("[name='ifrace']").val("0");
     form.find("[name='islam']").val("0");
     form.find("[name='ifteam']").prop('checked', false);
-    form.find("[name='meal16']").prop('checked', false);
-    form.find("[name='meal17']").prop('checked', false);
+    form.find("[name='dinner']").prop('checked', false);
+    form.find("[name='lunch']").prop('checked', false);
 }
 
 /*
@@ -377,8 +377,8 @@ function postIndividual() {
     };
     $.each(item.data, function(order, ind) {
         ind.ifteam = +ind.ifteam;
-        ind.meal16 = +ind.meal16;
-        ind.meal17 = +ind.meal17;
+        ind.dinner = +ind.dinner;
+        ind.lunch = +ind.lunch;
     });
     $.post(controller, item, function(response) {
         if (response.code != "200") {
