@@ -22,7 +22,7 @@ class People_model extends CI_Model {
      * Get a person's name.
      */
     public function get_name($key) {
-        $res = $this->db->select('name')->where('key', $key)->get('people')->row_array();
+        $res = $this->db->select('name')->where('team_key', $key)->get('people')->row_array();
         if ($res and array_key_exists('name', $res)) {
             return $res['name'];
         } else {
@@ -101,7 +101,7 @@ class People_model extends CI_Model {
     public function get_male_athlete_keys_from_school($school_id) {
         $res = array();
         foreach ($this->get_male_athlete_from_school($school_id) as $item) {
-            $res[$item['key']] = true;
+            $res[$item['team_key']] = true;
         }
         return $res;
     }
@@ -127,7 +127,7 @@ class People_model extends CI_Model {
     public function get_female_athlete_keys_from_school($school_id) {
         $res = array();
         foreach ($this->get_female_athlete_from_school($school_id) as $item) {
-            $res[$item['key']] = true;
+            $res[$item['team_key']] = true;
         }
         return $res;
     }
@@ -136,7 +136,7 @@ class People_model extends CI_Model {
      * Check the person with a certain key is deleted or not.
      */
     public function is_exist($key) {
-        $query = $this->db->where('key', $key)->where('ifteam', true)->where('deleted', false)->get('people');
+        $query = $this->db->where('team_key', $key)->where('ifteam', true)->where('deleted', false)->get('people');
         return ($query->num_rows() > 0);
     }
 
