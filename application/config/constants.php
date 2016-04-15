@@ -108,6 +108,7 @@ $ERR_MSG = array(
     // Team Registration Error.
     '2000' => '第{order}组第{order_ind}个人不合法。',
     '2001' => '第{order}组第{order_ind}个人与第{order1}组第{order1_ind}个人重复。',
+    '2002' => '参赛队伍不得超过3支。'
 );
 
 /*

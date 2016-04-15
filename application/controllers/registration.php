@@ -255,6 +255,7 @@ class Registration extends CI_Controller {
             $female_key_set = $this->people->get_female_athlete_keys_from_school($school_id);
             $key_set = array();
             if (!$team_post) $team_post = array();
+            if (sizeof($team_post) > 3) exit(err_custom_msg('2002', array()));
             foreach ($team_post as $item_post) {
                 // first
                 if (!array_key_exists($item_post['first'], $male_key_set)) {

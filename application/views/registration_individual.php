@@ -160,13 +160,11 @@
 </div>
 <script>
     $("#btn-reg-ind-submit").click(function() {
-//        alert("on submit");
         this.disabled=true;
         $(this).text("提交中...");
         postIndividual();
         this.disabled=false;
         $(this).text("提交，前往团体赛报名");
-//        alert("on post submit");
     });
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
@@ -205,7 +203,6 @@
         $.cookie('individual', JSON.stringify(data));
     }
     $(document).ready(function() {
-//        alert("on ready");
         reloadIndividual();
         refreshOrder();
         restrictIndividual();
@@ -218,6 +215,5 @@
         $("[name='ifteam']").change(function () {
             restrictIndividual();
         });
-//        alert("on post ready");
     });
 </script>
