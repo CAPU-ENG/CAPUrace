@@ -3,6 +3,9 @@
 <div class="content">
 	<h3 class="text-center">赛场与赛道</h3>
 	<hr><br>
+
+    以下是2015年全国高校山地车交流赛赛道，14届赛道请等待更新  : )<br><br>
+
 	<h4>一、   赛场具体地点：</h4><br>
 	<img src="<?=base_url()?>/assets/images/map.png" class="center-block" width="660px"></img>
     <br/><br/>
