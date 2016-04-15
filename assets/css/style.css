@@ -52,22 +52,21 @@
   padding-top: 10px;
 }
 
-.topr {
+/*.topr {
   width: 450px;
   margin-left: 550px;
   height: 254px;
   float: right;
   position: absolute;
   background: url(/assets/images/rbg.png) no-repeat right;
-}
+}*/
 
 .logo {
   width: 550px;
   height: 254px;
-  float: left;
-  position: absolute;
+  position: relative;
   background: url(/assets/images/logo.jpg) no-repeat right;
-
+  margin:0 auto;
 }
 
 .pagebody {
