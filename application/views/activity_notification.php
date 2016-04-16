@@ -1,5 +1,6 @@
 <div class="center">
 	<div class="content">
+		<div class="regcontainer">
 		<br><br>
 		<h1 class="text-center"><strong>北大车协第十四届全国高校山地车交流赛</strong></h1>
 		<h2 class="text-center">活动通知</h2>
@@ -41,11 +42,11 @@
 			<tr>
 				<th scope="row">19:30-22:00</th>
 				<td><strong>“全国高校单车社团	联谊大会” </strong></td>
-				<td> 所有参与联合拉练的高校车协需提前报名，服从北大车协拉练负责统一指挥。由北大-固安</td>
+				<td></td>
 			</tr>
 			<tr>
 				<th scope="row">22:00-</th>
-				<td><strong>各车协回宾馆休息</strong></td>
+				<td>各车协回宾馆休息</td>
 				<td>    </td>
 			</tr>
 			<tr>
@@ -175,7 +176,7 @@
 	</div>
 </div>
 </div>
-
+</div>
 <!--
 <div class="regcontainer">
 	<img src="/assets/images/activity_notification_1.jpg" width="800" class="center-block">
