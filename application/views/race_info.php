@@ -14,7 +14,7 @@
       七、	比赛组别及时间安排      <br></strong>
   <br>
 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本届比赛设置如下组别：大学男子精英组、大学生男子大众组、大学生女子组、大学生接力组，<span class="red">均为山地车比赛项目</span>，具体时间安排如下：
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本届比赛设置如下组别：教工邀请赛、大学男子精英组、大学生男子大众组、大学生女子组、大学生接力组，<span class="red">均为山地车比赛项目</span>，具体时间安排如下：
     <div class="text-center"><h4><strong>北大赛项目</strong></h4></div>
 	<table class="table table-striped table-bordered">
       <thead>
@@ -29,9 +29,19 @@
         </tr>
       </thead>
       <tbody>
+      <tr>
+        <th scope="row">教工邀请赛</th>
+        <td>5月15日<br>9:00-9:10</td>
+        <td>9:10-9:30</td>
+        <td>3.5km</td>
+        <td>男子2圈<br>女子1圈</td>
+        <td>7km<br>3.5km</td>
+        <td>参与有奖</td>
+      </tr>
+
         <tr>
           <th scope="row">大学生男子精英组</th>
-          <td>5月15日 9:30-10:30</td>
+          <td>5月15日<br>9:30-10:30</td>
           <td>9:45-11:00</td>
           <td>3.5km</td>
           <td>4</td>
@@ -41,7 +51,7 @@
 
         <tr>
           <th scope="row">大学生男子大众组</th>
-          <td>5月15日 11:00-11:30</td>
+          <td>5月15日<br>11:00-11:30</td>
           <td>11:30-12:30</td>
           <td>3.5km</td>
           <td>3</td>
@@ -51,7 +61,7 @@
 
         <tr>
           <th scope="row">大学生女子组</th>
-          <td>5月15日 13:00-13:30</td>
+          <td>5月15日<br>13:00-13:30</td>
           <td>13:30-14:20</td>
           <td>3.5km</td>
           <td>2</td>
@@ -61,7 +71,7 @@
 
         <tr>
           <th scope="row">大学生接力组<br>（4人成组，3男一女）</th>
-          <td>5月15日 14:30-15:00</td>
+          <td>5月15日<br>14:30-15:00</td>
           <td>15:00-15:40</td>
           <td>3.5km</td>
           <td>4</td>

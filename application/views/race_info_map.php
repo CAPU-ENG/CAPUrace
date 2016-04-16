@@ -4,8 +4,6 @@
 	<h3 class="text-center">赛场与赛道</h3>
 	<hr><br>
 
-    以下是2015年全国高校山地车交流赛赛道，14届赛道请等待更新  : )<br><br>
-
 	<h4>一、   赛场具体地点：</h4><br>
 	<img src="<?=base_url()?>/assets/images/map.png" class="center-block" width="660px"></img>
     <br/><br/>
@@ -24,7 +22,7 @@
         </style>
         <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
         </head>
-        
+
         <body>
         <!--百度地图容器-->
         <div style="width:660px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
@@ -37,7 +35,7 @@
             addMapControl();//向地图添加控件
             addMarker();//向地图中添加marker
         }
-        
+
         //创建地图函数：
         function createMap(){
             var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
@@ -45,7 +43,7 @@
             map.centerAndZoom(point,13);//设定地图的中心点和坐标并将地图显示在地图容器中
             window.map = map;//将map变量存储在全局
         }
-        
+
         //地图事件设置函数：
         function setMapEvent(){
             map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
@@ -53,7 +51,7 @@
             map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
             map.enableKeyboard();//启用键盘上下左右键移动地图
         }
-        
+
         //地图控件添加函数：
         function addMapControl(){
             //向地图中添加缩放控件
@@ -66,7 +64,7 @@
             var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
             map.addControl(ctrl_sca);
         }
-        
+
         //标注点数组
         var markerArr = [{title:"比赛场地",content:"晚会场地&nbsp;露营场地",point:"116.313924|39.48283",isOpen:0,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
         ,{title:"大广高速固安出口",content:"无",point:"116.286939|39.47041",isOpen:0,icon:{w:21,h:21,l:46,t:0,x:6,lb:5}}
@@ -93,7 +91,7 @@
                                color:"#333",
                                cursor:"pointer"
                                });
-                
+
                 (function(){
                  var index = i;
                  var _iw = createInfoWindow(i);
@@ -128,7 +126,7 @@
             var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
             return icon;
         }
-        
+
         initMap();//创建和初始化地图
         </script>
         </html>
@@ -141,7 +139,7 @@
 		2. 由于时间原因，本届比赛不设试赛道时间。北大车协为您提供赛道骑行实况视频，请参看本报名网站<br>
 	</div><br>
 	<h4>三、   会场示意图：</h4><br>
-	<img src="<?=base_url()?>/assets/images/raceinfo.png" class="center-block" width="660px"></img>
+	<img src="<?=base_url()?>/assets/images/racecourse.jpg" class="center-block" width="600px"></img>
 
 </div>
 </div>
