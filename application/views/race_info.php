@@ -5,16 +5,17 @@
 	注：<span class="red">本《赛事信息》只包含与比赛有关的信息。</span>如您希望了解有关北大赛住宿、餐饮和联谊晚会等信息，请参阅《活动通知》
 	<hr>
 
-	<strong>一、     比赛主办方：北京大学自行车协会<br>
-	二、     比赛承办方：北京博雅远人管理顾问有限公司<br>
-	三、     比赛合作方：SHIMANO车迷节<br>
-	四、     比赛时间：2015年5月17日8:00-17:00<br>
-	五、     比赛地点：河北省廊坊市固安县永定河自行车运动公园<br>
-	<span class="red">六、     参赛费用（不含食宿费用）：50元/人（已包含保险和5月17日午餐一份）</span><br>
-	七、     比赛组别及时间安排：<br></strong>
+	<strong> 一、	比赛主办方：北京大学自行车协会<br>
+      二、	比赛协办方：广田体育 永定河自行车运动公园<br>
+      三、	比赛支持方：中国大学生自行车协会<br>
+      四、	比赛时间：2016年5月15日8:00-17:00<br>
+      五、	比赛地点：河北省廊坊市固安县永定河自行车运动公园<br>
+      六、	参赛费用（不含食宿费用）：50元/人（已包含保险和5月15日午餐一份）<br>
+      七、	比赛组别及时间安排      <br></strong>
+  <br>
 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本届比赛设置如下组别：大学男子组、大学女子组、大学生接力组，<span class="red">均为山地车比赛项目</span>，具体时间安排如下：
-    <div class="text-center">北大赛项目</div>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本届比赛设置如下组别：大学男子精英组、大学生男子大众组、大学生女子组、大学生接力组，<span class="red">均为山地车比赛项目</span>，具体时间安排如下：
+    <div class="text-center"><h4><strong>北大赛项目</strong></h4></div>
 	<table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -29,27 +30,39 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">大学男子组</th>
-          <td>5月17日 12:00-12:30</td>
-          <td>12:30-13:30</td>
+          <th scope="row">大学生男子精英组</th>
+          <td>5月15日 9:30-10:30</td>
+          <td>9:45-11:00</td>
           <td>3.5km</td>
           <td>4</td>
           <td>14km</td>
+          <td>前10名</td>
+        </tr>
+
+        <tr>
+          <th scope="row">大学生男子大众组</th>
+          <td>5月15日 11:00-11:30</td>
+          <td>11:30-12:30</td>
+          <td>3.5km</td>
+          <td>3</td>
+          <td>10.5km</td>
           <td>前30名</td>
         </tr>
+
         <tr>
-          <th scope="row">大学女子组</th>
-          <td>5月17日 13:35-14:40</td>
-          <td>14:40-15:10</td>
+          <th scope="row">大学生女子组</th>
+          <td>5月15日 13:00-13:30</td>
+          <td>13:30-14:20</td>
           <td>3.5km</td>
           <td>2</td>
           <td>7km</td>
           <td>前30名</td>
         </tr>
+
         <tr>
           <th scope="row">大学生接力组<br>（4人成组，3男一女）</th>
-          <td>5月17日 15:00-16:05</td>
-          <td>16:05-17:05</td>
+          <td>5月15日 14:30-15:00</td>
+          <td>15:00-15:40</td>
           <td>3.5km</td>
           <td>4</td>
           <td>14km</td>
@@ -58,137 +71,12 @@
       </tbody>
     </table>
 
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此外，SHIMANO车迷节为高校车协选手提供比赛优惠：凡报名北大车协全国高校山地车交流赛的选手（即必须报名以上三项），可免费参与5月16日当天的公路日的任一组满足参赛人员资格的比赛和5月17日当天山地日的任一组满足参赛人员资格的非大学生比赛。<span class=“red”>相关组别均可在北大车协交流赛官方报名网站上报名。</span>（即：每名选手缴纳50元/人的报名费，可以参与一项公路日比赛，一项山地日比赛，以及两项北大赛比赛）
-	<br><br>
-    <div class="text-center">公路日赠送组别 非北大赛项目(5月16日)可任选其一</div>
-	<table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>组别</th>
-          <th>检录时间<br>5月16日</th>
-          <th>比赛时间</th>
-          <th>单圈里程</th>
-          <th>圈数</th>
-          <th>总里程</th>
-          <th>获奖名次</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">公路男子初级组</th>
-          <td>09:00-09:35</td>
-          <td>09:35-10:10</td>
-          <td>2.5km</td>
-          <td>8</td>
-          <td>20km</td>
-          <td>前30名</td>
-        </tr>
-        <tr>
-          <th scope="row">公路男子中级组</th>
-          <td>09:00-09:35</td>
-          <td>10:15-11:00</td>
-          <td>2.5km</td>
-          <td>8</td>
-          <td>20km</td>
-          <td>前30名</td>
-        </tr>
-        <tr>
-          <th scope="row">公路男子精英组</th>
-          <td>资格赛10:15-11:05<br>
-			  正赛12:30-13:05</td>
-          <td>资格赛11:05-12:00<br>
-			  正赛13:05-14:00</td>
-          <td>2.5km</td>
-          <td>资格赛1圈, 正赛16圈</td>
-          <td>40km</td>
-          <td>前15名</td>
-        </tr>
-        <tr>
-          <th scope="row">小轮组</th>
-          <td>12:00-12:30</td>
-          <td>12:30-13:00</td>
-          <td>2.5km</td>
-          <td>6</td>
-          <td>15km</td>
-          <td>前15名</td>
-        </tr>
-        <tr>
-          <th scope="row">公路女子组</th>
-          <td>13:05-14:05</td>
-          <td>14:05-14:35</td>
-          <td>2.5km</td>
-          <td>6</td>
-          <td>15km</td>
-          <td>前30名</td>          
-        </tr>
-      </tbody>
-    </table>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <br><br>
+<span class="red">费用说明：大学生男子精英组和大众组不可兼报，二者只能报其一。只报名参加上述赛事一项者，需缴纳报名费50元（含保险和5月15日午餐）。既报名个人赛又报名团体赛者，需补缴报名费20元。例子：某队员报名大学生男子大众组，与另外3名同校车协队员组成接力组。则该名队员需缴纳报名费70元。某队员报名大学生接力组，未报名个人赛，则缴纳报名费50元。</span>
+<br><br>
 
-    <br><br>
-    <div class="text-center">山地日赠送组别 非北大赛项目（5月17日）可任选其一</div>
-	<table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>组别</th>
-          <th>检录时间<br>5月17日</th>
-          <th>比赛时间</th>
-          <th>单圈里程</th>
-          <th>圈数</th>
-          <th>总里程</th>
-          <th>获奖名次</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">山地大众体验组（男女不限）</th>
-          <td>08:30-09:00</td>
-          <td>09:00-09:50</td>
-          <td>3.5km</td>
-          <td>2</td>
-          <td>7km</td>
-          <td>前30名</td>
-        </tr>
-        <tr>
-          <th scope="row">山地男子初级组</th>
-          <td>09:00-09:55</td>
-          <td>09:55-10:55</td>
-          <td>3.5km</td>
-          <td>4</td>
-          <td>14km</td>
-          <td>前30名</td>
-        </tr>
-        <tr>
-          <th scope="row">山地男子中级组</th>
-          <td>09:55-11:00</td>
-          <td>11:00-12:00</td>
-          <td>3.5km</td>
-          <td>4</td>
-          <td>14km</td>
-          <td>前30名</td>
-        </tr>
-        <tr>
-          <th scope="row">山地男子精英组<br><span class="red">（与大学男子组冲突，请慎重报名。）</span></th>
-          <td>12:30-13:35</td>
-          <td>13:35-14:35</td>
-          <td>3.5km</td>
-          <td>4</td>
-          <td>14km</td>
-          <td>前15名</td>
-        </tr>
-        <tr>
-          <th scope="row">山地女子组<br><span class="red">（与大学女子组冲突，请慎重报名。）</span></th>
-          <td>13:35-14:35</td>
-          <td>14:40-15:10</td>
-          <td>3.5km</td>
-          <td>2</td>
-          <td>7km</td>
-          <td>前30名</td>          
-        </tr>
-      </tbody>
-    </table>
-
-
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">注意：</span>请各高校车协选手在选择赠送项目时，注意规划好个人的参赛时间。报名截止后将不能改动组别选择。
+  <strong>备注：今年北大赛将首次组织教职工邀请赛，请兄弟高校车协通知本校负责自行车社团的老师，有意向报名教职工组的请咨询北京大学卢福泉老师（手机13911997612、邮箱lfq@pku.edu.cn）。</strong>
 
 
 </div>

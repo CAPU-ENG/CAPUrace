@@ -108,6 +108,7 @@ $ERR_MSG = array(
     // Team Registration Error.
     '2000' => '第{order}组第{order_ind}个人不合法。',
     '2001' => '第{order}组第{order_ind}个人与第{order1}组第{order1_ind}个人重复。',
+    '2002' => '参赛队伍不得超过3支。'
 );
 
 /*
@@ -176,7 +177,8 @@ $ACCO_FEE = array(
 $ADMIN = array(
     '老蒋' => 'bf7d6c2e83eaa18f185c127ce495ec7c',
     '喵喵' => 'f1466c1c2a641cd47a48e8076711e808',
-    '毛毛熊' => '124fe97157e01351785faa69b5189c13'
+    '毛毛熊' => '124fe97157e01351785faa69b5189c13',
+    'capu' => 'ea23bef773499d151cfd5d7f2da8ba75'
 );
 
 $ACCOUNTANT_PASS = 'f1466c1c2a641cd47a48e8076711e808';
