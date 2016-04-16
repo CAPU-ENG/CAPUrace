@@ -56,7 +56,7 @@
           <td>3.5km</td>
           <td>3</td>
           <td>10.5km</td>
-          <td>前30名</td>
+          <td>前10名</td>
         </tr>
 
         <tr>
@@ -66,7 +66,7 @@
           <td>3.5km</td>
           <td>2</td>
           <td>7km</td>
-          <td>前30名</td>
+          <td>前10名</td>
         </tr>
 
         <tr>
@@ -76,7 +76,7 @@
           <td>3.5km</td>
           <td>4</td>
           <td>14km</td>
-          <td>前10名</td>          
+          <td>前5组</td>          
         </tr>
       </tbody>
     </table>

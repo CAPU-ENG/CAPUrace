@@ -132,15 +132,22 @@
         </html>
 	<br><br>
 	<h4>二、   赛道示意图：</h4><br>
-	<img src="<?=base_url()?>/assets/images/racemap.jpg" class="center-block" width="660px"></img>
+	<img src="<?=base_url()?>/assets/images/racemap_1.jpg" class="center-block" width="660px"></img>
 	<div style="padding: 10px">
-		<strong><span class="red">重要提示：</span></strong><br>
-		1. 本届比赛，各组所用赛道完全一致，长度相同（3.5km/圈）难度相同。不同组别圈数不同，总里程不同。<br>
-		2. 由于时间原因，本届比赛不设试赛道时间。北大车协为您提供赛道骑行实况视频，请参看本报名网站<br>
+		<strong>选手注意：</strong><br>
+        赛道中有四个地方，均有两条路可以通过，一条是难度较高但是较短的石头路，另一条是普通的土路。这四个地方的位置与序号在下图中标出：<br>
 	</div><br>
-	<h4>三、   会场示意图：</h4><br>
+    <img src="<?=base_url()?>/assets/images/racemap_2.jpg" class="center-block" width="600px"></img>
+    不同组别在这四个地方使用的路线不同，具体如下：<br><br>
+    男子精英组：全都为石头路<br>
+    男子大众组：2和3为石头路，1和4为土路<br>
+    女子组：只有4为石头路<br>
+    团体组：3和4为石头路，1和2为土路<br>
+    教职工组：全都为土路<br><br>
+    本届比赛不统一组织试赛道，14日需要试赛道的选手须自行买票入场。为方便工作人员进行赛道维护，进入赛道的选手必须在18:00前离开赛道。
+    <br><br>
+    <h4>三、   会场示意图：</h4><br>
 	<img src="<?=base_url()?>/assets/images/racecourse.jpg" class="center-block" width="600px"></img>
-
 </div>
 </div>
 </div>
