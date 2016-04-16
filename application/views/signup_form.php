@@ -75,4 +75,12 @@
         this.disabled=false;
         $(this).text("注册");
     });
+    $(document).ready(function() {
+        var signUpDeadline = new Date("<?= $GLOBALS['SIGN_UP_DEADLINE']?>");
+        var now = new Date();
+        if (now > signUpDeadline) {
+            alert("注册已截止");
+            window.location.href = "<?=site_url('')?>"
+        }
+    });
 </script>

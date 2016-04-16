@@ -95,6 +95,9 @@ class User extends CI_Controller {
              $data = $this->input->post();
              header('Content-Type: application/json');
 
+             $signUpDeadline = strtotime($GLOBALS['SIGN_UP_DEADLINE']);
+             if (time() > $signUpDeadline) exit(err_msg('205'));
+
              if ($this->form_validation->run('signup') == false) {
                  $err_code = '400';
              } else {

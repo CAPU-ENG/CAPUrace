@@ -76,6 +76,7 @@ $ERR_MSG = array(
     '200' => 'OK.',
     '202' => '用户尚未通过审核，请您稍后登录！',
     '204' => '用户不存在，请注册！',
+    '205' => '注册已截止',
     '400' => '存在不合法输入，请检查手机号、邮箱等信息是否正确填写！',
     '401' => '密码错误，请重新输入！',
     // Individual Registration Error.
@@ -170,6 +171,11 @@ $ACCO_FEE = array(
     '1' => 50,
     '2' => 10,
 );
+
+/*
+ * Date and Time Settings
+ */
+$SIGN_UP_DEADLINE = '2016-04-24';
 
 /*
  * Admin user list
