@@ -7,7 +7,7 @@
   <img src="/assets/images/signup_3.jpg" width="800" class="center-block">
 
   <div class="text-center red">
-    <b>注意：比赛当日前未满18岁的选手请&nbsp;<a href="/assets/images/statement.pdf"><u>下载免责声明</u></a></b>
+    <b>注意：比赛当日前未满18岁的选手请&nbsp;<a href="<?=base_url()?>assets/images/statement.pdf" target="_blank"><u>下载免责声明</u></a></b>
   </div>
   
   
