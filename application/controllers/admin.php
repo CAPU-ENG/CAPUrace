@@ -18,7 +18,21 @@ class Admin extends CI_Controller {
         $this->load->view('header_admin');
         $this->load->view('footer_admin');
     }
+    
+    public function registrating() {
+        $this->load->view('header_admin');
+        $data['registering'] = $this->user->get_registering();
+        $this->load->view('admin_registering', $data);
+        $this->load->view('footer_admin');
+    }
 
+    public function unactivated() {
+        $this->load->view('header_admin');
+        $data['unactivated'] = $this->user->get_unactivated();
+        $this->load->view('admin_unactivated', $data);
+        $this->load->view('footer_admin');
+    }
+    
     public function pay() {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $data['payment'] = $this->user->get_verified();
