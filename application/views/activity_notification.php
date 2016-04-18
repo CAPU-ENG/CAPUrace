@@ -184,7 +184,7 @@
 				</tr>
 				<tr>
 					<th scope="row">住宿</th>
-					<td>快捷宾馆</td>
+					<td>快捷宾馆（会拼床）</td>
 					<td>50元/人</td>
 					<td>建议优选此项，<strong>但单个高校或车协必须统一住宿形式</strong></td>
 				</tr>
