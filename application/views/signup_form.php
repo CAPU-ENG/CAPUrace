@@ -3,7 +3,7 @@
     var directto = "<?=base_url()?>";
 </script>
 <div class="signcontainer">
-    <h3>请输入注册信息 </h3>&nbsp; <a href="<?=base_url()?>assets/images/signup-help-2016.pdf"><u>注册帮助</u></a>
+    <h3>请输入注册信息 </h3>&nbsp; <a href="<?=base_url()?>assets/images/signup-help-2016.pdf" target="_blank"><u>注册帮助</u></a>
     <hr/>
     <label class="col-sm-4">学校名称</label>
     <div class="col-sm-8">
