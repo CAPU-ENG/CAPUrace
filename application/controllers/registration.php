@@ -163,38 +163,6 @@ class Registration extends CI_Controller {
                         'order' => $item_post['order'] + 1,
                     )));
                 }
-//                // shimano16
-//                if (!array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB'])) {
-//                    exit(err_custom_msg('1110', array(
-//                        'order' => $item_post['order'] + 1,
-//                    )));
-//                } else if ($item_post['gender'] == '1' and
-//                    !array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB_M'])) {
-//                    exit(err_custom_msg('1111', array(
-//                        'order' => $item_post['order'] + 1,
-//                    )));
-//                } else if ($item_post['gender'] == '2' and
-//                    !array_key_exists($item_post['shimano16'], $GLOBALS['SHIMANO_RDB_F'])) {
-//                    exit(err_custom_msg('1112', array(
-//                        'order' => $item_post['order'] + 1,
-//                    )));
-//                }
-//                // shimano17
-//                if (!array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB'])) {
-//                    exit(err_custom_msg('1120', array(
-//                        'order' => $item_post['order'] + 1,
-//                    )));
-//                } else if ($item_post['gender'] == '1' and
-//                    !array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB_M'])) {
-//                    exit(err_custom_msg('1121', array(
-//                        'order' => $item_post['order'] + 1,
-//                    )));
-//                } else if ($item_post['gender'] == '2' and
-//                    !array_key_exists($item_post['shimano17'], $GLOBALS['SHIMANO_MTB_F'])) {
-//                    exit(err_custom_msg('1122', array(
-//                        'order' => $item_post['order'] + 1,
-//                    )));
-//                }
             }
             $bill = 0;
             $ind_db = $this->people->get_people_from_school($school_id);
