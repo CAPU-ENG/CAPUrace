@@ -254,6 +254,20 @@ class User_model extends CI_Model {
         $query = $this->db->where('paid', 1)->get('users');
         return $query->result_array();
     }
+    
+    /*
+     * This function gets all users confirmed but not verified.
+     */
+    public function get_registering() {
+        return $this->db->where('confirmed', 1)->where('activated', 1)->where('editable', 1)->order_by('province', 'asc')->get('users')->result_array();
+    }
+    
+    /*
+     * This function gets all unactivated users.
+     */
+    public function get_unactivated() {
+        return $this->db->where('activated', 0)->order_by('province', 'asc')->get('users')->result_array();
+    }
 
     /*
      * Check the user is paid or not.

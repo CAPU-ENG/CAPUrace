@@ -6,11 +6,12 @@
         <tr>
             <th>ID</th>
             <th>学校</th>
+            <th>地区</th>
             <th>领队</th>
             <th>邮箱</th>
             <th>电话</th>
             <th>金额</th>
-            <th>支付情况</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody class="paylist">
@@ -18,6 +19,7 @@
         <tr class="payitem">
             <td class="id"><?=$item['id']?></td>
             <td class="school"><?=$item['school']?></td>
+            <td class="province"><?=$GLOBALS['PROVINCES_SHORT'][$item['province']]?></td>
             <td class="leader"><?=$item['leader']?></td>
             <td class="mail"><?=$item['mail']?></td>
             <td class="tel"><?=$item['tel']?></td>
