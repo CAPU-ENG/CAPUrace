@@ -12,6 +12,7 @@
             <th>手机号</th>
             <th>邮寄地址</th>
             <th>邮政编码</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -26,8 +27,18 @@
                 <td><?=$user['tel']?></td>
                 <td><?=$user['address']?></td>
                 <td><?=$user['zipcode']?></td>
+                <td class="lookup">
+                    <button class="btn-xs btn-primary btn-lookup">查看信息</button>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
 </div>
+<script>
+    $(".btn-lookup").click(function() {
+        var id = $(this).closest(".school").find(".school_id").text();
+        var link = "<?=site_url('admin/lookup')?>" + "/" + id;
+        window.location.assign(link);
+    });
+</script>

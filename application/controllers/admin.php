@@ -19,7 +19,7 @@ class Admin extends CI_Controller {
         $this->load->view('footer_admin');
     }
     
-    public function registrating() {
+    public function registering() {
         $this->load->view('header_admin');
         $data['registering'] = $this->user->get_registering();
         $this->load->view('admin_registering', $data);
