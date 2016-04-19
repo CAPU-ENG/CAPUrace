@@ -3,6 +3,7 @@ phpMyAdmin/
 application/config/config.php
 application/config/database.php
 application/config/email.php
+assets/images/content.jpg
 */config/development
 */logs/log-*.php
 */logs/!index.html
