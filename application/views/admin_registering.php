@@ -10,8 +10,6 @@
             <th>领队姓名</th>
             <th>电子邮箱</th>
             <th>手机号</th>
-            <th>邮寄地址</th>
-            <th>邮政编码</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -25,8 +23,6 @@
                 <td><?=$user['leader']?></td>
                 <td><?=$user['mail']?></td>
                 <td><?=$user['tel']?></td>
-                <td><?=$user['address']?></td>
-                <td><?=$user['zipcode']?></td>
                 <td class="lookup">
                     <button class="btn-xs btn-primary btn-lookup">查看信息</button>
                 </td>
