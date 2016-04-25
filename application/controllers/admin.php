@@ -353,7 +353,7 @@ class Admin extends CI_Controller {
     }
 
     public function _fill_ind_in_team($excel, $key, $i, $school) {
-        $ind = $this->db->where('key', $key)->where('deleted', 0)->get('people')->row_array();
+        $ind = $this->db->where('team_key', $key)->where('deleted', 0)->get('people')->row_array();
         $excel->getActiveSheet()
             ->setCellValue('B' . $i, $ind['name'])
             ->setCellValue('C' . $i, $GLOBALS['GENDER'][$ind['gender']])
