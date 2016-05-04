@@ -99,7 +99,7 @@ class Admin extends CI_Controller {
 
     public function info() {
         $data['nschools'] = $this->db->query('select count(*) as nschools from users where activated=1 and confirmed=1;')->result_array()[0]['nschools'];
-        $data['nverified'] = $this->db->query('select count(*) as nverified from users where editable=0;')->result_array()[0]['nverified'];
+        $data['nverified'] = $this->db->query('select count(*) as nverified from users where editable=0 and activated=1 and confirmed=1;')->result_array()[0]['nverified'];
         $data['npaid'] = $this->db->query('select count(*) as npaid from users where paid=1;')->result_array()[0]['npaid'];
         $data['nlook'] = $this->db->query('select count(*) as nlook from people where deleted=0 and ifrace=0;')->result_array()[0]['nlook'];
         $data['nrace'] = $this->db->query('select count(*) as nrace from people where deleted=0 and ifrace=1;')->result_array()[0]['nrace'];
