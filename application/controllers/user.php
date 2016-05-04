@@ -50,12 +50,12 @@ class User extends CI_Controller {
 
             if ($user_info == NULL) {
                 $err_code = '204';
-            } elseif ($login_info['password'] != $user_info['password']) {
-                $err_code = '401';
             } elseif (!$user_info['activated']) {
                 $err_code = '201';
             } elseif (!$user_info['confirmed']) {
                 $err_code = '202';
+            } elseif ($login_info['password'] != $user_info['password']) {
+                $err_code = '401';
             } else {
                 $err_code = '200';
                 $this->session->set_userdata('logged_in', true);
