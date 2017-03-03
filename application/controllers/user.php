@@ -9,7 +9,7 @@
 class User extends CI_Controller {
 
     /*
-     * Contrunction for User Controller.
+     * Construction for User Controller.
      */
     function __construct()
     {
@@ -62,8 +62,6 @@ class User extends CI_Controller {
                 $this->session->set_userdata('id', $user_info['id']);
                 $this->session->set_userdata('school', $user_info['school']);
                 $this->session->set_userdata('editable', $user_info['editable']);
-                delete_cookie('individual');
-                delete_cookie('team');
             }
 
             exit(err_msg($err_code));
@@ -77,8 +75,6 @@ class User extends CI_Controller {
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('school');
-        delete_cookie('individual');
-        delete_cookie('team');
         redirect(base_url(), 'refresh');
     }
 
