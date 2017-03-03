@@ -22,7 +22,7 @@ function addIndividual() {
 function removeIndividual(item) {
     var order = getOrder(item);
     data.splice(order, 1);
-    $.cookie('individual', JSON.stringify(data));
+    localStorage.setItem('individual', JSON.stringify(data));
     reloadIndividual();
     refreshOrder();
 }
@@ -207,8 +207,6 @@ function cacheIndividual(order) {
     var lunch = $("[name='lunch']").prop('checked');
     var race = $("[name='race']").val();
     var ifteam = $("[name='ifteam']").prop('checked');
-    //var shimano16 = $("[name='shimano16']").val();
-    //var shimano17 = $("[name='shimano17']").val();
     data[order] = {
         order: order,
         name: $.trim(name),
@@ -222,10 +220,8 @@ function cacheIndividual(order) {
         ifteam: ifteam,
         race: race,
         islam: islam
-        //shimano16: shimano16,
-        //shimano17: shimano17
     };
-    $.cookie('individual', JSON.stringify(data));
+    localStorage.setItem('individual', JSON.stringify(data));
     reloadIndividual();
     refreshOrder();
     resetIndividual();
@@ -252,8 +248,6 @@ function fillIndividual(item) {
         elem.find(".race").append(' 不参加 ');
     }
     elem.find(".islam").text(JUDGE[item.islam]);
-    //elem.find(".shimano16").text(SHIMANO_RDB[item.shimano16]);
-    //elem.find(".shimano17").text(SHIMANO_MTB[item.shimano17]);
     $(".ind-list").append(elem);
 }
 
@@ -280,8 +274,6 @@ function fetchIndividual(order) {
     form.find("[name='accommodation']").val(item.accommodation);
     form.find("[name='gender']").val(item.gender);
     form.find("[name='race']").val(item.race);
-    //form.find("[name='shimano16']").val(item.shimano16);
-    //form.find("[name='shimano17']").val(item.shimano17);
     form.find("[name='ifrace']").val(item.ifrace);
     form.find("[name='islam']").val(item.islam);
     form.find("[name='ifteam']").prop('checked', item.ifteam);
@@ -297,8 +289,6 @@ function restrictIndividual() {
     var lunch = $("[name='lunch']");
     var team = $("[name='ifteam']");
     var race = $("[name='race']");
-    //var shimano16 = $("[name='shimano16']");
-    //var shimano17 = $("[name='shimano17']");
 
     var ifrace = ($("[name='ifrace']").val() == '1');
 
@@ -321,20 +311,6 @@ function restrictIndividual() {
 
     var ifteam = team.prop('checked');
     var indrace = (race.val() != '0');
-
-    /*
-     * If an individual chooses neither ind-race nor team-race,
-     * the shimano options are not available.
-     */
-    //if (!(indrace || ifteam)) {
-    //    shimano16.val('0');
-    //    shimano16.prop('disabled', true);
-    //    shimano17.val('0');
-    //    shimano17.prop('disabled', true);
-    //} else {
-    //    shimano16.prop('disabled', false);
-    //    shimano17.prop('disabled', false);
-    //}
 }
 
 /*
@@ -359,8 +335,6 @@ function resetIndividual() {
     form.find("[name='accommodation']").val("0");
     form.find("[name='gender']").val("1");
     form.find("[name='race']").val("0");
-    //form.find("[name='shimano16']").val("0");
-    //form.find("[name='shimano17']").val("0");
     form.find("[name='ifrace']").val("0");
     form.find("[name='islam']").val("0");
     form.find("[name='ifteam']").prop('checked', false);
@@ -426,7 +400,7 @@ function cacheTeam() {
             fourth: fourth
         };
     });
-    $.cookie('team', JSON.stringify(data));
+    localStorage.setItem('team', JSON.stringify(data));
 }
 
 /*

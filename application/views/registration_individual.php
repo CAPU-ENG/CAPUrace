@@ -184,15 +184,13 @@
     var directto = "<?=site_url('registration/team')?>";
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
-//    var SHIMANO_RDB = <?//=json_encode($GLOBALS['SHIMANO_RDB'])?>//;
-//    var SHIMANO_MTB = <?//=json_encode($GLOBALS['SHIMANO_MTB'])?>//;
     var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
     var TF = <?=json_encode($GLOBALS['TF'])?>;
     var IFRACE = <?=json_encode($GLOBALS['IFRACE'])?>;
     var data = [];
-    if ($.cookie('individual')) {
-        data = $.parseJSON($.cookie('individual'));
+    if (localStorage.getItem('individual')) {
+        data = JSON.parse(localStorage.getItem('individual'));
     } else if (<?=count($individual)?>) {
         data = <?=json_encode($individual)?>;
         $.each(data, function(order, item) {
@@ -200,7 +198,7 @@
             item.lunch = (item.lunch == 1);
             item.ifteam = (item.ifteam == 1);
         });
-        $.cookie('individual', JSON.stringify(data));
+        localStorage.setItem('individual', JSON.stringify(data));
     }
     $(document).ready(function() {
         reloadIndividual();

@@ -69,11 +69,11 @@
     var controller = "<?=site_url('registration/team')?>";
     var directto = "<?=site_url('user/result')?>";
     var data = [];
-    if ($.cookie('team')) {
-        data = $.parseJSON($.cookie('team'));
+    if (localStorage.getItem('team')) {
+        data = JSON.parse(localStorage.getItem('team'));
     } else if (<?=count($team)?>){
         data = <?=json_encode($team)?>;
-        $.cookie('team', JSON.stringify(data));
+        localStorage.setItem('team', JSON.stringify(data));
     }
     $(document).ready(function() {
         reloadTeam();
