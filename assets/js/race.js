@@ -48,11 +48,7 @@ function addTeam() {
  */
 function removeTeam(item) {
     item.closest(".team-item").remove();
-/*    var order = elem.find(".order").text() - 1;
-    data.splice(order, 1);
-    if ($(".team-form").length == 1) {
-        addTeam();
-    }*/
+    cacheTeam();
     refreshOrder();
 }
 
