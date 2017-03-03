@@ -69,10 +69,10 @@
     var controller = "<?=site_url('registration/team')?>";
     var directto = "<?=site_url('user/result')?>";
     var data = [];
-    if (localStorage.getItem('team')) {
+    if (localStorage.getItem('team') == null) {
         data = JSON.parse(localStorage.getItem('team'));
-    } else if (<?=count($team)?>){
-        data = <?=json_encode($team)?>;
+    } else {
+        data = <?=json_encode(load_db_team())?>;
         localStorage.setItem('team', JSON.stringify(data));
     }
     $(document).ready(function() {
@@ -93,9 +93,6 @@
             removeTeam($(this));
         }
     });
-/*    $(window).on('beforeunload', function() {
-        cacheTeam();
-    });*/
 
     $("#save-currently").click(function() {
         cacheTeam();

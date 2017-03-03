@@ -61,16 +61,6 @@ if (! function_exists('load_db_individual')) {
 }
 
 /*
- * This function gets the cached individual data from the database;
- */
-if (! function_exists('load_cached_individual')) {
-    function load_cached_individual() {
-        $data = load_db_individual();
-        return $data;
-    }
-}
-
-/*
  * This function loads the team data from database.
  */
 if (! function_exists('load_db_team')) {
@@ -78,17 +68,7 @@ if (! function_exists('load_db_team')) {
         $CI = get_instance();
         $CI->load->model('team_model', 'team');
         $school_id = $CI->session->userdata('id');
-        $data = $CI->team->get_team_by_chool($school_id);
-        return $data;
-    }
-}
-
-/*
- * This function gets the cached team data from database.
- */
-if (! function_exists('load_cached_team')) {
-    function load_cached_team() {
-        $data = load_db_team();
+        $data = $CI->team->get_team_from_school($school_id);
         return $data;
     }
 }

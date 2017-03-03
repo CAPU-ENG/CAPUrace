@@ -378,7 +378,7 @@ function reloadTeam() {
 
 /*
  * This function is called when clicking 'save' in team form.
- * It restores the team info into cookie.
+ * It restores the team info into localStorage.
  */
 function cacheTeam() {
     data = [];
