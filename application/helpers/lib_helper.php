@@ -48,17 +48,6 @@ if (! function_exists('err_custom_msg')) {
 }
 
 /*
- * This function loads the individual data from cookie.
- */
-if (! function_exists('load_cookie_individual')) {
-    function load_cookie_individual() {
-        $CI = get_instance();
-        $data = $CI->input->cookie('individual');
-        return json_decode($data, true);
-    }
-}
-
-/*
  * This function loads the individual data from database.
  */
 if (! function_exists('load_db_individual')) {
@@ -72,8 +61,7 @@ if (! function_exists('load_db_individual')) {
 }
 
 /*
- * This function gets the cached individual data.
- * If cookie is deleted, get from the database.
+ * This function gets the cached individual data from the database;
  */
 if (! function_exists('load_cached_individual')) {
     function load_cached_individual() {
@@ -83,18 +71,7 @@ if (! function_exists('load_cached_individual')) {
 }
 
 /*
- * This function loads the team data from cookie.
- */
-if (! function_exists('load_cookie_team')) {
-    function load_cookie_team() {
-        $CI = get_instance();
-        $data = $CI->input->cookie('team');
-        return json_decode($data, true);
-    }
-}
-
-/*
- * This function loads the individual data from database.
+ * This function loads the team data from database.
  */
 if (! function_exists('load_db_team')) {
     function load_db_team() {
@@ -107,15 +84,11 @@ if (! function_exists('load_db_team')) {
 }
 
 /*
- * This function gets the cached team data.
- * If cookie is deleted, get from the database.
+ * This function gets the cached team data from database.
  */
 if (! function_exists('load_cached_team')) {
     function load_cached_team() {
-        $data = load_cookie_team();
-        if (! $data) {
-            $data = load_db_team();
-        }
+        $data = load_db_team();
         return $data;
     }
 }
