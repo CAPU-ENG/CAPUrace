@@ -382,4 +382,23 @@ class Admin extends CI_Controller {
         }
         exit(json_encode($response));
     }
+
+    public function edit() {
+        $title = $this->url->segment(3);
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $text = $this->info->get_info($title);
+            $data = array(
+                'title' => $title,
+                'text' => $text
+            );
+            $this->load->view('header_admin');
+            $this->load->view('admin_edit', $data);
+            $this->load->view('footer_admin');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+
+
+        }
+    }
 }
