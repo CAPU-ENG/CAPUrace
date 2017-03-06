@@ -8,6 +8,7 @@ class Admin extends CI_Controller {
         $this->load->model('people_model', 'people');
         $this->load->model('team_model', 'team');
         $this->load->model('user_model', 'user');
+        $this->load->model('info_model', 'info');
 
         if (! $this->session->userdata('admin_in')) {
             redirect(site_url('user/admin'));
@@ -384,7 +385,7 @@ class Admin extends CI_Controller {
     }
 
     public function edit() {
-        $title = $this->url->segment(3);
+        $title = $this->uri->segment(3);
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $text = $this->info->get_info($title);
             $data = array(
@@ -397,8 +398,11 @@ class Admin extends CI_Controller {
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $data = $this->input->post();
-
-
+            if ($data['publish'] == 1) {
+                $this->info->publish_info($data['title'], $data['text']);
+            } else {
+                $this->info->update_info($data['title'], $data['text']);
+            }
         }
     }
 }

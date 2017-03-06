@@ -15,7 +15,7 @@ class Info_model extends CI_Model {
         if ($result->num_rows() > 0) {
             return $result->row_array();
         } else {
-            return NULL;
+            return array();
         }
     }
 
