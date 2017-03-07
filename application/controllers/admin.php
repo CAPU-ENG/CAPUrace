@@ -398,12 +398,14 @@ class Admin extends CI_Controller {
             $this->load->view('footer_admin');
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
-            $data = $this->input->post();
+            $data= $this->input->post();
             if ($data['publish'] == 1) {
                 $this->info->publish_info($data['title'], $data['text']);
             } else {
                 $this->info->update_info($data['title'], $data['text']);
             }
+            header('Content-Type: application/json');
+            exit(err_msg('200'));
         }
     }
 }
