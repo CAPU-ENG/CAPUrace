@@ -196,7 +196,7 @@ $TITLES = array(
     'race-info-process' => '比赛流程',
     'race-info-racevideo' => '赛道视频',
     'activity' => '活动通知',
-    'registration-readme' => '报名须知'
+    'register-readme' => '报名须知'
 );
 
 /* End of file constants.php */
