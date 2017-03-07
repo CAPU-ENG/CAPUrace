@@ -68,7 +68,8 @@ class Index extends CI_Controller {
     }
 
     public function activity() {
-        $this->load->view('header');
+        $this->load->view('header_homepage');
+        $this->load->view('add_hilight_nav4');
         $this->load->view('activity_notification');
         $this->load->view('footer');
     }

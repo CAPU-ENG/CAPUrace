@@ -30,7 +30,7 @@ class Registration extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view('header');
+        $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav2');
         $this->load->view('registration_index');
         $this->load->view('footer');
@@ -42,7 +42,7 @@ class Registration extends CI_Controller {
     public function individual() {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $data['individual'] = load_cached_individual();
-            $this->load->view('header');
+            $this->load->view('header_homepage');
             $this->load->view('registration_individual', $data);
             $this->load->view('footer');
         }
@@ -210,7 +210,7 @@ class Registration extends CI_Controller {
             $data['male'] = $this->people->get_male_athlete_from_school($school_id);
             $data['female'] = $this->people->get_female_athlete_from_school($school_id);
             $data['team'] = $this->team->get_team_from_school($school_id);
-            $this->load->view('header');
+            $this->load->view('header_homepage');
             $this->load->view('registration_team', $data);
             $this->load->view('footer');
         }
