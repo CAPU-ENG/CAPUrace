@@ -71,25 +71,6 @@
                 <div class="col-sm-1">
                     <input type="checkbox" name="ifteam">
                 </div>
-<!--                <div class="show-if-race">-->
-<!--                    <label class="col-sm-1">赠送项目</label>-->
-<!--                    <label class="col-sm-1">5.16公路</label>-->
-<!--                    <div class="col-sm-2">-->
-<!--                        <select class="form-control" name="shimano16">-->
-<!--                            --><?php //foreach ($GLOBALS['SHIMANO_RDB'] as $key => $value): ?>
-<!--                                <option value="--><?//=$key?><!--">--><?//=$value?><!--</option>-->
-<!--                            --><?php //endforeach; ?>
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                    <label class="col-sm-1">5.17山地</label>-->
-<!--                    <div class="col-sm-2">-->
-<!--                        <select class="form-control" name="shimano17">-->
-<!--                            --><?php //foreach ($GLOBALS['SHIMANO_MTB_SELECT'] as $key => $value): ?>
-<!--                                <option value="--><?//=$key?><!--">--><?//=$value?><!--</option>-->
-<!--                            --><?php //endforeach; ?>
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
         <hr/>
@@ -113,8 +94,6 @@
             <th>手机号</th>
             <th>身份证号</th>
             <th>北大赛</th>
-<!--            <th>公路日</th>-->
-<!--            <th>山地日</th>-->
             <th>住宿</th>
             <th>5.14晚餐</th>
             <th>5.15午餐</th>
@@ -130,8 +109,6 @@
             <td class="tel"></td>
             <td class="id_card"></td>
             <td class="race"></td>
-<!--            <td class="shimano16"></td>-->
-<!--            <td class="shimano17"></td>-->
             <td class="accommodation"></td>
             <td class="dinner"></td>
             <td class="lunch"></td>
@@ -159,12 +136,21 @@
     </div>
 </div>
 <script>
+    var controller = "<?=site_url('registration/individual')?>";
+    var directto = "<?=site_url('registration/team')?>";
+    var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
+    var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
+    var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
+    var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
+    var TF = <?=json_encode($GLOBALS['TF'])?>;
+    var IFRACE = <?=json_encode($GLOBALS['IFRACE'])?>;
     $("#btn-reg-ind-submit").click(function() {
         this.disabled=true;
         $(this).text("提交中...");
         postIndividual();
         this.disabled=false;
         $(this).text("提交，前往团体赛报名");
+        window.location.href = "<?=site_url('registration/team')?>";
     });
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
@@ -180,27 +166,19 @@
             removeIndividual($(this));
         }
     });
-    var controller = "<?=site_url('registration/individual')?>";
-    var directto = "<?=site_url('registration/team')?>";
-    var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
-    var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
-//    var SHIMANO_RDB = <?//=json_encode($GLOBALS['SHIMANO_RDB'])?>//;
-//    var SHIMANO_MTB = <?//=json_encode($GLOBALS['SHIMANO_MTB'])?>//;
-    var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
-    var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
-    var TF = <?=json_encode($GLOBALS['TF'])?>;
-    var IFRACE = <?=json_encode($GLOBALS['IFRACE'])?>;
     var data = [];
-    if ($.cookie('individual')) {
-        data = $.parseJSON($.cookie('individual'));
-    } else if (<?=count($individual)?>) {
-        data = <?=json_encode($individual)?>;
+    // Load cached individual data.
+    if (localStorage.getItem('individual')) {
+        data = JSON.parse(localStorage.getItem('individual'));
+    } else {
+        data = <?=json_encode(load_db_individual())?>;
+        localStorage.setItem('individual', JSON.stringify(data));
         $.each(data, function(order, item) {
             item.dinner = (item.dinner == 1);
             item.lunch = (item.lunch == 1);
             item.ifteam = (item.ifteam == 1);
         });
-        $.cookie('individual', JSON.stringify(data));
+
     }
     $(document).ready(function() {
         reloadIndividual();
