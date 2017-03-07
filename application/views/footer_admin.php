@@ -19,7 +19,7 @@
   <div class="btn-group">
     <button class="btn btn-primary" id="btn-race-info">比赛基本信息</button>
     <button class="btn btn-primary" id="btn-race-info-process">比赛流程</button>
-    <button class="btn btn-primary" id="btn-race_info-rule">比赛规则</button>
+    <button class="btn btn-primary" id="btn-race-info-rule">比赛规则</button>
     <button class="btn btn-primary" id="btn-race-info-map">赛场与赛道</button>
     <button class="btn btn-primary" id="btn-race-info-award">比赛奖品</button>
     <button class="btn btn-primary" id="btn-race-info-racevideo">赛场视频</button>
@@ -77,7 +77,7 @@
     $("#btn-activity").click(function () {
         window.location.assign("<?=site_url('admin/edit/activity')?>");
     });
-    $("#register-readme").click(function () {
+    $("#btn-register-readme").click(function () {
         window.location.assign("<?=site_url('admin/edit/register-readme')?>");
     });
     $("#btn-close-system").click(function() {

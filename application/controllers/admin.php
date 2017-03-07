@@ -393,6 +393,7 @@ class Admin extends CI_Controller {
                 'text' => $text
             );
             $this->load->view('header_admin');
+            $this->load->view('admin_edit_toolbar', $data);
             $this->load->view('admin_edit', $data);
             $this->load->view('footer_admin');
         }

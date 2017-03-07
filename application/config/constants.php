@@ -185,5 +185,19 @@ $ADMIN = array(
 $ACCOUNTANT_PASS = 'f1466c1c2a641cd47a48e8076711e808';
 $PRESIDENT_PASS = '124fe97157e01351785faa69b5189c13';
 
+/*
+ * Documentation titles.
+ */
+$TITLES = array(
+    'race-info' => '比赛基本信息',
+    'race-info-rule' => '比赛规则',
+    'race-info-award' => '比赛奖品',
+    'race-info-map' => '赛场与赛道',
+    'race-info-process' => '比赛流程',
+    'race-info-racevideo' => '赛道视频',
+    'activity' => '活动通知',
+    'registration-readme' => '报名须知'
+);
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
