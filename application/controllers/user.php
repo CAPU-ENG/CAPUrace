@@ -31,8 +31,8 @@ class User extends CI_Controller {
                 redirect(base_url(), 'refresh');
             }
 
-            $this->load->view('header');
-            $this->load->view('add_hilight_nav4');
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
             $this->load->view('login_form');
             $this->load->view('footer');
         }
@@ -87,8 +87,8 @@ class User extends CI_Controller {
          date_default_timezone_set('PRC');
 
          if ($this->input->server('REQUEST_METHOD') == 'GET') {
-             $this->load->view('header');
-             $this->load->view('add_hilight_nav5'); 
+             $this->load->view('header_homepage');
+             $this->load->view('add_hilight_nav2'); 
              $this->load->view('signup_form');
              $this->load->view('footer');
          }
@@ -135,7 +135,7 @@ class User extends CI_Controller {
             }
             $data['team'] = $team;
             $data['userinfo'] = $this->user->get_user_by_id($school_id);
-            $this->load->view('header');
+            $this->load->view('header_homepage');
             $this->load->view('user_result', $data);
             $this->load->view('footer');
         }
@@ -157,7 +157,7 @@ class User extends CI_Controller {
             $userinfo = $this->user->get_user_by_id($school_id);
             $data['bill'] = $userinfo['bill'];
             $data['association_name'] = $userinfo['association_name'];
-            $this->load->view('header');
+            $this->load->view('homepage_header');
             $this->load->view('user_payment', $data);
             $this->load->view('footer');
         }
