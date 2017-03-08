@@ -41,7 +41,6 @@ class Registration extends CI_Controller {
      */
     public function individual() {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $data['individual'] = load_cached_individual();
             $this->load->view('header_homepage');
             $this->load->view('registration_individual');
             $this->load->view('footer');
