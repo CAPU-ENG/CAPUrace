@@ -387,7 +387,8 @@ class Admin extends CI_Controller {
     public function edit() {
         $title = $this->uri->segment(3);
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $text = $this->info->get_info($title);
+            $res= $this->info->get_info($title);
+            $text = $res['text'];
             $data = array(
                 'title' => $title,
                 'text' => $text

@@ -1,5 +1,5 @@
 <div class="regcontainer" id="editor">
-    <?=implode("", $text)?>
+    <?=$text?>
 </div>
 <script>
     // The inline editor should be enabled on an element with "contenteditable" attribute set to "true".

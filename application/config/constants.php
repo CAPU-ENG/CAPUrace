@@ -198,6 +198,7 @@ $TITLES = array(
     'activity' => '活动通知',
     'register-readme' => '报名须知'
 );
+$NOT_AVAILABLE_TEXT = "<h3>文档暂未更新，请稍后查看！</h3>";
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

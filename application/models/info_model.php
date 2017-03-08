@@ -11,7 +11,7 @@ class Info_model extends CI_Model {
      * Get current version of information.
      */
     public function get_info($title) {
-        $result = $this->db->select('text')->where('title', $title)->get('info');
+        $result = $this->db->select('text, isdraft')->where('title', $title)->get('info');
         if ($result->num_rows() > 0) {
             return $result->row_array();
         } else {

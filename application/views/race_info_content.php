@@ -1,5 +1,5 @@
-<div class="regcontainer">
-	<div class="content">
+<div class="pgright">
+  <div class="content">
       <?php
       if ($publish) {
           echo $GLOBALS['NOT_AVAILABLE_TEXT'];
