@@ -93,6 +93,33 @@ CREATE TABLE `users` (
   `editable` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `info`
+--
+
+CREATE TABLE `info` (
+  `id` int(11) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `text` text,
+  `isdraft` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `info`
+--
+
+INSERT INTO `info` (`id`, `title`, `text`, `isdraft`) VALUES
+  (1, 'race-info', NULL, 1),
+  (2, 'race-info-map', NULL, 1),
+  (3, 'race-info-process', NULL, 1),
+  (4, 'race-info-rule', NULL, 1),
+  (5, 'race-info-award', NULL, 1),
+  (6, 'race-info-racevideo', NULL, 1),
+  (7, 'activity', NULL, 1),
+  (8, 'register-readme', NULL, 1);
+
 --
 -- Indexes for dumped tables
 --
@@ -122,6 +149,13 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `mail` (`mail`);
 
 --
+-- Indexes for table `info`
+--
+ALTER TABLE `info`
+  ADD PRIMARY KEY (`id`);
+
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -140,6 +174,12 @@ ALTER TABLE `team`
 --
 ALTER TABLE `users`
   MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `info`
+--
+ALTER TABLE `info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- Constraints for dumped tables
 --
