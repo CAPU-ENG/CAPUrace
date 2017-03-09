@@ -8,6 +8,7 @@ class Admin extends CI_Controller {
         $this->load->model('people_model', 'people');
         $this->load->model('team_model', 'team');
         $this->load->model('user_model', 'user');
+        $this->load->model('info_model', 'info');
 
         if (! $this->session->userdata('admin_in')) {
             redirect(site_url('user/admin'));
@@ -381,5 +382,31 @@ class Admin extends CI_Controller {
             );
         }
         exit(json_encode($response));
+    }
+
+    public function edit() {
+        $title = $this->uri->segment(3);
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $res= $this->info->get_info($title);
+            $text = $res['text'];
+            $data = array(
+                'title' => $title,
+                'text' => $text
+            );
+            $this->load->view('header_admin');
+            $this->load->view('admin_edit_toolbar', $data);
+            $this->load->view('admin_edit', $data);
+            $this->load->view('footer_admin');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data= $this->input->post();
+            if ($data['publish'] == 1) {
+                $this->info->publish_info($data['title'], $data['text']);
+            } else {
+                $this->info->update_info($data['title'], $data['text']);
+            }
+            header('Content-Type: application/json');
+            exit(err_msg('200'));
+        }
     }
 }

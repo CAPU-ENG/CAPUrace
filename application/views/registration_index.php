@@ -1,16 +1,17 @@
 <div class="regcontainer">
-
-  <img src="/assets/images/signup_1.jpg" width="800" class="center-block">
-  <hr>
-  <img src="/assets/images/signup_2.jpg" width="800" class="center-block">
-  <hr>
-  <img src="/assets/images/signup_3.jpg" width="800" class="center-block">
-
+  <div class="content">
+      <?php
+      if ($publish) {
+          echo $GLOBALS['NOT_AVAILABLE_TEXT'];
+      } else {
+          echo $text;
+      }
+      ?>
+  </div>
   <div class="text-center red">
     <b>注意：比赛当日前未满18岁的选手请&nbsp;<a href="<?=base_url()?>assets/images/statement.pdf" target="_blank"><u>下载免责声明</u></a></b>
   </div>
-  
-  
+
   <div class="row">
     <div class="col-sm-4">
     </div>

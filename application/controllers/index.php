@@ -3,11 +3,13 @@
 class Index extends CI_Controller {
 
     /*
-     * Contrunction for Index Controller.
+     * Construction for Index Controller.
      */
     function __construct()
     {
         parent::__construct();
+        $this->load->model('info_model', 'info');
+        $this->load->helper(array('url'));
     }
 
     /*
@@ -20,60 +22,33 @@ class Index extends CI_Controller {
     }
 
     public function race_info() {
+        $title = $this->uri->segment(3);
+        if ($title != "") {
+            $title = 'race-info-' . $title;
+        } else {
+            $title = 'race-info';
+        }
         $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav3');
         $this->load->view('race_info_navi');
-        $this->load->view('race_info');
-        $this->load->view('footer');
-    }
-
-    public function race_info_process() {
-        $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav3');
-        $this->load->view('race_info_navi');
-        $this->load->view('race_info_process');
-        $this->load->view('footer');
-    }
-
-    public function race_info_rule() {
-        $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav3');
-        $this->load->view('race_info_navi');
-        $this->load->view('race_info_rule');
-        $this->load->view('footer');
-    }
-
-    public function race_info_map() {
-        $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav3');
-        $this->load->view('race_info_navi');
-        $this->load->view('race_info_map');
-        $this->load->view('footer');
-    }
-
-    public function race_info_award() {
-        $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav3');
-        $this->load->view('race_info_navi');
-        $this->load->view('race_info_award');
-        $this->load->view('footer');
-    }
-
-    public function race_info_racevideo() {
-        $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav3');
-        $this->load->view('race_info_navi');
-        $this->load->view('race_info_racevideo');
+        $res= $this->info->get_info($title);
+        $data = array(
+            'text' => $res['text'],
+            'publish' => $res['isdraft']
+        );
+        $this->load->view('race_info_content', $data);
         $this->load->view('footer');
     }
 
     public function activity() {
         $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav4');
-        $this->load->view('activity_notification');
+        $res= $this->info->get_info('activity');
+        $data = array(
+            'text' => $res['text'],
+            'publish' => $res['isdraft']
+        );
+        $this->load->view('activity_notification', $data);
         $this->load->view('footer');
     }
-
-
-
 }
