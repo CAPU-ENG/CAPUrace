@@ -4,12 +4,10 @@
   </textarea>
 </div>
 <script>
-    // The inline editor should be enabled on an element with "contenteditable" attribute set to "true".
-    // Otherwise CKEditor will start in read-only mode.
     var editor = document.getElementById('editor');
     CKEDITOR.replace('editor', {
         language: 'zh-cn',
-        customConfig: '/ckeditor_config.js'
+        customConfig: '/assets/js/ckeditor_config.js'
     });
     var text;
     var title = "<?=$title?>";
