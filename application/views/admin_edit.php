@@ -1,12 +1,15 @@
-<div class="regcontainer" id="editor">
+<div style="margin-left: 20%; margin-right: 20%;">
+  <textarea id="editor">
     <?=$text?>
+  </textarea>
 </div>
 <script>
     // The inline editor should be enabled on an element with "contenteditable" attribute set to "true".
     // Otherwise CKEditor will start in read-only mode.
     var editor = document.getElementById('editor');
     CKEDITOR.replace('editor', {
-        language: 'zh-cn'
+        language: 'zh-cn',
+        customConfig: '/ckeditor_config.js'
     });
     var text;
     var title = "<?=$title?>";
