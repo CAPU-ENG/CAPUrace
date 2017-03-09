@@ -1,0 +1,6 @@
+{
+    "name": "capurace",
+    "dependencies": {
+        "ckeditor": "4.6.2"
+    }
+}

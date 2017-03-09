@@ -11,7 +11,7 @@
 <script src="<?=base_url()?>/assets/js/jquery.cookie.js"></script>
 <script src="<?=base_url()?>/assets/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>/assets/js/race.js"></script>
-<script src="<?=base_url()?>/ckeditor/ckeditor.js"></script>
+<script src="<?=base_url()?>/node_modules/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <h3 style="text-align: center">北大赛管理员后台</h3>
