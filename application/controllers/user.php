@@ -153,7 +153,7 @@ class User extends CI_Controller {
             $userinfo = $this->user->get_user_by_id($school_id);
             $data['bill'] = $userinfo['bill'];
             $data['association_name'] = $userinfo['association_name'];
-            $this->load->view('homepage_header');
+            $this->load->view('header_homepage');
             $this->load->view('user_payment', $data);
             $this->load->view('footer');
         }
