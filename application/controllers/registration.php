@@ -19,6 +19,7 @@ class Registration extends CI_Controller {
         $this->load->model('people_model', 'people');
         $this->load->model('team_model', 'team');
         $this->load->model('user_model', 'user');
+        $this->load->model('info_model', 'info');
 
         if (! $this->session->userdata('logged_in')) {
             redirect(site_url('user/login'), 'refresh');
@@ -32,7 +33,12 @@ class Registration extends CI_Controller {
     public function index() {
         $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav2');
-        $this->load->view('registration_index');
+        $query = $this->info->get_info('activity');
+        $data = array(
+            'text' => $query['text'],
+            'publish' => $query['isdraft']
+        );
+        $this->load->view('registration_index', $data);
         $this->load->view('footer');
     }
 
