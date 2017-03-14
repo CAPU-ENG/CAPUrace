@@ -176,14 +176,13 @@ $SIGN_UP_DEADLINE = '2016-04-24';
  * Admin user list
  */
 $ADMIN = array(
-    '老蒋' => 'bf7d6c2e83eaa18f185c127ce495ec7c',
-    '喵喵' => 'f1466c1c2a641cd47a48e8076711e808',
-    '毛毛熊' => '124fe97157e01351785faa69b5189c13',
-    'capu' => 'ea23bef773499d151cfd5d7f2da8ba75'
+    '蓝宇' => '89ce71b4186b876b5e3634450b4412a2',
+    '阿喆' => '131be0ab69e93d7206fb1235c8887e74',
+    'capu' => '57e639b8250f5c728cf23280cc0e15ff'
 );
 
-$ACCOUNTANT_PASS = 'f1466c1c2a641cd47a48e8076711e808';
-$PRESIDENT_PASS = '124fe97157e01351785faa69b5189c13';
+$ACCOUNTANT_PASS = '89ce71b4186b876b5e3634450b4412a2';
+$PRESIDENT_PASS = '131be0ab69e93d7206fb1235c8887e74';
 
 /*
  * Documentation titles.
