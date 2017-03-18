@@ -167,12 +167,14 @@ class User extends CI_Controller {
         $token = $this->uri->segment(3);
         $this->load->view('activate_header');
         $status = $this->user->activate($token);
+        $data = array('info' => '');
         if ($status == 0)
-            $this->load->view('activate_success');
+            $data['info'] = '激活成功！请等待北大车协同学线下联系，我们将于 24 小时内完成您的注册审核，审核通过之后车协同学将通知您。谢谢！';
         elseif ($status == 1)
-            $this->load->view('activate_failure');
+            $data['info'] = '激活码无效或您已成功激活。';
         elseif ($status == 2)
-            $this->load->view('activate_error');
+            $data['info'] = '激活码不存在。';
+        $this->load->view('activate_info', $data);
         $this->load->view('activate_footer');
     }
 
