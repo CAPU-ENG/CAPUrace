@@ -166,8 +166,6 @@
 <!video module>			
 			<h5 align=center>2016年北大车协交流赛宣传视频</h5>
 
-			<video width="970" height="546" controls="controls">  
-        		<source src="<?=base_url()?>/assets/images/publicize/publicize.mp4" type="video/mp4" >示例视频1</source>   
-    		</video>
+<iframe src="//www.bilibili.com/html/player.html?aid=9276492&cid=15328231&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="970" height="545.6"></iframe>
 	</div>
 </div>
