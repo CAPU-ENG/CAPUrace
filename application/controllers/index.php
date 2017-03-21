@@ -51,4 +51,12 @@ class Index extends CI_Controller {
         $this->load->view('activity_notification', $data);
         $this->load->view('footer');
     }
+    public function publicize() {
+        $this->load->view('header_homepage');
+        $this->load->view('add_hilight_nav5');
+        $this->load->view('publicize_2016');
+//        $this->load->view('sample');
+        $this->load->view('footer');
+    }
+
 }
