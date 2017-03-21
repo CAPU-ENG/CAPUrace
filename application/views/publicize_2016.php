@@ -166,6 +166,5 @@
 <!video module>			
 			<h5 align=center>2016年北大车协交流赛宣传视频</h5>
 
-<iframe src="//www.bilibili.com/html/player.html?aid=9276492&cid=15328231&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="970" height="545.6"></iframe>
-	</div>
+<embed height="546.5" width="970" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=9276492&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>	</div>
 </div>
