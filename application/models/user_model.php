@@ -236,14 +236,14 @@ class User_model extends CI_Model {
      * Shut down the registration system.
      */
     public function freeze_all() {
-        $this->db->update('users', array('editable' => 0));
+        $this->db->where('deleted', 0)->update('users', array('editable' => 0));
     }
 
     /*
      * This function gets all verified users.
      */
     public function get_verified() {
-        $query = $this->db->where('editable', 0)->where('activated', 1)->where('confirmed', 1)->order_by('paid', 'asc')->order_by('province', 'asc')->get('users');
+        $query = $this->db->where('editable', 0)->where('activated', 1)->where('confirmed', 1)->where('deleted', 0)->order_by('paid', 'asc')->order_by('province', 'asc')->get('users');
         return $query->result_array();
     }
 
@@ -251,7 +251,7 @@ class User_model extends CI_Model {
      * This function gets all paid users.
      */
     public function get_paid() {
-        $query = $this->db->where('paid', 1)->get('users');
+        $query = $this->db->where('paid', 1)->where('deleted', 0)->get('users');
         return $query->result_array();
     }
     
@@ -259,14 +259,14 @@ class User_model extends CI_Model {
      * This function gets all users confirmed but not verified.
      */
     public function get_registering() {
-        return $this->db->where('confirmed', 1)->where('activated', 1)->where('editable', 1)->order_by('province', 'asc')->get('users')->result_array();
+        return $this->db->where('confirmed', 1)->where('activated', 1)->where('editable', 1)->where('deleted', 0)->order_by('province', 'asc')->get('users')->result_array();
     }
     
     /*
      * This function gets all unactivated users.
      */
     public function get_unactivated() {
-        return $this->db->where('activated', 0)->order_by('province', 'asc')->get('users')->result_array();
+        return $this->db->where('activated', 0)->where('deleted', 0)->order_by('province', 'asc')->get('users')->result_array();
     }
 
     /*
@@ -281,7 +281,7 @@ class User_model extends CI_Model {
      * Delete unactivated user.
      */
     public function delete($id) {
-        $this->db->where('id', $id)->delete('users');
+        $this->db->where('id', $id)->update('users', array('deleted' => 1));
         return 0;
     }
 }

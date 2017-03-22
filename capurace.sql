@@ -90,7 +90,8 @@ CREATE TABLE `users` (
   `zipcode` varchar(6) NOT NULL,
   `activated` tinyint(1) NOT NULL DEFAULT '0',
   `token` varchar(32) NOT NULL,
-  `editable` tinyint(1) NOT NULL DEFAULT '1'
+  `editable` tinyint(1) NOT NULL DEFAULT '1',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
