@@ -28,10 +28,17 @@ class Admin extends CI_Controller {
     }
 
     public function unactivated() {
-        $this->load->view('header_admin');
-        $data['unactivated'] = $this->user->get_unactivated();
-        $this->load->view('admin_unactivated', $data);
-        $this->load->view('footer_admin');
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_admin');
+            $data['unactivated'] = $this->user->get_unactivated();
+            $this->load->view('admin_unactivated', $data);
+            $this->load->view('footer_admin');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            $this->user->delete($data['id']);
+            echo 0;
+        }
     }
     
     public function pay() {

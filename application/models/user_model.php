@@ -276,6 +276,14 @@ class User_model extends CI_Model {
         $query = $this->db->where('id', $id)->get('users')->row_array();
         return ($query['paid'] == 1);
     }
+
+    /*
+     * Delete unactivated user.
+     */
+    public function delete($id) {
+        $this->db->where('id', $id)->delete('users');
+        return 0;
+    }
 }
 
 /* End of file user_model.php */
