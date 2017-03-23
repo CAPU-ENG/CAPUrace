@@ -36,7 +36,7 @@ CREATE TABLE `people` (
   `name` varchar(10) NOT NULL,
   `gender` tinyint(4) NOT NULL,
   `id_type` varchar(8) NOT NULL,
-  `id_card` varchar(18) NOT NULL,
+  `id_number` varchar(18) NOT NULL,
   `school_id` smallint(5) UNSIGNED NOT NULL,
   `accommodation` tinyint(1) NOT NULL,
   `dinner` tinyint(1) NOT NULL,
@@ -101,6 +101,7 @@ CREATE TABLE `users` (
 -- Table structure for table `info`
 --
 
+DROP TABLE IF EXISTS `info`;
 CREATE TABLE `info` (
   `id` int(11) NOT NULL,
   `title` varchar(128) NOT NULL,
@@ -133,7 +134,7 @@ ALTER TABLE `people`
   ADD PRIMARY KEY (`id`),
   ADD KEY `school_id` (`school_id`),
   ADD KEY `name` (`name`),
-  ADD KEY `id_card` (`id_card`);
+  ADD KEY `id_number` (`id_number`);
 
 --
 -- Indexes for table `team`

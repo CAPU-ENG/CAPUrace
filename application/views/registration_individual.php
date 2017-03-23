@@ -36,10 +36,16 @@
             </div>
         </div>
         <div class="row">
-            <label class="col-sm-1">身份证号</label>
-            <div class="col-sm-4">
-                <input class="form-control" name="id_card" type="text">
+            <div class="col-sm-2" style="float: left;">
+                <select class="form-control" name="id_type">
+                    <option value="identity">身份证</option>
+                    <option value="passport">护照</option>
+                </select>
             </div>
+            <div class="col-sm-3">
+                <input class="form-control" name="id_number" placeholder="证件编号" type="text">
+            </div>
+
             <label class="col-sm-1">住宿方式</label>
             <div class="col-sm-2">
                 <select class="form-control" name="accommodation">
@@ -92,7 +98,8 @@
             <th>姓名</th>
             <th>性别</th>
             <th>手机号</th>
-            <th>身份证号</th>
+            <th>证件类型</th>
+            <th>证件编号</th>
             <th>北大赛</th>
             <th>住宿</th>
             <th>5.14晚餐</th>
@@ -107,7 +114,8 @@
             <td class="name"></td>
             <td class="gender"></td>
             <td class="tel"></td>
-            <td class="id_card"></td>
+            <td class="id_type"></td>
+            <td class="id_number"></td>
             <td class="race"></td>
             <td class="accommodation"></td>
             <td class="dinner"></td>
@@ -141,6 +149,7 @@
     var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
     var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
+    var ID_TYPE = <?=json_encode($GLOBALS['ID_TYPE'])?>;
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
     var TF = <?=json_encode($GLOBALS['TF'])?>;
     var IFRACE = <?=json_encode($GLOBALS['IFRACE'])?>;

@@ -58,7 +58,7 @@ class Registration extends CI_Controller {
             header('Content-Type: application/json');
             // There should be some validations here.
             $tel_set = array();
-            $id_card_set = array();
+            $id_number_set = array();
             $key_set = array();
             if (!$ind_post) exit(err_msg('999'));
             foreach ($ind_post as $item_post) {
@@ -99,18 +99,18 @@ class Registration extends CI_Controller {
                         'order' => $item_post['order'] + 1,
                     )));
                 }
-                // id_card
-                if (!validate_id_card($item_post['id_card'])) {
+                // id_number
+                if (!validate_id_number($item_post['id_number'], $item_post['id_type'])) {
                     exit(err_custom_msg('1050', array(
                         'order' => $item_post['order'] + 1,
                     )));
-                } else if (array_key_exists($item_post['id_card'], $id_card_set)) {
+                } else if (array_key_exists($item_post['id_number'], $id_number_set)) {
                     exit(err_custom_msg('1051', array(
                         'order' => $item_post['order'] + 1,
-                        'order1' => $id_card_set[$item_post['id_card']],
+                        'order1' => $id_number_set[$item_post['id_number']],
                     )));
                 } else {
-                    $id_card_set[$item_post['id_card']] = $item_post['order'] + 1;
+                    $id_number_set[$item_post['id_number']] = $item_post['order'] + 1;
                 }
                 // accommodation
                 if (!array_key_exists($item_post['accommodation'], $GLOBALS['ACCOMMODATION'])) {

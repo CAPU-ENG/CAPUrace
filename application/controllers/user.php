@@ -249,7 +249,7 @@ class User extends CI_Controller {
                 ->setCellValue('B' . $i, $item['name'])
                 ->setCellValue('C' . $i, $GLOBALS['GENDER'][$item['gender']])
                 ->setCellValue('D' . $i, $item['tel'])
-                ->setCellValue('E' . $i, $item['id_card'])
+                ->setCellValue('E' . $i, $item['id_number'])
                 ->setCellValue('F' . $i, $GLOBALS['CAPURACE'][$item['race']])
                 ->setCellValue('G' . $i, $GLOBALS['JUDGE'][$item['ifteam']])
                 ->setCellValue('H' . $i, $GLOBALS['ACCOMMODATION'][$item['accommodation']])

@@ -81,7 +81,7 @@ if (! function_exists('individual_encode')) {
         return base64_encode(implode('&', array(
             'name=' . $ind['name'],
             'gender=' . $ind['gender'],
-            'id_card=' . $ind['id_card'],
+            'id_number=' . $ind['id_number'],
         )));
     }
 }
@@ -136,12 +136,14 @@ if (! function_exists('validate_mobile')) {
 }
 
 /*
- * Validation for id card.
+ * Validation for id number.
  */
-if (! function_exists('validate_id_card')) {
-    function validate_id_card($id_card) {
-        if (!in_array(strlen($id_card), array(15, 18))) return false;
+if (! function_exists('validate_id_number')) {
+    function validate_id_number($id_number, $id_type) {
+        if ($id_type == "passport") return true;
+        if ($id_type == "identity" && in_array(strlen($id_number), array(15, 18))) return true;
         // NOTE(huxuan): We may add more validation here in the future.
-        return true;
+        // NOTE(Luolc): Take passport validation into consideration later.
+        return false;
     }
 }
