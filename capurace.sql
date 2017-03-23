@@ -35,6 +35,7 @@ CREATE TABLE `people` (
   `team_key` text NOT NULL,
   `name` varchar(10) NOT NULL,
   `gender` tinyint(4) NOT NULL,
+  `id_type` varchar(8) NOT NULL,
   `id_card` varchar(18) NOT NULL,
   `school_id` smallint(5) UNSIGNED NOT NULL,
   `accommodation` tinyint(1) NOT NULL,
