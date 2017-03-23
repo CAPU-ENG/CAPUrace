@@ -40,6 +40,5 @@
           $.post("<?=site_url('admin/unactivated')?>", data, function (response) { });
           window.location.reload();
       }
-
   })
 </script>
