@@ -197,7 +197,8 @@ function cacheIndividual(order) {
     var tel = $("[name='tel']").val();
     var ifrace = $("[name='ifrace']").val();
     var islam = $("[name='islam']").val();
-    var id_card = $("[name='id_card']").val();
+    var id_type = $("[name='id_type']").val();
+    var id_number = $("[name='id_number']").val();
     var accommodation = $("[name='accommodation']").val();
     var dinner = $("[name='dinner']").prop('checked');
     var lunch = $("[name='lunch']").prop('checked');
@@ -207,7 +208,8 @@ function cacheIndividual(order) {
         order: order,
         name: $.trim(name),
         gender: gender,
-        id_card: $.trim(id_card),
+        id_type: id_type,
+        id_number: $.trim(id_number),
         accommodation: accommodation,
         dinner: dinner,
         lunch: lunch,
@@ -230,7 +232,8 @@ function fillIndividual(item) {
     elem = $(".ind-item:first").clone(true).removeClass("hidden");
     elem.find(".name").text(item.name);
     elem.find(".gender").text(GENDER[item.gender]);
-    elem.find(".id_card").text(item.id_card);
+    elem.find(".id_type").text(ID_TYPE[item.id_type]);
+    elem.find(".id_number").text(item.id_number);
     elem.find(".accommodation").text(ACCOMMODATION[item.accommodation]);
     elem.find(".dinner").text(JUDGE[+item.dinner]);
     elem.find(".lunch").text(JUDGE[+item.lunch]);
@@ -266,7 +269,8 @@ function fetchIndividual(order) {
     form.find("[name='order']").val(order);
     form.find("[name='name']").val(item.name);
     form.find("[name='tel']").val(item.tel);
-    form.find("[name='id_card']").val(item.id_card);
+    form.find("[name='id_type']").val(item.id_type);
+    form.find("[name='id_number']").val(item.id_number);
     form.find("[name='accommodation']").val(item.accommodation);
     form.find("[name='gender']").val(item.gender);
     form.find("[name='race']").val(item.race);
@@ -327,7 +331,8 @@ function resetIndividual() {
     form.find("[name='order']").val("");
     form.find("[name='name']").val("");
     form.find("[name='tel']").val("");
-    form.find("[name='id_card']").val("");
+    form.find("[name='id_type']").val("identity");
+    form.find("[name='id_number']").val("");
     form.find("[name='accommodation']").val("0");
     form.find("[name='gender']").val("1");
     form.find("[name='race']").val("0");

@@ -127,6 +127,11 @@ $GENDER = array(
     '2' => '女'
 );
 
+$ID_TYPE = array(
+    'identity' => '身份证',
+    'passport' => '护照',
+);
+
 $IFRACE = array(
     '1' => '参赛',
     '0' => '观赛'

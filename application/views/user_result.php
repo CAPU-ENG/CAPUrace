@@ -40,7 +40,8 @@
             <th>姓名</th>
             <th>性别</th>
             <th>手机号</th>
-            <th>身份证号</th>
+            <th>证件类型</th>
+            <th>证件编号</th>
             <th>北大赛</th>
 <!--            <th>公路日</th>-->
 <!--            <th>山地日</th>-->
@@ -59,7 +60,8 @@
             <td class="name"><?=$item['name']?></td>
             <td class="gender"><?=$GLOBALS['GENDER'][$item['gender']]?></td>
             <td class="tel"><?=$item['tel']?></td>
-            <td class="id_card"><?=$item['id_card']?></td>
+            <td class="id_type"><?=$GLOBALS['ID_TYPE'][$item['id_type']]?></td>
+            <td class="id_number"><?=$item['id_number']?></td>
             <td class="race">
                 <?php
                 if($item['race']) {
