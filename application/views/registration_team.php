@@ -69,7 +69,7 @@
     var controller = "<?=site_url('registration/team')?>";
     var directto = "<?=site_url('user/result')?>";
     var data = [];
-    if (localStorage.getItem('team') == null) {
+    if (localStorage.getItem('team')) {
         data = JSON.parse(localStorage.getItem('team'));
     } else {
         data = <?=json_encode(load_db_team())?>;
