@@ -36,51 +36,47 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>序号</th>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>手机号</th>
-            <th>证件类型</th>
-            <th>证件编号</th>
-            <th>北大赛</th>
-<!--            <th>公路日</th>-->
-<!--            <th>山地日</th>-->
-            <th>住宿</th>
-            <th>5.14晚餐</th>
-            <th>5.15午餐</th>
-            <th>清真</th>
-            <th>费用</th>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>手机号</th>
+          <th>证件类型</th>
+          <th>证件编号</th>
+          <th>北大赛</th>
+          <th>住宿</th>
+          <th>5.14晚餐</th>
+          <th>5.15午餐</th>
+          <th>清真</th>
+          <th>费用</th>
         </tr>
         </thead>
         <tbody class="ind-list">
         <?php $i = 1; ?>
         <?php foreach ($individual as $item): ?>
         <tr class="ind-item">
-            <td class="order"><?=$i?></td>
-            <td class="name"><?=$item['name']?></td>
-            <td class="gender"><?=$GLOBALS['GENDER'][$item['gender']]?></td>
-            <td class="tel"><?=$item['tel']?></td>
-            <td class="id_type"><?=$GLOBALS['ID_TYPE'][$item['id_type']]?></td>
-            <td class="id_number"><?=$item['id_number']?></td>
-            <td class="race">
-                <?php
-                if($item['race']) {
-                    echo  $GLOBALS['CAPURACE'][$item['race']];
-                }
-                if ($item['ifteam']) {
-                    echo ' 团体赛 ';
-                } else if (!$item['race']) {
-                    echo ' 不参加 ';
-                }
-                ?>
-            </td>
-<!--            <td class="shimano16">--><?//=$GLOBALS['SHIMANO_RDB'][$item['shimano16']]?><!--</td>-->
-<!--            <td class="shimano17">--><?//=$GLOBALS['SHIMANO_MTB'][$item['shimano17']]?><!--</td>-->
-            <td class="accommodation"><?=$GLOBALS['ACCOMMODATION'][$item['accommodation']]?></td>
-            <td class="dinner"><?=$GLOBALS['JUDGE'][$item['dinner']]?></td>
-            <td class="lunch"><?=$GLOBALS['JUDGE'][$item['lunch']]?></td>
-            <td class="islam"><?=$GLOBALS['JUDGE'][$item['islam']]?></td>
-            <td class="fee"><?=$item['fee']?></td>
+          <td class="order"><?=$i?></td>
+          <td class="name"><?=$item['name']?></td>
+          <td class="gender"><?=$GLOBALS['GENDER'][$item['gender']]?></td>
+          <td class="tel"><?=$item['tel']?></td>
+          <td class="id_card"><?=$GLOBALS['ID_TYPE'][$item['id_type']]?></td>
+          <td class="id_card"><?=$item['id_number']?></td>
+          <td class="race">
+              <?php
+              if($item['race']) {
+                  echo  $GLOBALS['CAPURACE'][$item['race']];
+              }
+              if ($item['ifteam']) {
+                  echo ' 团体赛 ';
+              } else if (!$item['race']) {
+                  echo ' 不参加 ';
+              }
+              ?>
+          </td>
+          <td class="accommodation"><?=$GLOBALS['ACCOMMODATION'][$item['accommodation']]?></td>
+          <td class="dinner"><?=$GLOBALS['JUDGE'][$item['dinner']]?></td>
+          <td class="lunch"><?=$GLOBALS['JUDGE'][$item['lunch']]?></td>
+          <td class="islam"><?=$GLOBALS['JUDGE'][$item['islam']]?></td>
+          <td class="fee"><?=$item['fee']?></td>
         </tr>
         <?php
             $i++;
