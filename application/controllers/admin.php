@@ -241,10 +241,11 @@ class Admin extends CI_Controller {
             ->setCellValue('A1', '序号')
             ->setCellValue('B1', '姓名')
             ->setCellValue('C1', '性别')
-            ->setCellValue('D1', '身份证号')
-            ->setCellValue('E1', '学校')
-            ->setCellValue('F1', '手机号')
-            ->setCellValue('G1', '住宿类型');
+            ->setCellValue('D1', '证件类型')
+            ->setCellValue('E1', '证件编号')
+            ->setCellValue('F1', '学校')
+            ->setCellValue('G1', '手机号')
+            ->setCellValue('H1', '住宿类型');
         $i = 2;
         foreach ($live as $key => $item) {
             $school = $this->user->get_user_by_id($item['school_id']);
@@ -255,10 +256,11 @@ class Admin extends CI_Controller {
                 ->setCellValue('A' . $i, $i - 1)
                 ->setCellValue('B' . $i, $item['name'])
                 ->setCellValue('C' . $i, $GLOBALS['GENDER'][$item['gender']])
-                ->setCellValue('D' . $i, "'" . $item['id_number'])
-                ->setCellValue('E' . $i, $school['school'])
-                ->setCellValue('F' . $i, $item['tel'])
-                ->setCellValue('G' . $i, $GLOBALS['ACCOMMODATION'][$item['accommodation']]);
+                ->setCellValue('D' . $i, $GLOBALS['ID_TYPE'][$item['id_type']])
+                ->setCellValue('E' . $i, "'" . $item['id_number'])
+                ->setCellValue('F' . $i, $school['school'])
+                ->setCellValue('G' . $i, $item['tel'])
+                ->setCellValue('H' . $i, $GLOBALS['ACCOMMODATION'][$item['accommodation']]);
             $i++;
         }
 
@@ -323,13 +325,14 @@ class Admin extends CI_Controller {
             ->setCellValue('A1', '序号')
             ->setCellValue('B1', '姓名')
             ->setCellValue('C1', '性别')
-            ->setCellValue('D1', '身份证号')
-            ->setCellValue('E1', '组别')
-            ->setCellValue('F1', '协会名称')
-            ->setCellValue('G1', '学校')
-            ->setCellValue('H1', '地区')
-            ->setCellValue('I1', '邮政编码')
-            ->setCellValue('J1', '手机号');
+            ->setCellValue('D1', '证件类型')
+            ->setCellValue('E1', '证件编号')
+            ->setCellValue('F1', '组别')
+            ->setCellValue('G1', '协会名称')
+            ->setCellValue('H1', '学校')
+            ->setCellValue('I1', '地区')
+            ->setCellValue('J1', '邮政编码')
+            ->setCellValue('K1', '手机号');
         $i = 2;
         foreach ($teams as $key => $item) {
             $school = $this->user->get_user_by_id($item['school_id']);
@@ -365,13 +368,14 @@ class Admin extends CI_Controller {
         $excel->getActiveSheet()
             ->setCellValue('B' . $i, $ind['name'])
             ->setCellValue('C' . $i, $GLOBALS['GENDER'][$ind['gender']])
-            ->setCellValue('D' . $i, "'" . $ind['id_number'])
-            ->setCellValue('E' . $i, '团体赛')
-            ->setCellValue('F' . $i, $school['association_name'])
-            ->setCellValue('G' . $i, $school['school'])
-            ->setCellValue('H' . $i, $GLOBALS['PROVINCES'][$school['province']])
-            ->setCellValue('I' . $i, $school['zipcode'])
-            ->setCellValue('J' . $i, $ind['tel']);
+            ->setCellValue('D' . $i, $GLOBALS['ID_TYPE'][$ind['id_type']])
+            ->setCellValue('E' . $i, "'" . $ind['id_number'])
+            ->setCellValue('F' . $i, '团体赛')
+            ->setCellValue('G' . $i, $school['association_name'])
+            ->setCellValue('H' . $i, $school['school'])
+            ->setCellValue('I' . $i, $GLOBALS['PROVINCES'][$school['province']])
+            ->setCellValue('J' . $i, $school['zipcode'])
+            ->setCellValue('K' . $i, $ind['tel']);
     }
 
     public function shutdown() {
