@@ -43,8 +43,6 @@
             <th>证件类型</th>
             <th>证件编号</th>
             <th>北大赛</th>
-<!--            <th>公路日</th>-->
-<!--            <th>山地日</th>-->
             <th>住宿</th>
             <th>5.14晚餐</th>
             <th>5.15午餐</th>
@@ -74,8 +72,6 @@
                 }
                 ?>
             </td>
-<!--            <td class="shimano16">--><?//=$GLOBALS['SHIMANO_RDB'][$item['shimano16']]?><!--</td>-->
-<!--            <td class="shimano17">--><?//=$GLOBALS['SHIMANO_MTB'][$item['shimano17']]?><!--</td>-->
             <td class="accommodation"><?=$GLOBALS['ACCOMMODATION'][$item['accommodation']]?></td>
             <td class="dinner"><?=$GLOBALS['JUDGE'][$item['dinner']]?></td>
             <td class="lunch"><?=$GLOBALS['JUDGE'][$item['lunch']]?></td>
