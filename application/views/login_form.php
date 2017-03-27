@@ -36,7 +36,6 @@
         window.location.href = "<?=site_url('user/signup')?>";
     });
     $("#btn-login").click(function() {
-        window.open("<?=base_url()?>assets/images/advocation.pdf")
         postLogin();
     });
 </script>
