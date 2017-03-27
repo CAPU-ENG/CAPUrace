@@ -6,7 +6,7 @@ class MY_Email extends CI_Email
     var $from_mail;
 
     /*
-     * Contruction function for My_Email.
+     * Construction function for My_Email.
      */
     public function __construct()
     {
@@ -50,7 +50,7 @@ class MY_Email extends CI_Email
      * Send account confirmation email.
      */
     public function send_account_confirm_mail($mail) {
-        $subject = '第十四届全国高校山地车交流赛帐户确认';
+        $subject = '第十五届全国高校山地车交流赛帐户确认';
         $token = $this->ci->user->get_token($mail);
         $link = site_url('user/activate') . '/' . $token;
         $message = '请点击以下链接激活帐户' . $link;
