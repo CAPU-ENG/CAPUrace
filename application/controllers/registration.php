@@ -157,6 +157,10 @@ class Registration extends CI_Controller {
                     exit(err_custom_msg('1094', array(
                         'order' => $item_post['order'] + 1,
                     )));
+                } else if ($item_post['gender'] == '2' and $item_post['rdb'] == '1') {
+                    exit(err_custom_msg('1095', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
                 }
                 // ifteam
                 if (!array_key_exists($item_post['ifteam'], $GLOBALS['JUDGE'])) {
