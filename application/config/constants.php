@@ -163,6 +163,9 @@ $RACE = array(
     '1' => '参赛'
 );
 
+$RDB_QUOTA = 80;
+$RDB_QUOTA_PER_SCHOOL = 3;
+
 $ACCOMMODATION = array(
     '0' => '不需要',
     '1' => '旅馆',
