@@ -67,7 +67,11 @@
                 }
                 if ($item['ifteam']) {
                     echo ' 团体赛 ';
-                } else if (!$item['race']) {
+                }
+                if ($item['rdb']) {
+                    echo ' 公路赛 ';
+                }
+                if (!$item['race'] && !$item['rdb'] && !$item['ifteam']) {
                     echo ' 不参加 ';
                 }
                 ?>

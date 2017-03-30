@@ -348,6 +348,12 @@ class Admin extends CI_Controller {
             $i += 4;
         }
 
+        // Sheet 9: 公路赛表
+        $excel->createSheet(8);
+        $excel->setActiveSheetIndex(8)->setTitle('男子公路组');
+        $male_expert = $this->db->where('deleted', 0)->where('rdb', 1)->get('people')->result_array();
+        $this->_fill_individual($excel, $male_expert);
+
         // ============================================================
         // Wrap up the file.
 
