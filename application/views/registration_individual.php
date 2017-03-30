@@ -54,18 +54,18 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <label class="col-sm-1">5.14晚餐</label>
+            <label class="col-sm-1">5.6晚餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="dinner">
             </div>
-            <label class="col-sm-1">5.15午餐</label>
+            <label class="col-sm-1">5.7午餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="lunch">
             </div>
         </div>
         <div class="show-if-attend">
             <div class="row">
-                <label class="col-sm-1">个人赛</label>
+                <label class="col-sm-1">山地赛</label>
                 <div class="col-sm-2">
                     <select class="form-control" name="race">
                         <?php foreach ($GLOBALS['CAPURACE'] as $key => $value): ?>
@@ -77,6 +77,10 @@
                 <div class="col-sm-1">
                     <input type="checkbox" name="ifteam">
                 </div>
+                <label class="col-sm-1">公路赛</label>
+              <div class="col-sm-1">
+                <input type="checkbox" name="roadbike">
+              </div>
             </div>
         </div>
         <hr/>
@@ -102,8 +106,8 @@
             <th>证件编号</th>
             <th>北大赛</th>
             <th>住宿</th>
-            <th>5.14晚餐</th>
-            <th>5.15午餐</th>
+            <th>5.6晚餐</th>
+            <th>5.7午餐</th>
             <th>清真</th>
             <th>操作</th>
         </tr>
@@ -186,6 +190,7 @@
             item.dinner = (item.dinner == 1);
             item.lunch = (item.lunch == 1);
             item.ifteam = (item.ifteam == 1);
+            item.rdb = (item.rdb == 1);
         });
 
     }
