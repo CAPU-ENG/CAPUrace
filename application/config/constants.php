@@ -172,7 +172,7 @@ $ACCOMMODATION = array(
 
 $ACCO_FEE = array(
     '0' => 0,
-    '1' => 50,
+    '1' => 60,
     '2' => 10,
 );
 
