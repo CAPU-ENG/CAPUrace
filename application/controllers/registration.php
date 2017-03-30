@@ -61,7 +61,11 @@ class Registration extends CI_Controller {
             $id_number_set = array();
             $key_set = array();
             if (!$ind_post) exit(err_msg('999'));
+            $rdb_count = 0;
             foreach ($ind_post as $item_post) {
+                if ($item_post['rdb'] == '1' and $item_post['gender'] == '1') {
+                    $rdb_count++;
+                }
                 // name
                 if (!validate_name($item_post['name'])) {
                     exit(err_custom_msg('1000', array(
@@ -172,6 +176,14 @@ class Registration extends CI_Controller {
                         'order' => $item_post['order'] + 1,
                     )));
                 }
+            }
+            $rdb_quota = $this->people->get_rdb_quota();
+            if ($rdb_count > 3) {
+                exit(err_custom_msg('1096'));
+            } else if ($rdb_count > $rdb_quota) {
+                exit(err_custom_msg('1097', array(
+                    'quota' => $rdb_quota,
+                )));
             }
             $bill = 0;
             $ind_db = $this->people->get_people_from_school($school_id);

@@ -367,12 +367,18 @@ function postIndividual() {
     var item = {
         data: data
     };
+    var rdb_count = 0;
     $.each(item.data, function(order, ind) {
         ind.rdb = +ind.rdb;
         ind.ifteam = +ind.ifteam;
         ind.dinner = +ind.dinner;
         ind.lunch = +ind.lunch;
+        rdb_count += ind.rdb;
     });
+    if (rdb_count > 3) {
+        alert('公路赛人数不得超过3人！');
+        return;
+    }
     $.post(controller, item, function(response) {
         if (response.code != "200") {
             alert(response.msg);

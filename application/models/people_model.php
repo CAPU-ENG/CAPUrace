@@ -153,6 +153,14 @@ class People_model extends CI_Model {
         }
     }
 
+    /*
+     * Get remained quota of RDB
+     */
+    public function get_rdb_quota() {
+        $query = $this->db->where('deleted', false)->where('rdb', true)->get('people');
+        return 80 - $query->num_rows();
+    }
+
 }
 
 /* End of file people_model.php */

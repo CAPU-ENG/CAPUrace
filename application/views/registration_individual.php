@@ -78,8 +78,9 @@
                     <input type="checkbox" name="ifteam">
                 </div>
                 <label class="col-sm-1">公路赛</label>
-              <div class="col-sm-1">
+              <div class="col-sm-6">
                 <input type="checkbox" name="roadbike">
+                &nbsp;&nbsp;公路赛限男生报名，每校限3人，名额共80个，先到先得。
               </div>
             </div>
         </div>
@@ -157,28 +158,6 @@
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
     var TF = <?=json_encode($GLOBALS['TF'])?>;
     var IFRACE = <?=json_encode($GLOBALS['IFRACE'])?>;
-    $("#btn-reg-ind-submit").click(function() {
-        this.disabled=true;
-        $(this).text("提交中...");
-        postIndividual();
-        this.disabled=false;
-        $(this).text("提交，前往团体赛报名");
-        window.location.href = "<?=site_url('registration/team')?>";
-    });
-    $("#return-to-index").click(function() {
-        window.location.href = "<?=site_url('registration')?>";
-    });
-    $("#btn-reg-ind-cache").click(function() {
-        cacheIndividual($(".reg").find("[name='order']").val());
-    });
-    $(".btn-reg-ind-update").click(function() {
-        editIndividual($(this));
-    });
-    $(".btn-reg-ind-delete").click(function() {
-        if (confirm("确认删除？") == true) {
-            removeIndividual($(this));
-        }
-    });
     var data = [];
     // Load cached individual data.
     if (localStorage.getItem('individual')) {
@@ -194,6 +173,27 @@
         });
 
     }
+    $("#btn-reg-ind-submit").click(function() {
+        this.disabled=true;
+        $(this).text("提交中...");
+        postIndividual();
+        this.disabled=false;
+        $(this).text("提交，前往团体赛报名");
+    });
+    $("#return-to-index").click(function() {
+        window.location.href = "<?=site_url('registration')?>";
+    });
+    $("#btn-reg-ind-cache").click(function() {
+        cacheIndividual($(".reg").find("[name='order']").val());
+    });
+    $(".btn-reg-ind-update").click(function() {
+        editIndividual($(this));
+    });
+    $(".btn-reg-ind-delete").click(function() {
+        if (confirm("确认删除？") == true) {
+            removeIndividual($(this));
+        }
+    });
     $(document).ready(function() {
         reloadIndividual();
         refreshOrder();
