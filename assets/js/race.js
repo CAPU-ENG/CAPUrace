@@ -299,6 +299,7 @@ function restrictIndividual() {
     var rdb = $("[name='roadbike']");
 
     var ifrace = ($("[name='ifrace']").val() == '1');
+    var ismale = ($("[name='gender']").val() == '1');
 
     /*
      * If an individual attends the race, lunch must be checked.
@@ -316,6 +317,10 @@ function restrictIndividual() {
         race.prop('disabled', true);
         team.prop('checked', false);
         team.prop('disabled', true);
+        rdb.prop('disabled', true);
+        rdb.prop('checked', false);
+    }
+    if (!ismale) {
         rdb.prop('disabled', true);
         rdb.prop('checked', false);
     }
