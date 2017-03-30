@@ -204,6 +204,7 @@ function cacheIndividual(order) {
     var lunch = $("[name='lunch']").prop('checked');
     var race = $("[name='race']").val();
     var ifteam = $("[name='ifteam']").prop('checked');
+    var rdb = $("[name='roadbike']").prop('checked');
     data[order] = {
         order: order,
         name: $.trim(name),
@@ -216,6 +217,7 @@ function cacheIndividual(order) {
         tel: $.trim(tel),
         ifrace: ifrace,
         ifteam: ifteam,
+        rdb: rdb,
         race: race,
         islam: islam
     };
@@ -243,7 +245,11 @@ function fillIndividual(item) {
     }
     if (item.ifteam) {
         elem.find(".race").append(' 团体赛 ');
-    } else if (item.race == 0) {
+    }
+    if (item.rdb) {
+        elem.find(".race").append(' 公路赛 ');
+    }
+    if (item.race == 0 && !item.rdb && !item.ifteam) {
         elem.find(".race").append(' 不参加 ');
     }
     elem.find(".islam").text(JUDGE[item.islam]);
@@ -279,6 +285,7 @@ function fetchIndividual(order) {
     form.find("[name='ifteam']").prop('checked', item.ifteam);
     form.find("[name='dinner']").prop('checked', item.dinner);
     form.find("[name='lunch']").prop('checked', item.lunch);
+    form.find("[name='roadbike']").prop('checked', item.rdb);
     restrictIndividual();
 }
 
@@ -289,8 +296,10 @@ function restrictIndividual() {
     var lunch = $("[name='lunch']");
     var team = $("[name='ifteam']");
     var race = $("[name='race']");
+    var rdb = $("[name='roadbike']");
 
     var ifrace = ($("[name='ifrace']").val() == '1');
+    var ismale = ($("[name='gender']").val() == '1');
 
     /*
      * If an individual attends the race, lunch must be checked.
@@ -301,12 +310,19 @@ function restrictIndividual() {
         lunch.prop('disabled', true);
         race.prop('disabled', false);
         team.prop('disabled', false);
+        rdb.prop('disabled', false);
     } else {
         lunch.prop('disabled', false);
         race.val('0');
         race.prop('disabled', true);
         team.prop('checked', false);
         team.prop('disabled', true);
+        rdb.prop('disabled', true);
+        rdb.prop('checked', false);
+    }
+    if (!ismale) {
+        rdb.prop('disabled', true);
+        rdb.prop('checked', false);
     }
 
     var ifteam = team.prop('checked');
@@ -341,6 +357,7 @@ function resetIndividual() {
     form.find("[name='ifteam']").prop('checked', false);
     form.find("[name='dinner']").prop('checked', false);
     form.find("[name='lunch']").prop('checked', false);
+    form.find("[name='roadbike']").prop('checked', false);
 }
 
 /*
@@ -351,6 +368,7 @@ function postIndividual() {
         data: data
     };
     $.each(item.data, function(order, ind) {
+        ind.rdb = +ind.rdb;
         ind.ifteam = +ind.ifteam;
         ind.dinner = +ind.dinner;
         ind.lunch = +ind.lunch;
@@ -361,7 +379,7 @@ function postIndividual() {
         } else {
             window.location.assign(directto);
         }
-    });
+    }, "json");
 }
 
 /*

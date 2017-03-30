@@ -39,8 +39,8 @@
             <th>证件编号</th>
             <th>北大赛</th>
             <th>住宿</th>
-            <th>5.14晚餐</th>
-            <th>5.15午餐</th>
+            <th>5.6晚餐</th>
+            <th>5.7午餐</th>
             <th>清真</th>
             <th>费用</th>
         </tr>
@@ -62,7 +62,11 @@
                     }
                     if ($item['ifteam']) {
                         echo ' 团体赛 ';
-                    } else if (!$item['race']) {
+                    }
+                    if ($item['rdb']) {
+                        echo ' 公路赛 ';
+                    }
+                    if (!$item['race'] && !$item['rdb'] && !$item['ifteam']) {
                         echo ' 不参加 ';
                     }
                     ?>

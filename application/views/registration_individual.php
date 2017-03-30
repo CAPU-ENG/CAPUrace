@@ -54,18 +54,18 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <label class="col-sm-1">5.14晚餐</label>
+            <label class="col-sm-1">5.6晚餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="dinner">
             </div>
-            <label class="col-sm-1">5.15午餐</label>
+            <label class="col-sm-1">5.7午餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="lunch">
             </div>
         </div>
         <div class="show-if-attend">
             <div class="row">
-                <label class="col-sm-1">个人赛</label>
+                <label class="col-sm-1">山地赛</label>
                 <div class="col-sm-2">
                     <select class="form-control" name="race">
                         <?php foreach ($GLOBALS['CAPURACE'] as $key => $value): ?>
@@ -77,6 +77,11 @@
                 <div class="col-sm-1">
                     <input type="checkbox" name="ifteam">
                 </div>
+                <label class="col-sm-1">公路赛</label>
+              <div class="col-sm-6">
+                <input type="checkbox" name="roadbike">
+                &nbsp;&nbsp;公路赛限男生报名，每校限3人，名额共80个，先到先得。
+              </div>
             </div>
         </div>
         <hr/>
@@ -102,8 +107,8 @@
             <th>证件编号</th>
             <th>北大赛</th>
             <th>住宿</th>
-            <th>5.14晚餐</th>
-            <th>5.15午餐</th>
+            <th>5.6晚餐</th>
+            <th>5.7午餐</th>
             <th>清真</th>
             <th>操作</th>
         </tr>
@@ -153,13 +158,27 @@
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
     var TF = <?=json_encode($GLOBALS['TF'])?>;
     var IFRACE = <?=json_encode($GLOBALS['IFRACE'])?>;
+    var data = [];
+    // Load cached individual data.
+    if (localStorage.getItem('individual')) {
+        data = JSON.parse(localStorage.getItem('individual'));
+    } else {
+        data = <?=json_encode(load_db_individual())?>;
+        localStorage.setItem('individual', JSON.stringify(data));
+        $.each(data, function(order, item) {
+            item.dinner = (item.dinner == 1);
+            item.lunch = (item.lunch == 1);
+            item.ifteam = (item.ifteam == 1);
+            item.rdb = (item.rdb == 1);
+        });
+
+    }
     $("#btn-reg-ind-submit").click(function() {
         this.disabled=true;
         $(this).text("提交中...");
         postIndividual();
         this.disabled=false;
         $(this).text("提交，前往团体赛报名");
-        window.location.href = "<?=site_url('registration/team')?>";
     });
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
@@ -175,20 +194,6 @@
             removeIndividual($(this));
         }
     });
-    var data = [];
-    // Load cached individual data.
-    if (localStorage.getItem('individual')) {
-        data = JSON.parse(localStorage.getItem('individual'));
-    } else {
-        data = <?=json_encode(load_db_individual())?>;
-        localStorage.setItem('individual', JSON.stringify(data));
-        $.each(data, function(order, item) {
-            item.dinner = (item.dinner == 1);
-            item.lunch = (item.lunch == 1);
-            item.ifteam = (item.ifteam == 1);
-        });
-
-    }
     $(document).ready(function() {
         reloadIndividual();
         refreshOrder();

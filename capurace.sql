@@ -42,6 +42,7 @@ CREATE TABLE `people` (
   `dinner` tinyint(1) NOT NULL,
   `lunch` tinyint(4) NOT NULL,
   `race` tinyint(4) NOT NULL DEFAULT '0',
+  `rdb` tinyint(1) NOT NULL DEFAULT '0',
   `ifrace` tinyint(1) NOT NULL,
   `ifteam` tinyint(1) NOT NULL,
   `tel` varchar(11) NOT NULL,
