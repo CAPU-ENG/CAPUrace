@@ -147,4 +147,3 @@ if (! function_exists('validate_id_number')) {
         return false;
     }
 }
-
