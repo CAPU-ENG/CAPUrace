@@ -108,6 +108,21 @@ if (! function_exists('get_bill')) {
         } else {
             $race_fee = 30;
         }
+        $race_num = ($data['race'] != 0) + $data['ifteam'] + $data['rdb'];
+        switch ($race_num) {
+            case 0:
+                $race_fee = 0;
+                break;
+            case 1:
+                $race_fee = 60;
+                break;
+            case 2:
+                $race_fee = 85;
+                break;
+            case 3:
+                $race_fee = 90;
+                break;
+        }
         $fee = $race_fee + 20 * $data['dinner'] + 20 * $data['lunch'] + $GLOBALS['ACCO_FEE'][$data['accommodation']];
         return $fee;
     }
