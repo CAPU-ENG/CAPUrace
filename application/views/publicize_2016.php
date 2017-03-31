@@ -4,7 +4,7 @@
 			<h3 class="text-center">
 				京东体育杯·北大车协<br><br>
 				<div>
-					<span>第十四届全国山地高校交流赛</span><br><br>
+					<span>第十五届全国山地高校交流赛</span><br><br>
 				</div>
 			</h3>
 			
