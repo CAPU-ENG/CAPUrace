@@ -3,8 +3,8 @@ phpMyAdmin/
 application/config/config.php
 application/config/database.php
 application/config/email.php
-assets/images/content.jpg
-assets/images/publicize
+assets/images/*
+assets/images/!essentials/
 node_modules/
 */config/development
 */logs/log-*.php
