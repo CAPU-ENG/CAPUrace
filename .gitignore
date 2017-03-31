@@ -4,6 +4,7 @@ application/config/config.php
 application/config/database.php
 application/config/email.php
 assets/images/content.jpg
+assets/images/publicize
 node_modules/
 */config/development
 */logs/log-*.php
