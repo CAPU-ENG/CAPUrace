@@ -52,23 +52,6 @@
   padding-top: 10px;
 }
 
-/*.topr {
-  width: 450px;
-  margin-left: 550px;
-  height: 254px;
-  float: right;
-  position: absolute;
-  background: url(/assets/images/rbg.png) no-repeat right;
-}*/
-/*
-.logo {
-  width: 1000px;
-  height: 365px;
-  position: relative;
-  background: url(/assets/images/logo.jpg) no-repeat right;
-  margin:0 auto;
-}*/
-
 .pagebody {
   width: 1000px;
   height: auto;
@@ -91,10 +74,6 @@
   background-color: #f0f0f0;
   text-align: center;
   padding: 15px 0px 10px;
-/*  border-style: solid;
-  border-width: 1px;
-  border-color: #CBCBCB;
-*/
 }
 
 .navi:hover {
