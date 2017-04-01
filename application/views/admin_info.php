@@ -32,6 +32,10 @@
             <td><?=$nmale?></td>
         </tr>
         <tr>
+          <td>男子公路组人数（含未确认）</td>
+          <td><?=$nmale_rdb?></td>
+        </tr>
+        <tr>
             <td>男子精英组人数（含未确认）</td>
             <td><?=$nmale_expert?></td>
         </tr>
