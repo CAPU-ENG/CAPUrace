@@ -56,8 +56,12 @@ class Admin extends CI_Controller {
                     'msg' => '您没有操作权限!'
                 );
             } else {
+                $this->load->library('email');
                 $data = $this->input->post();
                 $this->user->set_paid($data['id']);
+                $query= $this->user->get_user_by_id($data['id']);
+                $mail = $query['mail'];
+                $this->email->send_fee_received_mail($mail, $data['school'], $data['bill']);
                 $response = array(
                     'code' => '0',
                     'msg' => '操作成功!'
@@ -113,6 +117,7 @@ class Admin extends CI_Controller {
         $data['nrace'] = $this->db->query('select count(*) as nrace from people where deleted=0 and ifrace=1;')->result_array()[0]['nrace'];
         $data['nmale'] = $this->db->query('select count(*) as nmale from people where deleted=0 and ifrace=1 and race=1;')->result_array()[0]['nmale'];
         $data['nmale_expert'] = $this->db->query('select count(*) as nmale_expert from people where deleted=0 and ifrace=1 and race=2;')->result_array()[0]['nmale_expert'];
+        $data['nmale_rdb'] = $this->db->query('select count(*) as nmale_rdb from people where deleted=0 and rdb=1;')->result_array()[0]['nmale_rdb'];
         $data['nfemale'] = $this->db->query('select count(*) as nfemale from people where deleted=0 and ifrace=1 and race=3;')->result_array()[0]['nfemale'];
         $data['nteams'] = $this->db->query('select count(*) as nteams from team where deleted=0;')->result_array()[0]['nteams'];
         $accommodation = $this->db->query('select count(*) as live from people where deleted=0 group by accommodation;')->result_array();

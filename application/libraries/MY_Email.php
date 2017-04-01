@@ -56,4 +56,13 @@ class MY_Email extends CI_Email
         $message = '请点击以下链接激活帐户' . $link;
         $this->send_mail($mail, $subject, $message);
     }
+
+    /*
+     * Send mail after money is received.
+     */
+    public function send_fee_received_mail($mail, $school, $fee) {
+        $subject = '第十五届全国高校自行车交流赛缴费确认';
+        $message = $school . '，\n\n贵校车协交来的' . $fee . '元参赛费用已经收到，感谢你们对北大赛的大力支持！如有任何问题，请直接与各地区负责联系。\n\n祝好！\n\n北京大学自行车协会';
+        $this->send_mail($mail, $subject, $message);
+    }
 }
