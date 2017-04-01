@@ -48,7 +48,9 @@
         var school = item.find(".school").text();
         var bill = item.find(".bill").text();
         var data = {
-            id: id
+            id: id,
+            school: school,
+            bill: bill
         };
         if (confirm('确认 ' + school + ' 已经支付 ' + bill + ' 元？')) {
             $.post("<?=site_url('admin/pay')?>", data, function (response) {

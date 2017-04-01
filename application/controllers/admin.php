@@ -56,8 +56,12 @@ class Admin extends CI_Controller {
                     'msg' => '您没有操作权限!'
                 );
             } else {
+                $this->load->library('email');
                 $data = $this->input->post();
                 $this->user->set_paid($data['id']);
+                $query= $this->user->get_user_by_id($data['id']);
+                $mail = $query['mail'];
+                $this->email->send_fee_received_mail($mail, $data['school'], $data['bill']);
                 $response = array(
                     'code' => '0',
                     'msg' => '操作成功!'
