@@ -245,6 +245,8 @@ class Registration extends CI_Controller {
             $key_set = array();
             if (!$team_post) $team_post = array();
             if (sizeof($team_post) > 3) exit(err_custom_msg('2002', array()));
+            $relay_athletes_number = $this->people->get_relay_athletes_number($school_id);
+            if (sizeof($team_post) * 4 != $relay_athletes_number) exit(err_msg('2003'));
             foreach ($team_post as $item_post) {
                 // first
                 if (!array_key_exists($item_post['first'], $male_key_set)) {
