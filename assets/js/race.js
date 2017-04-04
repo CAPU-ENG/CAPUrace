@@ -428,6 +428,17 @@ function cacheTeam() {
  */
 function postTeam() {
     cacheTeam();
+    var individual = JSON.parse(localStorage.getItem('individual'));
+    var team = JSON.parse(localStorage.getItem('team'));
+    var count = 0;
+    $.each(individual, function (i, item) {
+        if (item['ifteam'])
+            count++;
+    });
+    if (count % 4 || count / 4 != team.length) {
+        alert('报名团体赛人数与实际参与人数不匹配！');
+        return;
+    }
     var item = {
         data: data
     };

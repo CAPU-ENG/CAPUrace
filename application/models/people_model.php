@@ -141,6 +141,14 @@ class People_model extends CI_Model {
     }
 
     /*
+     * Get the number of all the people who attend team race.
+     */
+    public function get_team_athletes_number($id) {
+        $query = $this->db->where('school_id', $id)->where('ifteam', true)->where('deleted', false)->get('people');
+        return $query->num_rows();
+    }
+
+    /*
      * Get information of all the people.
      *
      */
