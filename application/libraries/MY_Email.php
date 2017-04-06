@@ -38,6 +38,7 @@ class MY_Email extends CI_Email
         $from_mail = $options['from_mail'];
         $from_name = $options['from_name'];
 
+        $this->set_mailtype('html');
         $this->from($from_mail, $from_name);
         $this->reply_to('beidachexie@126.com', $from_name);
         $this->to($to_mail);
