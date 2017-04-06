@@ -33,7 +33,7 @@ class Registration extends CI_Controller {
     public function index() {
         $this->load->view('header_homepage');
         $this->load->view('add_hilight_nav2');
-        $query = $this->info->get_info('activity');
+        $query = $this->info->get_info('register-readme');
         $data = array(
             'text' => $query['text'],
             'publish' => $query['isdraft']
