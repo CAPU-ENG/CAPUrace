@@ -19,7 +19,7 @@
       <div class="topr"> </div>
   </div>
 
-  <nav class="navbar navbar-default" style=" width: 1000px">
+  <nav class="navbar navbar-default" style=" width: 1100px">
     <div class="container-fluid">
 
       <!-- Brand and toggle get grouped for better mobile display -->
