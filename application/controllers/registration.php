@@ -148,7 +148,8 @@ class Registration extends CI_Controller {
                     exit(err_custom_msg('1091', array(
                         'order' => $item_post['order'] + 1,
                     )));
-                } else if ($item_post['ifrace'] != '0' and ($item_post['race'] == '0' and !$item_post['ifteam'])) {
+                } else if (($item_post['ifrace'] != '0') and ($item_post['race'] == '0') and
+                        ($item_post['ifteam'] == '0') and ($item_post['rdb'] == '0')) {
                     exit(err_custom_msg('1092', array(
                         'order' => $item_post['order'] + 1,
                     )));
