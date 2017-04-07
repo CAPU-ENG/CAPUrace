@@ -180,7 +180,9 @@ class Registration extends CI_Controller {
             }
             $rdb_quota = $this->people->get_rdb_quota();
             if ($rdb_count > $GLOBALS['RDB_QUOTA_PER_SCHOOL']) {
-                exit(err_msg('1096'));
+                exit(err_custom_msg('1096', array(
+                    'quota' => $GLOBALS['RDB_QUOTA_PER_SCHOOL'],
+                )));
             } else if ($rdb_count > $rdb_quota) {
                 exit(err_custom_msg('1097', array(
                     'quota' => $rdb_quota,
