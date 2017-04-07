@@ -1,5 +1,5 @@
 .index-container {
-  width: 1000px;
+  width: 1100px;
   margin: 0 auto;
   padding: 8px 0 0 0;
 }
@@ -21,9 +21,10 @@
 
 .indcontainer {
   height: auto;
+  width: 1100px;
   margin-top:70px;
-  margin-left:5%;
-  margin-right:5%;
+  margin-left:0;
+  margin-right:0;
   margin-bottom: 40px;
 }
 
