@@ -63,7 +63,7 @@
               <li><a href="#">修改资料</a></li>
               <li><a href="<?=site_url('user/result')?>">查看报名结果</a></li>
               <li class="divider"></li>
-              <li><a href="<?=site_url('user/logout')?>">注销</a></li>
+              <li><a href="<?=site_url('user/logout')?>" id="logout-button">注销</a></li>
             </ul>
           </li>
           <?php else: ?>
@@ -76,6 +76,10 @@
   </nav>
 
 <script type="text/javascript">
+  $("#logout-button").click(function () {
+      localStorage.removeItem('team');
+      localStorage.removeItem('individual');
+  })
 $('#nav3').hover(function() {
     $('#nav3').addClass("open");
 });
