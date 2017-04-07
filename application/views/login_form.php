@@ -36,6 +36,8 @@
         window.location.href = "<?=site_url('user/signup')?>";
     });
     $("#btn-login").click(function() {
+        localStorage.removeItem('team');
+        localStorage.removeItem('individual');
         postLogin();
     });
 </script>
