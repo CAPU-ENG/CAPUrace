@@ -188,7 +188,7 @@ class Admin extends CI_Controller {
         $excel->getDefaultStyle()
             ->getNumberFormat()
             ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
-        $filename = '第十四届全国高校山地车交流赛总表' . '.xlsx';
+        $filename = '第十五届全国高校自行车交流赛总表' . '.xlsx';
 
         // Sheet 1: the information of all paid users.
         $excel->setActiveSheetIndex(0)->setTitle('高校信息');
