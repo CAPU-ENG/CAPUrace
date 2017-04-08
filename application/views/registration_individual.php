@@ -180,6 +180,14 @@
         this.disabled=false;
         $(this).text("提交，前往团体赛报名");
     });
+    $("[name='gender']").change(function () {
+        $("[name='roadbike']").prop('checked', false);
+        if ($(this).val() == 2) {
+            $("[name='roadbike']").prop('disabled', true);
+        } else {
+            $("[name='roadbike']").prop('disabled', false);
+        }
+    })
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
     });
