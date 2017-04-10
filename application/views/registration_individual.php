@@ -80,7 +80,7 @@
                 <label class="col-sm-1">公路赛</label>
               <div class="col-sm-6">
                 <input type="checkbox" name="roadbike">
-                &nbsp;&nbsp;公路赛限男生报名，每校限3人，名额共80个，先到先得。
+                &nbsp;&nbsp;公路赛限男生报名，每校限5人，名额共80个，先到先得。
               </div>
             </div>
         </div>
