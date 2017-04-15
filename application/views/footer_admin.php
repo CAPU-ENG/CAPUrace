@@ -27,12 +27,20 @@
   </div>
   <button class="btn btn-primary" id="btn-activity">活动通知</button>
   <button class="btn btn-primary" id="btn-register-readme">报名须知</button>
+  <button class="btn btn-danger" id="btn-clear-rdb">清理公路赛</button>
   <div class="col-sm-1"></div>
 </div>
 <br><br>
 </body>
 </html>
 <script>
+    $("#btn-clear-rdb").click(function () {
+        if (confirm('本操作将清理所有未确认结果的公路赛选手名额，确定继续？')) {
+            $.post("<?=site_url('admin/clear')?>", {}, function (response) {
+                alert(response.msg);
+            });
+        }
+    });
     $("#btn-return-to-admin-index").click(function() {
         window.location.assign("<?=site_url('admin/index')?>");
     });

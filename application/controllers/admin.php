@@ -433,21 +433,35 @@ class Admin extends CI_Controller {
     }
 
     public function clear() {
-        $this->people->clear();
-        $users = $this->user->get_all();
-        foreach ($users as $user) {
-            $people = $this->people->get_people_from_school($user['id']);
-            $bill = 0;
-            foreach ($people as $person) {
-                if ($person['race'] == 0 and $person['ifteam'] == 0 and $person['rdb'] == 0) {
-                    $person['ifrace'] = 0;
+        header('Content-Type: application/json');
+        if ($this->session->userdata('admin_pass') != $GLOBALS['PRESIDENT_PASS']) {
+            $response = array(
+                'code' => '1',
+                'msg' => '您没有操作权限!'
+            );
+        } else {
+            $this->people->clear();
+            $users = $this->user->get_all();
+            foreach ($users as $user) {
+                // Re-calculate all users' bill.
+                $people = $this->people->get_people_from_school($user['id']);
+                $bill = 0;
+                foreach ($people as $person) {
+                    // If a person has only RDB and not paid, he will be set to non-athlete.
+                    if ($person['race'] == 0 and $person['ifteam'] == 0 and $person['rdb'] == 0) {
+                        $person['ifrace'] = 0;
+                    }
+                    $person['fee'] = get_bill($person);
+                    $this->people->update_individual($person['id'], $person);
+                    $bill += $person['fee'];
                 }
-                $person['fee'] = get_bill($person);
-                $this->people->update_individual($person['id'], $person);
-                $bill += $person['fee'];
+                $this->user->set_bill($user['id'], $bill);
             }
-            $this->user->set_bill($user['id'], $bill);
+            $response = array(
+                'code' => '0',
+                'msg' => '未确认的公路赛报名者已经全部清理完毕！'
+            );
         }
-        redirect(site_url('admin/info'));
+        exit(json_encode($response));
     }
 }

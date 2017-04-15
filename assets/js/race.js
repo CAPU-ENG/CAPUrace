@@ -243,13 +243,13 @@ function fillIndividual(item) {
     if (item.race != 0) {
         elem.find(".race").text(CAPURACE[item.race]);
     }
-    if (item.ifteam) {
+    if (item.ifteam != 0) {
         elem.find(".race").append(' 团体赛 ');
     }
-    if (item.rdb) {
+    if (item.rdb != 0) {
         elem.find(".race").append(' 公路赛 ');
     }
-    if (item.race == 0 && !item.rdb && !item.ifteam) {
+    if (item.race == 0 && item.rdb == 0 && item.ifteam == 0) {
         elem.find(".race").append(' 不参加 ');
     }
     elem.find(".islam").text(JUDGE[item.islam]);
@@ -432,7 +432,7 @@ function postTeam() {
     var team = JSON.parse(localStorage.getItem('team'));
     var count = 0;
     $.each(individual, function (i, item) {
-        if (item['ifteam'])
+        if (item['ifteam'] != "0")
             count++;
     });
     if (count % 4 || count / 4 != team.length) {
