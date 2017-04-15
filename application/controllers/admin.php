@@ -431,4 +431,23 @@ class Admin extends CI_Controller {
             exit(err_msg('200'));
         }
     }
+
+    public function clear() {
+        $this->people->clear();
+        $users = $this->user->get_all();
+        foreach ($users as $user) {
+            $people = $this->people->get_people_from_school($user['id']);
+            $bill = 0;
+            foreach ($people as $person) {
+                if ($person['race'] == 0 and $person['ifteam'] == 0 and $person['rdb'] == 0) {
+                    $person['ifrace'] = 0;
+                }
+                $person['fee'] = get_bill($person);
+                $this->people->update_individual($person['id'], $person);
+                $bill += $person['fee'];
+            }
+            $this->user->set_bill($user['id'], $bill);
+        }
+        redirect(site_url('admin/info'));
+    }
 }
