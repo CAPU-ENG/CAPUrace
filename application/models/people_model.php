@@ -171,6 +171,15 @@ class People_model extends CI_Model {
     }
 
     /*
+     * Get remained quota of Audience
+     */
+    public function get_audience_quota($id) {
+        $query = $this->db->where('deleted', false)->where('ifrace', false)->get('people');
+        $query_school = $this->db->where('deleted', false)->where('ifrace', false)->where('school_id', $id)->get('people');
+        return $GLOBALS['AUDIENCE_QUOTA'] - $query->num_rows() + $query_school->num_rows();
+    }
+
+    /*
      * Clear unpaid RDB athletes.
      */
     public function clear() {
