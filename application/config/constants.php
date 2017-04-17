@@ -163,7 +163,7 @@ $RACE = array(
     '1' => '参赛'
 );
 
-$RDB_QUOTA = 75;
+$RDB_QUOTA = 80;
 $RDB_QUOTA_PER_SCHOOL = 5;
 
 $AUDIENCE_QUOTA = 230;
