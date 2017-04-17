@@ -63,7 +63,11 @@ class Registration extends CI_Controller {
             $key_set = array();
             if (!$ind_post) exit(err_msg('999'));
             $rdb_count = 0;
+            $audience_count = 0;
             foreach ($ind_post as $item_post) {
+                if ($item_post['ifrace'] == '0') {
+                    $audience_count++;
+                }
                 if ($item_post['rdb'] == '1' and $item_post['gender'] == '1') {
                     $rdb_count++;
                 }
@@ -189,6 +193,14 @@ class Registration extends CI_Controller {
                     'quota' => $rdb_quota,
                 )));
             }
+
+            $audience_quota = $this->people->get_audience_quota($school_id);
+            if ($audience_count > $audience_quota) {
+                exit(err_custom_msg('1098', array(
+                    'quota' => $audience_quota,
+                )));
+            }
+
             $bill = 0;
             $ind_db = $this->people->get_people_from_school($school_id);
             foreach ($ind_db as $item_db) {
