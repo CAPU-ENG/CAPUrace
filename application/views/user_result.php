@@ -5,7 +5,6 @@
     <h4 style="text-align: center; color: #ff0000">报名结果已经确认，无法修改，请尽快支付。如有疑问请联系北大车协外联人员！</h4>
     <?php endif; ?>
     <hr/>
-
     <table class="table">
         <thead>
         <tr>
@@ -118,7 +117,13 @@
         </tbody>
     </table>
     <hr/>
-
+    <?php if ($userinfo['campusrace']): ?> 
+    <div class="content">
+     <h4 style="text-align: center; color: #ff0000">您具备校内参赛资格，如需参加或了解更多信息，请联系北大车协外联人员!</h4>
+    </div>   
+    <hr/>
+    <?php endif; ?>
+    
     <div style="margin:0 auto;">
         <div class="col-sm-3"></div>
         <div class="col-sm-2">
