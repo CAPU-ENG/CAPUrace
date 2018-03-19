@@ -101,6 +101,7 @@ $ERR_MSG = array(
     '1096' => '参加公路赛人数不得超过{quota}人。',
     '1097' => '公路赛名额仅剩{quota}人。',
     '1098' => '观众名额仅剩{quota}人。',
+    '1099' => '每个学校观赛人数不得超过{quota}人。',
     '1100' => '第{order}个人的团体赛选项不合法。',
     '1101' => '第{order}个人是观赛人员，不得参加团体赛。',
     // Team Registration Error.
@@ -167,6 +168,7 @@ $RDB_QUOTA = 80;
 $RDB_QUOTA_PER_SCHOOL = 5;
 
 $AUDIENCE_QUOTA = 230;
+$AUD_QUOTA_PER_SCHOOL = 3;
 
 $ACCOMMODATION = array(
     '0' => '不需要',
