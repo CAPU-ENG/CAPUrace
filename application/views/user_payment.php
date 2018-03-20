@@ -11,6 +11,7 @@
     <p>如有疑问请发邮件至 racemoney@163.com</p>
     <p><strong>请在转账时将学校和领队姓名等信息写在备注中</strong></p>
     <p style="color: red">不接受其他任何缴费方式!</p>
+    
     <hr/>
     <?php if ($campusrace): ?>
     <p style="color: red">您具备校内参赛资格，如需参加或了解更多信息，请联系北大车协外联人员!</p>
