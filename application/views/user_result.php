@@ -1,6 +1,5 @@
 <div class="indcontainer">
     <h3>报名结果</h3>
-
     <?php if (!$editable): ?>
     <h4 style="text-align: center; color: #ff0000">报名结果已经确认，无法修改，请尽快支付。如有疑问请联系北大车协外联人员！</h4>
     <?php endif; ?>

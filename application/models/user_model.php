@@ -233,37 +233,40 @@ class User_model extends CI_Model {
     }
 
     public function campus_race_verify($id) {
-        $query = $this->db->where('deleted', 0)->where('school_id', $id)->get('people');
+        $query = $this->db->where('deleted', 0)->where('school_id', $id)->where('ifrace != ', 0)->get('people');
         $people_num =  $query->num_rows();
-        $query = $this->db->where('deleted', 0)->where('school_id', $id)->where('race =', 1)->get('people');
-        $people_race_num1 = $query->num_rows();
-        if ($people_race_num1 > 0) {
-            $people_race_num1 = 1;
+        $people_team_num = 0;
+        $people_rdb_num = 0;
+        $people_race1_num =0;
+        $people_race2_num =0;
+        $people_race3_num =0;
+        foreach ($query->result() as $row)
+        {
+            $race_array = $row->race;
+            $people_team_num +=  $row->ifteam;
+            $people_rdb_num += $row->rdb;
+            switch ($row->race)
+            {
+                case 1:
+                    $people_race1_num += 1;
+                    break;
+                case 2:
+                    $people_race2_num += 1;
+                    break;
+                case 3:
+                    $people_race3_num += 1;
+                    break;
+            }
         }
-        $query = $this->db->where('deleted', 0)->where('school_id', $id)->where('race =', 2)->get('people');
-        $people_race_num2 = $query->num_rows();
-        if ($people_race_num2 > 0) {
-            $people_race_num2 = 1;
-        }
-        $query = $this->db->where('deleted', 0)->where('school_id', $id)->where('race =', 3)->get('people');
-        $people_race_num3 = $query->num_rows();
-        if ($people_race_num3 > 0) {
-            $people_race_num3 = 1;
-        }
-        $query = $this->db->where('deleted', 0)->where('school_id', $id)->where('ifteam = ', 1)->get('people');
-        $people_team_num = $query->num_rows();
-        if ($people_team_num > 0) {
-            $people_team_num = 1;
-        }
-        $query = $this->db->where('deleted', 0)->where('school_id', $id)->where('rdb = ', 1)->get('people');
-        $people_rdb_num = $query->num_rows();
-        if ($people_rdb_num > 0) {
-            $people_rdb_num = 1;
-        }
-        $race_num = $people_race_num1 + $people_race_num2 + $people_race_num3 + $people_team_num + $people_rdb_num;
+        $people_race1_num = $people_race1_num ? 1 : 0;
+        $people_race2_num = $people_race2_num ? 1 : 0;
+        $people_race3_num = $people_race3_num ? 1 : 0;
+        $people_team_num  = $people_team_num  ? 1 : 0;
+        $people_rdb_num   = $people_rdb_num   ? 1 : 0;
+        $race_num = $people_race1_num + $people_race2_num + $people_race3_num + $people_team_num + $people_rdb_num;
         $flag = $people_num >= 4 && $race_num >= 2;
         $this->db->where('id', $id)->update('users', array('campusrace' => $flag));
-        return $flag;
+        return $flag ;
     }
     /*
      * Shut down the registration system.
