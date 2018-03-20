@@ -261,13 +261,9 @@ class User_model extends CI_Model {
             $people_rdb_num = 1;
         }
         $race_num = $people_race_num1 + $people_race_num2 + $people_race_num3 + $people_team_num + $people_rdb_num;
-        if ($people_num >= 4 && $race_num >= 2) {
-            $this->db->where('id',$id)->update('users', array('campusrace' => 1));
-            return 1;
-        } else {
-            $this->db->where('id',$id)->update('users', array('campusrace' => 0));
-            return 0;
-        }
+        $flag = $people_num >= 4 && $race_num >= 2;
+        $this->db->where('id', $id)->update('users', array('campusrace' => $flag));
+        return $flag;
     }
     /*
      * Shut down the registration system.
