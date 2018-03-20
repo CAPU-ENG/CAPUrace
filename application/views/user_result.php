@@ -1,11 +1,19 @@
 <div class="indcontainer">
     <h3>报名结果</h3>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> f252177f16926dde7d6e618a6433d75a781bb49d
     <?php if (!$editable): ?>
     <h4 style="text-align: center; color: #ff0000">报名结果已经确认，无法修改，请尽快支付。如有疑问请联系北大车协外联人员！</h4>
     <?php endif; ?>
     <hr/>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> f252177f16926dde7d6e618a6433d75a781bb49d
     <table class="table">
         <thead>
         <tr>
