@@ -3,6 +3,7 @@
     <p style="text-align: center">你们需要支付的金额为：</p>
     <h1 style="text-align: center; color: #ff0000"><?=$bill?>元</h1>
     <hr/>
+
     <p>请将参赛费用在4月27日23:59之前转账至以下帐户：</p>
     <p>帐号：6212 2602 0008 5883 805</p>
     <p>开户行：中国工商银行 （海淀西区支行）</p>
@@ -11,6 +12,7 @@
     <p><strong>请在转账时将学校和领队姓名等信息写在备注中</strong></p>
     <p style="color: red">不接受其他任何缴费方式!</p>
     <hr/>
+    
     <?php if ($campusrace): ?>
     <p style="color: red">您具备校内参赛资格，如需参加或了解更多信息，请联系北大车协外联人员!</p>
     <hr/>
