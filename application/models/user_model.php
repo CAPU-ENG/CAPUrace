@@ -233,7 +233,9 @@ class User_model extends CI_Model {
     }
 
     /*
-     * This function query the information of a school from database and judeg if it has the qualification to participate in campus race, write the result into database and return the result;
+     * This function query the information of a school from database and judge if it has the 
+     qualification to participate in campus race, write the result into database and 
+     return the result;
      */
     public function campus_race_verify($id) {
         $query = $this->db->where('deleted', 0)->where('school_id', $id)->where('ifrace != ', 0)->get('people');
@@ -271,7 +273,7 @@ class User_model extends CI_Model {
         $this->db->where('id', $id)->update('users', array('campusrace' => $flag));
         return $flag ;
     }
-    
+
     /*
      * Shut down the registration system.
      */
