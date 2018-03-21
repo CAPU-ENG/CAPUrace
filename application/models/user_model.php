@@ -239,12 +239,12 @@ class User_model extends CI_Model {
      */
     public function campus_race_verify($id) {
         $query = $this->db->where('deleted', 0)->where('school_id', $id)->where('ifrace != ', 0)->get('people');
-        $people_num =  $query->num_rows();
+        $people_num = $query->num_rows();
         $people_team_num = 0;
         $people_rdb_num = 0;
-        $people_race1_num =0;
-        $people_race2_num =0;
-        $people_race3_num =0;
+        $people_race1_num = 0;
+        $people_race2_num = 0;
+        $people_race3_num = 0;
         foreach ($query->result() as $row)
         {
             $race_array = $row->race;
