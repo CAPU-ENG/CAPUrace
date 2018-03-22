@@ -119,6 +119,13 @@
     </table>
     <hr/>
 
+    <?php if ($userinfo['campusrace']): ?> 
+    <div class="content">
+     <h4 style="text-align: center; color: #ff0000">您具备校内参赛资格，如需参加或了解更多信息，请联系北大车协外联人员!</h4>
+    </div>   
+    <hr/>
+    <?php endif; ?>
+    
     <div style="margin:0 auto;">
         <div class="col-sm-3"></div>
         <div class="col-sm-2">

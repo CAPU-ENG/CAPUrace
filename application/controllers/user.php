@@ -131,6 +131,7 @@ class User extends CI_Controller {
             }
             $data['team'] = $team;
             $data['userinfo'] = $this->user->get_user_by_id($school_id);
+            $data['people_num'] = $this->user->campus_race_verify($school_id);
             $this->load->view('header_homepage');
             $this->load->view('user_result', $data);
             $this->load->view('footer');
@@ -139,6 +140,7 @@ class User extends CI_Controller {
 
     public function freeze() {
         $school_id = $this->session->userdata('id');
+        $this->user->campus_race_verify($school_id);
         $this->user->freeze($school_id);
         $this->session->set_userdata('editable', 0);
         redirect(site_url('user/payment'));
@@ -153,6 +155,7 @@ class User extends CI_Controller {
             $userinfo = $this->user->get_user_by_id($school_id);
             $data['bill'] = $userinfo['bill'];
             $data['association_name'] = $userinfo['association_name'];
+            $data['campusrace'] = $userinfo['campusrace'];
             $this->load->view('header_homepage');
             $this->load->view('user_payment', $data);
             $this->load->view('footer');
