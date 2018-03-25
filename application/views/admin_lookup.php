@@ -71,7 +71,6 @@
                     }
                     ?>
                 </td>
-                <td class="accommodation"><?=$GLOBALS['ACCOMMODATION'][$item['accommodation']]?></td>
                 <td class="meal16"><?=$GLOBALS['JUDGE'][$item['dinner']]?></td>
                 <td class="meal17"><?=$GLOBALS['JUDGE'][$item['lunch']]?></td>
                 <td class="islam"><?=$GLOBALS['JUDGE'][$item['islam']]?></td>

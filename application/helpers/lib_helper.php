@@ -123,7 +123,7 @@ if (! function_exists('get_bill')) {
                 $race_fee = 90;
                 break;
         }
-        $fee = $race_fee + 20 * $data['dinner'] + 20 * $data['lunch'] + $GLOBALS['ACCO_FEE'][$data['accommodation']];
+        $fee = $race_fee + 20 * $data['dinner'] + 20 * $data['lunch'];
         return $fee;
     }
 }

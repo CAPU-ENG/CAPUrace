@@ -45,15 +45,6 @@
             <div class="col-sm-3">
                 <input class="form-control" name="id_number" placeholder="证件编号" type="text">
             </div>
-
-            <label class="col-sm-1">住宿方式</label>
-            <div class="col-sm-2">
-                <select class="form-control" name="accommodation">
-                    <?php foreach ($GLOBALS['ACCOMMODATION'] as $key => $value): ?>
-                        <option value="<?=$key?>"><?=$value?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
             <label class="col-sm-1">5.6晚餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="dinner">
@@ -106,7 +97,6 @@
             <th>证件类型</th>
             <th>证件编号</th>
             <th>北大赛</th>
-            <th>住宿</th>
             <th>5.6晚餐</th>
             <th>5.7午餐</th>
             <th>清真</th>
@@ -122,7 +112,6 @@
             <td class="id_type"></td>
             <td class="id_number"></td>
             <td class="race"></td>
-            <td class="accommodation"></td>
             <td class="dinner"></td>
             <td class="lunch"></td>
             <td class="islam"></td>
@@ -151,7 +140,6 @@
 <script>
     var controller = "<?=site_url('registration/individual')?>";
     var directto = "<?=site_url('registration/team')?>";
-    var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
     var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
     var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
     var ID_TYPE = <?=json_encode($GLOBALS['ID_TYPE'])?>;

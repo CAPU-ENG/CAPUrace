@@ -43,7 +43,6 @@
             <th>证件类型</th>
             <th>证件编号</th>
             <th>北大赛</th>
-            <th>住宿</th>
             <th>5.6晚餐</th>
             <th>5.7午餐</th>
             <th>清真</th>
@@ -76,7 +75,6 @@
                 }
                 ?>
             </td>
-            <td class="accommodation"><?=$GLOBALS['ACCOMMODATION'][$item['accommodation']]?></td>
             <td class="dinner"><?=$GLOBALS['JUDGE'][$item['dinner']]?></td>
             <td class="lunch"><?=$GLOBALS['JUDGE'][$item['lunch']]?></td>
             <td class="islam"><?=$GLOBALS['JUDGE'][$item['islam']]?></td>

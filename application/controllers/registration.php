@@ -121,12 +121,6 @@ class Registration extends CI_Controller {
                 } else {
                     $id_number_set[$item_post['id_number']] = $item_post['order'] + 1;
                 }
-                // accommodation
-                if (!array_key_exists($item_post['accommodation'], $GLOBALS['ACCOMMODATION'])) {
-                    exit(err_custom_msg('1060', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                }
                 // dinner
                 if (!array_key_exists($item_post['dinner'], $GLOBALS['JUDGE'])) {
                     exit(err_custom_msg('1070', array(

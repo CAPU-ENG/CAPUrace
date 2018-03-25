@@ -48,14 +48,6 @@
             <td><?=$nteams?></td>
         </tr>
         <tr>
-            <td>旅馆人数</td>
-            <td><?=$hotel?></td>
-        </tr>
-        <tr>
-            <td>自带帐篷露营人数</td>
-            <td><?=$tent?></td>
-        </tr>
-        <tr>
             <td>第一天晚餐人数</td>
             <td><?=$dinner?></td>
         </tr>
