@@ -188,10 +188,8 @@ class Registration extends CI_Controller {
                 exit(err_custom_msg('1096', array(
                     'quota' => $GLOBALS['RDB_QUOTA_PER_SCHOOL'],
                 )));
-            } else if ($rdb_count > $rdb_quota) {
-                exit(err_custom_msg('1097', array(
-                    'quota' => $rdb_quota,
-                )));
+            } else if ($rdb_quota < 0) {
+                exit(err_custom_msg('1097', array()));
             }
             if ($aud_count > $GLOBALS['AUD_QUOTA_PER_SCHOOL']) {
                 exit(err_custom_msg('1099', array(
