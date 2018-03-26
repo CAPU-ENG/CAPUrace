@@ -36,6 +36,7 @@
             </div>
         </div>
         <div class="row">
+            <label class="col-sm-1">证件类型</label>
             <div class="col-sm-2" style="float: left;">
                 <select class="form-control" name="id_type">
                     <option value="identity">身份证</option>
@@ -45,7 +46,7 @@
             <div class="col-sm-3">
                 <input class="form-control" name="id_number" placeholder="证件编号" type="text">
             </div>
-            <label class="col-sm-1">5.6晚餐</label>
+            <label class="col-sm-2">5.6午餐+晚餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="dinner">
             </div>
@@ -57,21 +58,20 @@
         <div class="show-if-attend">
             <div class="row">
                 <label class="col-sm-1">山地赛</label>
-                <div class="col-sm-2">
-                    <select class="form-control" name="race">
-                        <?php foreach ($GLOBALS['CAPURACE'] as $key => $value): ?>
-                            <option value="<?=$key?>"><?=$value?></option>
-                        <?php endforeach; ?>
-                    </select>
+                <div class="col-sm-1">
+                    <input type="checkbox" name="race">
+                </div>
+                <label class="col-sm-1">公路赛</label>
+                <div class="col-sm-1">
+                    <input type="checkbox" name="roadbike">
                 </div>
                 <label class="col-sm-1">团体赛</label>
                 <div class="col-sm-1">
                     <input type="checkbox" name="ifteam">
                 </div>
-                <label class="col-sm-1">公路赛</label>
-              <div class="col-sm-6">
-                <input type="checkbox" name="roadbike">
-                &nbsp;&nbsp;公路赛限男生报名，每校限5人，名额共80个，先到先得。
+                <label class="col-sm-2">公路越野赛</label>
+              <div class="col-sm-1">
+                <input type="checkbox" name="roadbike_xc">
               </div>
             </div>
         </div>
@@ -168,14 +168,6 @@
         this.disabled=false;
         $(this).text("提交，前往团体赛报名");
     });
-    $("[name='gender']").change(function () {
-        $("[name='roadbike']").prop('checked', false);
-        if ($(this).val() == 2) {
-            $("[name='roadbike']").prop('disabled', true);
-        } else {
-            $("[name='roadbike']").prop('disabled', false);
-        }
-    })
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
     });

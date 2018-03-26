@@ -293,6 +293,7 @@ function restrictIndividual() {
     var team = $("[name='ifteam']");
     var race = $("[name='race']");
     var rdb = $("[name='roadbike']");
+    var rdb_xc = $("[name='roadbike_xc']");
 
     var ifrace = ($("[name='ifrace']").val() == '1');
     var ismale = ($("[name='gender']").val() == '1');
@@ -307,6 +308,7 @@ function restrictIndividual() {
         race.prop('disabled', false);
         team.prop('disabled', false);
         rdb.prop('disabled', false);
+        rdb_xc.prop('disabled', false);
     } else {
         lunch.prop('disabled', false);
         race.val('0');
@@ -315,10 +317,12 @@ function restrictIndividual() {
         team.prop('disabled', true);
         rdb.prop('disabled', true);
         rdb.prop('checked', false);
+        rdb_xc.prop('disabled', true);
+        rdb_xc.prop('checked', false);
     }
     if (!ismale) {
-        rdb.prop('disabled', true);
-        rdb.prop('checked', false);
+        rdb_xc.prop('disabled', true);
+        rdb_xc.prop('checked', false);
     }
 
     var ifteam = team.prop('checked');
