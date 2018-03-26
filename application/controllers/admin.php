@@ -225,7 +225,7 @@ class Admin extends CI_Controller {
         $this->_fill_individual($excel, $female);
 
 
-        // Sheet 6: 晚餐表
+        // Sheet 5: 晚餐表
         $excel->createSheet(4);
         $excel->setActiveSheetIndex(4)->setTitle('第一天晚餐表');
         $dinner = $this->db->where('deleted', 0)->where('dinner', 1)->order_by('school_id', 'asc')->get('people')->result_array();
@@ -252,7 +252,7 @@ class Admin extends CI_Controller {
 
 
 
-        // Sheet 7: 午餐表
+        // Sheet 6: 午餐表
         $excel->createSheet(5);
         $excel->setActiveSheetIndex(5)->setTitle('第二天午餐表');
         $lunch = $this->db->where('deleted', 0)->where('lunch', 1)->order_by('school_id', 'asc')->get('people')->result_array();
@@ -278,7 +278,7 @@ class Admin extends CI_Controller {
         }
 
 
-        // Sheet 8: 团体赛表
+        // Sheet 7: 团体赛表
         $excel->createSheet(6);
         $excel->setActiveSheetIndex(6)->setTitle('团体赛表');
         $teams = $this->db->where('deleted', 0)->get('team')->result_array();
@@ -309,7 +309,7 @@ class Admin extends CI_Controller {
             $i += 4;
         }
 
-        // Sheet 9: 公路赛表
+        // Sheet 8: 公路赛表
         $excel->createSheet(7);
         $excel->setActiveSheetIndex(7)->setTitle('男子公路组');
         $male_expert = $this->db->where('deleted', 0)->where('rdb', 1)->get('people')->result_array();
