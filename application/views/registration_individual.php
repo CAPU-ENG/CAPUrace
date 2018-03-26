@@ -24,7 +24,7 @@
             <div class="col-sm-1">
                 <select class="form-control" name="ifrace">
                     <option value="0">观赛</option>
-                    <option value="1">参赛</option>
+                    <option value="1" selected="selected">参赛</option>
                 </select>
             </div>
             <label class="col-sm-1">清真</label>

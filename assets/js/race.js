@@ -352,7 +352,7 @@ function resetIndividual() {
     form.find("[name='accommodation']").val("0");
     form.find("[name='gender']").val("1");
     form.find("[name='race']").val("0");
-    form.find("[name='ifrace']").val("0");
+    form.find("[name='ifrace']").val("1");
     form.find("[name='islam']").val("0");
     form.find("[name='ifteam']").prop('checked', false);
     form.find("[name='dinner']").prop('checked', false);

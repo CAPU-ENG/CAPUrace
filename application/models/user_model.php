@@ -188,6 +188,14 @@ class User_model extends CI_Model {
     }
 
     /*
+     * Get the id of the user.
+     */
+    public function get_id($mail) {
+        $query = $this->get_user_by_email($mail);
+        return $query['id'];
+    }
+
+    /*
      * Get the token of the user.
      */
     public function get_token($mail) {
