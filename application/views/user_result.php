@@ -42,7 +42,7 @@
             <th>手机号</th>
             <th>证件类型</th>
             <th>证件编号</th>
-            <th>北大赛</th>
+            <th>参赛项目</th>
             <th>5.5午餐+晚餐</th>
             <th>5.6午餐</th>
             <th>清真</th>
@@ -62,15 +62,21 @@
             <td class="race">
                 <?php
                 if($item['race']) {
-                    echo  $GLOBALS['CAPURACE'][$item['race']];
+                    echo  '山地男子组';
+                }
+                if($item['race_f']) {
+                    echo  '山地女子组';
                 }
                 if ($item['ifteam']) {
                     echo ' 团体赛 ';
                 }
                 if ($item['rdb']) {
-                    echo ' 公路赛 ';
+                    echo ' 公路男子组 ';
                 }
-                if (!$item['race'] && !$item['rdb'] && !$item['ifteam']) {
+                if ($item['rdb_f']) {
+                    echo ' 公路女子组 ';
+                }
+                if (!$item['race'] && !$item['race_f'] && !$item['rdb'] && !$item['rdb_f'] && !$item['ifteam']) {
                     echo ' 不参加 ';
                 }
                 ?>

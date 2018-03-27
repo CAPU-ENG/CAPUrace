@@ -223,7 +223,6 @@ function cacheIndividual(order) {
         race_f: race_f,
         islam: islam
     };
-    console.log(data);
     localStorage.setItem('individual', JSON.stringify(data));
     reloadIndividual();
     refreshOrder();
