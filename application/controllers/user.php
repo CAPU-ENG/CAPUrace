@@ -240,8 +240,8 @@ class User extends CI_Controller {
             ->setCellValue('F1', '证件编号')
             ->setCellValue('G1', '个人赛')
             ->setCellValue('H1', '团体赛')
-            ->setCellValue('I1', '5.14晚餐')
-            ->setCellValue('J1', '5.15午餐')
+            ->setCellValue('I1', '5.5午餐+晚餐')
+            ->setCellValue('J1', '5.6午餐')
             ->setCellValue('K1', '清真')
             ->setCellValue('L1', '费用');
 

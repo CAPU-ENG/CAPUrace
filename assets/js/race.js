@@ -308,7 +308,6 @@ function restrictIndividual() {
         race.prop('disabled', false);
         team.prop('disabled', false);
         rdb.prop('disabled', false);
-        rdb_xc.prop('disabled', false);
     } else {
         lunch.prop('disabled', false);
         race.val('0');
@@ -317,12 +316,6 @@ function restrictIndividual() {
         team.prop('disabled', true);
         rdb.prop('disabled', true);
         rdb.prop('checked', false);
-        rdb_xc.prop('disabled', true);
-        rdb_xc.prop('checked', false);
-    }
-    if (!ismale) {
-        rdb_xc.prop('disabled', true);
-        rdb_xc.prop('checked', false);
     }
 
     var ifteam = team.prop('checked');

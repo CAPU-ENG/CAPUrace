@@ -46,11 +46,11 @@
             <div class="col-sm-3">
                 <input class="form-control" name="id_number" placeholder="证件编号" type="text">
             </div>
-            <label class="col-sm-2">5.6午餐+晚餐</label>
+            <label class="col-sm-2">5.5午餐+晚餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="dinner">
             </div>
-            <label class="col-sm-1">5.7午餐</label>
+            <label class="col-sm-1">5.6午餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="lunch">
             </div>
@@ -69,10 +69,6 @@
                 <div class="col-sm-1">
                     <input type="checkbox" name="ifteam">
                 </div>
-                <label class="col-sm-2">公路越野赛</label>
-              <div class="col-sm-1">
-                <input type="checkbox" name="roadbike_xc">
-              </div>
             </div>
         </div>
         <hr/>
@@ -97,8 +93,8 @@
             <th>证件类型</th>
             <th>证件编号</th>
             <th>北大赛</th>
-            <th>5.6晚餐</th>
-            <th>5.7午餐</th>
+            <th>5.5午餐+晚餐</th>
+            <th>5.6午餐</th>
             <th>清真</th>
             <th>操作</th>
         </tr>
