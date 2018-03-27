@@ -28,20 +28,20 @@
             <td><?=$nlook?></td>
         </tr>
         <tr>
-            <td>男子大众组人数（含未确认）</td>
-            <td><?=$nmale?></td>
+            <td>山地男子组人数（含未确认）</td>
+            <td><?=$nmale_xc?></td>
         </tr>
         <tr>
-          <td>男子公路组人数（含未确认）</td>
-          <td><?=$nmale_rdb?></td>
+          <td>山地女子组人数（含未确认）</td>
+          <td><?=$nfemale_xc?></td>
         </tr>
         <tr>
-            <td>男子精英组人数（含未确认）</td>
-            <td><?=$nmale_expert?></td>
+            <td>男子公路组人数（含未确认）</td>
+            <td><?=$nmale_rdb?></td>
         </tr>
         <tr>
-            <td>女子组人数（含未确认）</td>
-            <td><?=$nfemale?></td>
+            <td>女子公路组人数（含未确认）</td>
+            <td><?=$nfemale_rdb?></td>
         </tr>
         <tr>
             <td>团体赛队伍数量</td>

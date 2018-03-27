@@ -115,10 +115,10 @@ class Admin extends CI_Controller {
         $data['npaid'] = $this->db->query('select count(*) as npaid from users where paid=1;')->result_array()[0]['npaid'];
         $data['nlook'] = $this->db->query('select count(*) as nlook from people where deleted=0 and ifrace=0;')->result_array()[0]['nlook'];
         $data['nrace'] = $this->db->query('select count(*) as nrace from people where deleted=0 and ifrace=1;')->result_array()[0]['nrace'];
-        $data['nmale'] = $this->db->query('select count(*) as nmale from people where deleted=0 and ifrace=1 and race=1;')->result_array()[0]['nmale'];
-        $data['nmale_expert'] = $this->db->query('select count(*) as nmale_expert from people where deleted=0 and ifrace=1 and race=2;')->result_array()[0]['nmale_expert'];
-        $data['nmale_rdb'] = $this->db->query('select count(*) as nmale_rdb from people where deleted=0 and rdb=1;')->result_array()[0]['nmale_rdb'];
-        $data['nfemale'] = $this->db->query('select count(*) as nfemale from people where deleted=0 and ifrace=1 and race=3;')->result_array()[0]['nfemale'];
+        $data['nmale_xc'] = $this->db->query('select count(*) as nmale_xc from people where deleted=0 and ifrace=1 and race=1;')->result_array()[0]['nmale_xc'];
+        $data['nfemale_xc'] = $this->db->query('select count(*) as nfemale_xc from people where deleted=0 and ifrace=1 and race_f=1;')->result_array()[0]['nfemale_xc'];
+        $data['nmale_rdb'] = $this->db->query('select count(*) as nmale_rdb from people where deleted=0 and ifrace=1 and rdb=1;')->result_array()[0]['nmale_rdb'];
+        $data['nfemale_rdb'] = $this->db->query('select count(*) as nfemale_rdb from people where deleted=0 and ifrace=1 and rdb_f=1;')->result_array()[0]['nfemale_rdb'];
         $data['nteams'] = $this->db->query('select count(*) as nteams from team where deleted=0;')->result_array()[0]['nteams'];
         $data['dinner'] = $this->db->query('select count(*) as dinner from people where deleted=0 and dinner=1;')->result_array()[0]['dinner'];
         $data['lunch'] = $this->db->query('select count(*) as lunch from people where deleted=0 and lunch=1;')->result_array()[0]['lunch'];
