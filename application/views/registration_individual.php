@@ -136,7 +136,6 @@
 <script>
     var controller = "<?=site_url('registration/individual')?>";
     var directto = "<?=site_url('registration/team')?>";
-    var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
     var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
     var ID_TYPE = <?=json_encode($GLOBALS['ID_TYPE'])?>;
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
