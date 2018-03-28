@@ -325,8 +325,8 @@ function restrictIndividual() {
         rdb.prop('disabled', false);
     } else {
         lunch.prop('disabled', false);
-        race.val('0');
         race.prop('disabled', true);
+        race.prop('checked', false);
         team.prop('checked', false);
         team.prop('disabled', true);
         rdb.prop('disabled', true);
@@ -358,7 +358,7 @@ function resetIndividual() {
     form.find("[name='id_type']").val("identity");
     form.find("[name='id_number']").val("");
     form.find("[name='gender']").val("1");
-    form.find("[name='race']").val("0");
+    form.find("[name='race']").prop('checked', false);
     form.find("[name='ifrace']").val("0");
     form.find("[name='islam']").val("0");
     form.find("[name='ifteam']").prop('checked', false);
