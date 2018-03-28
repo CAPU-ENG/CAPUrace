@@ -286,11 +286,11 @@ function fetchIndividual(order) {
     form.find("[name='id_number']").val(item.id_number);
     form.find("[name='gender']").val(item.gender);
     if ( item.gender == 1){
-        form.find("[name='race']").val(item.race);
+        form.find("[name='race']").prop('checked', item.race);
         form.find("[name='roadbike']").prop('checked', item.rdb);
     }
     if ( item.gender == 2){
-        form.find("[name='race']").val(item.race_f);
+        form.find("[name='race']").prop('checked', item.race_f);
         form.find("[name='roadbike']").prop('checked', item.rdb_f);
     }
     form.find("[name='ifrace']").val(item.ifrace);
@@ -298,7 +298,6 @@ function fetchIndividual(order) {
     form.find("[name='ifteam']").prop('checked', item.ifteam);
     form.find("[name='dinner']").prop('checked', item.dinner);
     form.find("[name='lunch']").prop('checked', item.lunch);
-    form.find("[name='roadbike']").prop('checked', item.rdb);
     restrictIndividual();
 }
 
