@@ -138,34 +138,55 @@ class Registration extends CI_Controller {
                     )));
                 }
                 // race
-                if (!array_key_exists($item_post['race'], $GLOBALS['CAPURACE'])) {
+                if (!array_key_exists($item_post['race'], $GLOBALS['CAPURACE_M'])) {
                     exit(err_custom_msg('1090', array(
                         'order' => $item_post['order'] + 1,
                     )));
-                } else if ($item_post['ifrace'] == '0' and $item_post['race'] != '0') {
-                    exit(err_custom_msg('1091', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if (($item_post['ifrace'] != '0') and ($item_post['race'] == '0') and
-                        ($item_post['ifteam'] == '0') and ($item_post['rdb'] == '0')) {
-                    exit(err_custom_msg('1092', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '1' and
-                    !array_key_exists($item_post['race'], $GLOBALS['CAPURACE_M'])) {
-                    exit(err_custom_msg('1093', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '2' and
-                    !array_key_exists($item_post['race'], $GLOBALS['CAPURACE_F'])) {
-                    exit(err_custom_msg('1094', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '2' and $item_post['rdb'] == '1') {
-                    exit(err_custom_msg('1095', array(
+                } 
+                if (!array_key_exists($item_post['race_f'], $GLOBALS['CAPURACE_F'])) {
+                    exit(err_custom_msg('1090', array(
                         'order' => $item_post['order'] + 1,
                     )));
                 }
+                if (!array_key_exists($item_post['rdb'], $GLOBALS['CAPURDB_M'])) {
+                    exit(err_custom_msg('1090', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                if (!array_key_exists($item_post['race'], $GLOBALS['CAPURDB_F'])) {
+                    exit(err_custom_msg('1090', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+
+                if ($item_post['ifrace'] == '0' and ($item_post['race'] != '0' or 
+                        $item_post['race_f'] != '0' or $item_post['rdb'] != '0' or 
+                        $item_post['rdb_f'] != '0' or $item_post['ifteam'] != '0')) {
+                    exit(err_custom_msg('1091', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } 
+
+                if (($item_post['ifrace'] != '0') and ($item_post['race'] == '0') and
+                        ($item_post['race_f'] == '0') and ($item_post['ifteam'] == '0') and 
+                        ($item_post['rdb'] == '0') and ($item_post['rdb_f'] == '0')) {
+                    exit(err_custom_msg('1092', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+
+                }
+                if ($item_post['gender'] == '1' and
+                    ($item_post['race_f'] != '0' or $item_post['rdb_f'] != '0')) {
+                    exit(err_custom_msg('1093', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                if ($item_post['gender'] == '2' and
+                    ($item_post['race'] != '0' or $item_post['rdb'] != '0')) {
+                    exit(err_custom_msg('1094', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } 
                 // ifteam
                 if (!array_key_exists($item_post['ifteam'], $GLOBALS['JUDGE'])) {
                     exit(err_custom_msg('1100', array(
