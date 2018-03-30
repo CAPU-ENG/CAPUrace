@@ -101,29 +101,34 @@ if (! function_exists('individual_decode')) {
  */
 if (! function_exists('get_bill')) {
     function get_bill($data) {
-        if ($data['race'] && $data['ifteam']) {
-            $race_fee = 50;
-        } else if (! $data['ifrace']) {
-            $race_fee = 0;
+        if ($data['ifrace'] && $data['dinner']) {
+            $dinner_fee = 40;
+        } else if (! $data['dinner']) {
+            $dinner_fee = 0;
         } else {
-            $race_fee = 30;
+            $dinner_fee = 60;
         }
-        $race_num = ($data['race'] != 0) + $data['ifteam'] + $data['rdb'];
+        if ($data['ifrace'] || !$data['lunch']) {
+            $lunch_fee = 0;
+        } else {
+            $lunch_fee = 40;
+        } 
+        $race_num = $data['race'] + $data['race_f'] + $data['ifteam'] + $data['rdb'] + $data['rdb_f'];
         switch ($race_num) {
             case 0:
                 $race_fee = 0;
                 break;
             case 1:
-                $race_fee = 60;
+                $race_fee = 80;
                 break;
             case 2:
-                $race_fee = 85;
+                $race_fee = 100;
                 break;
             case 3:
-                $race_fee = 90;
+                $race_fee = 120;
                 break;
         }
-        $fee = $race_fee + 20 * $data['dinner'] + 20 * $data['lunch'] + $GLOBALS['ACCO_FEE'][$data['accommodation']];
+        $fee = $race_fee + $dinner_fee + $lunch_fee;
         return $fee;
     }
 }

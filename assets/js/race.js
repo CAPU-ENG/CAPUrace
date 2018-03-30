@@ -196,29 +196,31 @@ function cacheIndividual(order) {
     var gender = $("[name='gender']").val();
     var tel = $("[name='tel']").val();
     var ifrace = $("[name='ifrace']").val();
-    var islam = $("[name='islam']").val();
+    var islam = $("[name='islam']").prop('checked');
     var id_type = $("[name='id_type']").val();
     var id_number = $("[name='id_number']").val();
-    var accommodation = $("[name='accommodation']").val();
     var dinner = $("[name='dinner']").prop('checked');
     var lunch = $("[name='lunch']").prop('checked');
-    var race = $("[name='race']").val();
+    var race = $("[name='race']").prop('checked')*(gender == 1);
+    var race_f = $("[name='race']").prop('checked')*(gender == 2);
     var ifteam = $("[name='ifteam']").prop('checked');
-    var rdb = $("[name='roadbike']").prop('checked');
+    var rdb = $("[name='roadbike']").prop('checked')*(gender == 1);
+    var rdb_f = $("[name='roadbike']").prop('checked')*(gender == 2);
     data[order] = {
         order: order,
         name: $.trim(name),
         gender: gender,
         id_type: id_type,
         id_number: $.trim(id_number),
-        accommodation: accommodation,
         dinner: dinner,
         lunch: lunch,
         tel: $.trim(tel),
         ifrace: ifrace,
         ifteam: ifteam,
         rdb: rdb,
+        rdb_f: rdb_f,
         race: race,
+        race_f: race_f,
         islam: islam
     };
     localStorage.setItem('individual', JSON.stringify(data));
@@ -236,23 +238,28 @@ function fillIndividual(item) {
     elem.find(".gender").text(GENDER[item.gender]);
     elem.find(".id_type").text(ID_TYPE[item.id_type]);
     elem.find(".id_number").text(item.id_number);
-    elem.find(".accommodation").text(ACCOMMODATION[item.accommodation]);
     elem.find(".dinner").text(JUDGE[+item.dinner]);
     elem.find(".lunch").text(JUDGE[+item.lunch]);
     elem.find(".tel").text(item.tel);
     if (item.race != 0) {
-        elem.find(".race").text(CAPURACE[item.race]);
+        elem.find(".race").text('山地男子组');
+    }
+    if (item.race_f != 0) {
+        elem.find(".race").text('山地女子组');
     }
     if (item.ifteam != 0) {
         elem.find(".race").append(' 团体赛 ');
     }
     if (item.rdb != 0) {
-        elem.find(".race").append(' 公路赛 ');
+        elem.find(".race").append(' 公路男子组');
     }
-    if (item.race == 0 && item.rdb == 0 && item.ifteam == 0) {
+    if (item.rdb_f != 0) {
+        elem.find(".race").append(' 公路女子组');
+    }
+    if (item.race == 0 && item.race_f == 0 && item.rdb == 0 && item.rdb_f == 0 && item.ifteam == 0) {
         elem.find(".race").append(' 不参加 ');
     }
-    elem.find(".islam").text(JUDGE[item.islam]);
+    elem.find(".islam").text(JUDGE[+item.islam]);
     $(".ind-list").append(elem);
 }
 
@@ -277,15 +284,20 @@ function fetchIndividual(order) {
     form.find("[name='tel']").val(item.tel);
     form.find("[name='id_type']").val(item.id_type);
     form.find("[name='id_number']").val(item.id_number);
-    form.find("[name='accommodation']").val(item.accommodation);
     form.find("[name='gender']").val(item.gender);
-    form.find("[name='race']").val(item.race);
+    if ( item.gender == 1){
+        form.find("[name='race']").prop('checked', item.race);
+        form.find("[name='roadbike']").prop('checked', item.rdb);
+    }
+    if ( item.gender == 2){
+        form.find("[name='race']").prop('checked', item.race_f);
+        form.find("[name='roadbike']").prop('checked', item.rdb_f);
+    }
     form.find("[name='ifrace']").val(item.ifrace);
-    form.find("[name='islam']").val(item.islam);
+    form.find("[name='islam']").prop('checked',item.islam);
     form.find("[name='ifteam']").prop('checked', item.ifteam);
     form.find("[name='dinner']").prop('checked', item.dinner);
     form.find("[name='lunch']").prop('checked', item.lunch);
-    form.find("[name='roadbike']").prop('checked', item.rdb);
     restrictIndividual();
 }
 
@@ -297,7 +309,6 @@ function restrictIndividual() {
     var team = $("[name='ifteam']");
     var race = $("[name='race']");
     var rdb = $("[name='roadbike']");
-
     var ifrace = ($("[name='ifrace']").val() == '1');
     var ismale = ($("[name='gender']").val() == '1');
 
@@ -313,14 +324,10 @@ function restrictIndividual() {
         rdb.prop('disabled', false);
     } else {
         lunch.prop('disabled', false);
-        race.val('0');
         race.prop('disabled', true);
+        race.prop('checked', false);
         team.prop('checked', false);
         team.prop('disabled', true);
-        rdb.prop('disabled', true);
-        rdb.prop('checked', false);
-    }
-    if (!ismale) {
         rdb.prop('disabled', true);
         rdb.prop('checked', false);
     }
@@ -349,11 +356,10 @@ function resetIndividual() {
     form.find("[name='tel']").val("");
     form.find("[name='id_type']").val("identity");
     form.find("[name='id_number']").val("");
-    form.find("[name='accommodation']").val("0");
     form.find("[name='gender']").val("1");
-    form.find("[name='race']").val("0");
+    form.find("[name='race']").prop('checked', false);
     form.find("[name='ifrace']").val("0");
-    form.find("[name='islam']").val("0");
+    form.find("[name='islam']").prop('checked', false);
     form.find("[name='ifteam']").prop('checked', false);
     form.find("[name='dinner']").prop('checked', false);
     form.find("[name='lunch']").prop('checked', false);
@@ -372,6 +378,7 @@ function postIndividual() {
         ind.ifteam = +ind.ifteam;
         ind.dinner = +ind.dinner;
         ind.lunch = +ind.lunch;
+        ind.islam = +ind.islam;
     });
     $.post(controller, item, function(response) {
         if (response.code != "200") {
