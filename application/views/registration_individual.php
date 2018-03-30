@@ -17,22 +17,14 @@
                 </select>
             </div>
             <label class="col-sm-1">手机</label>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <input class="form-control" name="tel" type="text">
-            </div>
-            <label class="col-sm-1">参赛情况</label>
-            <div class="col-sm-1">
-                <select class="form-control" name="ifrace">
-                    <option value="0">观赛</option>
-                    <option value="1">参赛</option>
-                </select>
             </div>
             <label class="col-sm-1">清真</label>
             <div class="col-sm-1">
-                <select class="form-control" name="islam">
-                    <option value="0">否</option>
-                    <option value="1">是</option>
-                </select>
+                <div class="col-sm-1">
+                <input type="checkbox" name="islam">
+            </div>
             </div>
         </div>
         <div class="row">
@@ -57,6 +49,13 @@
         </div>
         <div class="show-if-attend">
             <div class="row">
+                <label class="col-sm-1">参赛情况</label>
+                <div class="col-sm-2">
+                <select class="form-control" name="ifrace">
+                    <option value="0">观赛</option>
+                    <option value="1">参赛</option>
+                </select>
+                </div>
                 <label class="col-sm-1">山地赛</label>
                 <div class="col-sm-1">
                     <input type="checkbox" name="race">

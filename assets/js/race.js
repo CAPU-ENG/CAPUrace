@@ -196,7 +196,7 @@ function cacheIndividual(order) {
     var gender = $("[name='gender']").val();
     var tel = $("[name='tel']").val();
     var ifrace = $("[name='ifrace']").val();
-    var islam = $("[name='islam']").val();
+    var islam = $("[name='islam']").prop('checked');
     var id_type = $("[name='id_type']").val();
     var id_number = $("[name='id_number']").val();
     var dinner = $("[name='dinner']").prop('checked');
@@ -259,7 +259,7 @@ function fillIndividual(item) {
     if (item.race == 0 && item.race_f == 0 && item.rdb == 0 && item.rdb_f == 0 && item.ifteam == 0) {
         elem.find(".race").append(' 不参加 ');
     }
-    elem.find(".islam").text(JUDGE[item.islam]);
+    elem.find(".islam").text(JUDGE[+item.islam]);
     $(".ind-list").append(elem);
 }
 
@@ -294,7 +294,7 @@ function fetchIndividual(order) {
         form.find("[name='roadbike']").prop('checked', item.rdb_f);
     }
     form.find("[name='ifrace']").val(item.ifrace);
-    form.find("[name='islam']").val(item.islam);
+    form.find("[name='islam']").prop('checked',item.islam);
     form.find("[name='ifteam']").prop('checked', item.ifteam);
     form.find("[name='dinner']").prop('checked', item.dinner);
     form.find("[name='lunch']").prop('checked', item.lunch);
@@ -359,7 +359,7 @@ function resetIndividual() {
     form.find("[name='gender']").val("1");
     form.find("[name='race']").prop('checked', false);
     form.find("[name='ifrace']").val("0");
-    form.find("[name='islam']").val("0");
+    form.find("[name='islam']").prop('checked', false);
     form.find("[name='ifteam']").prop('checked', false);
     form.find("[name='dinner']").prop('checked', false);
     form.find("[name='lunch']").prop('checked', false);
@@ -378,6 +378,7 @@ function postIndividual() {
         ind.ifteam = +ind.ifteam;
         ind.dinner = +ind.dinner;
         ind.lunch = +ind.lunch;
+        ind.islam = +ind.islam;
     });
     $.post(controller, item, function(response) {
         if (response.code != "200") {
