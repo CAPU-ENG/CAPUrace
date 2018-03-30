@@ -159,9 +159,17 @@ if (! function_exists('validate_mobile')) {
  * Validation for id number.
  */
 if (! function_exists('validate_id_number')) {
-    function validate_id_number($id_number, $id_type) {
+    function validate_id_number($id_number, $id_type, $gender) {
         if ($id_type == "passport") return true;
-        if ($id_type == "identity" && in_array(strlen($id_number), array(15, 18))) return true;
+        if ($id_type == "identity") {
+            if (strlen($id_number) == 15){
+                return true;
+            }
+            if (strlen($id_number) == 18){
+                return true;
+            }
+            
+        } 
         // NOTE(huxuan): We may add more validation here in the future.
         // NOTE(Luolc): Take passport validation into consideration later.
         return false;
