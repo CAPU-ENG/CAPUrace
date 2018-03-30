@@ -124,7 +124,7 @@ class Registration extends CI_Controller {
                     )));
                 }
                 // id_number
-                if (!validate_id_number($item_post['id_number'], $item_post['id_type'])) {
+                if (!validate_id_number($item_post['id_number'], $item_post['id_type'], $item_post['gender'])) {
                     exit(err_custom_msg('1050', array(
                         'order' => $item_post['order'] + 1,
                     )));
