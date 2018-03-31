@@ -15,7 +15,8 @@ class MY_Email extends CI_Email
 
         $this->ci->config->load('email');
         $this->from_mail = $this->ci->config->item('smtp_user');
-
+        $this->mail_host = $this->ci->config->item('smtp_host');
+        $this->mail_pass = $this->ci->config->item('smtp_pass');
         $this->ci->load->helper(array('url'));
         $this->ci->load->model('user_model', 'user');
     }
@@ -32,12 +33,18 @@ class MY_Email extends CI_Email
         date_default_timezone_set('PRC');
         $defaultOptions = array(
             'from_mail' => $this->from_mail,
-            'from_name' => '北京大学自行车协会'
+            'from_name' => '北京大学自行车协会',
+        );
+        $mail_config = array(
+            'protocol' => 'smtp',
+            'smtp_user' => $this->from_mail,
+            'smtp_host' => $this->mail_host,
+            'smtp_pass' => $this->mail_pass
         );
         $options = array_merge($defaultOptions, $customOptions);
         $from_mail = $options['from_mail'];
         $from_name = $options['from_name'];
-
+        $this->initialize($mail_config);
         $this->set_mailtype('html');
         $this->from($from_mail, $from_name);
         $this->reply_to('beidachexie@126.com', $from_name);
