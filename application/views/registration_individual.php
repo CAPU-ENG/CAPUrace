@@ -1,6 +1,24 @@
 <div class="indcontainer">
     <h3>请录入人员信息（每输入一个人员信息之后点击保存进入下一个）</h3>
     <hr/>
+
+    <?php if (!$rdb_m_status): ?>
+    <p style="color: red">公路男子组名额已满，无法报名!</p>
+    <hr/>
+    <?php endif; ?>
+    <?php if (!$rdb_f_status): ?>
+    <p style="color: red">公路女子组名额已满，无法报名!</p>
+    <hr/>
+    <?php endif; ?>
+    <?php if (!$race_m_status): ?>
+    <p style="color: red">山地男子组名额已满，无法报名!</p>
+    <hr/>
+    <?php endif; ?>
+    <?php if (!$race_f_status): ?>
+    <p style="color: red">山地女子组名额已满，无法报名!</p>
+    <hr/>
+    <?php endif; ?>
+
     <div class="form-group reg">
         <input name="order" class="hidden">
         <div class="row">

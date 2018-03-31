@@ -47,9 +47,10 @@ class Registration extends CI_Controller {
      */
     public function individual() {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $quota_results = $this->people->get_race_quota();
             $this->load->view('header_homepage');
             $this->load->view('add_hilight_nav2');
-            $this->load->view('registration_individual');
+            $this->load->view('registration_individual', $quota_results);
             $this->load->view('footer');
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
