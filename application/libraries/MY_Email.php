@@ -33,7 +33,7 @@ class MY_Email extends CI_Email
         date_default_timezone_set('PRC');
         $defaultOptions = array(
             'from_mail' => $this->from_mail,
-            'from_name' => '北京大学自行车协会',
+            'from_name' => '北京大学自行车协会'
         );
         $mail_config = array(
             'protocol' => 'smtp',
@@ -44,6 +44,7 @@ class MY_Email extends CI_Email
         $options = array_merge($defaultOptions, $customOptions);
         $from_mail = $options['from_mail'];
         $from_name = $options['from_name'];
+        
         $this->initialize($mail_config);
         $this->set_mailtype('html');
         $this->from($from_mail, $from_name);
