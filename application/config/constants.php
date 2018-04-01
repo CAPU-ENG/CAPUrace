@@ -204,7 +204,7 @@ $SIGN_UP_DEADLINE = '2018-04-17';
 $ADMIN = array(
     '蓝宇' => '89ce71b4186b876b5e3634450b4412a2',
     '阿喆' => '131be0ab69e93d7206fb1235c8887e74',
-    'capu' => '57e639b8250f5c728cf23280cc0e15ff'
+    'capu' => '9ee1accf374c1862c39e2784f224d7fd'
 );
 
 $ACCOUNTANT_PASS = '89ce71b4186b876b5e3634450b4412a2';
