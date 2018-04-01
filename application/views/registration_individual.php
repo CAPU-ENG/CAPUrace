@@ -48,13 +48,6 @@
             <div class="col-sm-3">
                 <input class="form-control" name="tel" type="text">
             </div>
-            <label class="col-sm-1">参赛情况</label>
-            <div class="col-sm-1">
-                <select class="form-control" name="ifrace">
-                    <option value="0">观赛</option>
-                    <option value="1" selected="selected">参赛</option>
-                </select>
-            </div>
             <label class="col-sm-1">清真</label>
             <div class="col-sm-1">
                 <div class="col-sm-1">
