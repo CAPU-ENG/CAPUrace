@@ -184,6 +184,7 @@ class People_model extends CI_Model {
      */
     public function get_race_quota() {
         $query = $this->db->where('deleted', false)->where('ifrace', true)->get('people');
+        $query = $this->db->where('deleted', false)->where('ifrace', true)->get('people');
         $team_num = 0;
         $rdb_m_num = 0;
         $rdb_f_num = 0;
@@ -211,6 +212,13 @@ class People_model extends CI_Model {
         $quota_results['rdb_f_status'] = $GLOBALS['RDB_F_QUOTA'] - $rdb_f_num;
         $quota_results['race_m_status'] = $GLOBALS['RACE_M_QUOTA'] - $race_m_num;
         $quota_results['race_f_status'] = $GLOBALS['RACE_F_QUOTA'] - $race_f_num;
+
+        $quota_results['team_status'] = $quota_results['team_status'] > 0 ? $quota_results['team_status'] : 0;
+        $quota_results['rdb_m_status'] = $quota_results['rdb_m_status'] > 0 ? $quota_results['rdb_m_status'] : 0;
+        $quota_results['rdb_f_status'] = $quota_results['rdb_f_status'] > 0 ? $quota_results['rdb_f_status'] : 0;
+        $quota_results['race_m_status'] = $quota_results['race_m_status'] > 0 ? $quota_results['race_m_status'] : 0;
+        $quota_results['race_f_status'] = $quota_results['race_f_status'] > 0 ? $quota_results['race_f_status'] : 0;
+
         return $quota_results;
     }
 

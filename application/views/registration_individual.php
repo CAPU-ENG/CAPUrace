@@ -2,29 +2,8 @@
     <h3>请录入人员信息（每输入一个人员信息之后点击保存进入下一个）</h3>
     <hr/>
 
-    <?php if ($race_m_status > 0): ?>
-        <p style="color: red">山地男子组名额剩余<?=$race_m_status?>个！</p>
-    <?php else: ?> 
-        <p style="color: red">山地男子组名额已满，无法报名!</p>
-    <?php endif; ?>
-
-    <?php if ($race_f_status > 0): ?>
-        <p style="color: red">山地女子组名额剩余<?=$race_f_status?>个！</p>
-    <?php else: ?> 
-        <p style="color: red">山地女子组名额已满，无法报名!</p>
-    <?php endif; ?>
-
-    <?php if ($rdb_m_status > 0): ?>
-        <p style="color: red">公路男子组名额剩余<?=$rdb_m_status?>个！</p>
-    <?php else: ?>    
-        <p style="color: red">公路男子组名额已满，无法报名!</p>
-    <?php endif; ?>
-
-    <?php if ($rdb_f_status > 0): ?>
-        <p style="color: red">公路女子组名额剩余<?=$rdb_f_status?>个！</p>
-    <?php else: ?> 
-        <p style="color: red">公路女子组名额已满，无法报名!</p>
-    <?php endif; ?>
+    <p style="color: red">名额剩余：山地男子组<?=$race_m_status?>个,  山地女子组<?=$race_f_status?>个， 
+           公路男子组<?=$rdb_m_status?>个，公路女子组<?=$rdb_f_status?>个</p>
     <hr/>
 
 
