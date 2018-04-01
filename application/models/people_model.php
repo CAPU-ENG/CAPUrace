@@ -206,11 +206,11 @@ class People_model extends CI_Model {
             $race_f_num += $row->race_f;
             
         }
-        $quota_results['team_status'] = $team_num >= $GLOBALS['RACE_TEAM_QUOTA'] ? false : true;
-        $quota_results['rdb_m_status'] = $rdb_m_num >= $GLOBALS['RDB_M_QUOTA'] ? false : true;
-        $quota_results['rdb_f_status'] = $rdb_f_num >= $GLOBALS['RDB_F_QUOTA'] ? false : true;
-        $quota_results['race_m_status'] = $race_m_num >= $GLOBALS['RACE_M_QUOTA'] ? false : true;
-        $quota_results['race_f_status'] = $race_f_num >= $GLOBALS['RACE_F_QUOTA'] ? false : true;
+        $quota_results['team_status'] = $GLOBALS['RACE_TEAM_QUOTA'] - $team_num;
+        $quota_results['rdb_m_status'] = $GLOBALS['RDB_M_QUOTA'] - $rdb_m_num;
+        $quota_results['rdb_f_status'] = $GLOBALS['RDB_F_QUOTA'] - $rdb_f_num;
+        $quota_results['race_m_status'] = $GLOBALS['RACE_M_QUOTA'] - $race_m_num;
+        $quota_results['race_f_status'] = $GLOBALS['RACE_F_QUOTA'] - $race_f_num;
         return $quota_results;
     }
 
