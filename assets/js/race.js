@@ -363,6 +363,7 @@ function resetIndividual() {
     form.find("[name='ifteam']").prop('checked', false);
     form.find("[name='dinner']").prop('checked', false);
     form.find("[name='lunch']").prop('checked', false);
+    form.find("[name='lunch']").prop('disabled', false);
     form.find("[name='roadbike']").prop('checked', false);
 }
 
