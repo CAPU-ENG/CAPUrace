@@ -183,8 +183,9 @@ class People_model extends CI_Model {
      * Get which race is above quota
      */
     public function get_race_quota() {
-        $query = $this->db->where('deleted', false)->where('ifrace', true)->get('people');
-        $query = $this->db->where('deleted', false)->where('ifrace', true)->get('people');
+        $query = $this->db->query('select people.id,people.school_id,users.id,users.editable,people.ifteam,people.rdb,
+            people.rdb_f,people.race,people.race_f from people inner join users on people.school_id=users.id 
+            where people.deleted=0 and people.ifrace=1 and users.deleted=0;');
         $team_num = 0;
         $rdb_m_num = 0;
         $rdb_f_num = 0;
