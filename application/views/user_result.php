@@ -170,7 +170,7 @@
             $(this).text("正在验证剩余名额...");
             postForQuotaVerification();
             this.disabled=false;
-            $(this).text("提交，前往团体赛报名");
+            $(this).text("前往支付");
         }
     });
     $("#btn-check-payment").click(function() {

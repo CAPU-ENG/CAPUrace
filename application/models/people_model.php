@@ -193,11 +193,11 @@ class People_model extends CI_Model {
         $race_f_num = 0;
 
         $quota_results = array(
-            'team_status' => true,
-            'rdb_m_status' => true,
-            'rdb_f_status' => true,
-            'race_m_status' => true,
-            'race_f_status' => true
+            'team_status' => 0,
+            'rdb_m_status' => 0,
+            'rdb_f_status' => 0,
+            'race_m_status' => 0,
+            'race_f_status' => 0
          );
         foreach ($query->result() as $row)
         {

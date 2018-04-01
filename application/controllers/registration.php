@@ -63,6 +63,7 @@ class Registration extends CI_Controller {
             $id_number_set = array();
             $key_set = array();
             if (!$ind_post) exit(err_msg('999'));
+            
             $rdb_f_count = 0;
             $rdb_m_count = 0;
             $race_m_count = 0;

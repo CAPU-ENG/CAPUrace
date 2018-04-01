@@ -193,7 +193,7 @@ $ACCO_FEE = array(
 /*
  * Date and Time Settings
  */
-$SIGN_UP_DEADLINE = '2018-04-16';
+$SIGN_UP_DEADLINE = '2018-04-17';
 
 /*
  * Admin user list
