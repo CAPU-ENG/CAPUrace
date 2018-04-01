@@ -389,7 +389,17 @@ function postIndividual() {
         }
     }, "json");
 }
+function postForQuotaVerification() {
+    $.post(controller, function(response) {
+        if (response.code != "200") {
+            alert(response.msg);
+            window.location.assign(directtoregistration);
+        } else {
+            window.location.assign(directtofreeze);
+        }
+    }, "json");
 
+}
 /*
  * This function fills the team form using the data from the database.
  */
