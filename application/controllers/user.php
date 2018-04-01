@@ -136,14 +136,25 @@ class User extends CI_Controller {
             $this->load->view('user_result', $data);
             $this->load->view('footer');
         }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $quota_results = $this->people->get_race_quota();
+            if (!$quota_results['rdb_m_status']) exit(err_msg('1104'));
+            if (!$quota_results['rdb_f_status']) exit(err_msg('1105'));
+            if (!$quota_results['race_m_status']) exit(err_msg('1102'));
+            if (!$quota_results['race_f_status']) exit(err_msg('1103'));
+            $err_code = '200';
+            exit(err_msg($err_code));
+        }
     }
 
     public function freeze() {
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
         $school_id = $this->session->userdata('id');
         $this->user->campus_race_verify($school_id);
         $this->user->freeze($school_id);
         $this->session->set_userdata('editable', 0);
         redirect(site_url('user/payment'));
+        }
     }
 
     public function payment() {

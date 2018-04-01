@@ -363,6 +363,7 @@ function resetIndividual() {
     form.find("[name='ifteam']").prop('checked', false);
     form.find("[name='dinner']").prop('checked', false);
     form.find("[name='lunch']").prop('checked', false);
+    form.find("[name='lunch']").prop('disabled', false);
     form.find("[name='roadbike']").prop('checked', false);
 }
 
@@ -388,7 +389,17 @@ function postIndividual() {
         }
     }, "json");
 }
+function postForQuotaVerification() {
+    $.post(controller, function(response) {
+        if (response.code != "200") {
+            alert(response.msg);
+            window.location.assign(directtoregistration);
+        } else {
+            window.location.assign(directtofreeze);
+        }
+    }, "json");
 
+}
 /*
  * This function fills the team form using the data from the database.
  */

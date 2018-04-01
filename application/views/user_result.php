@@ -154,6 +154,9 @@
 
 </div>
 <script>
+    var directtoregistration = "<?=site_url('registration/individual')?>";
+    var directtofreeze = "<?=site_url('user/freeze')?>";
+    var controller = "<?=site_url('user/result')?>";
     $("#btn-return-to-index").click(function() {
         window.location.assign("<?=site_url('index')?>");
     });
@@ -163,7 +166,11 @@
     $("#btn-go-to-pay").click(function() {
         var msg = "前往支付之后将无法再次修改，确定继续？";
         if (confirm(msg) == true) {
-            window.location.assign("<?=site_url('user/freeze')?>");
+            this.disabled=true;
+            $(this).text("正在验证剩余名额...");
+            postForQuotaVerification();
+            this.disabled=false;
+            $(this).text("前往支付");
         }
     });
     $("#btn-check-payment").click(function() {

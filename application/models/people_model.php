@@ -180,6 +180,51 @@ class People_model extends CI_Model {
     }
 
     /*
+     * Get which race is above quota
+     */
+    public function get_race_quota() {
+        $query = $this->db->query('select people.id,people.school_id,users.id,users.editable,people.ifteam,people.rdb,
+            people.rdb_f,people.race,people.race_f from people inner join users on people.school_id=users.id 
+            where people.deleted=0 and people.ifrace=1 and users.deleted=0;');
+        $team_num = 0;
+        $rdb_m_num = 0;
+        $rdb_f_num = 0;
+        $race_m_num = 0;
+        $race_f_num = 0;
+
+        $quota_results = array(
+            'team_status' => 0,
+            'rdb_m_status' => 0,
+            'rdb_f_status' => 0,
+            'race_m_status' => 0,
+            'race_f_status' => 0
+         );
+        foreach ($query->result() as $row)
+        {
+            $team_num   +=  $row->ifteam;
+            $rdb_m_num  += $row->rdb;
+            $rdb_f_num  += $row->rdb_f;
+            $race_m_num += $row->race;
+            $race_f_num += $row->race_f;
+            
+        }
+        $quota_results['team_status'] = $GLOBALS['RACE_TEAM_QUOTA'] - $team_num;
+        $quota_results['rdb_m_status'] = $GLOBALS['RDB_M_QUOTA'] - $rdb_m_num;
+        $quota_results['rdb_f_status'] = $GLOBALS['RDB_F_QUOTA'] - $rdb_f_num;
+        $quota_results['race_m_status'] = $GLOBALS['RACE_M_QUOTA'] - $race_m_num;
+        $quota_results['race_f_status'] = $GLOBALS['RACE_F_QUOTA'] - $race_f_num;
+
+        $quota_results['team_status'] = $quota_results['team_status'] > 0 ? $quota_results['team_status'] : 0;
+        $quota_results['rdb_m_status'] = $quota_results['rdb_m_status'] > 0 ? $quota_results['rdb_m_status'] : 0;
+        $quota_results['rdb_f_status'] = $quota_results['rdb_f_status'] > 0 ? $quota_results['rdb_f_status'] : 0;
+        $quota_results['race_m_status'] = $quota_results['race_m_status'] > 0 ? $quota_results['race_m_status'] : 0;
+        $quota_results['race_f_status'] = $quota_results['race_f_status'] > 0 ? $quota_results['race_f_status'] : 0;
+
+        return $quota_results;
+    }
+
+
+    /*
      * Clear unpaid RDB athletes.
      */
     public function clear() {
