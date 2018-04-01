@@ -59,10 +59,12 @@ class MY_Email extends CI_Email
      * Send account confirmation email.
      */
     public function send_account_confirm_mail($mail) {
-        $subject = '第十五届全国高校自行车交流赛帐户确认';
+        $subject = '第十五届全国高校自行车交流赛帐户确认（含ID）';
         $token = $this->ci->user->get_token($mail);
         $link = site_url('user/activate') . '/' . $token;
-        $message = '请点击以下链接激活帐户' . $link;
+        $id = $this->ci->user->get_id($mail);
+        $id_message='<br><br>贵高校本次比赛的ID是<b>' . $id . '</b>，请领队同学务必牢记，并在比赛签到时出示。<br><br>祝好！<br><br>北京大学自行车协会';
+        $message = '请点击以下链接激活帐户' . $link . $id_message;
         $this->send_mail($mail, $subject, $message);
     }
 

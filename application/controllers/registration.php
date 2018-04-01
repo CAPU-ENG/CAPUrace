@@ -63,6 +63,7 @@ class Registration extends CI_Controller {
             $id_number_set = array();
             $key_set = array();
             if (!$ind_post) exit(err_msg('999'));
+
             
             $rdb_f_count = 0;
             $rdb_m_count = 0;
@@ -71,7 +72,7 @@ class Registration extends CI_Controller {
             $audience_count = 0;
             foreach ($ind_post as $item_post) {
                 if ($item_post['ifrace'] == '0') {
-                    $audience_count++;
+                    $aud_count++;
                 }
                 if ($item_post['rdb'] == '1' and $item_post['gender'] == '1') {
                     $rdb_m_count++;
@@ -213,6 +214,19 @@ class Registration extends CI_Controller {
                 }
             }
 
+            $rdb_quota = $this->people->get_rdb_quota($school_id);
+            if ($rdb_count > $GLOBALS['RDB_QUOTA_PER_SCHOOL']) {
+                exit(err_custom_msg('1096', array(
+                    'quota' => $GLOBALS['RDB_QUOTA_PER_SCHOOL'],
+                )));
+            } else if ($rdb_quota < 0) {
+                exit(err_custom_msg('1097', array()));
+            }
+            if ($aud_count > $GLOBALS['AUD_QUOTA_PER_SCHOOL']) {
+                exit(err_custom_msg('1099', array(
+                    'quota' => $GLOBALS['AUD_QUOTA_PER_SCHOOL'],
+                )));
+            }
             $quota_results = $this->people->get_race_quota();
             if (!$quota_results['rdb_m_status'] and $rdb_m_count > 0) exit(err_msg('1104'));
             if (!$quota_results['rdb_f_status'] and $rdb_f_count > 0) exit(err_msg('1105'));
@@ -220,7 +234,7 @@ class Registration extends CI_Controller {
             if (!$quota_results['race_f_status'] and $race_f_count > 0) exit(err_msg('1103'));
 
             $audience_quota = $this->people->get_audience_quota($school_id);
-            if ($audience_count > $audience_quota) {
+            if ($aud_count > $audience_quota) {
                 exit(err_custom_msg('1098', array(
                     'quota' => $audience_quota,
                 )));
