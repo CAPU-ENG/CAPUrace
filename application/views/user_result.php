@@ -42,10 +42,9 @@
             <th>手机号</th>
             <th>证件类型</th>
             <th>证件编号</th>
-            <th>北大赛</th>
-            <th>住宿</th>
-            <th>5.6晚餐</th>
-            <th>5.7午餐</th>
+            <th>参赛项目</th>
+            <th>5.5午餐+晚餐</th>
+            <th>5.6午餐</th>
             <th>清真</th>
             <th>费用</th>
         </tr>
@@ -63,20 +62,25 @@
             <td class="race">
                 <?php
                 if($item['race']) {
-                    echo  $GLOBALS['CAPURACE'][$item['race']];
+                    echo  '山地男子组';
+                }
+                if($item['race_f']) {
+                    echo  '山地女子组';
                 }
                 if ($item['ifteam']) {
                     echo ' 团体赛 ';
                 }
                 if ($item['rdb']) {
-                    echo ' 公路赛 ';
+                    echo ' 公路男子组 ';
                 }
-                if (!$item['race'] && !$item['rdb'] && !$item['ifteam']) {
+                if ($item['rdb_f']) {
+                    echo ' 公路女子组 ';
+                }
+                if (!$item['race'] && !$item['race_f'] && !$item['rdb'] && !$item['rdb_f'] && !$item['ifteam']) {
                     echo ' 不参加 ';
                 }
                 ?>
             </td>
-            <td class="accommodation"><?=$GLOBALS['ACCOMMODATION'][$item['accommodation']]?></td>
             <td class="dinner"><?=$GLOBALS['JUDGE'][$item['dinner']]?></td>
             <td class="lunch"><?=$GLOBALS['JUDGE'][$item['lunch']]?></td>
             <td class="islam"><?=$GLOBALS['JUDGE'][$item['islam']]?></td>
@@ -119,6 +123,13 @@
     </table>
     <hr/>
 
+    <?php if ($userinfo['campusrace']): ?> 
+    <div class="content">
+     <h4 style="text-align: center; color: #ff0000">您具备校内参赛资格，如需参加或了解更多信息，请联系北大车协外联人员!</h4>
+    </div>   
+    <hr/>
+    <?php endif; ?>
+    
     <div style="margin:0 auto;">
         <div class="col-sm-3"></div>
         <div class="col-sm-2">
@@ -143,6 +154,9 @@
 
 </div>
 <script>
+    var directtoregistration = "<?=site_url('registration/individual')?>";
+    var directtofreeze = "<?=site_url('user/freeze')?>";
+    var controller = "<?=site_url('user/result')?>";
     $("#btn-return-to-index").click(function() {
         window.location.assign("<?=site_url('index')?>");
     });
@@ -152,7 +166,11 @@
     $("#btn-go-to-pay").click(function() {
         var msg = "前往支付之后将无法再次修改，确定继续？";
         if (confirm(msg) == true) {
-            window.location.assign("<?=site_url('user/freeze')?>");
+            this.disabled=true;
+            $(this).text("正在验证剩余名额...");
+            postForQuotaVerification();
+            this.disabled=false;
+            $(this).text("前往支付");
         }
     });
     $("#btn-check-payment").click(function() {

@@ -131,17 +131,30 @@ class User extends CI_Controller {
             }
             $data['team'] = $team;
             $data['userinfo'] = $this->user->get_user_by_id($school_id);
+            $data['people_num'] = $this->user->campus_race_verify($school_id);
             $this->load->view('header_homepage');
             $this->load->view('user_result', $data);
             $this->load->view('footer');
         }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $quota_results = $this->people->get_race_quota();
+            if (!$quota_results['rdb_m_status']) exit(err_msg('1104'));
+            if (!$quota_results['rdb_f_status']) exit(err_msg('1105'));
+            if (!$quota_results['race_m_status']) exit(err_msg('1102'));
+            if (!$quota_results['race_f_status']) exit(err_msg('1103'));
+            $err_code = '200';
+            exit(err_msg($err_code));
+        }
     }
 
     public function freeze() {
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
         $school_id = $this->session->userdata('id');
+        $this->user->campus_race_verify($school_id);
         $this->user->freeze($school_id);
         $this->session->set_userdata('editable', 0);
         redirect(site_url('user/payment'));
+        }
     }
 
     public function payment() {
@@ -153,6 +166,7 @@ class User extends CI_Controller {
             $userinfo = $this->user->get_user_by_id($school_id);
             $data['bill'] = $userinfo['bill'];
             $data['association_name'] = $userinfo['association_name'];
+            $data['campusrace'] = $userinfo['campusrace'];
             $this->load->view('header_homepage');
             $this->load->view('user_payment', $data);
             $this->load->view('footer');
@@ -237,11 +251,10 @@ class User extends CI_Controller {
             ->setCellValue('F1', '证件编号')
             ->setCellValue('G1', '个人赛')
             ->setCellValue('H1', '团体赛')
-            ->setCellValue('I1', '住宿')
-            ->setCellValue('J1', '5.14晚餐')
-            ->setCellValue('K1', '5.15午餐')
-            ->setCellValue('L1', '清真')
-            ->setCellValue('M1', '费用');
+            ->setCellValue('I1', '5.5午餐+晚餐')
+            ->setCellValue('J1', '5.6午餐')
+            ->setCellValue('K1', '清真')
+            ->setCellValue('L1', '费用');
 
         foreach ($individual_info as $key => $item) {
             $i = $key + 2;
@@ -254,11 +267,10 @@ class User extends CI_Controller {
                 ->setCellValue('F' . $i, $item['id_number'])
                 ->setCellValue('G' . $i, $GLOBALS['CAPURACE'][$item['race']])
                 ->setCellValue('H' . $i, $GLOBALS['JUDGE'][$item['ifteam']])
-                ->setCellValue('I' . $i, $GLOBALS['ACCOMMODATION'][$item['accommodation']])
-                ->setCellValue('J' . $i, $GLOBALS['JUDGE'][$item['dinner']])
-                ->setCellValue('K' . $i, $GLOBALS['JUDGE'][$item['lunch']])
-                ->setCellValue('L' . $i, $GLOBALS['JUDGE'][$item['islam']])
-                ->setCellValue('M' . $i, $item['fee']);
+                ->setCellValue('I' . $i, $GLOBALS['JUDGE'][$item['dinner']])
+                ->setCellValue('J' . $i, $GLOBALS['JUDGE'][$item['lunch']])
+                ->setCellValue('K' . $i, $GLOBALS['JUDGE'][$item['islam']])
+                ->setCellValue('L' . $i, $item['fee']);
         }
 
 

@@ -115,22 +115,11 @@ class Admin extends CI_Controller {
         $data['npaid'] = $this->db->query('select count(*) as npaid from users where paid=1;')->result_array()[0]['npaid'];
         $data['nlook'] = $this->db->query('select count(*) as nlook from people where deleted=0 and ifrace=0;')->result_array()[0]['nlook'];
         $data['nrace'] = $this->db->query('select count(*) as nrace from people where deleted=0 and ifrace=1;')->result_array()[0]['nrace'];
-        $data['nmale'] = $this->db->query('select count(*) as nmale from people where deleted=0 and ifrace=1 and race=1;')->result_array()[0]['nmale'];
-        $data['nmale_expert'] = $this->db->query('select count(*) as nmale_expert from people where deleted=0 and ifrace=1 and race=2;')->result_array()[0]['nmale_expert'];
-        $data['nmale_rdb'] = $this->db->query('select count(*) as nmale_rdb from people where deleted=0 and rdb=1;')->result_array()[0]['nmale_rdb'];
-        $data['nfemale'] = $this->db->query('select count(*) as nfemale from people where deleted=0 and ifrace=1 and race=3;')->result_array()[0]['nfemale'];
+        $data['nmale_xc'] = $this->db->query('select count(*) as nmale_xc from people where deleted=0 and ifrace=1 and race=1;')->result_array()[0]['nmale_xc'];
+        $data['nfemale_xc'] = $this->db->query('select count(*) as nfemale_xc from people where deleted=0 and ifrace=1 and race_f=1;')->result_array()[0]['nfemale_xc'];
+        $data['nmale_rdb'] = $this->db->query('select count(*) as nmale_rdb from people where deleted=0 and ifrace=1 and rdb=1;')->result_array()[0]['nmale_rdb'];
+        $data['nfemale_rdb'] = $this->db->query('select count(*) as nfemale_rdb from people where deleted=0 and ifrace=1 and rdb_f=1;')->result_array()[0]['nfemale_rdb'];
         $data['nteams'] = $this->db->query('select count(*) as nteams from team where deleted=0;')->result_array()[0]['nteams'];
-        $accommodation = $this->db->query('select count(*) as live from people where deleted=0 group by accommodation;')->result_array();
-        if (empty($accommodation[1])) {
-            $data['hotel'] = 0;
-        } else {
-            $data['hotel'] = $accommodation[1]['live'];
-        }
-        if (empty($accommodation[2])) {
-            $data['tent'] = 0;
-        } else {
-            $data['tent'] = $accommodation[2]['live'];
-        }
         $data['dinner'] = $this->db->query('select count(*) as dinner from people where deleted=0 and dinner=1;')->result_array()[0]['dinner'];
         $data['lunch'] = $this->db->query('select count(*) as lunch from people where deleted=0 and lunch=1;')->result_array()[0]['lunch'];
 
@@ -236,42 +225,9 @@ class Admin extends CI_Controller {
         $this->_fill_individual($excel, $female);
 
 
-        // Sheet 5: 住宿表
+        // Sheet 5: 晚餐表
         $excel->createSheet(4);
-        $excel->setActiveSheetIndex(4)->setTitle('住宿总表');
-        $live = $this->db->where('deleted', 0)->where('accommodation != 0')
-            ->order_by('gender', 'asc')->order_by('accommodation', 'asc')
-            ->order_by('school_id', 'asc')->get('people')->result_array();
-        $excel->getActiveSheet()
-            ->setCellValue('A1', '序号')
-            ->setCellValue('B1', '姓名')
-            ->setCellValue('C1', '性别')
-            ->setCellValue('D1', '证件类型')
-            ->setCellValue('E1', '证件编号')
-            ->setCellValue('F1', '学校')
-            ->setCellValue('G1', '手机号')
-            ->setCellValue('H1', '住宿类型');
-        $i = 2;
-        foreach ($live as $key => $item) {
-            $school = $this->user->get_user_by_id($item['school_id']);
-            if (! $school['paid']) {
-                continue;
-            }
-            $excel->getActiveSheet()
-                ->setCellValue('A' . $i, $i - 1)
-                ->setCellValue('B' . $i, $item['name'])
-                ->setCellValue('C' . $i, $GLOBALS['GENDER'][$item['gender']])
-                ->setCellValue('D' . $i, $GLOBALS['ID_TYPE'][$item['id_type']])
-                ->setCellValue('E' . $i, "'" . $item['id_number'])
-                ->setCellValue('F' . $i, $school['school'])
-                ->setCellValue('G' . $i, $item['tel'])
-                ->setCellValue('H' . $i, $GLOBALS['ACCOMMODATION'][$item['accommodation']]);
-            $i++;
-        }
-
-        // Sheet 6: 晚餐表
-        $excel->createSheet(5);
-        $excel->setActiveSheetIndex(5)->setTitle('第一天晚餐表');
+        $excel->setActiveSheetIndex(4)->setTitle('第一天晚餐表');
         $dinner = $this->db->where('deleted', 0)->where('dinner', 1)->order_by('school_id', 'asc')->get('people')->result_array();
         $excel->getActiveSheet()
             ->setCellValue('A1', '序号')
@@ -296,9 +252,9 @@ class Admin extends CI_Controller {
 
 
 
-        // Sheet 7: 午餐表
-        $excel->createSheet(6);
-        $excel->setActiveSheetIndex(6)->setTitle('第二天午餐表');
+        // Sheet 6: 午餐表
+        $excel->createSheet(5);
+        $excel->setActiveSheetIndex(5)->setTitle('第二天午餐表');
         $lunch = $this->db->where('deleted', 0)->where('lunch', 1)->order_by('school_id', 'asc')->get('people')->result_array();
         $excel->getActiveSheet()
             ->setCellValue('A1', '序号')
@@ -322,9 +278,9 @@ class Admin extends CI_Controller {
         }
 
 
-        // Sheet 8: 团体赛表
-        $excel->createSheet(7);
-        $excel->setActiveSheetIndex(7)->setTitle('团体赛表');
+        // Sheet 7: 团体赛表
+        $excel->createSheet(6);
+        $excel->setActiveSheetIndex(6)->setTitle('团体赛表');
         $teams = $this->db->where('deleted', 0)->get('team')->result_array();
         $excel->getActiveSheet()
             ->setCellValue('A1', '序号')
@@ -353,9 +309,9 @@ class Admin extends CI_Controller {
             $i += 4;
         }
 
-        // Sheet 9: 公路赛表
-        $excel->createSheet(8);
-        $excel->setActiveSheetIndex(8)->setTitle('男子公路组');
+        // Sheet 8: 公路赛表
+        $excel->createSheet(7);
+        $excel->setActiveSheetIndex(7)->setTitle('男子公路组');
         $male_expert = $this->db->where('deleted', 0)->where('rdb', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $male_expert);
 

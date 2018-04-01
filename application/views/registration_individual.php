@@ -1,6 +1,34 @@
 <div class="indcontainer">
     <h3>请录入人员信息（每输入一个人员信息之后点击保存进入下一个）</h3>
     <hr/>
+
+    <p style="color: red">名额剩余：
+    <?php if ($race_m_status < 50): ?>
+        山地男子组: <?=$race_m_status?>个，
+    <?php else: ?> 
+        山地男子组: 充足，
+    <?php endif; ?>
+ 
+    <?php if ($race_f_status < 50): ?>
+        山地女子组: <?=$race_f_status?>个，
+    <?php else: ?> 
+        山地女子组：充足，
+    <?php endif; ?>
+ 
+    <?php if ($rdb_m_status < 50): ?>
+        公路男子组: <?=$rdb_m_status?>个，
+    <?php else: ?>    
+        公路男子组：充足，
+    <?php endif; ?>
+ 
+    <?php if ($rdb_f_status < 50): ?>
+        公路女子组: <?=$rdb_f_status?>个
+    <?php else: ?> 
+        公路女子组：充足
+     <?php endif; ?>
+    <hr/>
+
+
     <div class="form-group reg">
         <input name="order" class="hidden">
         <div class="row">
@@ -17,7 +45,7 @@
                 </select>
             </div>
             <label class="col-sm-1">手机</label>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <input class="form-control" name="tel" type="text">
             </div>
             <label class="col-sm-1">参赛情况</label>
@@ -29,13 +57,13 @@
             </div>
             <label class="col-sm-1">清真</label>
             <div class="col-sm-1">
-                <select class="form-control" name="islam">
-                    <option value="0">否</option>
-                    <option value="1">是</option>
-                </select>
+                <div class="col-sm-1">
+                <input type="checkbox" name="islam">
+            </div>
             </div>
         </div>
         <div class="row">
+            <label class="col-sm-1">证件类型</label>
             <div class="col-sm-2" style="float: left;">
                 <select class="form-control" name="id_type">
                     <option value="identity">身份证</option>
@@ -45,43 +73,36 @@
             <div class="col-sm-3">
                 <input class="form-control" name="id_number" placeholder="证件编号" type="text">
             </div>
-
-            <label class="col-sm-1">住宿方式</label>
-            <div class="col-sm-2">
-                <select class="form-control" name="accommodation">
-                    <?php foreach ($GLOBALS['ACCOMMODATION'] as $key => $value): ?>
-                        <option value="<?=$key?>"><?=$value?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <label class="col-sm-1">5.6晚餐</label>
+            <label class="col-sm-2">5.5午餐+晚餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="dinner">
             </div>
-            <label class="col-sm-1">5.7午餐</label>
+            <label class="col-sm-1">5.6午餐</label>
             <div class="col-sm-1">
                 <input type="checkbox" name="lunch">
             </div>
         </div>
         <div class="show-if-attend">
             <div class="row">
-                <label class="col-sm-1">山地赛</label>
+                <label class="col-sm-1">参赛情况</label>
                 <div class="col-sm-2">
-                    <select class="form-control" name="race">
-                        <?php foreach ($GLOBALS['CAPURACE'] as $key => $value): ?>
-                            <option value="<?=$key?>"><?=$value?></option>
-                        <?php endforeach; ?>
-                    </select>
+                <select class="form-control" name="ifrace">
+                    <option value="0">观赛</option>
+                    <option value="1">参赛</option>
+                </select>
+                </div>
+                <label class="col-sm-1">山地赛</label>
+                <div class="col-sm-1">
+                    <input type="checkbox" name="race">
+                </div>
+                <label class="col-sm-1">公路赛</label>
+                <div class="col-sm-1">
+                    <input type="checkbox" name="roadbike">
                 </div>
                 <label class="col-sm-1">团体赛</label>
                 <div class="col-sm-1">
                     <input type="checkbox" name="ifteam">
                 </div>
-                <label class="col-sm-1">公路赛</label>
-              <div class="col-sm-6">
-                <input type="checkbox" name="roadbike">
-                &nbsp;&nbsp;公路赛限男生报名，每校限5人，名额共80个，先到先得。
-              </div>
             </div>
         </div>
         <hr/>
@@ -105,10 +126,9 @@
             <th>手机号</th>
             <th>证件类型</th>
             <th>证件编号</th>
-            <th>北大赛</th>
-            <th>住宿</th>
-            <th>5.6晚餐</th>
-            <th>5.7午餐</th>
+            <th>参赛项目</th>
+            <th>5.5午餐+晚餐</th>
+            <th>5.6午餐</th>
             <th>清真</th>
             <th>操作</th>
         </tr>
@@ -122,7 +142,6 @@
             <td class="id_type"></td>
             <td class="id_number"></td>
             <td class="race"></td>
-            <td class="accommodation"></td>
             <td class="dinner"></td>
             <td class="lunch"></td>
             <td class="islam"></td>
@@ -151,8 +170,6 @@
 <script>
     var controller = "<?=site_url('registration/individual')?>";
     var directto = "<?=site_url('registration/team')?>";
-    var ACCOMMODATION = <?=json_encode($GLOBALS['ACCOMMODATION'])?>;
-    var CAPURACE = <?=json_encode($GLOBALS['CAPURACE'])?>;
     var GENDER = <?=json_encode($GLOBALS['GENDER'])?>;
     var ID_TYPE = <?=json_encode($GLOBALS['ID_TYPE'])?>;
     var JUDGE = <?=json_encode($GLOBALS['JUDGE'])?>;
@@ -180,14 +197,6 @@
         this.disabled=false;
         $(this).text("提交，前往团体赛报名");
     });
-    $("[name='gender']").change(function () {
-        $("[name='roadbike']").prop('checked', false);
-        if ($(this).val() == 2) {
-            $("[name='roadbike']").prop('disabled', true);
-        } else {
-            $("[name='roadbike']").prop('disabled', false);
-        }
-    })
     $("#return-to-index").click(function() {
         window.location.href = "<?=site_url('registration')?>";
     });

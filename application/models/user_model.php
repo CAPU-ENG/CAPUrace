@@ -241,6 +241,39 @@ class User_model extends CI_Model {
     }
 
     /*
+     * This function query the information of a school from database and judge if it has the 
+     * qualification to participate in campus race, write the result into database and 
+     * return the result;
+     */
+    public function campus_race_verify($id) {
+        $query = $this->db->where('deleted', 0)->where('school_id', $id)->where('ifrace != ', 0)->get('people');
+        $people_num = $query->num_rows();
+        $people_team_num = 0;
+        $people_rdb_m_num = 0;
+        $people_rdb_f_num = 0;
+        $people_race_m_num = 0;
+        $people_race_f_num = 0;
+        foreach ($query->result() as $row)
+        {
+            $people_team_num   +=  $row->ifteam;
+            $people_rdb_m_num  += $row->rdb;
+            $people_rdb_f_num  += $row->rdb_f;
+            $people_race_m_num += $row->race;
+            $people_race_f_num += $row->race_f;
+            
+        }
+        $people_race_m_num = $people_race_m_num  ? 1 : 0;
+        $people_race_f_num = $people_race_f_num  ? 1 : 0;
+        $people_team_num   = $people_team_num    ? 1 : 0;
+        $people_rdb_m_num  = $people_rdb_m_num   ? 1 : 0;
+        $people_rdb_f_num  = $people_rdb_f_num   ? 1 : 0;
+        $race_num = $people_race_m_num + $people_race_f_num + $people_rdb_m_num + $people_rdb_f_num + $people_team_num; 
+        $flag = $people_num >= 3 && $race_num >= 2;
+        $this->db->where('id', $id)->update('users', array('campusrace' => $flag));
+        return $flag ;
+    }
+
+    /*
      * Shut down the registration system.
      */
     public function freeze_all() {

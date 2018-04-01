@@ -47,9 +47,10 @@ class Registration extends CI_Controller {
      */
     public function individual() {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $quota_results = $this->people->get_race_quota();
             $this->load->view('header_homepage');
             $this->load->view('add_hilight_nav2');
-            $this->load->view('registration_individual');
+            $this->load->view('registration_individual', $quota_results);
             $this->load->view('footer');
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
@@ -62,14 +63,28 @@ class Registration extends CI_Controller {
             $id_number_set = array();
             $key_set = array();
             if (!$ind_post) exit(err_msg('999'));
-            $rdb_count = 0;
-            $aud_count = 0;
+
+            
+            $rdb_f_count = 0;
+            $rdb_m_count = 0;
+            $race_m_count = 0;
+            $race_f_count = 0;
+            $audience_count = 0;
             foreach ($ind_post as $item_post) {
                 if ($item_post['ifrace'] == '0') {
                     $aud_count++;
                 }
                 if ($item_post['rdb'] == '1' and $item_post['gender'] == '1') {
-                    $rdb_count++;
+                    $rdb_m_count++;
+                }
+                if ($item_post['rdb_f'] == '1' and $item_post['gender'] == '2') {
+                    $rdb_f_count++;
+                }
+                if ($item_post['race'] == '1' and $item_post['gender'] == '1') {
+                    $race_m_count++;
+                }
+                if ($item_post['race_f'] == '1' and $item_post['gender'] == '2') {
+                    $race_f_count++;
                 }
                 // name
                 if (!validate_name($item_post['name'])) {
@@ -121,12 +136,6 @@ class Registration extends CI_Controller {
                 } else {
                     $id_number_set[$item_post['id_number']] = $item_post['order'] + 1;
                 }
-                // accommodation
-                if (!array_key_exists($item_post['accommodation'], $GLOBALS['ACCOMMODATION'])) {
-                    exit(err_custom_msg('1060', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                }
                 // dinner
                 if (!array_key_exists($item_post['dinner'], $GLOBALS['JUDGE'])) {
                     exit(err_custom_msg('1070', array(
@@ -144,34 +153,55 @@ class Registration extends CI_Controller {
                     )));
                 }
                 // race
-                if (!array_key_exists($item_post['race'], $GLOBALS['CAPURACE'])) {
+                if (!array_key_exists($item_post['race'], $GLOBALS['CAPURACE_M'])) {
                     exit(err_custom_msg('1090', array(
                         'order' => $item_post['order'] + 1,
                     )));
-                } else if ($item_post['ifrace'] == '0' and $item_post['race'] != '0') {
-                    exit(err_custom_msg('1091', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if (($item_post['ifrace'] != '0') and ($item_post['race'] == '0') and
-                        ($item_post['ifteam'] == '0') and ($item_post['rdb'] == '0')) {
-                    exit(err_custom_msg('1092', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '1' and
-                    !array_key_exists($item_post['race'], $GLOBALS['CAPURACE_M'])) {
-                    exit(err_custom_msg('1093', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '2' and
-                    !array_key_exists($item_post['race'], $GLOBALS['CAPURACE_F'])) {
-                    exit(err_custom_msg('1094', array(
-                        'order' => $item_post['order'] + 1,
-                    )));
-                } else if ($item_post['gender'] == '2' and $item_post['rdb'] == '1') {
-                    exit(err_custom_msg('1095', array(
+                } 
+                if (!array_key_exists($item_post['race_f'], $GLOBALS['CAPURACE_F'])) {
+                    exit(err_custom_msg('1090', array(
                         'order' => $item_post['order'] + 1,
                     )));
                 }
+                if (!array_key_exists($item_post['rdb'], $GLOBALS['CAPURDB_M'])) {
+                    exit(err_custom_msg('1090', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                if (!array_key_exists($item_post['race'], $GLOBALS['CAPURDB_F'])) {
+                    exit(err_custom_msg('1090', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+
+                if ($item_post['ifrace'] == '0' and ($item_post['race'] != '0' or 
+                        $item_post['race_f'] != '0' or $item_post['rdb'] != '0' or 
+                        $item_post['rdb_f'] != '0' or $item_post['ifteam'] != '0')) {
+                    exit(err_custom_msg('1091', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } 
+
+                if (($item_post['ifrace'] != '0') and ($item_post['race'] == '0') and
+                        ($item_post['race_f'] == '0') and ($item_post['ifteam'] == '0') and 
+                        ($item_post['rdb'] == '0') and ($item_post['rdb_f'] == '0')) {
+                    exit(err_custom_msg('1092', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+
+                }
+                if ($item_post['gender'] == '1' and
+                    ($item_post['race_f'] != '0' or $item_post['rdb_f'] != '0')) {
+                    exit(err_custom_msg('1093', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                if ($item_post['gender'] == '2' and
+                    ($item_post['race'] != '0' or $item_post['rdb'] != '0')) {
+                    exit(err_custom_msg('1094', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                } 
                 // ifteam
                 if (!array_key_exists($item_post['ifteam'], $GLOBALS['JUDGE'])) {
                     exit(err_custom_msg('1100', array(
@@ -183,6 +213,7 @@ class Registration extends CI_Controller {
                     )));
                 }
             }
+
             $rdb_quota = $this->people->get_rdb_quota($school_id);
             if ($rdb_count > $GLOBALS['RDB_QUOTA_PER_SCHOOL']) {
                 exit(err_custom_msg('1096', array(
@@ -196,6 +227,11 @@ class Registration extends CI_Controller {
                     'quota' => $GLOBALS['AUD_QUOTA_PER_SCHOOL'],
                 )));
             }
+            $quota_results = $this->people->get_race_quota();
+            if (!$quota_results['rdb_m_status'] and $rdb_m_count > 0) exit(err_msg('1104'));
+            if (!$quota_results['rdb_f_status'] and $rdb_f_count > 0) exit(err_msg('1105'));
+            if (!$quota_results['race_m_status'] and $race_m_count > 0) exit(err_msg('1102'));
+            if (!$quota_results['race_f_status'] and $race_f_count > 0) exit(err_msg('1103'));
 
             $audience_quota = $this->people->get_audience_quota($school_id);
             if ($aud_count > $audience_quota) {

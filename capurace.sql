@@ -38,11 +38,12 @@ CREATE TABLE `people` (
   `id_type` varchar(8) NOT NULL,
   `id_number` varchar(18) NOT NULL,
   `school_id` smallint(5) UNSIGNED NOT NULL,
-  `accommodation` tinyint(1) NOT NULL,
   `dinner` tinyint(1) NOT NULL,
   `lunch` tinyint(4) NOT NULL,
   `race` tinyint(4) NOT NULL DEFAULT '0',
+  `race_f` tinyint(1) NOT NULL DEFAULT '0',
   `rdb` tinyint(1) NOT NULL DEFAULT '0',
+  `rdb_f` tinyint(1) NOT NULL DEFAULT '0',
   `ifrace` tinyint(1) NOT NULL,
   `ifteam` tinyint(1) NOT NULL,
   `tel` varchar(11) NOT NULL,
@@ -93,7 +94,8 @@ CREATE TABLE `users` (
   `activated` tinyint(1) NOT NULL DEFAULT '0',
   `token` varchar(32) NOT NULL,
   `editable` tinyint(1) NOT NULL DEFAULT '1',
-  `deleted` tinyint(1) NOT NULL DEFAULT '0'
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `campusrace` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
