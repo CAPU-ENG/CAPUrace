@@ -69,7 +69,7 @@ class Registration extends CI_Controller {
             $rdb_m_count = 0;
             $race_m_count = 0;
             $race_f_count = 0;
-            $audience_count = 0;
+            $aud_count = 0;
             foreach ($ind_post as $item_post) {
                 if ($item_post['ifrace'] == '0') {
                     $aud_count++;
@@ -214,14 +214,6 @@ class Registration extends CI_Controller {
                 }
             }
 
-            $rdb_quota = $this->people->get_rdb_quota($school_id);
-            if ($rdb_count > $GLOBALS['RDB_QUOTA_PER_SCHOOL']) {
-                exit(err_custom_msg('1096', array(
-                    'quota' => $GLOBALS['RDB_QUOTA_PER_SCHOOL'],
-                )));
-            } else if ($rdb_quota < 0) {
-                exit(err_custom_msg('1097', array()));
-            }
             if ($aud_count > $GLOBALS['AUD_QUOTA_PER_SCHOOL']) {
                 exit(err_custom_msg('1099', array(
                     'quota' => $GLOBALS['AUD_QUOTA_PER_SCHOOL'],
