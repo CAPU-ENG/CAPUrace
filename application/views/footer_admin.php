@@ -34,6 +34,7 @@
 </body>
 </html>
 <script>
+    $("[id='btn-clear-rdb']").prop('disabled', true);
     $("#btn-clear-rdb").click(function () {
         if (confirm('本操作将清理所有未确认结果的公路赛选手名额，确定继续？')) {
             $.post("<?=site_url('admin/clear')?>", {}, function (response) {

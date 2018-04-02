@@ -1,4 +1,4 @@
-<div style="margin-left: 20%; margin-right: 20%;">
+<div style="margin-left: 5%; margin-right: 5%;">
   <textarea id="editor">
     <?=$text?>
   </textarea>
