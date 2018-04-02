@@ -166,7 +166,6 @@ if (! function_exists('validate_id_number')) {
                 if (substr($id_number, 14, 1) % 2 == (2 - $gender)) {
                     return true;
                 }
-                
             }
             if (strlen($id_number) == 18){
 
@@ -180,9 +179,7 @@ if (! function_exists('validate_id_number')) {
                     if (substr($id_number, 16, 1) % 2 == (2 - $gender)) {
                     return true;
                     }
-                } 
-                
-                
+                }                
             }
             
         } 
