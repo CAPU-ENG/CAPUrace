@@ -163,21 +163,25 @@ if (! function_exists('validate_id_number')) {
         if ($id_type == "passport") return true;
         if ($id_type == "identity") {
             if (strlen($id_number) == 15){
-                return true;
+                if (substr($id_number, 14, 1) % 2 == (2 - $gender)) {
+                    return true;
+                }
+                
             }
             if (strlen($id_number) == 18){
 
-                $map=array(1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2);
+                $map = array(1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2);
                 $sum = 0;
-                for($i = 17; $i > 0; $i--){
+                for($i = 17; $i > 0; $i-- ){
                 $s=pow(2, $i) % 11;
                 $sum += $s * substr($id_number, (17-$i), 1);
                 }
-                if ($map[$sum % 11] == substr($id_number, 18, 1)) {
+                if ($map[$sum % 11] == substr($id_number, 17, 1)) {
+                    if (substr($id_number, 16, 1) % 2 == (2 - $gender)) {
                     return true;
+                    }
                 } 
                 
-
                 
             }
             
