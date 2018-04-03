@@ -203,7 +203,7 @@ class Admin extends CI_Controller {
                 ->setCellValue('H' . $i, $item['bill']);
         }
 
-        // Sheet 2: 男子山地组
+        /*// Sheet 2: 男子山地组
         $excel->createSheet(1);
         $excel->setActiveSheetIndex(1)->setTitle('男子山地组');
         $male = $this->db->where('deleted', 0)->where('race', 1)->get('people')->result_array();
@@ -313,7 +313,7 @@ class Admin extends CI_Controller {
             $this->_fill_ind_in_team($excel, $item['third'], $i + 2, $school);
             $this->_fill_ind_in_team($excel, $item['fourth'], $i + 3, $school);
             $i += 4;
-        }
+        }*/
 
         // ============================================================
         // Wrap up the file.
