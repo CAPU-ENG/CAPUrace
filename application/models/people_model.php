@@ -223,14 +223,6 @@ class People_model extends CI_Model {
         return $quota_results;
     }
 
-
-    /*
-     * Clear unpaid RDB athletes.
-     */
-    public function clear() {
-        $this->db->query('update people join users on users.id=people.school_id set rdb=0 where people.deleted=0 and users.deleted=0 and people.rdb=1 and users.editable=1;');
-    }
-
 }
 
 /* End of file people_model.php */
