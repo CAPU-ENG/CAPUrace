@@ -249,12 +249,15 @@ class User extends CI_Controller {
             ->setCellValue('D1', '手机号')
             ->setCellValue('E1', '证件类型')
             ->setCellValue('F1', '证件编号')
-            ->setCellValue('G1', '个人赛')
-            ->setCellValue('H1', '团体赛')
-            ->setCellValue('I1', '5.5午餐+晚餐')
-            ->setCellValue('J1', '5.6午餐')
-            ->setCellValue('K1', '清真')
-            ->setCellValue('L1', '费用');
+            ->setCellValue('G1', '男子山地')
+            ->setCellValue('H1', '女子山地')
+            ->setCellValue('I1', '男子公路')
+            ->setCellValue('J1', '女子公路')
+            ->setCellValue('K1', '团体赛')
+            ->setCellValue('L1', '5.5午餐+晚餐')
+            ->setCellValue('M1', '5.6午餐')
+            ->setCellValue('N1', '清真')
+            ->setCellValue('O1', '费用');
 
         foreach ($individual_info as $key => $item) {
             $i = $key + 2;
@@ -265,12 +268,15 @@ class User extends CI_Controller {
                 ->setCellValue('D' . $i, $item['tel'])
                 ->setCellValue('E' . $i, $GLOBALS['ID_TYPE'][$item['id_type']])
                 ->setCellValue('F' . $i, $item['id_number'])
-                ->setCellValue('G' . $i, $GLOBALS['CAPURACE'][$item['race']])
-                ->setCellValue('H' . $i, $GLOBALS['JUDGE'][$item['ifteam']])
-                ->setCellValue('I' . $i, $GLOBALS['JUDGE'][$item['dinner']])
-                ->setCellValue('J' . $i, $GLOBALS['JUDGE'][$item['lunch']])
-                ->setCellValue('K' . $i, $GLOBALS['JUDGE'][$item['islam']])
-                ->setCellValue('L' . $i, $item['fee']);
+                ->setCellValue('G' . $i, $GLOBALS['JUDGE'][$item['race']])
+                ->setCellValue('H' . $i, $GLOBALS['JUDGE'][$item['race_f']])
+                ->setCellValue('I' . $i, $GLOBALS['JUDGE'][$item['rdb']])
+                ->setCellValue('J' . $i, $GLOBALS['JUDGE'][$item['rdb_f']])
+                ->setCellValue('K' . $i, $GLOBALS['JUDGE'][$item['ifteam']])
+                ->setCellValue('L' . $i, $GLOBALS['JUDGE'][$item['dinner']])
+                ->setCellValue('M' . $i, $GLOBALS['JUDGE'][$item['lunch']])
+                ->setCellValue('N' . $i, $GLOBALS['JUDGE'][$item['islam']])
+                ->setCellValue('O' . $i, $item['fee']);
         }
 
 
