@@ -177,7 +177,7 @@ class Admin extends CI_Controller {
         $excel->getDefaultStyle()
             ->getNumberFormat()
             ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
-        $filename = '第十五届全国高校自行车交流赛总表' . '.xlsx';
+        $filename = '第十六届全国高校自行车交流赛总表' . '.xlsx';
 
         // Sheet 1: the information of all paid users.
         $excel->setActiveSheetIndex(0)->setTitle('高校信息');
@@ -205,29 +205,37 @@ class Admin extends CI_Controller {
                 ->setCellValue('H' . $i, $item['bill']);
         }
 
-        // Sheet 2: 男子大众组
+        // Sheet 2: 男子山地组
         $excel->createSheet(1);
-        $excel->setActiveSheetIndex(1)->setTitle('男子大众组');
+        $excel->setActiveSheetIndex(1)->setTitle('男子山地组');
         $male = $this->db->where('deleted', 0)->where('race', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $male);
 
 
-        // Sheet 3: 男子精英组
+        // Sheet 3: 女子山地组
         $excel->createSheet(2);
-        $excel->setActiveSheetIndex(2)->setTitle('男子精英组');
-        $male_expert = $this->db->where('deleted', 0)->where('race', 2)->get('people')->result_array();
-        $this->_fill_individual($excel, $male_expert);
-        
-        // Sheet 4: 女子组
-        $excel->createSheet(3);
-        $excel->setActiveSheetIndex(3)->setTitle('女子组');
-        $female = $this->db->where('deleted', 0)->where('race', 3)->get('people')->result_array();
+        $excel->setActiveSheetIndex(2)->setTitle('女子山地组');
+        $female = $this->db->where('deleted', 0)->where('race_f', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $female);
 
 
-        // Sheet 5: 晚餐表
+        // Sheet 4: 男子公路组
+        $excel->createSheet(3);
+        $excel->setActiveSheetIndex(3)->setTitle('男子公路组');
+        $rdb_male = $this->db->where('deleted', 0)->where('rdb', 1)->get('people')->result_array();
+        $this->_fill_individual($excel, $rdb_male);
+
+
+        // Sheet 5: 女子公路组
         $excel->createSheet(4);
-        $excel->setActiveSheetIndex(4)->setTitle('第一天晚餐表');
+        $excel->setActiveSheetIndex(4)->setTitle('女子公路组');
+        $rdb_female = $this->db->where('deleted', 0)->where('rdb_f', 1)->get('people')->result_array();
+        $this->_fill_individual($excel, $rdb_female);
+
+
+        // Sheet 6: 5日两餐表
+        $excel->createSheet(5);
+        $excel->setActiveSheetIndex(5)->setTitle('5日午餐晚餐');
         $dinner = $this->db->where('deleted', 0)->where('dinner', 1)->order_by('school_id', 'asc')->get('people')->result_array();
         $excel->getActiveSheet()
             ->setCellValue('A1', '序号')
@@ -252,9 +260,9 @@ class Admin extends CI_Controller {
 
 
 
-        // Sheet 6: 午餐表
-        $excel->createSheet(5);
-        $excel->setActiveSheetIndex(5)->setTitle('第二天午餐表');
+        // Sheet 7: 6日午餐表
+        $excel->createSheet(6);
+        $excel->setActiveSheetIndex(6)->setTitle('6日午餐表');
         $lunch = $this->db->where('deleted', 0)->where('lunch', 1)->order_by('school_id', 'asc')->get('people')->result_array();
         $excel->getActiveSheet()
             ->setCellValue('A1', '序号')
@@ -279,8 +287,8 @@ class Admin extends CI_Controller {
 
 
         // Sheet 7: 团体赛表
-        $excel->createSheet(6);
-        $excel->setActiveSheetIndex(6)->setTitle('团体赛表');
+        $excel->createSheet(7);
+        $excel->setActiveSheetIndex(7)->setTitle('团体赛表');
         $teams = $this->db->where('deleted', 0)->get('team')->result_array();
         $excel->getActiveSheet()
             ->setCellValue('A1', '序号')
@@ -308,12 +316,6 @@ class Admin extends CI_Controller {
             $this->_fill_ind_in_team($excel, $item['fourth'], $i + 3, $school);
             $i += 4;
         }
-
-        // Sheet 8: 公路赛表
-        $excel->createSheet(7);
-        $excel->setActiveSheetIndex(7)->setTitle('男子公路组');
-        $male_expert = $this->db->where('deleted', 0)->where('rdb', 1)->get('people')->result_array();
-        $this->_fill_individual($excel, $male_expert);
 
         // ============================================================
         // Wrap up the file.
