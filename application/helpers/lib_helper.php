@@ -171,7 +171,7 @@ if (! function_exists('validate_id_number')) {
                 $map = array(1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2);
                 $sum = 0;
                 for ($i = 17; $i > 0; $i--) {
-                    $s=pow(2, $i) % 11;
+                    $s = pow(2, $i) % 11;
                     $sum += $s * substr($id_number, (17-$i), 1);
                 }
                 if ($map[$sum % 11] == substr($id_number, 17, 1)) {
@@ -179,8 +179,7 @@ if (! function_exists('validate_id_number')) {
                         return true;
                     }
                 }                
-            }
-            
+            }           
         } 
         return false;
     }
