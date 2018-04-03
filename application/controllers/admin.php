@@ -150,12 +150,12 @@ class Admin extends CI_Controller {
                 ->setCellValue('A' . $i, $i - 1)
                 ->setCellValue('B' . $i, $item['name'])
                 ->setCellValue('C' . $i, $GLOBALS['GENDER'][$item['gender']])
-                ->setCellValue('D' . $i, "'" . $item['id_number'])
+                ->setCellValue('D' . $i, $item['id_number'])
                 ->setCellValue('E' . $i, $school['association_name'])
                 ->setCellValue('F' . $i, $school['school'])
                 ->setCellValue('G' . $i, $GLOBALS['PROVINCES_SHORT'][$school['province']])
                 ->setCellValue('H' . $i, $school['zipcode'])
-                ->setCellValue('I' . $i, "'" . $item['tel']);
+                ->setCellValue('I' . $i, $item['tel']);
             $i++;
         }
     }
