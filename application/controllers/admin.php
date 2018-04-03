@@ -197,7 +197,7 @@ class Admin extends CI_Controller {
                 ->setCellValue('B' . $i, $item['association_name'])
                 ->setCellValue('C' . $i, $item['leader'])
                 ->setCellValue('D' . $i, $item['mail'])
-                ->setCellValue('E' . $i, "'" . $item['tel'])
+                ->setCellValue('E' . $i, $item['tel'])
                 ->setCellValue('F' . $i, $item['address'])
                 ->setCellValue('G' . $i, $item['zipcode'])
                 ->setCellValue('H' . $i, $item['bill']);
@@ -327,7 +327,8 @@ class Admin extends CI_Controller {
 
         $objWriter = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
         $objWriter->save('php://output');
-        redirect(site_url('admin'));
+        #redirect(site_url('admin'));
+        exit;
     }
 
     public function _fill_ind_in_team($excel, $key, $i, $school) {
