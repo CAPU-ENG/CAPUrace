@@ -139,7 +139,6 @@ class Admin extends CI_Controller {
             ->setCellValue('G1', '地区')
             ->setCellValue('H1', '邮政编码')
             ->setCellValue('I1', '手机号');
-        $race = $GLOBALS['CAPURACE'];
         $i = 2;
         foreach ($data as $key => $item) {
             $school = $this->user->get_user_by_id($item['school_id']);
@@ -150,12 +149,12 @@ class Admin extends CI_Controller {
                 ->setCellValue('A' . $i, $i - 1)
                 ->setCellValue('B' . $i, $item['name'])
                 ->setCellValue('C' . $i, $GLOBALS['GENDER'][$item['gender']])
-                ->setCellValue('D' . $i, $item['id_number'])
+                ->setCellValue('D' . $i, "'".$item['id_number'])
                 ->setCellValue('E' . $i, $school['association_name'])
                 ->setCellValue('F' . $i, $school['school'])
                 ->setCellValue('G' . $i, $GLOBALS['PROVINCES_SHORT'][$school['province']])
                 ->setCellValue('H' . $i, $school['zipcode'])
-                ->setCellValue('I' . $i, $item['tel']);
+                ->setCellValue('I' . $i, ",".$item['tel']);
             $i++;
         }
     }
