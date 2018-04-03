@@ -106,7 +106,7 @@ if (! function_exists('get_bill')) {
         } else if (! $data['dinner']) {
             $dinner_fee = 0;
         } else {
-            $dinner_fee = 60;
+            $dinner_fee = 40;
         }
         if ($data['ifrace'] || !$data['lunch']) {
             $lunch_fee = 0;
