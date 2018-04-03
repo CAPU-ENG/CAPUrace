@@ -134,12 +134,11 @@ class Admin extends CI_Controller {
             ->setCellValue('B1', '姓名')
             ->setCellValue('C1', '性别')
             ->setCellValue('D1', '身份证号')
-            ->setCellValue('E1', '组别')
-            ->setCellValue('F1', '协会名称')
-            ->setCellValue('G1', '学校')
-            ->setCellValue('H1', '地区')
-            ->setCellValue('I1', '邮政编码')
-            ->setCellValue('J1', '手机号');
+            ->setCellValue('E1', '协会名称')
+            ->setCellValue('F1', '学校')
+            ->setCellValue('G1', '地区')
+            ->setCellValue('H1', '邮政编码')
+            ->setCellValue('I1', '手机号');
         $race = $GLOBALS['CAPURACE'];
         $i = 2;
         foreach ($data as $key => $item) {
@@ -152,12 +151,11 @@ class Admin extends CI_Controller {
                 ->setCellValue('B' . $i, $item['name'])
                 ->setCellValue('C' . $i, $GLOBALS['GENDER'][$item['gender']])
                 ->setCellValue('D' . $i, "'" . $item['id_number'])
-                ->setCellValue('E' . $i, $race[$item['race']])
-                ->setCellValue('F' . $i, $school['association_name'])
-                ->setCellValue('G' . $i, $school['school'])
-                ->setCellValue('H' . $i, $GLOBALS['PROVINCES_SHORT'][$school['province']])
-                ->setCellValue('I' . $i, $school['zipcode'])
-                ->setCellValue('J' . $i, "'" . $item['tel']);
+                ->setCellValue('E' . $i, $school['association_name'])
+                ->setCellValue('F' . $i, $school['school'])
+                ->setCellValue('G' . $i, $GLOBALS['PROVINCES_SHORT'][$school['province']])
+                ->setCellValue('H' . $i, $school['zipcode'])
+                ->setCellValue('I' . $i, "'" . $item['tel']);
             $i++;
         }
     }
