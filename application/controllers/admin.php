@@ -209,7 +209,7 @@ class Admin extends CI_Controller {
         $this->_fill_individual($excel, $male);
 
 
-        /*// Sheet 3: 女子山地组
+        // Sheet 3: 女子山地组
         $excel->createSheet(2);
         $excel->setActiveSheetIndex(2)->setTitle('女子山地组');
         $female = $this->db->where('deleted', 0)->where('race_f', 1)->get('people')->result_array();
@@ -313,7 +313,6 @@ class Admin extends CI_Controller {
             $this->_fill_ind_in_team($excel, $item['fourth'], $i + 3, $school);
             $i += 4;
         }
-*/
         // ============================================================
         // Wrap up the file.
 
