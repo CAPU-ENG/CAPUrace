@@ -284,7 +284,7 @@ class Admin extends CI_Controller {
         }
 
 
-        // Sheet 7: 团体赛表
+        // Sheet 8: 团体赛表
         $excel->createSheet(7);
         $excel->setActiveSheetIndex(7)->setTitle('团体赛表');
         $teams = $this->db->where('deleted', 0)->get('team')->result_array();
