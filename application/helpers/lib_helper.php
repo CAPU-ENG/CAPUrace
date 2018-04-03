@@ -167,11 +167,10 @@ if (! function_exists('validate_id_number')) {
                     return true;
                 }
             }
-            if (strlen($id_number) == 18){
-
+            if (strlen($id_number) == 18) {
                 $map = array(1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2);
                 $sum = 0;
-                for($i = 17; $i > 0; $i-- ){
+                for ($i = 17; $i > 0; $i--) {
                 $s=pow(2, $i) % 11;
                 $sum += $s * substr($id_number, (17-$i), 1);
                 }
@@ -183,8 +182,6 @@ if (! function_exists('validate_id_number')) {
             }
             
         } 
-        // NOTE(huxuan): We may add more validation here in the future.
-        // NOTE(Luolc): Take passport validation into consideration later.
         return false;
     }
 }
