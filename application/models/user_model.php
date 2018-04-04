@@ -148,9 +148,9 @@ class User_model extends CI_Model {
     }
 
     /*
-     * Reet the user to be editable.
+     * Reset the user to be editable.
      * ====argument====
-     * $id, the id of the user to be confirmed.
+     * $id, the id of the user to reset.
      */
     public function reset_editable($id) {
         $reseteditable = array('editable' => TRUE);
