@@ -54,7 +54,6 @@
             school: school,
             bill: bill
         };
-        console.log(data);
         if (confirm('确认 ' + school + ' 已经支付 ' + bill + ' 元？')) {
             $.post("<?=site_url('admin/pay')?>", data, function (response) {
                 alert(response.msg);
@@ -68,12 +67,10 @@
         var item = $(this).closest(".payitem");
         var id = item.find(".id").text();
         var school = item.find(".school").text();
-        var bill = item.find(".bill").text();
         var data = {
             operation: 'reset_editable',
             id: id,
             school: school,
-            bill: bill
         };
         if (confirm('确认释放 ' + school + ' 比赛名额？ ')) {
             $.post("<?=site_url('admin/pay')?>", data, function (response) {
