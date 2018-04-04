@@ -56,16 +56,26 @@ class Admin extends CI_Controller {
                     'msg' => '您没有操作权限!'
                 );
             } else {
-                $this->load->library('email');
                 $data = $this->input->post();
-                $this->user->set_paid($data['id']);
-                $query= $this->user->get_user_by_id($data['id']);
-                $mail = $query['mail'];
-                $this->email->send_fee_received_mail($mail, $data['school'], $data['bill']);
-                $response = array(
-                    'code' => '0',
-                    'msg' => '操作成功!'
-                );
+                if ($data['operation'] == "set_paid") {
+                    $this->load->library('email');
+                    $this->user->set_paid($data['id']);
+                    $query= $this->user->get_user_by_id($data['id']);
+                    $mail = $query['mail'];
+                    $this->email->send_fee_received_mail($mail, $data['school'], $data['bill']);
+                    $response = array(
+                        'code' => '0',
+                        'msg' => '操作成功!'
+                    );
+                }
+                if ($data['operation'] == "reset_editable") {
+                    $this->load->library('email');
+                    $this->user->reset_editable($data['id']);
+                    $response = array(
+                        'code' => '0',
+                        'msg' => '操作成功!'
+                    );
+                }
             }
             exit(json_encode($response));
         }
