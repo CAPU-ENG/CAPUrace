@@ -148,6 +148,16 @@ class User_model extends CI_Model {
     }
 
     /*
+     * Reet the user to be editable.
+     * ====argument====
+     * $id, the id of the user to be confirmed.
+     */
+    public function reset_editable($id) {
+        $reseteditable = array('editable' => TRUE);
+        $this->db->where('id', $id)->update('users', $reseteditable);
+    }
+
+    /*
      * Set the bill to the user.
      */
     public function set_bill($id, $bill) {
