@@ -114,17 +114,13 @@
 						<span class="pstatus"></span><br /> 晚风习习，星光璨璨，第一日的时针指向黄昏，第十五届北大赛联谊晚会如约而至。本届联谊晚会以“交流”为宗旨，以“多元”为特征，为观众们呈现了一场高校骑行文化的视听盛宴。今年的晚会一改往年“高校之间交流不足”的缺憾，重点突出各高校车协的发言和展示环节。各路嘉宾精彩的发言与火爆激烈的现场游戏了将晚会的气氛推向高潮，同时，丰富多彩的摊位活动，挂满友谊的徽章交换旗，精美限量的交流赛周边售卖等也为晚会平添几分趣味。 
 						 <br /><br /><br />
 						 <img src="<?=base_url()?>/assets/images/publicize/party_2.jpg" alt="中国大学生自行车协会常务副秘书长苏豪代表支持单位发言" width="970"><br />
-						<h6 align=center>中国大学生自行车协会常务副秘书长苏豪代表支持单位发言</h6>
-						 <img src="<?=base_url()?>/assets/images/publicize/party_3.jpg" alt="CAST单车联盟带来精彩车技表演" width="970"><br />
-						<h6 align=center>CAST单车联盟带来精彩车技表演</h6>
+						<h6 align=center>北京大学自行车协会会长、会长兼本届交流赛总负责赵琰喆上台讲述了北大赛的办赛经验和风雨历程</h6>
+						 <img align=center src="<?=base_url()?>/assets/images/publicize/party_3.jpg" alt="CAST单车联盟带来精彩车技表演" width="970"><br />
+						<h6 align=center>趣味运输气球比赛</h6>
 						 <img src="<?=base_url()?>/assets/images/publicize/party_4.jpg" alt="扣人心弦的定车比赛" width="970"><br />
-						<h6 align=center>扣人心弦的定车比赛</h6>		
-						 <img src="<?=base_url()?>/assets/images/publicize/party_5.jpg" alt="内蒙古工业大学与马者车协获得拔河大赛冠军" width="970"><br />
-						<h6 align=center>内蒙古工业大学与马者车协获得拔河大赛冠军</h6>
-						<img src="<?=base_url()?>/assets/images/publicize/party_6.jpg" alt="影子猫单车测评的猫脸手绘活动得到高校车协选手热捧" width="970"><br />
-						<h6 align=center>影子猫单车测评的猫脸手绘活动得到高校车协选手热捧</h6>
+						<h6 align=center>扣人心弦的拔河比赛</h6>		
 						<img src="<?=base_url()?>/assets/images/publicize/party_7.jpg" alt="收集各高校徽章一直是晚会的重头戏" width="970"><br />
-						<h6 align=center>收集各高校徽章一直是晚会的重头戏</h6>
+						<h6 align=center>相互交换各高校徽章也是晚会的亮点之一</h6>
 						<br /><br /><br />	
 						</p>
 					</div>
@@ -133,28 +129,33 @@
 						<p>
 						<h2 align=center>赛事剪影</h2>
 						<span class="pstatus"></span><br />5月7日，固安永定河自行车运动公园风和日丽，赛道完全具备比赛条件，当日山地组和公路组比赛在完美的天气条件下顺利进行。今年首次加入了公路组的比赛，极大的丰富了北大赛的赛事体验。
-						<br /><br /><br />
+						<br /><br />
 						 <img src="<?=base_url()?>/assets/images/publicize/competition_1.jpg" alt="阳光沐浴下的赛场" width="970"><br />
 						<h6 align=center>阳光沐浴下的赛场</h6>
 						<span class="pstatus"></span><br />早7点,签到处已经陆陆续续有领队来领取赛事套包。在紧锣密鼓的签到、检录环节之后，9：30比赛正式开始，上午的比赛主要由男子大众组比赛组成，近400余名男子选手分为4个竞赛组进行比拼。大众组过后，比拼最激烈，水平最高的男子精英组鸣枪。精英组比赛汇集了全国高校自行车协会中最优秀的山地车手，车手们实力相当，比赛成绩之间差距十分微小。这充分证明了高校自行车竞技水平的不断提升、北大车协交流赛办赛水平的集聚提高。
-						<span class="pstatus"></span><br />在精英组比赛之后，女子组车手登场竞技。永定河自行车运动公园的赛场有相当的难度，但是女子组的选手却表现得十分优异。
-						<img src="<?=base_url()?>/assets/images/publicize/competition_2.jpg" alt="参赛选手英姿" width="970"><br />
-						<h6 align=center>参赛选手英姿</h6>	
-						<span class="pstatus"></span><br />接着举行的团体组比赛是北大赛的传统特色项目，每个接力队由3男1女组成，每名选手竞赛一圈，在终点附近下车跑步通过接力区，将含有计时器的腿包绑在队友身上，完成接力。每一次计时器交接都十分惊险紧张，赛场内外的呼喊声加油声此起彼伏。
-						<br /><br /><br />
+						<br /><br />
+						<img src="<?=base_url()?>/assets/images/publicize/competition_2.jpg" alt="大众组参赛选手" width="970"><br />
+						<h6 align=center>大众组参赛选手</h6>
 						<img src="<?=base_url()?>/assets/images/publicize/competition_3.jpg" alt="精英组赛道及选手英姿" width="970"><br />
 						<h6 align=center>精英组赛道及选手英姿</h6>	
+						<span class="pstatus"></span><br />在精英组比赛之后，女子组车手登场竞技。永定河自行车运动公园的赛场有相当的难度，但是女子组的选手却表现得十分优异。
+						<br /><br />
+						<img src="<?=base_url()?>/assets/images/publicize/competition_4.jpg" alt="女子组飒爽英姿" width="970"><br />
+						<h6 align=center>女子组飒爽英姿</h6>
+						<span class="pstatus"></span><br />接着举行的团体组比赛是北大赛的传统特色项目，每个接力队由3男1女组成，每名选手竞赛一圈，在终点附近下车跑步通过接力区，将含有计时器的腿包绑在队友身上，完成接力。每一次计时器交接都十分惊险紧张，赛场内外的呼喊声加油声此起彼伏。
+						<br /><br />
+						<img src="<?=base_url()?>/assets/images/publicize/competition_5.jpg" alt="团体组赛前准备" width="970"><br />
+						<h6 align=center>团体组赛前准备</h6>	
 						<span class="pstatus"></span><br />在最后的公路组比赛中，87位选手们需要征服20圈50公里的柏油路赛道以完成比赛。比赛过程中，第一圈的容易骑行，经过拉扯筛选产生了第一集团，集团前方不断有选手尝试突围，但均以失败告终。赛程过半后，主集团节奏逐渐稳定下来，在倒数第三圈，两位选手在一个弯道后加速，成功突围。而后一名选手独自追上前边两人，此后一名选手掉队，突围集团剩下的两人合作，保持优势直到终点。二位可以说是难分伯仲。
-						<br /><br /><br />	
-						<img src="<?=base_url()?>/assets/images/publicize/competition_4.jpg" alt="女子组选手的飒爽英姿" width="970"><br />
-						<h6 align=center>女子组选手的飒爽英姿</h6>	
+						<br /><br />
+						<img src="<?=base_url()?>/assets/images/publicize/competition_6.jpg" alt="公路组激烈战况" width="970"><br />
+						<h6 align=center>公路组激烈战况</h6>	
 						<span class="pstatus"></span><br />下午17时，比赛及各项活动顺利结束。各项比赛优胜选手获得了由各位赞助商共同提供的精美奖品。
-						<br /><br /><br />	
-						<img src="<?=base_url()?>/assets/images/publicize/competition_5.jpg" alt="竞争激烈的接力赛" width="970"><br />
-						<h6 align=center>竞争激烈的接力赛</h6>	
-						<br /><br /><br />	
-						<img src="<?=base_url()?>/assets/images/publicize/competition_6.jpg" alt="竞赛颁奖" width="970"><br />
+						<br /><br />
+						<img src="<?=base_url()?>/assets/images/publicize/competition_8.jpg" alt="竞赛颁奖" width="970"><br />
 						<h6 align=center>竞赛颁奖</h6>	
+						<img src="<?=base_url()?>/assets/images/publicize/competition_10.jpg" alt="完赛纪念奖牌" width="970"><br />
+						<h6 align=center>完赛纪念奖牌</h6>	
 						<span class="pstatus"></span><br />下午17时30分，北大车协工作人员结束所有工作。从5月5日到7日，北大车协的90余名赛事工作人员和20余名来自各个高校的赛事志愿者在赛场经历了风吹日晒，72小时以来，他们用自己的汗水、坚持和毅力支撑起整场比赛，为全国高校车协的选手们共同奉献了一场高校单车盛宴。北大车协坚持独立十五年办赛，今天的规模和成就离不开十五年车协会员和前辈的拼命付出和深厚积累，同时也离不开业界的大力支持和各高校的热情参与。这所有的一切，都凝结成了两天的精彩比赛和活动，都将写入中国高校自行车运动的史书之中，被一代又一代车协人铭记。
 						<img src="<?=base_url()?>/assets/images/publicize/competition_7.jpg" alt="赛事结束工作人员合影" width="970"><br />				
 						</p>
