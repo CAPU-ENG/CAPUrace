@@ -219,23 +219,25 @@ class User extends CI_Controller {
         $filename = $userinfo['school'] . '.xlsx';
         $excel->setActiveSheetIndex(0)->setTitle('高校信息');
         $excel->getActiveSheet()
-            ->setCellValue('A1', '学校名称')
-            ->setCellValue('B1', '车协名称')
-            ->setCellValue('C1', '领队姓名')
-            ->setCellValue('D1', '电子邮箱')
-            ->setCellValue('E1', '手机号')
-            ->setCellValue('F1', '邮寄地址')
-            ->setCellValue('G1', '邮政编码')
-            ->setCellValue('H1', '费用合计');
+            ->setCellValue('A1', '学校ID')
+            ->setCellValue('B1', '学校名称')
+            ->setCellValue('C1', '车协名称')
+            ->setCellValue('D1', '领队姓名')
+            ->setCellValue('E1', '电子邮箱')
+            ->setCellValue('F1', '手机号')
+            ->setCellValue('G1', '邮寄地址')
+            ->setCellValue('H1', '邮政编码')
+            ->setCellValue('I1', '费用合计');
         $excel->getActiveSheet()
-            ->setCellValue('A2', $userinfo['school'])
-            ->setCellValue('B2', $userinfo['association_name'])
-            ->setCellValue('C2', $userinfo['leader'])
-            ->setCellValue('D2', $userinfo['mail'])
-            ->setCellValue('E2', $userinfo['tel'])
-            ->setCellValue('F2', $userinfo['address'])
-            ->setCellValue('G2', $userinfo['zipcode'])
-            ->setCellValue('H2', $userinfo['bill']);
+            ->setCellValue('A2', $userinfo['id'])
+            ->setCellValue('B2', $userinfo['school'])
+            ->setCellValue('C2', $userinfo['association_name'])
+            ->setCellValue('D2', $userinfo['leader'])
+            ->setCellValue('E2', $userinfo['mail'])
+            ->setCellValue('F2', $userinfo['tel'])
+            ->setCellValue('G2', $userinfo['address'])
+            ->setCellValue('H2', $userinfo['zipcode'])
+            ->setCellValue('I2', $userinfo['bill']);
 
         // Here comes sheet 2;
         $excel->createSheet(1);
