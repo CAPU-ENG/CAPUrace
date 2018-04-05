@@ -167,6 +167,6 @@
 
 			<br /><h5 align=center><font size="6">2017年北大车协交流赛宣传视频</font></h5><br />
 
-<iframe scrolling="no" title="2017年北大车协交流赛宣传视频" poster="https://cdn-hz.skypixel.com/uploads/cn_files/video/image/0aed0a5f-60d5-4c70-83eb-7bc426b486d5.png@!1200" src="https://www.djivideos.com/video_play/8461b362-8b9e-4828-be1e-dec6c18493d1?autoplay=1" width="970" height="546.5" frameborder="0" align=center ></iframe>	
-</div>
+	<iframe scrolling="no" title="2017年北大车协交流赛宣传视频" poster="https://cdn-hz.skypixel.com/uploads/cn_files/video/image/0aed0a5f-60d5-4c70-83eb-7bc426b486d5.png@!1200" src="https://www.djivideos.com/video_play/8461b362-8b9e-4828-be1e-dec6c18493d1?autoplay=1" width="970" height="546.5" frameborder="0" align=center ></iframe>	
+	</div>
 </div>
