@@ -189,27 +189,29 @@ class Admin extends CI_Controller {
         // Sheet 1: the information of all paid users.
         $excel->setActiveSheetIndex(0)->setTitle('高校信息');
         $excel->getActiveSheet()
-            ->setCellValue('A1', '学校名称')
-            ->setCellValue('B1', '车协名称')
-            ->setCellValue('C1', '领队姓名')
-            ->setCellValue('D1', '电子邮箱')
-            ->setCellValue('E1', '手机号')
-            ->setCellValue('F1', '邮寄地址')
-            ->setCellValue('G1', '邮政编码')
-            ->setCellValue('H1', '费用合计');
+            ->setCellValue('A1', '学校ID')
+            ->setCellValue('B1', '学校名称')
+            ->setCellValue('C1', '车协名称')
+            ->setCellValue('D1', '领队姓名')
+            ->setCellValue('E1', '电子邮箱')
+            ->setCellValue('F1', '手机号')
+            ->setCellValue('G1', '邮寄地址')
+            ->setCellValue('H1', '邮政编码')
+            ->setCellValue('I1', '费用合计');
 
         $users = $this->user->get_paid();
         foreach ($users as $key => $item) {
             $i = $key + 2;
             $excel->getActiveSheet()
-                ->setCellValue('A' . $i, $item['school'])
-                ->setCellValue('B' . $i, $item['association_name'])
-                ->setCellValue('C' . $i, $item['leader'])
-                ->setCellValue('D' . $i, $item['mail'])
-                ->setCellValue('E' . $i, $item['tel'])
-                ->setCellValue('F' . $i, $item['address'])
-                ->setCellValue('G' . $i, $item['zipcode'])
-                ->setCellValue('H' . $i, $item['bill']);
+                ->setCellValue('A' . $i, $item['id'])
+                ->setCellValue('B' . $i, $item['school'])
+                ->setCellValue('C' . $i, $item['association_name'])
+                ->setCellValue('D' . $i, $item['leader'])
+                ->setCellValue('E' . $i, $item['mail'])
+                ->setCellValue('F' . $i, $item['tel'])
+                ->setCellValue('G' . $i, $item['address'])
+                ->setCellValue('H' . $i, $item['zipcode'])
+                ->setCellValue('I' . $i, $item['bill']);
         }
 
         // Sheet 2: 男子山地组
