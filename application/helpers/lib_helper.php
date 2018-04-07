@@ -111,7 +111,7 @@ if (! function_exists('get_bill')) {
         if ($data['ifrace'] || !$data['lunch']) {
             $lunch_fee = 0;
         } else {
-            $lunch_fee = 40;
+            $lunch_fee = 20;
         } 
         $race_num = $data['race'] + $data['race_f'] + $data['ifteam'] + $data['rdb'] + $data['rdb_f'];
         switch ($race_num) {
