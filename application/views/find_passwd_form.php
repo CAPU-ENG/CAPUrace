@@ -1,7 +1,7 @@
 <script type="text/javascript">
     var controller = "<?=site_url('user/forgetpw')?>";
     var controller2 = "<?=site_url('user/generateVcode')?>";
-    var directto = "<?=base_url()?>";
+    var directto = "<?=site_url('user/resetpw')?>";
 </script>
 <div class="signcontainer">
     <h3>请输入注册时的邮箱 </h3>

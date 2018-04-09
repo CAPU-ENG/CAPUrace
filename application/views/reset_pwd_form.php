@@ -30,7 +30,7 @@
     $("#btn-send-vcode").click(function () {
             this.disabled = true;
             $(this).text("发送中...");
-            sendVcode();
+            resetPW();
             this.disabled = false;
             $(this).text("再次发送");
         }

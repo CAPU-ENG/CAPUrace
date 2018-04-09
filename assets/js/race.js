@@ -231,11 +231,18 @@ function checkVcode() {
 
     $.post(controller, data, function(data) {
         if (data.code == "200") {
-            alert("验证通过，进入重置密码页面！");
+            window.location.assign(directto);
         } else {
             alert(data.msg);
         }
     })
+}
+
+/*
+* This function reset the password.
+ */
+function resetPW(){
+
 }
 /*
  * This function is called when clicking 'save'.
