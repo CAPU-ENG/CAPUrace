@@ -18,7 +18,7 @@
     </div>
     <br/>
     <br/>
-    <div class="col-sm-4" ><a href="<?=site_url('user/forgetPW')?>">忘记密码</a></div>
+    <div class="col-sm-4" ><a href="<?=site_url('user/forgetpw')?>">忘记密码</a></div>
     <br/>
     <br/>
     <hr/>
