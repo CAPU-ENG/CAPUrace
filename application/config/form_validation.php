@@ -59,6 +59,18 @@ $config = array(
             'label' => '密码',
             'rules' => 'required|md5'
         )
+    ),
+    'forgetpw' => array(
+        array(
+            'field' => 'mail',
+            'label' => '电子邮箱',
+            'rules' => 'trim|required|valid_email|xss_clean'
+        ),
+        array(
+            'field' => 'vcode',
+            'label' => '验证码',
+            'rules' => 'required|exact_length[6]|xss_clean'
+        )
     )
 );
 

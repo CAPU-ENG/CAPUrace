@@ -212,6 +212,11 @@ class User_model extends CI_Model {
         $query = $this->get_user_by_email($mail);
         return $query['token'];
     }
+
+    public function get_vcode($mail) {
+        $query = $this->get_user_by_email($mail);
+        return $query['vcode'];
+    }
     /*
      * Set a token for a new user.
      */
