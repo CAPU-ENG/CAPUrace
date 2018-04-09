@@ -3,7 +3,7 @@
     var directto = "<?=base_url()?>";
 </script>
 <div class="signcontainer">
-    <h3>请输入注册时的邮箱 </h3>
+    <h3>请输入注册时的邮箱 </h3>&nbsp; <u>操作提示：输入邮箱后，点击“发送验证码”按钮。前往邮箱查看验证码，在“验证码”一栏填写，点击“验证”按钮完成验证，进入重置密码。</u>
     <hr/>
     <label class="col-sm-4">电子邮箱</label>
     <div class="col-sm-8">
@@ -21,11 +21,12 @@
         <button class="btn btn-warning btn-block" id="btn-vcode">验证</button>
     </div>
 </div>
+
 <script>
     $("#btn-send-vcode").click(function () {
             this.disabled = true;
             $(this).text("发送中...");
-            //postSignup();
+            sendVcode();
             this.disabled = false;
             $(this).text("已发送");
         }
