@@ -79,7 +79,9 @@ class User extends CI_Controller {
             $this->load->view('header_homepage');
             $this->load->view('add_hilight_nav2');
             $this->load->view('find_passwd_form');
+            # TODO: complete the find_passwd_form view.
             $this->load->view('footer');
+            # TODO: write what to do if the method is "post".
         }
 
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
