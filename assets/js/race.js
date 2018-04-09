@@ -208,10 +208,9 @@ function sendVcode() {
         mail: mail,
         vcode: vcode
     };
-    $.post(controller, data, function(data) {
+    $.post(controller2, data, function(data) {
         if (data.code == "200") {
             alert("验证码已发送，请登录您的邮箱查看验证码！");
-            window.location.assign(directto);
         } else {
             alert(data.msg);
         }
