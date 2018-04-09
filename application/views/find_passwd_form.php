@@ -1,5 +1,6 @@
 <script type="text/javascript">
     var controller = "<?=site_url('user/forgetpw')?>";
+    var controller2 = "<?=site_url('user/generateVcode')?>";
     var directto = "<?=base_url()?>";
 </script>
 <div class="signcontainer">
@@ -32,6 +33,12 @@
         }
     );
     $("#btn-vcode").click(function() {
-        window.location.href = "<?=site_url('user/forgetpw')?>";
+        $.post(controller, data, function(data) {
+            if (data.code == "200") {
+                alert("验证通过，进入重置密码页面！");
+            } else {
+                alert(data.msg);
+            }
+        })
     });
 </script>

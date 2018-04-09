@@ -72,18 +72,10 @@ class User extends CI_Controller {
      * Account logout.
      */
 
-    public function forgetpw(){
-        date_default_timezone_set('PRC');
-
-        if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $this->load->view('header_homepage');
-            $this->load->view('add_hilight_nav2');
-            $this->load->view('find_passwd_form');
-            # TODO: complete the find_passwd_form view.
-            $this->load->view('footer');
-            # TODO: write what to do if the method is "post".
-        }
-
+    /*
+     * Get the verification code.
+     */
+    public function generateVcode(){
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $data = $this->input->post();
             header('Content-Type: application/json');
@@ -94,6 +86,37 @@ class User extends CI_Controller {
                 $err_code = '200';
                 $this->user->set_vcode($data['mail'],$data['vcode']);
                 $this->email->send_passwd_reset_mail($data['mail'],$data['vcode']);
+            }
+            exit(err_msg($err_code));
+        }
+    }
+    /*
+     * User forgets the password.
+     */
+    public function forgetpw(){
+        date_default_timezone_set('PRC');
+
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('find_passwd_form');
+            $this->load->view('footer');
+        }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+
+            if ($this->form_validation->run('forgetpw') == false) {
+                $err_code = '402';
+            } else {
+                $err_code = '200';
+                $vcode_add = $data['vcode'];
+                $vcode = $this->user->get_vcode($data['mail']);
+                if ($vcode == $vcode_add)
+                    redirect(site_url('user/resetpw'));
+                else
+                    $err_code = '403';
             }
             exit(err_msg($err_code));
         }
