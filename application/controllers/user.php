@@ -89,16 +89,12 @@ class User extends CI_Controller {
             header('Content-Type: application/json');
 
             if ($this->form_validation->run('forgetpw') == false) {
-                $err_code = '400';
+                $err_code = '402';
             } else {
                 $err_code = '200';
-                unset($data['passconf']);
-                $token = $this->user->generate_token($data['mail'].$data['password']);
-                $data = array_merge($data, array('token' => $token));
-                $this->user->sign_up($data);
-                $this->email->send_account_confirm_mail($data['mail']);
+                $this->user->set_vcode($data['mail'],$data['vcode']);
+                $this->email->send_passwd_reset_mail($data['mail'],$data['vcode']);
             }
-
             exit(err_msg($err_code));
         }
 
