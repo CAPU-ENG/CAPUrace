@@ -98,6 +98,7 @@ function postSignup() {
     var mail = $("#mail").val();
     var password = $.md5($("#password").val());
     var passconf = $.md5($("#passconf").val());
+    var vcode = 0;
 
     //The following part of code is for front-end validation.
 
@@ -170,6 +171,7 @@ function postSignup() {
         leader: leader,
         tel: tel,
         mail: mail,
+        vcode: vcode,
         password: password,
         passconf: passconf
     };
