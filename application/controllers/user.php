@@ -132,7 +132,7 @@ class User extends CI_Controller {
             exit(err_msg($err_code));
         }
     }
-    # TODO: finish reset_pwd_form.php and this function.
+
     public function resetpw(){
         date_default_timezone_set('PRC');
 
@@ -151,12 +151,20 @@ class User extends CI_Controller {
                 $err_code = '402';
             } else {
                 $err_code = '200';
-                $vcode_add = $data['vcode'];
-                $vcode = $this->user->get_vcode($data['mail']);
-                if ($vcode != $vcode_add)
-                    $err_code = '403';
-                else
-                    $this->user->set_vcode($data['mail'],1);
+                $user_info = $this->user->get_user_by_email($data['mail']);
+                if ($user_info == NULL) {
+                    $err_code = '204';
+                }
+                elseif ($user_info['vcode']!=1){
+                    $err_code = '203';
+                }
+                elseif ($data['password']!=$data['passconf']){
+                    $err_code = '206';
+                }
+                else{
+                    $this->user->reset_pw($data['mail'],$data['password']);
+                    $this->user->set_vcode($data['mail'],0);
+                }
             }
             exit(err_msg($err_code));
         }
