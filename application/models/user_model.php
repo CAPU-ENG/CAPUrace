@@ -148,6 +148,13 @@ class User_model extends CI_Model {
     }
 
     /*
+     *  Set the vcode in users.
+     */
+    public function set_vcode($email, $vcode) {
+        $this->db->where('mail', $email)->update('users',array('vcode' => $vcode));
+    }
+    
+    /*
      * Reset the user to be editable.
      * ====argument====
      * $id, the id of the user to reset.
@@ -213,6 +220,9 @@ class User_model extends CI_Model {
         return $query['token'];
     }
 
+    /*
+     * Get the vcode in the users
+     */
     public function get_vcode($mail) {
         $query = $this->get_user_by_email($mail);
         return $query['vcode'];
@@ -224,6 +234,7 @@ class User_model extends CI_Model {
         $token = $this->generate_token($mail);
         $this->db->where('mail', $mail)->update('users', array('token' => $token));
     }
+
 
     /*
      * Activate a user and clear the token after activating.
