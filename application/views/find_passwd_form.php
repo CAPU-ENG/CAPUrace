@@ -28,6 +28,15 @@
 </div>
 
 <script>
+    $("#vcode").bind("keypress",function(event) {
+        if(event.keyCode == "13") {
+            $("#btn-send-vcode").disabled = true;
+            $("#btn-send-vcode").text("发送中...");
+            sendVcode();
+            $("#btn-send-vcode").disabled = false;
+            $("#btn-send-vcode").text("再次发送");
+        }
+    });
     $("#btn-send-vcode").click(function () {
             this.disabled = true;
             $(this).text("发送中...");

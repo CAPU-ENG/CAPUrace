@@ -131,6 +131,10 @@ class User extends CI_Controller {
         }
 
     }
+    # TODO: finish reset_pwd_form.php and this function.
+    public function resetpw(){
+
+    }
     public function logout() {
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('id');
