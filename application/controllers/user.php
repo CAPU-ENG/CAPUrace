@@ -147,7 +147,7 @@ class User extends CI_Controller {
             $data = $this->input->post();
             header('Content-Type: application/json');
 
-            if ($this->form_validation->run('forgetpw') == false) {
+            if ($this->form_validation->run('resetpw') == false) {
                 $err_code = '402';
             } else {
                 $err_code = '200';
