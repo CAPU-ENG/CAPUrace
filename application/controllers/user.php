@@ -71,6 +71,36 @@ class User extends CI_Controller {
     /*
      * Account logout.
      */
+
+    public function forgetpw(){
+        date_default_timezone_set('PRC');
+
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('find_passwd_form');
+            $this->load->view('footer');
+        }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+
+            if ($this->form_validation->run('forgetpw') == false) {
+                $err_code = '400';
+            } else {
+                $err_code = '200';
+                unset($data['passconf']);
+                $token = $this->user->generate_token($data['mail'].$data['password']);
+                $data = array_merge($data, array('token' => $token));
+                $this->user->sign_up($data);
+                $this->email->send_account_confirm_mail($data['mail']);
+            }
+
+            exit(err_msg($err_code));
+        }
+
+    }
     public function logout() {
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('id');
