@@ -83,9 +83,20 @@ class User extends CI_Controller {
             if ($this->form_validation->run('forgetpw') == false) {
                 $err_code = '402';
             } else {
-                $err_code = '200';
-                $this->user->set_vcode($data['mail'],$data['vcode']);
-                $this->email->send_passwd_reset_mail($data['mail'],$data['vcode']);
+                // check if it is a registered email.
+                $user_info = $this->user->get_user_by_email($data['mail']);
+                if ($user_info == NULL) {
+                    $err_code = '204';
+                } elseif (!$user_info['activated']) {
+                    $err_code = '201';
+                } elseif (!$user_info['confirmed']) {
+                    $err_code = '202';
+                }
+                else {
+                    $err_code = '200';
+                    $this->user->set_vcode($data['mail'],$data['vcode']);
+                    $this->email->send_passwd_reset_mail($data['mail'],$data['vcode']);
+                }
             }
             exit(err_msg($err_code));
         }
@@ -113,9 +124,7 @@ class User extends CI_Controller {
                 $err_code = '200';
                 $vcode_add = $data['vcode'];
                 $vcode = $this->user->get_vcode($data['mail']);
-                if ($vcode == $vcode_add)
-                    redirect(site_url('user/resetpw'));
-                else
+                if ($vcode != $vcode_add)
                     $err_code = '403';
             }
             exit(err_msg($err_code));

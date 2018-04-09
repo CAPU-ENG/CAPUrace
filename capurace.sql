@@ -84,7 +84,7 @@ CREATE TABLE `users` (
   `tel` varchar(11) NOT NULL,
   `mail` varchar(30) NOT NULL,
   `password` varchar(32) NOT NULL,
-  'vcode' varchar(6) NOT NULL,
+  `vcode` varchar(6) NOT NULL,
   `bill` int(11) NOT NULL DEFAULT '0',
   `paid` tinyint(1) NOT NULL DEFAULT '0',
   `confirmed` tinyint(1) NOT NULL DEFAULT '0',

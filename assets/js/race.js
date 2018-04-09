@@ -188,20 +188,20 @@ function postSignup() {
  * This function generates the verification code, sends to the email user and saves it in the databases.
  */
 function sendVcode() {
+    //The following part of code is for front-end validation.
+    if (mail == "") {
+        alert("邮箱不能为空！");
+        $("#mail").focus();
+        return;
+    }
     var mail = $("#mail").val();
+
     // Generate the 6-verification code
     var vcode = "";
     var all = "azxcvbnmsdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP0123456789";
     for (var i = 0; i < 6; i++) {
         var index = Math.floor(Math.random() * 62);
         vcode += all.charAt(index);
-    }
-
-    //The following part of code is for front-end validation.
-    if (mail == "") {
-        alert("邮箱不能为空！");
-        $("#mail").focus();
-        return;
     }
     //Organize the data and post to the controller.
     var data = {
@@ -215,9 +215,26 @@ function sendVcode() {
             alert(data.msg);
         }
     })
-
 }
 
+function checkVcode() {
+    var mail = $("#mail").val();
+    var vcode = $("#vcode").val();
+
+    //Organize the data and post to the controller.
+    var data = {
+        mail: mail,
+        vcode: vcode
+    };
+
+    $.post(controller, data, function(data) {
+        if (data.code == "200") {
+            alert("验证通过，进入重置密码页面！");
+        } else {
+            alert(data.msg);
+        }
+    })
+}
 /*
  * This function is called when clicking 'save'.
  * It will store the individual information into cookie.

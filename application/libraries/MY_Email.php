@@ -65,7 +65,7 @@ class MY_Email extends CI_Email
      */
     public function send_passwd_reset_mail($mail, $vcode){
         $subject = '第十六届全国高校自行车交流赛重置密码：验证码';
-        $message='<br><br>您正在通过邮箱找回密码，本次操作的验证码是：<b>' . $vcode . '</b>。如非本人操作请忽略本邮件。<br><br>北京大学自行车协会';
+        $message='<br><br>您正在通过邮箱找回密码，本次操作的验证码是：<b>' . $vcode . '</b>（区分大小写）。如非本人操作请忽略本邮件。<br><br>北京大学自行车协会';
         $this->send_mail($mail, $subject, $message);
     }
 

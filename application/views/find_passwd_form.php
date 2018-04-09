@@ -15,12 +15,15 @@
         <input type="text" class="form-control" name="vcode" id="vcode">
     </div><br/><br/>
     <hr/>
-    &nbsp; <p>操作提示：输入邮箱后，点击“发送验证码”按钮。前往邮箱查看验证码，在“验证码”一栏填写，点击“验证”按钮完成验证，进入重置密码。</p>
+    <p>操作提示：</p>
+    <p>输入邮箱后，点击“发送验证码”按钮。</p>
+    <p>前往邮箱查看验证码，在“验证码”一栏填写。</p>
+        <p>点击“验证”按钮完成验证，进入重置密码页面。</p>
     <div class="col-sm-6">
         <button class="btn btn-warning btn-block" id="btn-send-vcode">发送验证码</button>
     </div>
     <div class="col-sm-6">
-        <button class="btn btn-warning btn-block" id="btn-vcode">验证</button>
+        <button class="btn btn-success btn-block" id="btn-vcode">验证</button>
     </div>
 </div>
 
@@ -30,16 +33,14 @@
             $(this).text("发送中...");
             sendVcode();
             this.disabled = false;
-            $(this).text("已发送");
+            $(this).text("再次发送");
         }
     );
     $("#btn-vcode").click(function() {
-        $.post(controller, data, function(data) {
-            if (data.code == "200") {
-                alert("验证通过，进入重置密码页面！");
-            } else {
-                alert(data.msg);
-            }
-        })
+        this.disabled = true;
+        $(this).text("验证中...");
+        checkVcode();
+        this.disabled = false;
+        $(this).text("重新验证");
     });
 </script>
