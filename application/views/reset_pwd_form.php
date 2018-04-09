@@ -27,19 +27,21 @@
 </div>
 
 <script>
-    $("#btn-send-vcode").click(function () {
+    $("#passconf").bind("keypress",function(event) {
+        if(event.keyCode == "13") {
+            $("#btn-reset").disabled=true;
+            $("#btn-reset").text("重置中...");
+            resetPW();
+            $("#btn-reset").disabled=false;
+            $("#btn-reset").text("确认");
+        }
+    });
+    $("#btn-reset").click(function () {
             this.disabled = true;
-            $(this).text("发送中...");
+            $(this).text("重置中...");
             resetPW();
             this.disabled = false;
-            $(this).text("再次发送");
+            $(this).text("确认");
         }
     );
-    $("#btn-vcode").click(function() {
-        this.disabled = true;
-        $(this).text("验证中...");
-        checkVcode();
-        this.disabled = false;
-        $(this).text("重新验证");
-    });
 </script>
