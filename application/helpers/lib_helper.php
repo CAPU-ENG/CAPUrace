@@ -112,8 +112,8 @@ if (! function_exists('get_bill')) {
             $lunch_fee = 0;
         } else {
             $lunch_fee = 20;
-        } 
-        $race_num = $data['race'] + $data['race_f'] + $data['ifteam'] + $data['rdb'] + $data['rdb_f'];
+        }
+        $race_num = $data['race'] + $data['race_f'] + $data['race_elite'] + $data['ifteam'] + $data['rdb'] + $data['rdb_f'] + $data['rdb_elite'];
         switch ($race_num) {
             case 0:
                 $race_fee = 0;
@@ -178,9 +178,9 @@ if (! function_exists('validate_id_number')) {
                     if (substr($id_number, 16, 1) % 2 == (2 - $gender)) {
                         return true;
                     }
-                }                
-            }           
-        } 
+                }
+            }
+        }
         return false;
     }
 }

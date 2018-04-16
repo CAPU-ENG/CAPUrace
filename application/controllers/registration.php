@@ -64,7 +64,7 @@ class Registration extends CI_Controller {
             $key_set = array();
             if (!$ind_post) exit(err_msg('999'));
 
-            
+
             $rdb_f_count = 0;
             $rdb_m_count = 0;
             $race_m_count = 0;
@@ -157,7 +157,7 @@ class Registration extends CI_Controller {
                     exit(err_custom_msg('1090', array(
                         'order' => $item_post['order'] + 1,
                     )));
-                } 
+                }
                 if (!array_key_exists($item_post['race_f'], $GLOBALS['CAPURACE_F'])) {
                     exit(err_custom_msg('1090', array(
                         'order' => $item_post['order'] + 1,
@@ -174,17 +174,17 @@ class Registration extends CI_Controller {
                     )));
                 }
 
-                if ($item_post['ifrace'] == '0' and ($item_post['race'] != '0' or 
-                        $item_post['race_f'] != '0' or $item_post['rdb'] != '0' or 
+                if ($item_post['ifrace'] == '0' and ($item_post['race'] != '0' or
+                        $item_post['race_f'] != '0' or $item_post['rdb'] != '0' or
                         $item_post['rdb_f'] != '0' or $item_post['ifteam'] != '0')) {
                     exit(err_custom_msg('1091', array(
                         'order' => $item_post['order'] + 1,
                     )));
-                } 
+                }
 
                 if (($item_post['ifrace'] != '0') and ($item_post['race'] == '0') and
-                        ($item_post['race_f'] == '0') and ($item_post['ifteam'] == '0') and 
-                        ($item_post['rdb'] == '0') and ($item_post['rdb_f'] == '0')) {
+                        ($item_post['race_f'] == '0') and ($item_post['race_elite'] == '0') and ($item_post['ifteam'] == '0') and 
+                        ($item_post['rdb'] == '0') and ($item_post['rdb_f'] == '0') and ($item_post['rdb_elite'] == '0')) {
                     exit(err_custom_msg('1092', array(
                         'order' => $item_post['order'] + 1,
                     )));
@@ -201,7 +201,7 @@ class Registration extends CI_Controller {
                     exit(err_custom_msg('1094', array(
                         'order' => $item_post['order'] + 1,
                     )));
-                } 
+                }
                 // ifteam
                 if (!array_key_exists($item_post['ifteam'], $GLOBALS['JUDGE'])) {
                     exit(err_custom_msg('1100', array(

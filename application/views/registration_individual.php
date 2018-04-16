@@ -5,25 +5,25 @@
     <p style="color: red">名额剩余：
     <?php if ($race_m_status < 50): ?>
         山地男子组: <?=$race_m_status?>个，
-    <?php else: ?> 
+    <?php else: ?>
         山地男子组: 充足，
     <?php endif; ?>
- 
+
     <?php if ($race_f_status < 50): ?>
         山地女子组: <?=$race_f_status?>个，
-    <?php else: ?> 
+    <?php else: ?>
         山地女子组：充足，
     <?php endif; ?>
- 
+
     <?php if ($rdb_m_status < 50): ?>
         公路男子组: <?=$rdb_m_status?>个，
-    <?php else: ?>    
+    <?php else: ?>
         公路男子组：充足，
     <?php endif; ?>
- 
+
     <?php if ($rdb_f_status < 50): ?>
         公路女子组: <?=$rdb_f_status?>个
-    <?php else: ?> 
+    <?php else: ?>
         公路女子组：充足
      <?php endif; ?>
     <hr/>
@@ -84,18 +84,31 @@
                     <option value="1">参赛</option>
                 </select>
                 </div>
-                <label class="col-sm-1">山地赛</label>
+                <label class="col-sm-2">山地大众赛</label>
                 <div class="col-sm-1">
                     <input type="checkbox" name="race">
                 </div>
-                <label class="col-sm-1">公路赛</label>
+                <label class="col-sm-2">山地精英赛</label>
                 <div class="col-sm-1">
-                    <input type="checkbox" name="roadbike">
+                    <input type="checkbox" name="race_elite">
                 </div>
                 <label class="col-sm-1">团体赛</label>
                 <div class="col-sm-1">
                     <input type="checkbox" name="ifteam">
                 </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+              </div>
+              <label class="col-sm-2">公路大众赛</label>
+              <div class="col-sm-1">
+                  <input type="checkbox" name="roadbike">
+              </div>
+              <label class="col-sm-2">公路精英赛</label>
+              <div class="col-sm-1">
+                  <input type="checkbox" name="roadbike_elite">
+              </div>
+
             </div>
         </div>
         <hr/>
@@ -211,7 +224,27 @@
         $("select[name='ifrace']").change(function() {
             restrictIndividual();
         });
+        $("[name='gender']").change(function () {
+            restrictIndividual();
+        });
         $("[name='race']").change(function () {
+            race_elite = $("[name='race_elite']");
+            race_elite.prop('checked',false);
+            restrictIndividual();
+        });
+        $("[name='race_elite']").change(function () {
+            race = $("[name='race']");
+            race.prop('checked',false);
+            restrictIndividual();
+        });
+        $("[name='roadbike']").change(function () {
+            rdb_elite = $("[name='roadbike_elite']");
+            rdb_elite.prop('checked',false);
+            restrictIndividual();
+        });
+        $("[name='roadbike_elite']").change(function () {
+            rdb = $("[name='roadbike']");
+            rdb.prop('checked',false);
             restrictIndividual();
         });
         $("[name='ifteam']").change(function () {
