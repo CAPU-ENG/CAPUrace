@@ -62,7 +62,10 @@
             <td class="race">
                 <?php
                 if($item['race']) {
-                    echo  '山地男子组';
+                    echo  '山地男子大众组';
+                }
+                if($item['race_elite']) {
+                    echo  '山地男子精英组';
                 }
                 if($item['race_f']) {
                     echo  '山地女子组';
@@ -71,12 +74,15 @@
                     echo ' 团体赛 ';
                 }
                 if ($item['rdb']) {
-                    echo ' 公路男子组 ';
+                    echo ' 公路男子大众组 ';
+                }
+                if ($item['rdb_elite']) {
+                    echo ' 公路男子精英组 ';
                 }
                 if ($item['rdb_f']) {
                     echo ' 公路女子组 ';
                 }
-                if (!$item['race'] && !$item['race_f'] && !$item['rdb'] && !$item['rdb_f'] && !$item['ifteam']) {
+                if (!$item['race'] && !$item['race_elite'] && !$item['race_f'] && !$item['rdb'] && !$item['rdb_elite'] && !$item['rdb_f'] && !$item['ifteam']) {
                     echo ' 不参加 ';
                 }
                 ?>
@@ -123,13 +129,13 @@
     </table>
     <hr/>
 
-    <?php if ($userinfo['campusrace']): ?> 
+    <?php if ($userinfo['campusrace']): ?>
     <div class="content">
      <h4 style="text-align: center; color: #ff0000">您具备校内参赛资格，如需参加或了解更多信息，请联系北大车协外联人员!</h4>
-    </div>   
+    </div>
     <hr/>
     <?php endif; ?>
-    
+
     <div style="margin:0 auto;">
         <div class="col-sm-3"></div>
         <div class="col-sm-2">
