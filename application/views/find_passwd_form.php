@@ -1,7 +1,7 @@
 <script type="text/javascript">
     var controller = "<?=site_url('user/forgetpw')?>";
     var controller2 = "<?=site_url('user/generateVcode')?>";
-    var directto = "<?=base_url()?>";
+    var directto = "<?=site_url('user/resetpw')?>";
 </script>
 <div class="signcontainer">
     <h3>请输入注册时的邮箱 </h3>
@@ -28,6 +28,15 @@
 </div>
 
 <script>
+    $("#vcode").bind("keypress",function(event){
+            if(event.keyCode == "13") {
+            $("#btn-send-vcode").disabled = true;
+            $("#btn-send-vcode").text("发送中...");   
+            sendVcode();
+            $("#btn-send-vcode").disabled = false;
+            $("#btn-send-vcode").text("再次发送");
+        }
+    });
     $("#btn-send-vcode").click(function () {
             this.disabled = true;
             $(this).text("发送中...");

@@ -71,6 +71,23 @@ $config = array(
             'label' => '验证码',
             'rules' => 'required|exact_length[6]|xss_clean'
         )
+    )，
+    'resetpw' => array(
+        array(
+            'field' => 'password',
+            'label' => '新密码',
+            'rules' => 'required|matches[passconf]|md5'
+        ),
+        array(
+            'field' => 'passconf',
+            'label' => '新密码确认',
+            'rules' => 'required|md5'
+        ),
+        array(
+            'field' => 'mail',
+            'label' => '电子邮箱',
+            'rules' => 'trim|required|valid_email|xss_clean'
+        )
     )
 );
 
