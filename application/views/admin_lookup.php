@@ -57,7 +57,10 @@
                 <td class="race">
                     <?php
                     if($item['race']) {
-                        echo  '山地男子组';
+                        echo  '山地男子大众组';
+                    }
+                    if($item['race_elite']) {
+                        echo  '山地男子精英组';
                     }
                     if($item['race_f']) {
                         echo  '山地女子组';
@@ -66,12 +69,15 @@
                         echo ' 团体赛 ';
                     }
                     if ($item['rdb']) {
-                        echo ' 公路男子组 ';
+                        echo ' 公路男子大众组 ';
+                    }
+                    if ($item['rdb_elite']) {
+                        echo ' 公路男子精英组 ';
                     }
                     if ($item['rdb_f']) {
                         echo ' 公路女子组 ';
                     }
-                    if (!$item['race'] && !$item['race_f'] && !$item['rdb'] && !$item['rdb_f'] && !$item['ifteam']) {
+                    if (!$item['race'] && !$item['race_elite'] && !$item['race_f'] && !$item['rdb'] && !$item['rdb_elite'] && !$item['rdb_f'] && !$item['ifteam']) {
                         echo ' 不参加 ';
                     }
                     ?>

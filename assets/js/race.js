@@ -296,18 +296,18 @@ function fetchIndividual(order) {
     form.find("[name='id_number']").val(item.id_number);
     form.find("[name='gender']").val(item.gender);
     if ( item.gender == 1){
-        form.find("[name='race']").prop('checked', item.race);
-        form.find("[name='race_elite']").prop('checked', item.race_elite);
-        form.find("[name='roadbike']").prop('checked', item.rdb);
-        form.find("[name='roadbike_elite']").prop('checked', item.rdb_elite);
+        form.find("[name='race']").prop('checked', item.race == 1);
+        form.find("[name='race_elite']").prop('checked', item.race_elite == 1);
+        form.find("[name='roadbike']").prop('checked', item.rdb == 1);
+        form.find("[name='roadbike_elite']").prop('checked', item.rdb_elite == 1);
     }
     if ( item.gender == 2){
-        form.find("[name='race']").prop('checked', item.race_f);
-        form.find("[name='roadbike']").prop('checked', item.rdb_f);
+        form.find("[name='race']").prop('checked', item.race_f == 1);
+        form.find("[name='roadbike']").prop('checked', item.rdb_f == 1);
     }
     form.find("[name='ifrace']").val(item.ifrace);
     form.find("[name='islam']").prop('checked',item.islam);
-    form.find("[name='ifteam']").prop('checked', item.ifteam);
+    form.find("[name='ifteam']").prop('checked', item.ifteam ==1);
     form.find("[name='dinner']").prop('checked', item.dinner);
     form.find("[name='lunch']").prop('checked', item.lunch);
     restrictIndividual();
