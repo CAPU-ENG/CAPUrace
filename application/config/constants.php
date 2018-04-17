@@ -104,10 +104,12 @@ $ERR_MSG = array(
     '1099' => '每个学校观赛人数不得超过{quota}人。',
     '1100' => '第{order}个人的团体赛选项不合法。',
     '1101' => '第{order}个人是观赛人员，不得参加团体赛。',
-    '1102' => '山地男子组名额已满！',
+    '1102' => '山地男子大众组名额已满！',
     '1103' => '山地女子组名额已满！',
-    '1104' => '公路男子组名额已满！',
+    '1104' => '公路男子大众组名额已满！',
     '1105' => '公路女子组名额已满！',
+    '1106' => '公路男子精英组名额已满！',
+    '1107' => '山地男子精英组名额已满！',
     // Team Registration Error.
     '2000' => '第{order}组第{order_ind}个人不合法。',
     '2001' => '第{order}组第{order_ind}个人与第{order1}组第{order1_ind}个人重复。',
@@ -171,10 +173,12 @@ $RACE = array(
 );
 
 
-$RACE_M_QUOTA = 390;
+$RACE_M_QUOTA = 190;
+$RACE_ELITE_QUOTA = 190;
 $RACE_F_QUOTA = 190;
-$RDB_M_QUOTA = 230;
+$RDB_M_QUOTA = 150;
 $RDB_F_QUOTA = 55;
+$RDB_ELITE_QUOTA = 75;
 $RACE_TEAM_QUOTA = 60;
 
 $AUDIENCE_QUOTA = 230;
@@ -196,7 +200,7 @@ $ACCO_FEE = array(
  * Date and Time Settings
  */
 
-$SIGN_UP_DEADLINE = '2018-04-18';
+$SIGN_UP_DEADLINE = '2018-04-20';
 
 /*
  * Admin user list

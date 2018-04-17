@@ -64,11 +64,12 @@ class Registration extends CI_Controller {
             $key_set = array();
             if (!$ind_post) exit(err_msg('999'));
 
-
             $rdb_f_count = 0;
             $rdb_m_count = 0;
+            $rdb_elite_count = 0;
             $race_m_count = 0;
             $race_f_count = 0;
+            $race_elite_count = 0;
             $aud_count = 0;
             foreach ($ind_post as $item_post) {
                 if ($item_post['ifrace'] == '0') {
@@ -85,6 +86,12 @@ class Registration extends CI_Controller {
                 }
                 if ($item_post['race_f'] == '1' and $item_post['gender'] == '2') {
                     $race_f_count++;
+                }
+                if ($item_post['race_elite'] == '1' and $item_post['gender'] == '1') {
+                    $race_elite_count++;
+                }
+                if ($item_post['rdb_elite'] == '1' and $item_post['gender'] == '1') {
+                    $rdb_elite_count++;
                 }
                 // name
                 if (!validate_name($item_post['name'])) {
@@ -183,7 +190,7 @@ class Registration extends CI_Controller {
                 }
 
                 if (($item_post['ifrace'] != '0') and ($item_post['race'] == '0') and
-                        ($item_post['race_f'] == '0') and ($item_post['race_elite'] == '0') and ($item_post['ifteam'] == '0') and 
+                        ($item_post['race_f'] == '0') and ($item_post['race_elite'] == '0') and ($item_post['ifteam'] == '0') and
                         ($item_post['rdb'] == '0') and ($item_post['rdb_f'] == '0') and ($item_post['rdb_elite'] == '0')) {
                     exit(err_custom_msg('1092', array(
                         'order' => $item_post['order'] + 1,
@@ -222,8 +229,10 @@ class Registration extends CI_Controller {
             $quota_results = $this->people->get_race_quota();
             if (!$quota_results['rdb_m_status'] and $rdb_m_count > 0) exit(err_msg('1104'));
             if (!$quota_results['rdb_f_status'] and $rdb_f_count > 0) exit(err_msg('1105'));
+            if (!$quota_results['rdb_elite_status'] and $rdb_elite_count > 0) exit(err_msg('1106'));
             if (!$quota_results['race_m_status'] and $race_m_count > 0) exit(err_msg('1102'));
             if (!$quota_results['race_f_status'] and $race_f_count > 0) exit(err_msg('1103'));
+            if (!$quota_results['race_elite_status'] and $race_elite_count > 0) exit(err_msg('1106'));
 
             $bill = 0;
             $ind_db = $this->people->get_people_from_school($school_id);

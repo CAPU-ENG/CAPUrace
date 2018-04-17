@@ -4,9 +4,15 @@
 
     <p style="color: red">名额剩余：
     <?php if ($race_m_status < 50): ?>
-        山地男子组: <?=$race_m_status?>个，
+        山地男子大众组: <?=$race_m_status?>个，
     <?php else: ?>
-        山地男子组: 充足，
+        山地男子大众组: 充足，
+    <?php endif; ?>
+
+    <?php if ($race_elite_status < 50): ?>
+        山地男子精英组: <?=$race_elite_status?>个，
+    <?php else: ?>
+        山地男子精英组: 充足，
     <?php endif; ?>
 
     <?php if ($race_f_status < 50): ?>
@@ -16,9 +22,15 @@
     <?php endif; ?>
 
     <?php if ($rdb_m_status < 50): ?>
-        公路男子组: <?=$rdb_m_status?>个，
+        公路男子大众组: <?=$rdb_m_status?>个，
     <?php else: ?>
-        公路男子组：充足，
+        公路男子大众组：充足，
+    <?php endif; ?>
+
+    <?php if ($rdb_elite_status < 50): ?>
+        公路男子精英组: <?=$rdb_elite_status?>个，
+    <?php else: ?>
+        公路男子精英组：充足，
     <?php endif; ?>
 
     <?php if ($rdb_f_status < 50): ?>
