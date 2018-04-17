@@ -19,7 +19,7 @@ class Admin extends CI_Controller {
         $this->load->view('header_admin');
         $this->load->view('footer_admin');
     }
-    
+
     public function registering() {
         $this->load->view('header_admin');
         $data['registering'] = $this->user->get_registering();
@@ -40,7 +40,7 @@ class Admin extends CI_Controller {
             echo 0;
         }
     }
-    
+
     public function pay() {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $data['payment'] = $this->user->get_verified();
@@ -126,8 +126,10 @@ class Admin extends CI_Controller {
         $data['nlook'] = $this->db->query('select count(*) as nlook from people where deleted=0 and ifrace=0;')->result_array()[0]['nlook'];
         $data['nrace'] = $this->db->query('select count(*) as nrace from people where deleted=0 and ifrace=1;')->result_array()[0]['nrace'];
         $data['nmale_xc'] = $this->db->query('select count(*) as nmale_xc from people where deleted=0 and ifrace=1 and race=1;')->result_array()[0]['nmale_xc'];
+        $data['nmale_xc_elite'] = $this->db->query('select count(*) as nmale_xc_elite from people where deleted=0 and ifrace=1 and race_elite=1;')->result_array()[0]['nmale_xc_elite'];
         $data['nfemale_xc'] = $this->db->query('select count(*) as nfemale_xc from people where deleted=0 and ifrace=1 and race_f=1;')->result_array()[0]['nfemale_xc'];
         $data['nmale_rdb'] = $this->db->query('select count(*) as nmale_rdb from people where deleted=0 and ifrace=1 and rdb=1;')->result_array()[0]['nmale_rdb'];
+        $data['nmale_rdb_elite'] = $this->db->query('select count(*) as nmale_rdb_elite from people where deleted=0 and ifrace=1 and rdb_elite=1;')->result_array()[0]['nmale_rdb_elite'];
         $data['nfemale_rdb'] = $this->db->query('select count(*) as nfemale_rdb from people where deleted=0 and ifrace=1 and rdb_f=1;')->result_array()[0]['nfemale_rdb'];
         $data['nteams'] = $this->db->query('select count(*) as nteams from team where deleted=0;')->result_array()[0]['nteams'];
         $data['dinner'] = $this->db->query('select count(*) as dinner from people where deleted=0 and dinner=1;')->result_array()[0]['dinner'];
@@ -398,5 +400,5 @@ class Admin extends CI_Controller {
             exit(err_msg('200'));
         }
     }
-    
+
 }
