@@ -180,9 +180,19 @@ class Registration extends CI_Controller {
                         'order' => $item_post['order'] + 1,
                     )));
                 }
+                if (!array_key_exists($item_post['race_elite'], $GLOBALS['CAPURACE_M'])) {
+                    exit(err_custom_msg('1090', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                if (!array_key_exists($item_post['rdb_elite'], $GLOBALS['CAPURDB_M'])) {
+                    exit(err_custom_msg('1090', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
 
-                if ($item_post['ifrace'] == '0' and ($item_post['race'] != '0' or
-                        $item_post['race_f'] != '0' or $item_post['rdb'] != '0' or
+                if ($item_post['ifrace'] == '0' and ($item_post['race'] != '0' or $item_post['race_elite'] != '0' or
+                        $item_post['race_f'] != '0' or $item_post['rdb'] != '0' or $item_post['rdb_elite'] != '0' or
                         $item_post['rdb_f'] != '0' or $item_post['ifteam'] != '0')) {
                     exit(err_custom_msg('1091', array(
                         'order' => $item_post['order'] + 1,
@@ -204,8 +214,15 @@ class Registration extends CI_Controller {
                     )));
                 }
                 if ($item_post['gender'] == '2' and
-                    ($item_post['race'] != '0' or $item_post['rdb'] != '0')) {
+                    ($item_post['race'] != '0' or $item_post['race_elite'] != '0' or
+                    $item_post['rdb'] != '0' or $item_post['rdb_elite'] != '0')) {
                     exit(err_custom_msg('1094', array(
+                        'order' => $item_post['order'] + 1,
+                    )));
+                }
+                if (($item_post['race'] == '1' and $item_post['race_elite'] == '1') or
+                    ($item_post['rdb'] == '1' and $item_post['rdb_elite'] == '1')) {
+                    exit(err_custom_msg('1095', array(
                         'order' => $item_post['order'] + 1,
                     )));
                 }
