@@ -191,7 +191,7 @@ class User extends CI_Controller {
                 if ($vcode != $vcode_add)
                     $err_code = '403';
                 else
-                    $this->user->set_vcode($data['mail'],1);
+                    $this->user->set_vcode($data['mail'],0);
             }
             exit(err_msg($err_code));
         }

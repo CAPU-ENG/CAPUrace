@@ -44,4 +44,7 @@
             $(this).text("确认");
         }
     );
+    $("#btn-back").click(function() {
+        window.location.href = "<?=site_url('user/forgetpw')?>";
+    });
 </script>
