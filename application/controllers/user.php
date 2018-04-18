@@ -110,9 +110,63 @@ class User extends CI_Controller {
              exit(err_msg($err_code));
          }
      }
-     #TODO: add the function: sendVCode():
-    # TODO: add the function: resetPW():
+    /*
+     * User forgets the password.
+     */
+    public function forgetpw(){
+        date_default_timezone_set('PRC');
 
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('find_passwd_form');
+            $this->load->view('footer');
+        }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+
+            if ($this->form_validation->run('forgetpw') == false) {
+                $err_code = '402';
+            } else {
+                $err_code = '200';
+                $vcode_add = $data['vcode'];
+                $vcode = $this->user->get_vcode($data['mail']);
+                if ($vcode != $vcode_add)
+                    $err_code = '403';
+                else
+                    $this->user->set_vcode($data['mail'],1);
+            }
+            exit(err_msg($err_code));
+        }
+    }
+    public function resetpw(){
+        date_default_timezone_set('PRC');
+
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('reset_pwd_form');
+            $this->load->view('footer');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+            if ($this->form_validation->run('resetpw') == false) {
+                $err_code = '402';
+            } else {
+                $err_code = '200';
+                $vcode_add = $data['vcode'];
+                $vcode = $this->user->get_vcode($data['mail']);
+                if ($vcode != $vcode_add)
+                    $err_code = '403';
+                else
+                    $this->user->set_vcode($data['mail'],1);
+            }
+            exit(err_msg($err_code));
+        }
+    }
     /*
      * Show registration result for the user.
      */
