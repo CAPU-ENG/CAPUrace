@@ -152,6 +152,14 @@ class User_model extends CI_Model {
     public function set_vcode($email, $vcode) {
         $this->db->where('mail', $email)->update('users',array('vcode' => $vcode));
     }
+    /*
+    * Get the vcode in the users
+    */
+    public function get_vcode($mail) {
+        $query = $this->get_user_by_email($mail);
+        return $query['vcode'];
+    }
+
 
     /*
      * Reset the user to be editable.
