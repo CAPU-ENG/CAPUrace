@@ -70,6 +70,7 @@ $PROVINCES_SHORT = array(
  * These messages are error messages returned to user input.
  *
  */
+# TODO: add error information.
 $ERR_MSG = array(
     '200' => 'OK.',
     '201' => '用户尚未激活，请您前往注册邮箱查收激活邮件！',

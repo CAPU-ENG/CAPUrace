@@ -381,7 +381,7 @@ function restrictIndividual() {
     var ifteam = team.prop('checked');
     var indrace = (race.val() != '0');
 }
-
+//TODO: set "vcode" in each initialization.
 /*
  * This function is called when 'edit' button is clicked.
  * It fills the form with existing data for editing.

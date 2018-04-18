@@ -25,6 +25,7 @@
     <div class="col-sm-6">
         <button class="btn btn-success btn-block" id="btn-login">登录</button>
     </div>
+    # TODO: add the "forget passwd" link.
 </div>
 <script>
     $("#password").bind("keypress",function(event) {

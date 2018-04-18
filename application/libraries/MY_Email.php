@@ -79,3 +79,4 @@ class MY_Email extends CI_Email
         $this->send_mail($mail, $subject, $message);
     }
 }
+//TODO: send_vcode_mail

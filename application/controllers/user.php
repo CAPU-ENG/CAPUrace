@@ -110,6 +110,8 @@ class User extends CI_Controller {
              exit(err_msg($err_code));
          }
      }
+     #TODO: add the function: sendVCode():
+    # TODO: add the function: resetPW():
 
     /*
      * Show registration result for the user.
