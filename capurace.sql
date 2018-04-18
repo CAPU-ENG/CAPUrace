@@ -95,6 +95,7 @@ CREATE TABLE `users` (
   `address` varchar(50) NOT NULL,
   `zipcode` varchar(6) NOT NULL,
   `activated` tinyint(1) NOT NULL DEFAULT '0',
+  `verified` varchar(6) NOT NULL DEFAULT '0',
   `token` varchar(32) NOT NULL,
   `editable` tinyint(1) NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
