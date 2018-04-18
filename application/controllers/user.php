@@ -141,6 +141,35 @@ class User extends CI_Controller {
             exit(err_msg($err_code));
         }
     }
+    /*
+     * Get the verification code.
+    */
+    public function generateVcode(){
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+
+            if ($this->form_validation->run('forgetpw') == false) {
+                $err_code = '402';
+            } else {
+                // check if it is a registered email.
+                $user_info = $this->user->get_user_by_email($data['mail']);
+                if ($user_info == NULL) {
+                    $err_code = '204';
+                } elseif (!$user_info['activated']) {
+                    $err_code = '201';
+                } elseif (!$user_info['confirmed']) {
+                    $err_code = '202';
+                }
+                else {
+                    $err_code = '200';
+                    $this->user->set_vcode($data['mail'],$data['vcode']);
+                    $this->email->send_passwd_reset_mail($data['mail'],$data['vcode']);
+                }
+            }
+            exit(err_msg($err_code));
+        }
+    }
     public function resetpw(){
         date_default_timezone_set('PRC');
 
