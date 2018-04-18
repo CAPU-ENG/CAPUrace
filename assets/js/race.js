@@ -306,10 +306,10 @@ function fetchIndividual(order) {
         form.find("[name='roadbike']").prop('checked', item.rdb_f == 1);
     }
     form.find("[name='ifrace']").val(item.ifrace);
-    form.find("[name='islam']").prop('checked',item.islam);
-    form.find("[name='ifteam']").prop('checked', item.ifteam ==1);
-    form.find("[name='dinner']").prop('checked', item.dinner);
-    form.find("[name='lunch']").prop('checked', item.lunch);
+    form.find("[name='islam']").prop('checked',item.islam == 1);
+    form.find("[name='ifteam']").prop('checked', item.ifteam == 1);
+    form.find("[name='dinner']").prop('checked', item.dinner == 1);
+    form.find("[name='lunch']").prop('checked', item.lunch == 1);
     restrictIndividual();
 }
 
