@@ -119,7 +119,7 @@ class User extends CI_Controller {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $this->load->view('header_homepage');
             $this->load->view('add_hilight_nav2');
-            $this->load->view('find_passwd_form');
+            $this->load->view('vcode_send');
             $this->load->view('footer');
         }
 
@@ -147,7 +147,7 @@ class User extends CI_Controller {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $this->load->view('header_homepage');
             $this->load->view('add_hilight_nav2');
-            $this->load->view('reset_pwd_form');
+            $this->load->view('passwd_reset');
             $this->load->view('footer');
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
