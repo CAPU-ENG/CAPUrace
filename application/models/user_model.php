@@ -159,7 +159,12 @@ class User_model extends CI_Model {
         $query = $this->get_user_by_email($mail);
         return $query['vcode'];
     }
-
+    /*
+     *  Reset password in users.
+     */
+    public function set_pwd($email, $pwd) {
+        $this->db->where('mail', $email)->update('users',array('password' => $pwd));
+    }
 
     /*
      * Reset the user to be editable.

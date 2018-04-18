@@ -186,12 +186,7 @@ class User extends CI_Controller {
                 $err_code = '402';
             } else {
                 $err_code = '200';
-                $vcode_add = $data['vcode'];
-                $vcode = $this->user->get_vcode($data['mail']);
-                if ($vcode != $vcode_add)
-                    $err_code = '403';
-                else
-                    $this->user->set_vcode($data['mail'],0);
+                $this->user->set_pwd($data['mail'],$data['password']);
             }
             exit(err_msg($err_code));
         }
