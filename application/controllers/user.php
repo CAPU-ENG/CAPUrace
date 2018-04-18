@@ -137,13 +137,16 @@ class User extends CI_Controller {
             $this->load->view('footer');
         }
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $school_id = $this->session->userdata('id');
             $quota_results = $this->people->get_race_quota();
-            if (!$quota_results['rdb_m_status']) exit(err_msg('1104'));
-            if (!$quota_results['rdb_f_status']) exit(err_msg('1105'));
-            if (!$quota_results['rdb_elite_status']) exit(err_msg('1106'));
-            if (!$quota_results['race_m_status']) exit(err_msg('1102'));
-            if (!$quota_results['race_f_status']) exit(err_msg('1103'));
-            if (!$quota_results['race_elite_status']) exit(err_msg('1107'));
+            $race_number = $this->people->get_race_number_by_school($school_id);
+
+            if (!$quota_results['rdb_m_status'] && $race_number['rdb_m_num']) exit(err_msg('1104'));
+            if (!$quota_results['rdb_f_status'] && $race_number['rdb_f_num']) exit(err_msg('1105'));
+            if (!$quota_results['rdb_elite_status'] && $race_number['rdb_elite_num']) exit(err_msg('1106'));
+            if (!$quota_results['race_m_status'] && $race_number['race_m_num']) exit(err_msg('1102'));
+            if (!$quota_results['race_f_status'] && $race_number['race_f_num']) exit(err_msg('1103'));
+            if (!$quota_results['race_elite_status'] && $race_number['race_elite_num']) exit(err_msg('1107'));
             $err_code = '200';
             exit(err_msg($err_code));
         }
