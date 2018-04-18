@@ -18,6 +18,9 @@
     </div>
     <br/>
     <br/>
+    <div class="col-sm-4" ><a href="<?=site_url('user/forgetpw')?>">忘记密码</a></div>
+    <br/>
+    <br/>
     <hr/>
     <div class="col-sm-6">
         <button class="btn btn-warning btn-block" id="btn-signup">注册</button>
@@ -25,7 +28,6 @@
     <div class="col-sm-6">
         <button class="btn btn-success btn-block" id="btn-login">登录</button>
     </div>
-    # TODO: add the "forget passwd" link.
 </div>
 <script>
     $("#password").bind("keypress",function(event) {
