@@ -180,6 +180,32 @@ class People_model extends CI_Model {
     }
 
     /*
+     * Get the number of people of each race
+     */
+    public function get_race_number_by_school($school_id) {
+        $query = $this->db->where('deleted', false)->where('school_id', $school_id)->get('people');
+        $race_results = array(
+            'team_num' => 0,
+            'rdb_m_num' => 0,
+            'rdb_f_num' => 0,
+            'rdb_elite_num' => 0,
+            'race_m_num' => 0,
+            'race_f_num' => 0,
+            'race_elite_num' => 0
+         );
+        foreach ($query->result() as $row)
+        {
+          $race_results['team_num'] +=  $row->ifteam;
+          $race_results['rdb_m_num'] += $row->rdb;
+          $race_results['rdb_f_num'] += $row->rdb_f;
+          $race_results['rdb_elite_num'] += $row->rdb_elite;
+          $race_results['race_m_num'] += $row->race;
+          $race_results['race_f_num'] += $row->race_f;
+          $race_results['race_elite_num'] += $row->race_elite;
+        }
+        return $race_results;
+    }
+    /*
      * Get which race is above quota
      */
     public function get_race_quota() {

@@ -249,7 +249,7 @@ class Registration extends CI_Controller {
             if (!$quota_results['rdb_elite_status'] and $rdb_elite_count > 0) exit(err_msg('1106'));
             if (!$quota_results['race_m_status'] and $race_m_count > 0) exit(err_msg('1102'));
             if (!$quota_results['race_f_status'] and $race_f_count > 0) exit(err_msg('1103'));
-            if (!$quota_results['race_elite_status'] and $race_elite_count > 0) exit(err_msg('1106'));
+            if (!$quota_results['race_elite_status'] and $race_elite_count > 0) exit(err_msg('1107'));
 
             $bill = 0;
             $ind_db = $this->people->get_people_from_school($school_id);
