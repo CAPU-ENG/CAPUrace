@@ -216,37 +216,49 @@ class Admin extends CI_Controller {
                 ->setCellValue('I' . $i, $item['bill']);
         }
 
-        // Sheet 2: 男子山地组
+        // Sheet 2: 男子山地大众组
         $excel->createSheet(1);
-        $excel->setActiveSheetIndex(1)->setTitle('男子山地组');
+        $excel->setActiveSheetIndex(1)->setTitle('男子山地大众组');
         $male = $this->db->where('deleted', 0)->where('race', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $male);
 
-
-        // Sheet 3: 女子山地组
+        // Sheet 3: 男子山地精英组
         $excel->createSheet(2);
-        $excel->setActiveSheetIndex(2)->setTitle('女子山地组');
+        $excel->setActiveSheetIndex(2)->setTitle('男子山地精英组');
+        $male = $this->db->where('deleted', 0)->where('race_elite', 1)->get('people')->result_array();
+        $this->_fill_individual($excel, $male);
+
+
+        // Sheet 4: 女子山地组
+        $excel->createSheet(3);
+        $excel->setActiveSheetIndex(3)->setTitle('女子山地组');
         $female = $this->db->where('deleted', 0)->where('race_f', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $female);
 
 
-        // Sheet 4: 男子公路组
-        $excel->createSheet(3);
-        $excel->setActiveSheetIndex(3)->setTitle('男子公路组');
+        // Sheet 5: 男子公路大众组
+        $excel->createSheet(4);
+        $excel->setActiveSheetIndex(4)->setTitle('男子公路大众组');
         $rdb_male = $this->db->where('deleted', 0)->where('rdb', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $rdb_male);
 
+        // Sheet 6: 男子公路精英组
+        $excel->createSheet(5);
+        $excel->setActiveSheetIndex(5)->setTitle('男子公路精英组');
+        $rdb_male = $this->db->where('deleted', 0)->where('rdb_elite', 1)->get('people')->result_array();
+        $this->_fill_individual($excel, $rdb_male);
 
-        // Sheet 5: 女子公路组
-        $excel->createSheet(4);
-        $excel->setActiveSheetIndex(4)->setTitle('女子公路组');
+
+        // Sheet 7: 女子公路组
+        $excel->createSheet(6);
+        $excel->setActiveSheetIndex(6)->setTitle('女子公路组');
         $rdb_female = $this->db->where('deleted', 0)->where('rdb_f', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $rdb_female);
 
 
-        // Sheet 6: 5日两餐表
-        $excel->createSheet(5);
-        $excel->setActiveSheetIndex(5)->setTitle('5日午餐晚餐');
+        // Sheet 8: 5日两餐表
+        $excel->createSheet(7);
+        $excel->setActiveSheetIndex(7)->setTitle('5日午餐晚餐');
         $dinner = $this->db->where('deleted', 0)->where('dinner', 1)->order_by('school_id', 'asc')->get('people')->result_array();
         $excel->getActiveSheet()
             ->setCellValue('A1', '序号')
@@ -271,9 +283,9 @@ class Admin extends CI_Controller {
 
 
 
-        // Sheet 7: 6日午餐表
-        $excel->createSheet(6);
-        $excel->setActiveSheetIndex(6)->setTitle('6日午餐表');
+        // Sheet 9: 6日午餐表
+        $excel->createSheet(8);
+        $excel->setActiveSheetIndex(8)->setTitle('6日午餐表');
         $lunch = $this->db->where('deleted', 0)->where('lunch', 1)->order_by('school_id', 'asc')->get('people')->result_array();
         $excel->getActiveSheet()
             ->setCellValue('A1', '序号')
@@ -297,9 +309,9 @@ class Admin extends CI_Controller {
         }
 
 
-        // Sheet 8: 团体赛表
-        $excel->createSheet(7);
-        $excel->setActiveSheetIndex(7)->setTitle('团体赛表');
+        // Sheet 10: 团体赛表
+        $excel->createSheet(9);
+        $excel->setActiveSheetIndex(9)->setTitle('团体赛表');
         $teams = $this->db->where('deleted', 0)->get('team')->result_array();
         $excel->getActiveSheet()
             ->setCellValue('A1', '序号')
