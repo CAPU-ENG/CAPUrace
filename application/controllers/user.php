@@ -184,9 +184,14 @@ class User extends CI_Controller {
             header('Content-Type: application/json');
             if ($this->form_validation->run('resetpw') == false) {
                 $err_code = '402';
-            } else {
+            } elseif ($data['vcode']!=1){
+                $err_code = '403';
+            }
+            else {
                 $err_code = '200';
                 $this->user->set_pwd($data['mail'],$data['password']);
+                $this->user->set_vcode($data['mail'],0);
+
             }
             exit(err_msg($err_code));
         }
