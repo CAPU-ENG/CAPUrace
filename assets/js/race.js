@@ -393,10 +393,10 @@ function sendVcode() {
     }
     var mail = $("#mail").val();
 
-    // Generate the 6-verification code
+    // Generate the 12-verification code
     var vcode = "";
     var all = "azxcvbnmsdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP0123456789";
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 12; i++) {
         var index = Math.floor(Math.random() * 62);
         vcode += all.charAt(index);
     }
