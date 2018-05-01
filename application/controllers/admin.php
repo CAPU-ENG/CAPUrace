@@ -161,7 +161,7 @@ class Admin extends CI_Controller {
                 ->setCellValue('A' . $i, $i - 1)
                 ->setCellValue('B' . $i, $item['name'])
                 ->setCellValue('C' . $i, $GLOBALS['GENDER'][$item['gender']])
-                ->setCellValue('D' . $i, $item['id_number'])
+                ->setCellValueExplicit('D' . $i, $item['id_number'], PHPExcel_Cell_DataType::TYPE_STRING)
                 ->setCellValue('E' . $i, $school['association_name'])
                 ->setCellValue('F' . $i, $school['school'])
                 ->setCellValue('G' . $i, $GLOBALS['PROVINCES_SHORT'][$school['province']])
@@ -199,7 +199,8 @@ class Admin extends CI_Controller {
             ->setCellValue('F1', '手机号')
             ->setCellValue('G1', '邮寄地址')
             ->setCellValue('H1', '邮政编码')
-            ->setCellValue('I1', '费用合计');
+            ->setCellValue('I1', '所属地区')
+            ->setCellValue('J1', '费用合计');
 
         $users = $this->user->get_paid();
         foreach ($users as $key => $item) {
@@ -213,7 +214,8 @@ class Admin extends CI_Controller {
                 ->setCellValue('F' . $i, $item['tel'])
                 ->setCellValue('G' . $i, $item['address'])
                 ->setCellValue('H' . $i, $item['zipcode'])
-                ->setCellValue('I' . $i, $item['bill']);
+                ->setCellValue('I' . $i, $GLOBALS['PROVINCES_SHORT'][$item['province']])
+                ->setCellValue('J' . $i, $item['bill']);
         }
 
         // Sheet 2: 男子山地大众组
@@ -339,6 +341,13 @@ class Admin extends CI_Controller {
             $this->_fill_ind_in_team($excel, $item['fourth'], $i + 3, $school);
             $i += 4;
         }
+
+        // Sheet 11: 全体运动员信息表
+        $excel->createSheet(10);
+        $excel->setActiveSheetIndex(10)->setTitle('全体运动员信息');
+        $all_racer = $this->db->where('deleted', 0)->where('ifrace', 1)->get('people')->result_array();
+        $this->_fill_individual($excel, $all_racer);
+
         // ============================================================
         // Wrap up the file.
 
