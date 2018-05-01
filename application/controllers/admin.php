@@ -230,13 +230,11 @@ class Admin extends CI_Controller {
         $male = $this->db->where('deleted', 0)->where('race_elite', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $male);
 
-
         // Sheet 4: 女子山地组
         $excel->createSheet(3);
         $excel->setActiveSheetIndex(3)->setTitle('女子山地组');
         $female = $this->db->where('deleted', 0)->where('race_f', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $female);
-
 
         // Sheet 5: 男子公路大众组
         $excel->createSheet(4);
@@ -250,13 +248,11 @@ class Admin extends CI_Controller {
         $rdb_male = $this->db->where('deleted', 0)->where('rdb_elite', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $rdb_male);
 
-
         // Sheet 7: 女子公路组
         $excel->createSheet(6);
         $excel->setActiveSheetIndex(6)->setTitle('女子公路组');
         $rdb_female = $this->db->where('deleted', 0)->where('rdb_f', 1)->get('people')->result_array();
         $this->_fill_individual($excel, $rdb_female);
-
 
         // Sheet 8: 5日两餐表
         $excel->createSheet(7);
@@ -283,8 +279,6 @@ class Admin extends CI_Controller {
             $i++;
         }
 
-
-
         // Sheet 9: 6日午餐表
         $excel->createSheet(8);
         $excel->setActiveSheetIndex(8)->setTitle('6日午餐表');
@@ -309,7 +303,6 @@ class Admin extends CI_Controller {
                 ->setCellValue('E' . $i, $GLOBALS['JUDGE'][$item['islam']]);
             $i++;
         }
-
 
         // Sheet 10: 团体赛表
         $excel->createSheet(9);
