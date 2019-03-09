@@ -62,7 +62,13 @@ class Admin extends CI_Controller {
                     $this->user->set_paid($data['id']);
                     $query= $this->user->get_user_by_id($data['id']);
                     $mail = $query['mail'];
+                    $association_name = $query['association_name'];
                     $this->email->send_fee_received_mail($mail, $data['school'], $data['bill']);
+
+                    // Send the invitation email. 
+                    $this->email->send_invitation_mail($mail, $data['school'], $association_name);
+                    echo $data;
+
                     $response = array(
                         'code' => '0',
                         'msg' => '操作成功!'
