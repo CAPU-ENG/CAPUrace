@@ -200,19 +200,19 @@ $ACCO_FEE = array(
  * Date and Time Settings
  */
 
-$SIGN_UP_DEADLINE = '2018-04-21';
+$SIGN_UP_DEADLINE = '2019-06-21';
 
 /*
  * Admin user list
  */
 $ADMIN = array(
-    '霜降' => '06a425938c47763655645989352a0612',
-    '灰白' => '2e1d0fda2f78ff268787c87deeb730cf',
+    '霜降' => '9ee1accf374c1862c39e2784f224d7fd',
+    '灰白' => '9ee1accf374c1862c39e2784f224d7fd',
     'capu' => '9ee1accf374c1862c39e2784f224d7fd'
 );
 
-$ACCOUNTANT_PASS = '06a425938c47763655645989352a0612';
-$PRESIDENT_PASS = '2e1d0fda2f78ff268787c87deeb730cf';
+$ACCOUNTANT_PASS = '9ee1accf374c1862c39e2784f224d7fd';
+$PRESIDENT_PASS = '9ee1accf374c1862c39e2784f224d7fd';
 
 /*
  * Documentation titles.
