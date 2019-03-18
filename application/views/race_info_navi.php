@@ -19,5 +19,4 @@
 	<div class="navi">
 		<a href="<?=site_url('index/race_info/racevideo')?>">赛场视频</a>
 	</div>
-
 </div>
