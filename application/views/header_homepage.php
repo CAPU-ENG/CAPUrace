@@ -51,8 +51,15 @@
           </li>
           <li id="nav4"><a href="<?=site_url('index/activity')?>">活动通知</a></li>
           <li id="grade"><a href="#">比赛成绩</a></li>
-          <li id="nav5"><a href="<?=site_url('index/publicize')?>">赛事风采</a></li>
 
+          <li class="dropdown" id="nav6">
+            <a href="<?=site_url('index/competition_info')?>">赛事风采</a>
+            <ul class="dropdown-menu" role="menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/racevideo')?>">历史</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/racevideo')?>">联谊</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/racevideo')?>">赛事</a></li>
+            </ul>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if ($this->session->userdata('logged_in')): ?>
