@@ -46,18 +46,16 @@
             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info/rule')?>">比赛规则</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info/map')?>">赛场与赛道</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info/award')?>">比赛奖品</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/race_info/racevideo')?>">赛场视频</a></li>
             </ul>
           </li>
           <li id="nav4"><a href="<?=site_url('index/activity')?>">活动通知</a></li>
           <li id="grade"><a href="#">比赛成绩</a></li>
-
           <li class="dropdown" id="nav6">
             <a href="<?=site_url('index/competition_info')?>">赛事风采</a>
             <ul class="dropdown-menu" role="menu">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/racevideo')?>">历史</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/racevideo')?>">联谊</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/racevideo')?>">赛事</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/history')?>">历史</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/sodality')?>">联谊</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/event')?>">赛事</a></li>
             </ul>
           </li>
         </ul>

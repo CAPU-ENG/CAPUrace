@@ -56,6 +56,24 @@ class Index extends CI_Controller {
         $this->load->view('add_hilight_nav5');
         $this->load->view('publicize_2016');
         $this->load->view('footer');
+        }
+    public function competition_info() {
+        $title = $this->uri->segment(3);
+        if ($title != "") {
+            $title = 'competition-info-' . $title;
+        } else {
+            $title = 'competition-info';
+        }
+        $this->load->view('header_homepage');
+        $this->load->view('add_hilight_nav6');
+        $this->load->view('competition_info_navi');
+        $res= $this->info->get_info($title);
+        $data = array(
+            'text' => $res['text'],
+            'publish' => $res['isdraft']
+        );
+        $this->load->view('competition_info_content', $data);
+        $this->load->view('footer');
+        }
     }
 
-}

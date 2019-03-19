@@ -16,7 +16,4 @@
 	<div class="navi">
 		<a href="<?=site_url('index/race_info/award')?>">比赛奖品</a>
 	</div>
-	<div class="navi">
-		<a href="<?=site_url('index/race_info/racevideo')?>">赛场视频</a>
-	</div>
 </div>

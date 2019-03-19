@@ -223,9 +223,12 @@ $TITLES = array(
     'race-info-award' => '比赛奖品',
     'race-info-map' => '赛场与赛道',
     'race-info-process' => '比赛流程',
-    'race-info-racevideo' => '赛道视频',
     'activity' => '活动通知',
-    'register-readme' => '报名须知'
+    'register-readme' => '报名须知',
+    'competition-info-history' => '历史',
+    'competition-info-sodality' => '联谊',
+    'competition-info-event' => '赛事',
+    'competition-info' => '赛场视频',
 );
 $NOT_AVAILABLE_TEXT = "<h3>文档暂未更新，请稍后查看！</h3>";
 
