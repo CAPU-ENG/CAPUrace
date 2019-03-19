@@ -69,25 +69,14 @@ class MY_Email extends CI_Email
     }
 
     /*
-     * Send mail after money is received.
+     * Send mail of confirmation and invitation after money is received.
+     * $subject and $invitation needs to be updated.
      */
-    public function send_fee_received_mail($mail, $school, $fee) {
-        $subject = '第十六届全国高校自行车交流赛缴费确认';
+    public function send_fee_received_and_invitation_mail($mail, $school, $fee, $association_name) {
+        $subject = '第十六届全国高校自行车交流赛缴费确认及邀请函';
         $id = $this->ci->user->get_id($mail);
         $id_message='<br><br>贵高校本次比赛的ID是<b>' . $id . '</b>，请领队同学务必牢记，并在比赛签到时出示。<br><br>祝好！<br><br>北京大学自行车协会';
-        $message = $school . '，<br><br>贵校车协交来的' . $fee . '元参赛费用已经收到，感谢你们对北大赛的大力支持！如有任何问题，请直接与各地区负责联系。' . $id_message;
-        $this->send_mail($mail, $subject, $message);
-    }
-
-    /*
-     * Send invitation email. 
-     * $subject and $message needs to be updated.
-    */
-    public function send_invitation_mail($mail, $school, $association_name) {
-        $subject = '第十六届全国高校自行车交流赛邀请函';
-        $id = $this->ci->user->get_id($mail);
-        $message = '
-            
+        $invitation_message = '
     <div style="background-image: url(\'https://s2.ax1x.com/2019/03/09/ASQKuF.md.jpg\'); background-size:100% 100%; width: 900px; height: 600px; z-index: -1; display: inline-block;">
      </div>
     <br><br><br>
@@ -110,6 +99,7 @@ class MY_Email extends CI_Email
         </div>
     </div>
         ';
+        $message = $school . '，<br><br>贵校车协交来的' . $fee . '元参赛费用已经收到，感谢你们对北大赛的大力支持！如有任何问题，请直接与各地区负责联系。' . $id_message.'<br><br><br>以下是第十六届全国高校自行车交流赛邀请函，可截图保存：<br><br>'.$invitation_message;
         $this->send_mail($mail, $subject, $message);
-    }
+    }    
 }
