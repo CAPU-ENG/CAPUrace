@@ -23,7 +23,6 @@
     <button class="btn btn-primary" id="btn-race-info-rule">比赛规则</button>
     <button class="btn btn-primary" id="btn-race-info-map">赛场与赛道</button>
     <button class="btn btn-primary" id="btn-race-info-award">比赛奖品</button>
-    <button class="btn btn-primary" id="btn-race-info-racevideo">赛场视频</button>
   </div>
   <button class="btn btn-primary" id="btn-activity">活动通知</button>
   <button class="btn btn-primary" id="btn-register-readme">报名须知</button>
@@ -32,10 +31,10 @@
   <h5 style="text-align: center">赛事风采编辑</h5>
   <div class="col-sm-5"></div>
   <div class="btn-group">
-    <button class="btn btn-primary" id="btn-competition-cover">封面</button>
     <button class="btn btn-primary" id="btn-competition-info-history">历史</button>
     <button class="btn btn-primary" id="btn-competition-info-sodality">联谊</button>
     <button class="btn btn-primary" id="btn-competition-info-event">赛事</button>
+    <button class="btn btn-primary" id="btn-competition-info">赛场视频</button>
     <div class="col-sm-1"></div>
 </div>
 <br><br>
@@ -92,8 +91,8 @@
         window.location.assign("<?=site_url('admin/edit/register-readme')?>");
     });
 
-    $("#btn-competition-cover").click(function () {
-        window.location.assign("<?=site_url('admin/edit/competition-cover')?>");
+    $("#btn-competition-info").click(function () {
+        window.location.assign("<?=site_url('admin/edit/competition-info')?>");
     });
     $("#btn-competition-info-history").click(function () {
         window.location.assign("<?=site_url('admin/edit/competition-info-history')?>");
