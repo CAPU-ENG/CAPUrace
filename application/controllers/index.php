@@ -69,6 +69,6 @@ class Index extends CI_Controller {
         $this->load->view('competition_info_content', $data);
         $this->load->view('footer');
     }
-    
+
 }
 
