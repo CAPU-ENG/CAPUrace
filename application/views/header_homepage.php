@@ -50,7 +50,7 @@
           </li>
           <li id="nav4"><a href="<?=site_url('index/activity')?>">活动通知</a></li>
           <li id="grade"><a href="#">比赛成绩</a></li>
-          <li class="dropdown" id="nav6">
+          <li class="dropdown" id="nav5">
             <a href="<?=site_url('index/competition_info')?>">赛事风采</a>
             <ul class="dropdown-menu" role="menu">
             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/history')?>">历史</a></li>
@@ -93,6 +93,16 @@ $('#nav3').hover(function () {
     $('#nav3').addClass("open");
 }, function () {
     $('#nav3').removeClass("open");  　　
+});
+
+$('#nav5').hover(function() {
+    $('#nav5').addClass("open");
+});
+
+$('#nav5').hover(function () {
+    $('#nav5').addClass("open");
+}, function () {
+    $('#nav5').removeClass("open");  　　
 });
 
 $('#grade').click(function() {
