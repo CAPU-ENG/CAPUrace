@@ -125,10 +125,11 @@ INSERT INTO `info` (`id`, `title`, `text`, `isdraft`) VALUES
   (4, 'race-info-rule', NULL, 1),
   (5, 'race-info-award', NULL, 1),
   (6, 'activity', NULL, 1),
-  (7, 'competition-info', NULL, 1);
-  (8, 'competition-info-history', NULL, 1);
-  (9, 'competition-info-sodality', NULL, 1);
-  (10, 'competition-info-event', NULL, 1);
+  (7, 'register-readme', NULL, 1),
+  (8, 'competition-info', NULL, 1);
+  (9, 'competition-info-history', NULL, 1);
+  (10, 'competition-info-sodality', NULL, 1);
+  (11, 'competition-info-event', NULL, 1);
 --
 -- Indexes for dumped tables
 --
