@@ -130,6 +130,7 @@ INSERT INTO `info` (`id`, `title`, `text`, `isdraft`) VALUES
   (9, 'competition-info-history', NULL, 1);
   (10, 'competition-info-sodality', NULL, 1);
   (11, 'competition-info-event', NULL, 1);
+  
 --
 -- Indexes for dumped tables
 --
