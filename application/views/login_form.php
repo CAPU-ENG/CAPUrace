@@ -18,6 +18,10 @@
     </div>
     <br/>
     <br/>
+    <div class="col-sm-4">
+        <button class="btn btn-warning btn-block" id="btn-signup">忘记密码</button>
+    </div>
+    <br/>
     <hr/>
     <div class="col-sm-6">
         <button class="btn btn-warning btn-block" id="btn-signup">注册</button>
