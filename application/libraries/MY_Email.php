@@ -72,8 +72,8 @@ public function send_resetpw_confirm_mail($mail) {
         $token = $this->ci->user->get_token($mail);
         $link = site_url('user/activate') . '/' . $token;
         $id = $this->ci->user->get_id($mail);
-        $id_message='<br><br>贵高校本次比赛的ID是<b>' . $id . '</b>，请领队同学务必牢记，并在比赛签到时出示。<br><br>祝好！<br><br>北京大学自行车协会';
-        $message = '请点击以下链接激活帐户' . $link . $id_message;
+        $id_message='<br><br>贵高校本次比赛的ID是<b>' . $id . '</b>，<br><br>祝好！<br><br>北京大学自行车协会';
+        $message = '请点击以下链接重置帐户密码' . $link . $id_message;
         $this->send_mail($mail, $subject, $message);
     }
 

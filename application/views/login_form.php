@@ -18,9 +18,7 @@
     </div>
     <br/>
     <br/>
-    <div class="col-sm-4">
-        <button class="btn btn-warning btn-block" id="btn-signup">忘记密码</button>
-    </div>
+    <div class="col-sm-4" ><a href="<?=site_url('user/forgetpw')?>">忘记密码</a></div>
     <br/>
     <hr/>
     <div class="col-sm-6">
