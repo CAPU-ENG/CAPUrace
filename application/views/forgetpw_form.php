@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    var controller = "<?=site_url('user/signup')?>";
+    var controller = "<?=site_url('user/forgetpw')?>";
     var directto = "<?=base_url()?>";
 </script>
 <div class="signcontainer">
@@ -22,7 +22,7 @@
         if(event.keyCode == "13") {
         $("#btn-forgetpw").disabled=true;
         $("#btn-forgetpw").text("发送中...");
-        postResetpw();
+        forgetpw();
         $("#btn-forgetpw").disabled=false;
         $("#btn-forgetpw").text("发送验证码");
         }
@@ -33,7 +33,7 @@
     $("#btn-forgetpw").click(function() {
         this.disabled=true;
         $(this).text("发送中...");
-        postSignup();
+        forgetpw();
         this.disabled=false;
         $(this).text("发送验证码");
     });

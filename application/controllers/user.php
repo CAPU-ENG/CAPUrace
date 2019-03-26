@@ -110,34 +110,43 @@ class User extends CI_Controller {
              exit(err_msg($err_code));
          }
      }
-    public function forgetpw(){
-            date_default_timezone_set('PRC');
-    
-            if ($this->input->server('REQUEST_METHOD') == 'GET') {
-                $this->load->view('header_homepage');
-                $this->load->view('add_hilight_nav2');
-                $this->load->view('forgetpw_form');
-                $this->load->view('footer');
+    public function forgetpw() {
+
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            if ($this->session->userdata('logged_in')) {
+                redirect(base_url(), 'refresh');
             }
-    
-            if ($this->input->server('REQUEST_METHOD') == 'POST') {
-                $data = $this->input->post();
-                header('Content-Type: application/json');
-    
-                if ($this->form_validation->run('forgetpw') == false) {
-                    $err_code = '402';
-                } else {
-                    $err_code = '200';
-                    $vcode_add = $data['vcode'];
-                    $vcode = $this->user->get_vcode($data['mail']);
-                    if ($vcode != $vcode_add)
-                        $err_code = '403';
-                    else
-                        $this->user->set_vcode($data['mail'],1);
-                }
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('forgetpw_form');
+            $this->load->view('footer');
+        }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $login_info = $this->input->post();
+
+            header('Content-Type: application/json');
+            if ($this->form_validation->run('forgetpw') == false) {
+                $err_code = '400';
                 exit(err_msg($err_code));
             }
+            $user_info = $this->user->get_user_by_email($login_info['mail']);
+            if ($user_info == NULL) {
+                $err_code = '204';
+            } elseif (!$user_info['activated']) {
+                $err_code = '201';
+            } elseif (!$user_info['confirmed']) {
+                $err_code = '202';
+            } else {
+                $err_code = '200';
+                 unset($data['passconf']);
+                 $token = $this->user->generate_token($data['mail']);
+                 $data = array_merge($data, array('token' => $token));
+                 $this->email->send_account_confirm_mail($data['mail']);
+             }
+            exit(err_msg($err_code));
         }
+    }
     /*
      * Show registration result for the user.
      */
@@ -222,6 +231,22 @@ class User extends CI_Controller {
             $data['info'] = '激活码不存在。';
         $this->load->view('activate_info', $data);
         $this->load->view('activate_footer');
+    }
+
+public function resetpw_activate() {
+        $this->load->model('user_model', 'user');
+        $token = $this->uri->segment(3);
+        $this->load->view('resetpw_activate_header');
+        $status = $this->user->resetpw_activate($token);
+        $data = array('info' => '');
+        if ($status == 0)
+            $data['info'] = '重置密码激活成功！';
+        elseif ($status == 1)
+            $data['info'] = '激活码无效或您已成功激活。';
+        elseif ($status == 2)
+            $data['info'] = '激活码不存在。';
+        $this->load->view('resetpw_activate_info', $data);
+        $this->load->view('resetpw_activate_footer');
     }
 
     /*
