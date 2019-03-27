@@ -132,21 +132,18 @@ class User extends CI_Controller {
             }
             $user_info = $this->user->get_user_by_email($login_info['mail']);
             if ($user_info == NULL) {
-                $err_code = '204';
+                exit(err_msg('204'));
             } elseif (!$user_info['activated']) {
-                $err_code = '201';
+                exit(err_msg('201'));
             } elseif (!$user_info['confirmed']) {
-                $err_code = '202';
+                exit(err_msg('202'));
             } else {
                 $err_code = '200';
-
                  $token = $this->user->generate_token($user_info['mail']);
-
                  $data = array_merge($user_info, array('token' => $token));
                  $this->email->send_resetpw_confirm_mail($user_info['mail']);
-
-             }
-            exit(err_msg($err_code));
+            }
+            exit(err_msg('403'));
         }
     }
     /*

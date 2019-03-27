@@ -243,7 +243,7 @@ class User_model extends CI_Model {
         }
     }
 
-public function resetpw_activate($token) {
+    public function resetpw_activate($token) {
         if (!$token) {
             return 2;
         } else {
@@ -256,7 +256,7 @@ public function resetpw_activate($token) {
             }
         }
     }
-
+ 
     /*
      * This function freezes a certain user.
      */
