@@ -139,10 +139,12 @@ class User extends CI_Controller {
                 $err_code = '202';
             } else {
                 $err_code = '200';
-                 unset($data['passconf']);
-                 $token = $this->user->generate_token($data['mail']);
-                 $data = array_merge($data, array('token' => $token));
-                 $this->email->send_account_confirm_mail($data['mail']);
+
+                 $token = $this->user->generate_token($user_info['mail']);
+
+                 $data = array_merge($user_info, array('token' => $token));
+                 $this->email->send_resetpw_confirm_mail($user_info['mail']);
+
              }
             exit(err_msg($err_code));
         }
