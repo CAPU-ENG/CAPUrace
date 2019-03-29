@@ -139,8 +139,7 @@ class User extends CI_Controller {
                 exit(err_msg('202'));
             } else {
                 $err_code = '200';
-                 $token = $this->user->generate_token($user_info['mail']);
-                 $data = array_merge($user_info, array('token' => $token));
+                 $token = $this->user->set_token($user_info['mail']);
                  $this->email->send_resetpw_confirm_mail($user_info['mail']);
             }
             exit(err_msg('403'));
