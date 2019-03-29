@@ -2,25 +2,39 @@
     var controller = "<?=site_url('user/resetpw')?>";
     var directto = "<?=base_url()?>";
 </script>
-<div class="signcontainer">
-    <h3>重置密码 </h3>
-    <hr/>
-    <label class="col-sm-4">新密码</label>
-    <div class="col-sm-8">
+
+<?php if ($status == 0 ):?>
+    <div class="signcontainer">
+      <h3>重置密码 </h3>
+      <hr/>
+      <label class="col-sm-4">新密码</label>
+      <div class="col-sm-8">
         <input type="password" class="form-control" name="password" id="password">
-    </div><br/><br/>
-    <label class="col-sm-4">新密码确认</label>
-    <div class="col-sm-8">
+      </div><br/><br/>
+      <label class="col-sm-4">新密码确认</label>
+      <div class="col-sm-8">
         <input type="password" class="form-control" name="passconf" id="passconf">
-    </div><br/><br/>
-    <hr/>
-    <div class="col-sm-6">
+      </div><br/><br/>
+      <hr/>
+      <div class="col-sm-6">
         <button class="btn btn-warning btn-block" id="btn-back">返回</button>
-    </div>
-    <div class="col-sm-6">
+     </div>
+      <div class="col-sm-6">
         <button class="btn btn-success btn-block" id="btn-signup">注册</button>
+      </div>
     </div>
-</div>
+    <hr/>
+    <?php endif; ?>
+
+<?php if ($status == 1 ):?>
+    <p style="color: red">激活码无效或您已成功激活。</p>
+    <hr/>
+    <?php endif; ?>
+<?php if ($status == 2 ):?>
+    <p style="color: red">激活码不存在。</p>
+    <hr/>
+    <?php endif; ?>
+
 <script>
     $("#passconf").bind("keypress",function(event) {
         if(event.keyCode == "13") {

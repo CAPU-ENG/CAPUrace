@@ -5,6 +5,13 @@
 <div class="signcontainer">
     <h3>重置密码 </h3>
     <hr/>
+
+      
+
+
+
+
+
     <label class="col-sm-4">新密码</label>
     <div class="col-sm-8">
         <input type="password" class="form-control" name="password" id="password">
@@ -18,7 +25,7 @@
         <button class="btn btn-warning btn-block" id="btn-back">返回</button>
     </div>
     <div class="col-sm-6">
-        <button class="btn btn-success btn-block" id="btn-signup">注册</button>
+        <button class="btn btn-success btn-block" id="btn-signup">重置</button>
     </div>
 </div>
 <script>

@@ -145,6 +145,43 @@ class User extends CI_Controller {
             exit(err_msg('403'));
         }
     }
+
+    public function resetpw() {
+
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            if ($this->session->userdata('logged_in')) {
+                redirect(base_url(), 'refresh');
+            }
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('resetpw_form');
+            $this->load->view('footer');
+        }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $login_info = $this->input->post();
+
+            header('Content-Type: application/json');
+            if ($this->form_validation->run('resetpw') == false) {
+                $err_code = '400';
+                exit(err_msg($err_code));
+            }
+            $user_info = $this->user->get_user_by_email($login_info['mail']);
+            if ($user_info == NULL) {
+                exit(err_msg('204'));
+            } elseif (!$user_info['activated']) {
+                exit(err_msg('201'));
+            } elseif (!$user_info['confirmed']) {
+                exit(err_msg('202'));
+            } else {
+                $err_code = '200';
+                 $token = $this->user->set_token($user_info['mail']);
+                 $this->email->send_resetpw_confirm_mail($user_info['mail']);
+            }
+            exit(err_msg('403'));
+        }
+    }
+
     /*
      * Show registration result for the user.
      */
@@ -231,20 +268,18 @@ class User extends CI_Controller {
         $this->load->view('activate_footer');
     }
 
-public function resetpw_activate() {
+    public function resetpw_activate() {
+      
         $this->load->model('user_model', 'user');
         $token = $this->uri->segment(3);
-        $this->load->view('resetpw_activate_header');
-        $status = $this->user->resetpw_activate($token);
-        $data = array('info' => '');
-        if ($status == 0)
-            $data['info'] = '重置密码激活成功！';
-        elseif ($status == 1)
-            $data['info'] = '激活码无效或您已成功激活。';
-        elseif ($status == 2)
-            $data['info'] = '激活码不存在。';
-        $this->load->view('resetpw_activate_info', $data);
-        $this->load->view('resetpw_activate_footer');
+        $status = $this->user->activate($token);
+        $data = array('status' => $status);
+        $this->load->view('header_homepage');
+        $this->load->view('resetpw_form',$data);
+        $this->load->view('footer');
+        
+
+      
     }
 
     /*
