@@ -20,7 +20,7 @@
         <button class="btn btn-warning btn-block" id="btn-back">返回</button>
      </div>
       <div class="col-sm-6">
-        <button class="btn btn-success btn-block" id="btn-signup">注册</button>
+        <button class="btn btn-success btn-block" id="btn-signup">重置</button>
       </div>
     </div>
     <hr/>

@@ -269,7 +269,6 @@ class User extends CI_Controller {
     }
 
     public function resetpw_activate() {
-      
         $this->load->model('user_model', 'user');
         $token = $this->uri->segment(3);
         $status = $this->user->activate($token);
@@ -277,9 +276,6 @@ class User extends CI_Controller {
         $this->load->view('header_homepage');
         $this->load->view('resetpw_form',$data);
         $this->load->view('footer');
-        
-
-      
     }
 
     /*
