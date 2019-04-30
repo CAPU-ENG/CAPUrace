@@ -206,13 +206,13 @@ $SIGN_UP_DEADLINE = '2019-06-21';
  * Admin user list
  */
 $ADMIN = array(
-    '霜降' => '9ee1accf374c1862c39e2784f224d7fd',
-    '灰白' => '9ee1accf374c1862c39e2784f224d7fd',
-    'capu' => '9ee1accf374c1862c39e2784f224d7fd'
+    '霜降' => 'ed2b1f468c5f915f3f1cf75d7068baae',
+    '灰白' => 'ed2b1f468c5f915f3f1cf75d7068baae',
+    'capu' => 'ed2b1f468c5f915f3f1cf75d7068baae'
 );
 
-$ACCOUNTANT_PASS = '9ee1accf374c1862c39e2784f224d7fd';
-$PRESIDENT_PASS = '9ee1accf374c1862c39e2784f224d7fd';
+$ACCOUNTANT_PASS = 'ed2b1f468c5f915f3f1cf75d7068baae';
+$PRESIDENT_PASS = 'ed2b1f468c5f915f3f1cf75d7068baae';
 
 /*
  * Documentation titles.
@@ -229,6 +229,13 @@ $TITLES = array(
     'competition-info-sodality' => '联谊',
     'competition-info-event' => '赛事',
     'competition-info' => '赛场视频',
+    'result-info' => '参赛高校',
+    'result-info-male-mountain-classic' => '男子山地精英组',
+    'result-info-male-mountain-general' => '男子山地大众组',
+    'result-info-male-road-classic' => '男子公路精英组',
+    'result-info-male-road-general' => '男子公路大众组',
+    'result-info-female-mountain' => '女子山地组',
+    'result-info-female-road' => '女子公路组',
 );
 $NOT_AVAILABLE_TEXT = "<h3>文档暂未更新，请稍后查看！</h3>";
 
