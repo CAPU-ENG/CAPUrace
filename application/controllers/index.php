@@ -69,6 +69,23 @@ class Index extends CI_Controller {
         $this->load->view('competition_info_content', $data);
         $this->load->view('footer');
     }
-
+    public function result_info() {
+        $title = $this->uri->segment(3);
+        if ($title != "") {
+            $title = 'result-info-' . $title;
+        } else {
+            $title = 'result-info';
+        }
+        $this->load->view('header_homepage');
+        $this->load->view('add_hilight_nav6');
+        $this->load->view('result_info_navi');
+        $res= $this->info->get_info($title);
+        $data = array(
+            'text' => $res['text'],
+            'publish' => $res['isdraft']
+        );
+        $this->load->view('result_info_content', $data);
+        $this->load->view('footer');
+    }
 }
 

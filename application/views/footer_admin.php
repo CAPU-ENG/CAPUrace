@@ -38,6 +38,20 @@
     <div class="col-sm-1"></div>
 </div>
 <br><br>
+<div class="container">
+  <h5 style="text-align: center">赛事报名结果编辑</h5>
+  <div class="col-sm-2"></div>
+  <div class="btn-group">
+    <button class="btn btn-primary" id="btn-result-info">参赛高校</button>
+    <button class="btn btn-primary" id="btn-result-info-male-mountain-classic">男子山地精英组</button>
+    <button class="btn btn-primary" id="btn-result-info-male-mountain-general">男子山地大众组</button>
+    <button class="btn btn-primary" id="btn-result-info-male-road-classic">男子公路精英组</button>
+    <button class="btn btn-primary" id="btn-result-info-male-road-general">男子公路大众组</button>
+    <button class="btn btn-primary" id="btn-result-info-female-mountain">女子山地组</button>
+    <button class="btn btn-primary" id="btn-result-info-female-road">女子公路组</button>
+    <div class="col-sm-1"></div>
+</div>
+<br><br>
 </body>
 </html>
 <script>
@@ -102,6 +116,28 @@
     });
     $("#btn-competition-info-event").click(function () {
         window.location.assign("<?=site_url('admin/edit/competition-info-event')?>");
+    });
+
+    $("#btn-result-info").click(function () {
+        window.location.assign("<?=site_url('admin/edit/result-info')?>");
+    });
+    $("#btn-result-info-male-mountain-classic").click(function () {
+        window.location.assign("<?=site_url('admin/edit/result-info-male-mountain-classic')?>");
+    });
+    $("#btn-result-info-male-mountain-general").click(function () {
+        window.location.assign("<?=site_url('admin/edit/result-info-male-mountain-general')?>");
+    });
+    $("#btn-result-info-male-road-classic").click(function () {
+        window.location.assign("<?=site_url('admin/edit/result-info-male-road-classic')?>");
+    });
+    $("#btn-result-info-male-road-general").click(function () {
+        window.location.assign("<?=site_url('admin/edit/result-info-male-road-general')?>");
+    });
+    $("#btn-result-info-female-mountain").click(function () {
+        window.location.assign("<?=site_url('admin/edit/result-info-female-mountain')?>");
+    });
+    $("#btn-result-info-female-road").click(function () {
+        window.location.assign("<?=site_url('admin/edit/result-info-female-road')?>");
     });
     $("#btn-close-system").click(function() {
         if (confirm('本操作将关闭整个报名系统，且不可恢复。确定继续？')) {

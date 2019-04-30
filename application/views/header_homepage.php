@@ -58,6 +58,16 @@
             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/sodality')?>">联谊</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/competition_info/event')?>">赛事</a></li>
             </ul>
+           <li class="dropdown" id="nav6">
+            <a href="<?=site_url('index/result_info')?>">赛事报名结果</a>
+            <ul class="dropdown-menu" role="menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/result_info/male-mountain-classic')?>">男子山地精英组</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/result_info/male-mountain-general')?>">男子山地大众组</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/result_info/male-road-classic')?>">男子公路精英组</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/result_info/male-road-general')?>">男子公路大众组</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/result_info/female-mountain')?>">女子山地组</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/result_info/female-road')?>">女子公路组</a></li>
+            </ul>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -104,6 +114,16 @@ $('#nav5').hover(function () {
     $('#nav5').addClass("open");
 }, function () {
     $('#nav5').removeClass("open");  　　
+});
+
+$('#nav6').hover(function() {
+    $('#nav6').addClass("open");
+});
+
+$('#nav6').hover(function () {
+    $('#nav6').addClass("open");
+}, function () {
+    $('#nav6').removeClass("open");  　　
 });
 
 $('#grade').click(function() {
