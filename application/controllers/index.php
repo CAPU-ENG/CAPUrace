@@ -51,6 +51,7 @@ class Index extends CI_Controller {
         $this->load->view('activity_notification', $data);
         $this->load->view('footer');
     }
+
     public function competition_info() {
         $title = $this->uri->segment(3);
         if ($title != "") {
@@ -69,6 +70,7 @@ class Index extends CI_Controller {
         $this->load->view('competition_info_content', $data);
         $this->load->view('footer');
     }
+
     public function result_info() {
         $title = $this->uri->segment(3);
         if ($title != "") {
@@ -88,4 +90,3 @@ class Index extends CI_Controller {
         $this->load->view('footer');
     }
 }
-
