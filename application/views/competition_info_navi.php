@@ -9,6 +9,5 @@
 	</div>
 	<div class="navi">
 		<a href="<?=site_url('index/competition_info/event')?>">赛事</a>
-	</div>
-	
+	</div>	
 </div>
