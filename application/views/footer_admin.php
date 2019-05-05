@@ -16,7 +16,7 @@
   <div class="col-sm-1"></div>
   <br>
   <h5 style="text-align: center">赛事内容编辑</h5>
-  <div class="col-sm-1"></div>
+  <div class="col-sm-2"></div>
   <div class="btn-group">
     <button class="btn btn-primary" id="btn-race-info">比赛基本信息</button>
     <button class="btn btn-primary" id="btn-race-info-process">比赛流程</button>
@@ -24,20 +24,8 @@
     <button class="btn btn-primary" id="btn-race-info-map">赛场与赛道</button>
     <button class="btn btn-primary" id="btn-race-info-award">比赛奖品</button>
   </div>
-  <button class="btn btn-primary" id="btn-activity">活动通知</button>
   <button class="btn btn-primary" id="btn-register-readme">报名须知</button>
   <div class="col-sm-1"></div>
-<div class="container">
-  <h5 style="text-align: center">赛事风采编辑</h5>
-  <div class="col-sm-5"></div>
-  <div class="btn-group">
-    <button class="btn btn-primary" id="btn-competition-info-history">历史</button>
-    <button class="btn btn-primary" id="btn-competition-info-sodality">联谊</button>
-    <button class="btn btn-primary" id="btn-competition-info-event">赛事</button>
-    <button class="btn btn-primary" id="btn-competition-info">赛场视频</button>
-    <div class="col-sm-1"></div>
-</div>
-<br><br>
 <div class="container">
   <h5 style="text-align: center">赛事报名结果编辑</h5>
   <div class="col-sm-2"></div>
@@ -49,6 +37,17 @@
     <button class="btn btn-primary" id="btn-result-info-male-road-general">男子公路大众组</button>
     <button class="btn btn-primary" id="btn-result-info-female-mountain">女子山地组</button>
     <button class="btn btn-primary" id="btn-result-info-female-road">女子公路组</button>
+    <div class="col-sm-1"></div>
+</div>
+<br>
+<div class="container">
+  <h5 style="text-align: center">赛事风采编辑</h5>
+  <div class="col-sm-5"></div>
+  <div class="btn-group">
+    <button class="btn btn-primary" id="btn-competition-info-history">历史</button>
+    <button class="btn btn-primary" id="btn-competition-info-sodality">联谊</button>
+    <button class="btn btn-primary" id="btn-competition-info-event">赛事</button>
+    <button class="btn btn-primary" id="btn-competition-info">赛场视频</button>
     <div class="col-sm-1"></div>
 </div>
 <br><br>
@@ -98,13 +97,9 @@
     $("#btn-race-info-racevideo").click(function () {
         window.location.assign("<?=site_url('admin/edit/race-info-racevideo')?>");
     });
-    $("#btn-activity").click(function () {
-        window.location.assign("<?=site_url('admin/edit/activity')?>");
-    });
     $("#btn-register-readme").click(function () {
         window.location.assign("<?=site_url('admin/edit/register-readme')?>");
     });
-
     $("#btn-competition-info").click(function () {
         window.location.assign("<?=site_url('admin/edit/competition-info')?>");
     });
@@ -117,7 +112,6 @@
     $("#btn-competition-info-event").click(function () {
         window.location.assign("<?=site_url('admin/edit/competition-info-event')?>");
     });
-
     $("#btn-result-info").click(function () {
         window.location.assign("<?=site_url('admin/edit/result-info')?>");
     });
