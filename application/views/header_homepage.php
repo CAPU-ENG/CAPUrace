@@ -65,13 +65,13 @@
             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/result_info/female-mountain')?>">女子山地组</a></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=site_url('index/result_info/female-road')?>">女子公路组</a></li>
             </ul>
-          </li>
-          <li id="grade"><a href="#">比赛成绩</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-          <?php if ($this->session->userdata('logged_in')): ?>
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+           </li>
+           <li id="grade"><a href="#">比赛成绩</a></li>
+        </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <?php if ($this->session->userdata('logged_in')): ?>
+           <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               欢迎你，<?=$this->session->userdata('school')?><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#">修改资料</a></li>
@@ -79,7 +79,7 @@
               <li class="divider"></li>
               <li><a href="<?=site_url('user/logout')?>" id="logout-button">注销</a></li>
             </ul>
-          </li>
+           </li>
           <?php else: ?>
           <li id="nav4"><a href="<?=site_url('user/login')?>">登录</a></li>
           <li id="nav5"><a href="<?=site_url('user/signup')?>">注册</a></li>
