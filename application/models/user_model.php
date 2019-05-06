@@ -243,6 +243,20 @@ class User_model extends CI_Model {
         }
     }
 
+    public function resetpw_activate($token) {
+        if (!$token) {
+            return 2;
+        } else {
+            $query = $this->db->where('token', $token)->get('users');
+            if ($query->num_rows() == 0) {
+                return 1;
+            } else {
+                $this->db->where('token', $token)->update('users', array('token' => '0'));
+                return 0;
+            }
+        }
+    }
+ 
     /*
      * This function freezes a certain user.
      */

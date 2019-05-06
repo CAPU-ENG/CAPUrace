@@ -59,6 +59,25 @@ $config = array(
             'label' => '密码',
             'rules' => 'required|md5'
         )
+    ),
+    'forgetpw' => array(
+        array(
+            'field' => 'mail',
+            'label' => '电子邮箱',
+            'rules' => 'trim|required|valid_email|xss_clean'
+        )
+    ),
+    'resetpw' => array(
+        array(
+            'field' => 'password',
+            'label' => '密码',
+            'rules' => 'required|matches[passconf]|md5'
+        ),
+        array(
+            'field' => 'passconf',
+            'label' => '再次输入密码',
+            'rules' => 'required|md5'
+        )
     )
 );
 

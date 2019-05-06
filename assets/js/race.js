@@ -184,6 +184,71 @@ function postSignup() {
 
 }
 
+function forgetpw() {
+    var mail = $("#mail").val();
+
+    //The following part of code is for front-end validation.
+
+    
+    if (mail == "") {
+        alert("邮箱不能为空！");
+        $("#mail").focus();
+        return;
+    }
+
+    //Organize the data and post to the controller.
+    var data = {
+        mail: mail,
+    };
+    $.post(controller, data, function(data) {
+        if (data.code == "200") {
+            alert("发送验证码成功！请登录您的邮箱查看激活邮件！");
+            window.location.assign(directto);
+        } else {
+            alert(data.msg);
+        }
+    })
+
+}
+
+function resetpw() {
+    var password = $.md5($("#password").val());
+    var passconf = $.md5($("#passconf").val());
+
+    //The following part of code is for front-end validation.
+
+    if (password == "") {
+        alert("密码不能为空！");
+        $("#password").focus();
+        return;
+    }
+    if (passconf == "") {
+        alert("请确认您的密码！");
+        $("#passconf").focus();
+        return;
+    }
+    if (passconf != password) {
+        alert("两次输入的密码不同，请重新确认！");
+        $("#passconf").focus();
+        return;
+    }
+
+    //Organize the data and post to the controller.
+    var data = {
+        password: password,
+        passconf: passconf
+    };
+    $.post(controller, data, function(data) {
+        if (data.code == "200") {
+            alert("修改密码成功！请重新登录您的账户！");
+            window.location.assign(directto);
+        } else {
+            alert(data.msg);
+        }
+    })
+
+}
+
 /*
  * This function is called when clicking 'save'.
  * It will store the individual information into cookie.
