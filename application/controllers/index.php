@@ -40,18 +40,6 @@ class Index extends CI_Controller {
         $this->load->view('footer');
     }
 
-    public function activity() {
-        $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav4');
-        $res= $this->info->get_info('activity');
-        $data = array(
-            'text' => $res['text'],
-            'publish' => $res['isdraft']
-        );
-        $this->load->view('activity_notification', $data);
-        $this->load->view('footer');
-    }
-
     public function competition_info() {
         $title = $this->uri->segment(3);
         if ($title != "") {
@@ -60,7 +48,7 @@ class Index extends CI_Controller {
             $title = 'competition-info';
         }
         $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav5');
+        $this->load->view('add_hilight_nav4');
         $this->load->view('competition_info_navi');
         $res= $this->info->get_info($title);
         $data = array(
@@ -79,7 +67,7 @@ class Index extends CI_Controller {
             $title = 'result-info';
         }
         $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav6');
+        $this->load->view('add_hilight_nav5');
         $this->load->view('result_info_navi');
         $res= $this->info->get_info($title);
         $data = array(
