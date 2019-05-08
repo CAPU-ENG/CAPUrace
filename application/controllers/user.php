@@ -25,7 +25,8 @@ class User extends CI_Controller {
      * The login page for users.
      */
     public function login() {
-
+        header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
+        exit();
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             if ($this->session->userdata('logged_in')) {
                 redirect(base_url(), 'refresh');
@@ -79,7 +80,8 @@ class User extends CI_Controller {
     }
 
      public function signup() {
-
+        header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
+        exit();
          date_default_timezone_set('PRC');
 
          if ($this->input->server('REQUEST_METHOD') == 'GET') {
