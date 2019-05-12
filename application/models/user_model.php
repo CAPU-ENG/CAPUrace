@@ -146,6 +146,25 @@ class User_model extends CI_Model {
         $paid = array('paid' => TRUE);
         $this->db->where('id', $id)->update('users', $paid);
     }
+    /*
+     *  Set the vcode in users.
+     */
+    public function set_vcode($email, $vcode) {
+        $this->db->where('mail', $email)->update('users',array('vcode' => $vcode));
+    }
+    /*
+    * Get the vcode in the users
+    */
+    public function get_vcode($mail) {
+        $query = $this->get_user_by_email($mail);
+        return $query['vcode'];
+    }
+    /*
+     *  Reset password in users.
+     */
+    public function set_pwd($email, $pwd) {
+        $this->db->where('mail', $email)->update('users',array('password' => $pwd));
+    }
 
     /*
      * Reset the user to be editable.

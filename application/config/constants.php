@@ -70,6 +70,7 @@ $PROVINCES_SHORT = array(
  * These messages are error messages returned to user input.
  *
  */
+# TODO: add error information.
 $ERR_MSG = array(
     '200' => 'OK.',
     '201' => '用户尚未激活，请您前往注册邮箱查收激活邮件！',
@@ -78,6 +79,8 @@ $ERR_MSG = array(
     '205' => '注册已截止',
     '400' => '存在不合法输入，请检查手机号、邮箱等信息是否正确填写！',
     '401' => '密码错误，请重新输入！',
+    '402' => '邮箱有误，请重新输入！',
+    '403' => '验证码有误或失效，请重新输入！',
     // Individual Registration Error.
     '999' => '人员名单不能为空。',
     '1000' => '第{order}个人的姓名不合法。',

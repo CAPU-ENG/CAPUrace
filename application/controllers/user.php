@@ -118,7 +118,92 @@ class User extends CI_Controller {
              exit(err_msg($err_code));
          }
      }
+    /*
+     * User forgets the password.
+     */
+    public function forgetpw(){
+        date_default_timezone_set('PRC');
 
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('vcode_send');
+            $this->load->view('footer');
+        }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+
+            if ($this->form_validation->run('forgetpw') == false) {
+                $err_code = '402';
+            } else {
+                $err_code = '200';
+                $vcode_add = $data['vcode'];
+                $vcode = $this->user->get_vcode($data['mail']);
+                if ($vcode != $vcode_add)
+                    $err_code = '403';
+                else
+                    $this->user->set_vcode($data['mail'],1);
+            }
+            exit(err_msg($err_code));
+        }
+    }
+    /*
+     * Get the verification code.
+    */
+    public function generateVcode(){
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+
+            if ($this->form_validation->run('forgetpw') == false) {
+                $err_code = '402';
+            } else {
+                // check if it is a registered email.
+                $user_info = $this->user->get_user_by_email($data['mail']);
+                if ($user_info == NULL) {
+                    $err_code = '204';
+                } elseif (!$user_info['activated']) {
+                    $err_code = '201';
+                } elseif (!$user_info['confirmed']) {
+                    $err_code = '202';
+                }
+                else {
+                    $err_code = '200';
+                    $this->user->set_vcode($data['mail'],$data['vcode']);
+                    $this->email->send_passwd_reset_mail($data['mail'],$data['vcode']);
+                }
+            }
+            exit(err_msg($err_code));
+        }
+    }
+    public function resetpw(){
+        date_default_timezone_set('PRC');
+
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('passwd_reset');
+            $this->load->view('footer');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+            if ($this->form_validation->run('resetpw') == false) {
+                $err_code = '402';
+            } elseif ($data['vcode']!=1){
+                $err_code = '403';
+            }
+            else {
+                $err_code = '200';
+                $this->user->set_pwd($data['mail'],$data['password']);
+                $this->user->set_vcode($data['mail'],0);
+
+            }
+            exit(err_msg($err_code));
+        }
+    }
     /*
      * Show registration result for the user.
      */

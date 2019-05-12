@@ -10,7 +10,6 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -94,6 +93,7 @@ CREATE TABLE `users` (
   `address` varchar(50) NOT NULL,
   `zipcode` varchar(6) NOT NULL,
   `activated` tinyint(1) NOT NULL DEFAULT '0',
+  `vcode` varchar(12) NOT NULL DEFAULT '0',
   `token` varchar(32) NOT NULL,
   `editable` tinyint(1) NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
