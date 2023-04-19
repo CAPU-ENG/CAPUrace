@@ -74,7 +74,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               欢迎你，<?=$this->session->userdata('school')?><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">修改资料</a></li>
+              <li><a href="<?=site_url('user/edit')?>">修改资料</a></li>
               <li><a href="<?=site_url('user/result')?>">查看报名结果</a></li>
               <li class="divider"></li>
               <li><a href="<?=site_url('user/logout')?>" id="logout-button">注销</a></li>
