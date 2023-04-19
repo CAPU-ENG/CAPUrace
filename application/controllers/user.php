@@ -27,8 +27,8 @@ class User extends CI_Controller {
     public function login() {
 
         //for link to CUCA in 2019  User: DetectiveHelen  Date: 19/5/8
-        header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
-        exit();
+        // header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
+        // exit();
 
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             if ($this->session->userdata('logged_in')) {
@@ -84,9 +84,9 @@ class User extends CI_Controller {
 
      public function signup() {
 
-        //for link to CUCA in 2019  User: DetectiveHelen  Date: 19/5/8
-        header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
-        exit();
+        // //for link to CUCA in 2019  User: DetectiveHelen  Date: 19/5/8
+        // header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
+        // exit();
         
          date_default_timezone_set('PRC');
 
