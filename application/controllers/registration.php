@@ -31,15 +31,23 @@ class Registration extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav2');
-        $query = $this->info->get_info('register-readme');
-        $data = array(
-            'text' => $query['text'],
-            'publish' => $query['isdraft']
-        );
-        $this->load->view('registration_index', $data);
-        $this->load->view('footer');
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $query = $this->info->get_info('register-readme');
+            $data = array(
+                'text' => $query['text'],
+                'publish' => $query['isdraft']
+            );
+            $this->load->view('registration_index', $data);
+            $this->load->view('footer');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $id = $this->session->userdata('id');
+            header('Content-Type: application/json');
+            $this->user->start_register($id);
+            exit();
+        }
     }
 
     /*

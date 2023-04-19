@@ -125,17 +125,30 @@ class User_model extends CI_Model {
         return $res->result_array();
     }
 
+    // /*
+    //  * Confirm a new user.
+    //  *
+    //  * ====argument====
+    //  * $id, the id of the user to be confirmed.
+    //  *
+    //  */
+    // public function confirm($id) {
+    //     $confirm = array('confirmed' => TRUE);
+    //     $this->db->where('id', $id)->update('users', $confirm);
+    // }
+
     /*
-     * Confirm a new user.
+     * A user starts registration.
      *
      * ====argument====
-     * $id, the id of the user to be confirmed.
+     * $id, the id of the user to be tagged.
      *
      */
-    public function confirm($id) {
-        $confirm = array('confirmed' => TRUE);
-        $this->db->where('id', $id)->update('users', $confirm);
+    public function start_register($id) {
+        $start_register = array('start_register' => TRUE);
+        $this->db->where('id', $id)->update('users', $start_register);
     }
+
 
     /*
      * Set the user to be paid.

@@ -38,6 +38,7 @@
         $('#btn-reg-agree').prop('disabled', !this.checked);
     });
     $("#btn-reg-agree").click(function() {
-        window.location.href = "<?=site_url('registration/individual')?>";
+      $.post("<?=site_url('registration/index')?>");
+      window.location.href = "<?=site_url('registration/individual')?>";
     });
 </script>
