@@ -20,16 +20,16 @@ class Registration extends CI_Controller {
         $this->load->model('team_model', 'team');
         $this->load->model('user_model', 'user');
         $this->load->model('info_model', 'info');
-
+        
         if (! $this->session->userdata('logged_in')) {
             redirect(site_url('user/login'), 'refresh');
         }
-
+        
         if (! $this->session->userdata('editable')) {
             redirect(site_url('user/result'));
         }
     }
-
+    
     public function index() {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $this->load->view('header_homepage');
@@ -51,9 +51,13 @@ class Registration extends CI_Controller {
     }
 
     /*
-     * This method let the users register individuals.
+    * This method let the users register individuals.
      */
     public function individual() {
+        $registrationStart = strtotime($GLOBALS['REGISTRATION_START']);
+        if (time() < $registrationStart) {
+            redirect(base_url());
+        }
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $quota_results = $this->people->get_race_quota();
             $this->load->view('header_homepage');
@@ -300,6 +304,10 @@ class Registration extends CI_Controller {
      * This method let the users register teams.
      */
     public function team() {
+        $registrationStart = strtotime($GLOBALS['REGISTRATION_START']);
+        if (time() < $registrationStart) {
+            redirect(base_url());
+        }
         $school_id = $this->session->userdata('id');
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $data['male'] = $this->people->get_male_athlete_from_school($school_id);

@@ -38,7 +38,11 @@
         $('#btn-reg-agree').prop('disabled', !this.checked);
     });
     $("#btn-reg-agree").click(function() {
+    <?php if(time() < strtotime($GLOBALS['REGISTRATION_START'])): ?>
+      alert('报名尚未开始！');
+    <?php else: ?>
       $.post("<?=site_url('registration/index')?>");
       window.location.href = "<?=site_url('registration/individual')?>";
+      <?php endif; ?>
     });
 </script>
