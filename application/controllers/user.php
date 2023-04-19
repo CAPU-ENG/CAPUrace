@@ -56,8 +56,8 @@ class User extends CI_Controller {
                 $err_code = '204';
             } elseif (!$user_info['activated']) {
                 $err_code = '201';
-            } elseif (!$user_info['confirmed']) {
-                $err_code = '202';
+            // } elseif (!$user_info['confirmed']) {
+            //     $err_code = '202';
             } elseif ($login_info['password'] != $user_info['password']) {
                 $err_code = '401';
             } else {
