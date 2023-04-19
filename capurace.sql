@@ -88,7 +88,7 @@ CREATE TABLE `users` (
   `password` varchar(32) NOT NULL,
   `bill` int(11) NOT NULL DEFAULT '0',
   `paid` tinyint(1) NOT NULL DEFAULT '0',
-  `confirmed` tinyint(1) NOT NULL DEFAULT '0',
+  `start_register` tinyint(1) NOT NULL DEFAULT '0',
   `association_name` varchar(15) NOT NULL,
   `province` smallint(6) NOT NULL,
   `address` varchar(50) NOT NULL,

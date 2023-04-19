@@ -59,6 +59,33 @@ $config = array(
             'label' => '密码',
             'rules' => 'required|md5'
         )
+    ),
+    'edit' => array(
+        array(
+            'field' => 'school',
+            'label' => '学校',
+            'rules' => 'required|xss_clean'
+        ),
+        array(
+            'field' => 'leader',
+            'label' => '领队',
+            'rules' => 'required|xss_clean'
+        ),
+        array(
+            'field' => 'tel',
+            'label' => '联系电话',
+            'rules' => 'required|exact_length[11]|xss_clean'
+        ),
+        array(
+            'field' => 'association_name',
+            'label' => '车协名称',
+            'rules' => 'trim|required|xss_clean'
+        ),
+        array(
+            'field' => 'province',
+            'label' => '所在地区',
+            'rules' => 'required|xss_clean'
+        )
     )
 );
 

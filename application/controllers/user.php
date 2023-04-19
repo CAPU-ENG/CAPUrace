@@ -217,7 +217,7 @@ class User extends CI_Controller {
             $user_info = $this->user->get_user_by_id($id);
             $this->load->view('header_homepage');
             $this->load->view('add_hilight_nav2');
-            $this->load->view('edit_form', $user_info['start_register']);
+            $this->load->view('edit_form', $user_info);
             $this->load->view('footer');
         }
 
@@ -227,6 +227,8 @@ class User extends CI_Controller {
 
             if ($this->form_validation->run('edit') == false) {
                 $err_code = '400';
+            } elseif ($user_info['start_register']) {
+                $err_code = '206';
             } else {
                 $err_code = '200';
                 $this->user->update($id, $data);
