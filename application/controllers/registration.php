@@ -31,6 +31,9 @@ class Registration extends CI_Controller {
     }
     
     public function index() {
+
+        date_default_timezone_set('PRC');
+
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $this->load->view('header_homepage');
             $this->load->view('add_hilight_nav2');
@@ -55,9 +58,8 @@ class Registration extends CI_Controller {
     * This method let the users register individuals.
      */
     public function individual() {
-        $registrationStart = strtotime($GLOBALS['REGISTRATION_START']);
-        if (time() < $registrationStart) {
-            redirect(base_url());
+        if (! $this->session->userdata('start_register')) {
+            redirect(site_url('registration/index'));
         }
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $quota_results = $this->people->get_race_quota();
@@ -305,9 +307,8 @@ class Registration extends CI_Controller {
      * This method let the users register teams.
      */
     public function team() {
-        $registrationStart = strtotime($GLOBALS['REGISTRATION_START']);
-        if (time() < $registrationStart) {
-            redirect(base_url());
+        if (! $this->session->userdata('start_register')) {
+            redirect(site_url('registration/index'));
         }
         $school_id = $this->session->userdata('id');
         if ($this->input->server('REQUEST_METHOD') == 'GET') {

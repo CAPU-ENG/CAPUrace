@@ -38,11 +38,16 @@
         $('#btn-reg-agree').prop('disabled', !this.checked);
     });
     $("#btn-reg-agree").click(function() {
-    <?php if(time() < strtotime($GLOBALS['REGISTRATION_START'])): ?>
+    <?php if (time() < strtotime($GLOBALS['REGISTRATION_START'])): ?>
       alert('报名尚未开始！');
-    <?php else: ?>
-      $.post("<?=site_url('registration/index')?>");
+    <?php elseif ($this->session->userdata('start_register')): ?>
       window.location.href = "<?=site_url('registration/individual')?>";
-      <?php endif; ?>
+    <?php else: ?>
+      if (confirm("报名开始后将不能编辑学校资料。\n确定开始报名？")) {
+        $.post("<?=site_url('registration/index')?>",function(data) {
+          window.location.href = "<?=site_url('registration/individual')?>";
+        });
+      }
+    <?php endif; ?>
     });
 </script>

@@ -5,10 +5,10 @@
     var province = <?=$province?>;
 </script>
 <div class="signcontainer">
-    <h3><?php if (! $start_register): ?>修改<?php endif; ?>学校资料 </h3>&nbsp; 您的邮箱：<?=$mail?>
-    <br>
+    <h3><?php if (! $start_register): ?>修改<?php endif; ?>学校资料 </h3>
+    <div>您的邮箱：<?=$mail?></div>
     <div style="color: red">
-    <?php if (! $start_register): ?>开始报名后不可修改学校资料。
+    <?php if (! $start_register): ?>开始报名后将不可修改学校资料。
     <?php else: ?>您已开始报名，不能修改资料！<?php endif; ?>
     </div>
     <hr/>
