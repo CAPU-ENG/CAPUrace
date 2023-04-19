@@ -210,11 +210,11 @@ class User extends CI_Controller {
      */
     public function edit() {
         $id = $this->session->userdata('id');
+        $user_info = $this->user->get_user_by_id($id);
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             if (! $this->session->userdata('logged_in')) {
                 redirect(site_url('user/login'));
             }
-            $user_info = $this->user->get_user_by_id($id);
             $this->load->view('header_homepage');
             $this->load->view('add_hilight_nav2');
             $this->load->view('edit_form', $user_info);
