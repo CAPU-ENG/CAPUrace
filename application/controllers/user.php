@@ -206,6 +206,36 @@ class User extends CI_Controller {
     }
 
     /*
+     * Edit the account.
+     */
+    public function edit() {
+        $id = $this->sesssion->userdata('id');
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            if (! $this->session->userdata('logged_in')) {
+                redirect(base_url(), 'refresh');
+            }
+            $user_info = $this->user->get_user_by_id($id);
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('edit_form', $user_info['start_register']);
+            $this->load->view('footer');
+        }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+
+            if ($this->form_validation->run('edit') == false) {
+                $err_code = '400';
+            } else {
+                $err_code = '200';
+                $this->user->update($id, $data);
+            }
+
+            exit(err_msg($err_code));
+        }
+    }
+    /*
      * Export an Excel file containing all the information.
      */
     public function export() {
