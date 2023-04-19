@@ -196,7 +196,7 @@ class User extends CI_Controller {
         $status = $this->user->activate($token);
         $data = array('info' => '');
         if ($status == 0)
-            $data['info'] = '激活成功！请等待北大车协同学线下联系，我们将于 24 小时内完成您的注册审核，审核通过之后车协同学将通知您。谢谢！';
+            $data['info'] = '激活成功！请等待报名开始，报名开始时间为' . $GLOBALS['REGISTRATION_START'] . '。<br>在您开始报名之前，您可以修改注册时填写的信息。';
         elseif ($status == 1)
             $data['info'] = '激活码无效或您已成功激活。';
         elseif ($status == 2)
