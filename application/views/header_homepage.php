@@ -75,7 +75,9 @@
               欢迎你，<?=$this->session->userdata('school')?><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="<?=site_url('user/edit')?>">修改资料</a></li>
-              <li><a href="<?=site_url('user/result')?>">查看报名结果</a></li>
+              <?php if ($this->session->userdata('start_register')): ?>
+                <li><a href="<?=site_url('user/result')?>">查看报名结果</a></li>
+              <?php endif; ?>
               <li class="divider"></li>
               <li><a href="<?=site_url('user/logout')?>" id="logout-button">注销</a></li>
             </ul>

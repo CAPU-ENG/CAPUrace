@@ -46,6 +46,7 @@ class Registration extends CI_Controller {
             $id = $this->session->userdata('id');
             header('Content-Type: application/json');
             $this->user->start_register($id);
+            $this->session->set_userdata('start_register', TRUE);
             exit();
         }
     }

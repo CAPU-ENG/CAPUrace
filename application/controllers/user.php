@@ -66,6 +66,7 @@ class User extends CI_Controller {
                 $this->session->set_userdata('id', $user_info['id']);
                 $this->session->set_userdata('school', $user_info['school']);
                 $this->session->set_userdata('editable', $user_info['editable']);
+                $this->session->set_userdata('start_register', $user_info['start_register']);
             }
 
             exit(err_msg($err_code));
@@ -79,6 +80,8 @@ class User extends CI_Controller {
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('school');
+        $this->session->unset_userdata('editable');
+        $this->session->unset_userdata('start_register');
         redirect(base_url(), 'refresh');
     }
 
