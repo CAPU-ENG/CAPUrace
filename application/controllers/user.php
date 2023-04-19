@@ -209,10 +209,10 @@ class User extends CI_Controller {
      * Edit the account.
      */
     public function edit() {
-        $id = $this->sesssion->userdata('id');
+        $id = $this->session->userdata('id');
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             if (! $this->session->userdata('logged_in')) {
-                redirect(base_url(), 'refresh');
+                redirect(site_url('user/login'));
             }
             $user_info = $this->user->get_user_by_id($id);
             $this->load->view('header_homepage');
