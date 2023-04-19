@@ -195,14 +195,25 @@ $RACE = array(
     '1' => '参赛'
 );
 
+// race == mountain-bike; rdb == road-bike!!
 
-$RACE_M_QUOTA = 190;
-$RACE_ELITE_QUOTA = 190;
-$RACE_F_QUOTA = 190;
-$RDB_M_QUOTA = 150;
-$RDB_F_QUOTA = 55;
-$RDB_ELITE_QUOTA = 75;
+// $RACE_M_QUOTA = 190;
+// $RACE_ELITE_QUOTA = 190;
+// $RACE_F_QUOTA = 190;
+// $RDB_M_QUOTA = 150;
+// $RDB_F_QUOTA = 55;
+// $RDB_ELITE_QUOTA = 75;
+// $RACE_TEAM_QUOTA = 60;
+
+// edit in 2023
+$RACE_M_QUOTA = 30;
+$RACE_ELITE_QUOTA = 30;
+$RACE_F_QUOTA = 30;
+$RDB_M_QUOTA = 180;
+$RDB_F_QUOTA = 60;
+$RDB_ELITE_QUOTA = 50;
 $RACE_TEAM_QUOTA = 60;
+// team race to be updated.
 
 $AUDIENCE_QUOTA = 230;
 $AUD_QUOTA_PER_SCHOOL = 3;

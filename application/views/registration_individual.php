@@ -3,7 +3,14 @@
     <hr/>
 
     <p style="color: red">名额剩余：
-    <?php if ($race_m_status < 50): ?>
+        山地男子公开组: <?=$race_m_status?>个 | 
+        山地男子精英组: <?=$race_elite_status?>个 | 
+        山地女子组: <?=$race_f_status?>个 | 
+        公路男子公开组: <?=$rdb_m_status?>个 | 
+        公路男子精英组: <?=$rdb_elite_status?>个 | 
+        公路女子组: <?=$rdb_f_status?>个
+    </p>
+    <!-- <?php if ($race_m_status < 50): ?>
         山地男子大众组: <?=$race_m_status?>个，
     <?php else: ?>
         山地男子大众组: 充足，
@@ -37,7 +44,7 @@
         公路女子组: <?=$rdb_f_status?>个
     <?php else: ?>
         公路女子组：充足
-     <?php endif; ?>
+     <?php endif; ?> -->
     <hr/>
 
 
