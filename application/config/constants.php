@@ -162,6 +162,7 @@ $GENDER = array(
 $ID_TYPE = array(
     'identity' => '身份证',
     'passport' => '护照',
+    'taiwan' => '台胞证'
 );
 
 $IFRACE = array(

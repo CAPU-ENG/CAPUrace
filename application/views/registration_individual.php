@@ -73,6 +73,7 @@
                 <select class="form-control" name="id_type">
                     <option value="identity">身份证</option>
                     <option value="passport">护照</option>
+                    <option value="taiwan">台胞证</option>
                 </select>
             </div>
             <div class="col-sm-3">

@@ -160,7 +160,7 @@ if (! function_exists('validate_mobile')) {
  */
 if (! function_exists('validate_id_number')) {
     function validate_id_number($id_number, $id_type, $gender) {
-        if ($id_type == "passport") return true;
+        if ($id_type == "passport" || "taiwan") return true;
         if ($id_type == "identity") {
             if (strlen($id_number) == 15){
                 if (substr($id_number, 14, 1) % 2 == (2 - $gender)) {
