@@ -3,7 +3,7 @@ phpMyAdmin/
 application/config/config.php
 application/config/database.php
 application/config/email.php
-assets/images/*
+# assets/images/*
 assets/images/!essentials/
 node_modules/
 */config/development
@@ -14,5 +14,6 @@ node_modules/
 */cache/!.htaccess
 
 # Custom
+*.json
 *.swp
 *.mp4

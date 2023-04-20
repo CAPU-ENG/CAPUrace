@@ -369,7 +369,7 @@ class CI_Input {
 	* @param	string	ipv4 or ipv6
 	* @return	bool
 	*/
-	public function valid_ip($ip, $which = '')
+	public function valid_ip($ip, $which = 'ipv4')
 	{
 		$which = strtolower($which);
 

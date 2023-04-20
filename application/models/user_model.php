@@ -125,17 +125,30 @@ class User_model extends CI_Model {
         return $res->result_array();
     }
 
+    // /*
+    //  * Confirm a new user.
+    //  *
+    //  * ====argument====
+    //  * $id, the id of the user to be confirmed.
+    //  *
+    //  */
+    // public function confirm($id) {
+    //     $confirm = array('confirmed' => TRUE);
+    //     $this->db->where('id', $id)->update('users', $confirm);
+    // }
+
     /*
-     * Confirm a new user.
+     * A user starts registration.
      *
      * ====argument====
-     * $id, the id of the user to be confirmed.
+     * $id, the id of the user to be tagged.
      *
      */
-    public function confirm($id) {
-        $confirm = array('confirmed' => TRUE);
-        $this->db->where('id', $id)->update('users', $confirm);
+    public function start_register($id) {
+        $start_register = array('start_register' => TRUE);
+        $this->db->where('id', $id)->update('users', $start_register);
     }
+
 
     /*
      * Set the user to be paid.
@@ -180,11 +193,11 @@ class User_model extends CI_Model {
     }
 
     /*
-     * Get the unconfirmed users.
+     * Get the register-unstarted users.
      *
      */
-    public function get_unconfirmed() {
-        $query = $this->db->where('confirmed', false)->where('activated', true)->order_by('province', 'asc')->get('users');
+    public function get_unstarted() {
+        $query = $this->db->where('start_register', false)->where('activated', true)->order_by('province', 'asc')->get('users');
         return $query->result_array();
     }
 
@@ -294,7 +307,7 @@ class User_model extends CI_Model {
      * This function gets all verified users.
      */
     public function get_verified() {
-        $query = $this->db->where('editable', 0)->where('activated', 1)->where('confirmed', 1)->where('deleted', 0)->order_by('paid', 'asc')->order_by('province', 'asc')->get('users');
+        $query = $this->db->where('editable', 0)->where('activated', 1)->where('start_register', 1)->where('deleted', 0)->order_by('paid', 'asc')->order_by('province', 'asc')->get('users');
         return $query->result_array();
     }
 
@@ -310,7 +323,7 @@ class User_model extends CI_Model {
      * This function gets all users confirmed but not verified.
      */
     public function get_registering() {
-        return $this->db->where('confirmed', 1)->where('activated', 1)->where('editable', 1)->where('deleted', 0)->order_by('province', 'asc')->get('users')->result_array();
+        return $this->db->where('start_register', 1)->where('activated', 1)->where('editable', 1)->where('deleted', 0)->order_by('province', 'asc')->get('users')->result_array();
     }
     
     /*

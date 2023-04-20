@@ -6,10 +6,10 @@
     <button class="btn btn-primary" id="btn-export-excel">导出总表</button>
     <div class="btn-group">
       <button class="btn btn-primary" id="btn-go-to-info">报名数据</button>
-      <button class="btn btn-primary" id="btn-go-to-confirm">高校审核</button>
       <button class="btn btn-primary" id="btn-check-unacitvated">尚未激活</button>
-      <button class="btn btn-primary" id="btn-go-to-pay">缴费后台</button>
+      <button class="btn btn-primary" id="btn-go-to-unstarted">激活而未报名</button>
       <button class="btn btn-primary" id="btn-check-registrating">正在报名</button>
+      <button class="btn btn-primary" id="btn-go-to-pay">缴费后台</button>
     </div>
     <button class="btn btn-warning" id="btn-logout">注销</button>
     <button class="btn btn-danger" id="btn-close-system">关闭系统</button>
@@ -70,8 +70,8 @@
     $("#btn-export-excel").click(function() {
         window.location.assign("<?=site_url('admin/export')?>");
     });
-    $("#btn-go-to-confirm").click(function() {
-        window.location.assign("<?=site_url('admin/confirm')?>");
+    $("#btn-go-to-unstarted").click(function() {
+        window.location.assign("<?=site_url('admin/unstarted')?>");
     });
     $("#btn-check-unacitvated").click(function() {
         window.location.assign("<?=site_url('admin/unactivated')?>");

@@ -20,32 +20,47 @@ class Registration extends CI_Controller {
         $this->load->model('team_model', 'team');
         $this->load->model('user_model', 'user');
         $this->load->model('info_model', 'info');
-
+        
         if (! $this->session->userdata('logged_in')) {
             redirect(site_url('user/login'), 'refresh');
         }
-
+        
         if (! $this->session->userdata('editable')) {
             redirect(site_url('user/result'));
         }
     }
-
+    
     public function index() {
-        $this->load->view('header_homepage');
-        $this->load->view('add_hilight_nav2');
-        $query = $this->info->get_info('register-readme');
-        $data = array(
-            'text' => $query['text'],
-            'publish' => $query['isdraft']
-        );
-        $this->load->view('registration_index', $data);
-        $this->load->view('footer');
+
+        date_default_timezone_set('PRC');
+
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $query = $this->info->get_info('register-readme');
+            $data = array(
+                'text' => $query['text'],
+                'publish' => $query['isdraft']
+            );
+            $this->load->view('registration_index', $data);
+            $this->load->view('footer');
+        }
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $id = $this->session->userdata('id');
+            header('Content-Type: application/json');
+            $this->user->start_register($id);
+            $this->session->set_userdata('start_register', TRUE);
+            exit();
+        }
     }
 
     /*
-     * This method let the users register individuals.
+    * This method let the users register individuals.
      */
     public function individual() {
+        if (! $this->session->userdata('start_register')) {
+            redirect(site_url('registration/index'));
+        }
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $quota_results = $this->people->get_race_quota();
             $this->load->view('header_homepage');
@@ -292,6 +307,9 @@ class Registration extends CI_Controller {
      * This method let the users register teams.
      */
     public function team() {
+        if (! $this->session->userdata('start_register')) {
+            redirect(site_url('registration/index'));
+        }
         $school_id = $this->session->userdata('id');
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $data['male'] = $this->people->get_male_athlete_from_school($school_id);

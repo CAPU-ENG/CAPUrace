@@ -45,23 +45,45 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
  *
  */
 
+// $PROVINCES = array(
+//     '北京地区（北京市）',
+//     '天津地区（天津市）',
+//     '河北地区（河北省）',
+//     '东北地区（黑龙江省、吉林省、辽宁省、内蒙古自治区）',
+//     '山东地区（山东省）',
+//     '山西地区（山西省）',
+//     '其他地区（其他省、市、自治区）'
+// );
+// $PROVINCES_SHORT = array(
+//     '北京地区',
+//     '天津地区',
+//     '河北地区',
+//     '东北地区',
+//     '山东地区',
+//     '山西地区',
+//     '其他地区'
+// );
+
+//edit in 2023.
 $PROVINCES = array(
-    '北京地区（北京市）',
-    '天津地区（天津市）',
-    '河北地区（河北省）',
-    '东北地区（黑龙江省、吉林省、辽宁省、内蒙古自治区）',
-    '山东地区（山东省）',
-    '山西地区（山西省）',
-    '其他地区（其他省、市、自治区）'
+    '华北地区一（京、津）',
+    '华北地区二（冀、鲁、晋）',
+    '东北地区（黑、吉、辽、内蒙古）',
+    '西北地区（陕、甘、宁、青、新）',
+    '西南地区（云、贵、川、渝、藏）',
+    '华中地区（鄂、湘、赣、豫）',
+    '华南地区（粤、桂、琼、闽）',
+    '华东地区（沪、苏、浙、皖）'
 );
 $PROVINCES_SHORT = array(
-    '北京地区',
-    '天津地区',
-    '河北地区',
+    '华北地区一',
+    '华北地区二',
     '东北地区',
-    '山东地区',
-    '山西地区',
-    '其他地区'
+    '西北地区',
+    '西南地区',
+    '华中地区',
+    '华南地区',
+    '华东地区'
 );
 
 /*
@@ -76,7 +98,8 @@ $ERR_MSG = array(
     '202' => '用户尚未通过审核，请您稍后登录！',
     '204' => '用户不存在，请注册！',
     '205' => '注册已截止',
-    '400' => '存在不合法输入，请检查手机号、邮箱等信息是否正确填写！',
+    '206' => '您已开始报名，不能修改资料！',
+    '400' => '存在不合法输入，或者邮箱已被使用。请检查信息是否正确填写！如有疑问请联系我们。',
     '401' => '密码错误，请重新输入！',
     // Individual Registration Error.
     '999' => '人员名单不能为空。',
@@ -140,6 +163,7 @@ $GENDER = array(
 $ID_TYPE = array(
     'identity' => '身份证',
     'passport' => '护照',
+    'taiwan' => '台胞证'
 );
 
 $IFRACE = array(
@@ -172,14 +196,25 @@ $RACE = array(
     '1' => '参赛'
 );
 
+// race == mountain-bike; rdb == road-bike!!
 
-$RACE_M_QUOTA = 190;
-$RACE_ELITE_QUOTA = 190;
-$RACE_F_QUOTA = 190;
-$RDB_M_QUOTA = 150;
-$RDB_F_QUOTA = 55;
-$RDB_ELITE_QUOTA = 75;
+// $RACE_M_QUOTA = 190;
+// $RACE_ELITE_QUOTA = 190;
+// $RACE_F_QUOTA = 190;
+// $RDB_M_QUOTA = 150;
+// $RDB_F_QUOTA = 55;
+// $RDB_ELITE_QUOTA = 75;
+// $RACE_TEAM_QUOTA = 60;
+
+// edit in 2023
+$RACE_M_QUOTA = 30;
+$RACE_ELITE_QUOTA = 30;
+$RACE_F_QUOTA = 30;
+$RDB_M_QUOTA = 180;
+$RDB_F_QUOTA = 60;
+$RDB_ELITE_QUOTA = 50;
 $RACE_TEAM_QUOTA = 60;
+// team race to be updated.
 
 $AUDIENCE_QUOTA = 230;
 $AUD_QUOTA_PER_SCHOOL = 3;
@@ -200,8 +235,8 @@ $ACCO_FEE = array(
  * Date and Time Settings
  */
 
-$SIGN_UP_DEADLINE = '2019-06-21';
-
+$SIGN_UP_DEADLINE = '2023-05-04';
+$REGISTRATION_START = '2023-05-06 09:00:00';
 /*
  * Admin user list
  */

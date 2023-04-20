@@ -48,7 +48,7 @@ class MY_Email extends CI_Email
         $this->initialize($mail_config);
         $this->set_mailtype('html');
         $this->from($from_mail, $from_name);
-        $this->reply_to('beidachexie@126.com', $from_name);
+        $this->reply_to('capurace@163.com', $from_name);
         $this->to($to_mail);
         $this->subject($subject);
         $this->message($message);
@@ -59,12 +59,12 @@ class MY_Email extends CI_Email
      * Send account confirmation email.
      */
     public function send_account_confirm_mail($mail) {
-        $subject = '第十六届全国高校自行车交流赛帐户确认（含ID）';
+        $subject = '第十七届全国高校自行车交流赛帐户确认（含ID）';
         $token = $this->ci->user->get_token($mail);
         $link = site_url('user/activate') . '/' . $token;
         $id = $this->ci->user->get_id($mail);
         $id_message='<br><br>贵高校本次比赛的ID是<b>' . $id . '</b>，请领队同学务必牢记，并在比赛签到时出示。<br><br>祝好！<br><br>北京大学自行车协会';
-        $message = '请点击以下链接激活帐户' . $link . $id_message;
+        $message = '请点击以下链接激活帐户 ' . '<a href="' . $link . '">' . $link . '</a>' . $id_message;
         $this->send_mail($mail, $subject, $message);
     }
 
@@ -72,7 +72,7 @@ class MY_Email extends CI_Email
      * Send mail after money is received.
      */
     public function send_fee_received_mail($mail, $school, $fee) {
-        $subject = '第十六届全国高校自行车交流赛缴费确认';
+        $subject = '第十七届全国高校自行车交流赛缴费确认';
         $id = $this->ci->user->get_id($mail);
         $id_message='<br><br>贵高校本次比赛的ID是<b>' . $id . '</b>，请领队同学务必牢记，并在比赛签到时出示。<br><br>祝好！<br><br>北京大学自行车协会';
         $message = $school . '，<br><br>贵校车协交来的' . $fee . '元参赛费用已经收到，感谢你们对北大赛的大力支持！如有任何问题，请直接与各地区负责联系。' . $id_message;

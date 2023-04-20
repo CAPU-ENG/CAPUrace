@@ -185,6 +185,81 @@ function postSignup() {
 }
 
 /*
+ * This function posts the edit information to
+ * the edit controller.
+ */
+function postEdit() {
+    var school = $("#school").val();
+    var assoc = $("#assoc").val();
+    var province = $("#province").val();
+    var address = $("#add").val();
+    var zipcode = $("#zip").val();
+    var leader = $("#leader").val();
+    var tel = $("#tel").val();
+
+    //The following part of code is for front-end validation.
+
+    if (school == "") {
+        alert("学校名不能为空！");
+        $("#school").focus();
+        return;
+    }
+    if (assoc == "") {
+        alert("协会名不能为空！");
+        $("#assoc").focus();
+        return;
+    }
+    if (address == "") {
+        alert("邮寄地址不能为空！")
+        $("#add").focus();
+    }
+    if (zipcode == "") {
+        alert("邮政编码不能为空！")
+        $("#zip").focus();
+    }
+    if (zipcode.length != 6) {
+        alert("邮政编码位数不正确！")
+        $("#zip").focus();
+        return;
+    }
+    if (leader == "") {
+        alert("领队名不能为空！");
+        $("#leader").focus();
+        return;
+    }
+    if (tel == "") {
+        alert("领队电话不能为空！");
+        $("#tel").focus();
+        return;
+    }
+    if (tel.length != 11) {
+        alert("领队电话输入有误，请检查后重新输入！")
+        $("#tel").focus();
+        return;
+    }
+
+    //Organize the data and post to the controller.
+    var data = {
+        school: school,
+        association_name: assoc,
+        province: province,
+        address: address,
+        zipcode: zipcode,
+        leader: leader,
+        tel: tel,
+    };
+    $.post(controller, data, function(data) {
+        if (data.code == "200") {
+            alert("信息修改成功！");
+            window.location.assign(directto);
+        } else {
+            alert(data.msg);
+        }
+    })
+
+}
+
+/*
  * This function is called when clicking 'save'.
  * It will store the individual information into cookie.
  */

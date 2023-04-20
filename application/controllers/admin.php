@@ -81,9 +81,9 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function confirm() {
+    public function unstarted() {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $data['unconfirmed'] = $this->user->get_unconfirmed();
+            $data['unstarted'] = $this->user->get_unstarted();
             $this->load->view('header_admin');
             $this->load->view('admin_confirm', $data);
             $this->load->view('footer_admin');
@@ -120,8 +120,9 @@ class Admin extends CI_Controller {
     }
 
     public function info() {
-        $data['nschools'] = $this->db->query('select count(*) as nschools from users where activated=1 and confirmed=1;')->result_array()[0]['nschools'];
-        $data['nverified'] = $this->db->query('select count(*) as nverified from users where editable=0 and activated=1 and confirmed=1;')->result_array()[0]['nverified'];
+        $data['nschools'] = $this->db->query('select count(*) as nschools from users where activated=1;')->result_array()[0]['nschools'];
+        $data['nstart'] = $this->db->query('select count(*) as nstart from users where activated=1 and start_register=1;')->result_array()[0]['nstart'];
+        $data['nverified'] = $this->db->query('select count(*) as nverified from users where editable=0 and activated=1 and start_register=1;')->result_array()[0]['nverified'];
         $data['npaid'] = $this->db->query('select count(*) as npaid from users where paid=1;')->result_array()[0]['npaid'];
         $data['nlook'] = $this->db->query('select count(*) as nlook from people where deleted=0 and ifrace=0;')->result_array()[0]['nlook'];
         $data['nrace'] = $this->db->query('select count(*) as nrace from people where deleted=0 and ifrace=1;')->result_array()[0]['nrace'];

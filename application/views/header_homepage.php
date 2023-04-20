@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>北大赛报名网站</title>
-<link rel="shortcut icon" href="/assets/images/essentials/capu.jpg">
+<link rel="shortcut icon" href="<?=base_url()?>/assets/images/icon.png">
 <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=base_url()?>/assets/css/style.css" rel="stylesheet">
 <script src="<?=base_url()?>/assets/js/jquery.min.js"></script>
@@ -30,7 +30,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">CAPURACE</a>
+        <a class="navbar-brand" href="#"><img src="<?=base_url()?>assets/images/icon.png" style="max-width:40px;margin-top:-10px;">CAPURACE</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,8 +74,10 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               欢迎你，<?=$this->session->userdata('school')?><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">修改资料</a></li>
-              <li><a href="<?=site_url('user/result')?>">查看报名结果</a></li>
+              <li><a href="<?=site_url('user/edit')?>">修改资料</a></li>
+              <?php if ($this->session->userdata('start_register')): ?>
+                <li><a href="<?=site_url('user/result')?>">查看报名结果</a></li>
+              <?php endif; ?>
               <li class="divider"></li>
               <li><a href="<?=site_url('user/logout')?>" id="logout-button">注销</a></li>
             </ul>

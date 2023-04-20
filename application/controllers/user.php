@@ -27,8 +27,8 @@ class User extends CI_Controller {
     public function login() {
 
         //for link to CUCA in 2019  User: DetectiveHelen  Date: 19/5/8
-        header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
-        exit();
+        // header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
+        // exit();
 
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             if ($this->session->userdata('logged_in')) {
@@ -56,8 +56,8 @@ class User extends CI_Controller {
                 $err_code = '204';
             } elseif (!$user_info['activated']) {
                 $err_code = '201';
-            } elseif (!$user_info['confirmed']) {
-                $err_code = '202';
+            // } elseif (!$user_info['confirmed']) {
+            //     $err_code = '202';
             } elseif ($login_info['password'] != $user_info['password']) {
                 $err_code = '401';
             } else {
@@ -66,6 +66,7 @@ class User extends CI_Controller {
                 $this->session->set_userdata('id', $user_info['id']);
                 $this->session->set_userdata('school', $user_info['school']);
                 $this->session->set_userdata('editable', $user_info['editable']);
+                $this->session->set_userdata('start_register', $user_info['start_register']);
             }
 
             exit(err_msg($err_code));
@@ -79,14 +80,16 @@ class User extends CI_Controller {
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('school');
+        $this->session->unset_userdata('editable');
+        $this->session->unset_userdata('start_register');
         redirect(base_url(), 'refresh');
     }
 
      public function signup() {
 
-        //for link to CUCA in 2019  User: DetectiveHelen  Date: 19/5/8
-        header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
-        exit();
+        // //for link to CUCA in 2019  User: DetectiveHelen  Date: 19/5/8
+        // header("Location: http://ucenter.hiwedo.cn/index.php?p=24&a=view&r=20");
+        // exit();
         
          date_default_timezone_set('PRC');
 
@@ -196,7 +199,7 @@ class User extends CI_Controller {
         $status = $this->user->activate($token);
         $data = array('info' => '');
         if ($status == 0)
-            $data['info'] = '激活成功！请等待北大车协同学线下联系，我们将于 24 小时内完成您的注册审核，审核通过之后车协同学将通知您。谢谢！';
+            $data['info'] = '激活成功！请等待报名开始，报名开始时间为' . $GLOBALS['REGISTRATION_START'] . '。<br>在您开始报名之前，您可以修改注册时填写的信息。';
         elseif ($status == 1)
             $data['info'] = '激活码无效或您已成功激活。';
         elseif ($status == 2)
@@ -205,6 +208,38 @@ class User extends CI_Controller {
         $this->load->view('activate_footer');
     }
 
+    /*
+     * Edit the account.
+     */
+    public function edit() {
+        $id = $this->session->userdata('id');
+        $user_info = $this->user->get_user_by_id($id);
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            if (! $this->session->userdata('logged_in')) {
+                redirect(site_url('user/login'));
+            }
+            $this->load->view('header_homepage');
+            $this->load->view('add_hilight_nav2');
+            $this->load->view('edit_form', $user_info);
+            $this->load->view('footer');
+        }
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $data = $this->input->post();
+            header('Content-Type: application/json');
+
+            if ($this->form_validation->run('edit') == false) {
+                $err_code = '400';
+            } elseif ($user_info['start_register']) {
+                $err_code = '206';
+            } else {
+                $err_code = '200';
+                $this->user->update($id, $data);
+            }
+
+            exit(err_msg($err_code));
+        }
+    }
     /*
      * Export an Excel file containing all the information.
      */

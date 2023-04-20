@@ -1,5 +1,5 @@
 <div class="indcontainer">
-    <h3>待审核高校列表</h3>
+    <h3>激活而未开始报名高校列表</h3>
     <table class="table">
     <thead>
     <tr>
@@ -12,11 +12,11 @@
         <th>手机号</th>
         <th>邮寄地址</th>
         <th>邮政编码</th>
-        <th>操作</th>
+        <!-- <th>操作</th> -->
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($unconfirmed as $user): ?>
+    <?php foreach ($unstarted as $user): ?>
     <tr class="school">
         <td class="school_id"><?=$user['id']?></td>
         <td class="school_name"><?=$user['school']?></td>
@@ -27,15 +27,15 @@
         <td><?=$user['tel']?></td>
         <td><?=$user['address']?></td>
         <td><?=$user['zipcode']?></td>
-        <td>
+        <!-- <td>
             <button class="btn-xs btn-success btn-confirm">通过审核</button>
-        </td>
+        </td> -->
     </tr>
     <?php endforeach; ?>
     </tbody>
     </table>
 </div>
-<script>
+<!-- <script>
     $(".btn-confirm").click(function() {
         var id = $(this).closest(".school").find(".school_id").text();
         var school = $(this).closest(".school").find(".school_name").text();
@@ -47,4 +47,4 @@
             window.location.reload();
         }
     });
-</script>
+</script> -->
