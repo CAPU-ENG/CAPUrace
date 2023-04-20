@@ -8,8 +8,12 @@
         </thead>
         <tbody>
         <tr>
-            <td>注册高校总数</td>
+            <td>已激活高校总数</td>
             <td><?=$nschools?></td>
+        </tr>
+        <tr>
+            <td>开始报名高校总数</td>
+            <td><?=$nstart?></td>
         </tr>
         <tr>
             <td>已经确认高校总数</td>
